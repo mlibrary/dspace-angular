@@ -17,6 +17,19 @@
           <ds-error *ngIf="feedbackForm.controls.email.errors?.required" message="{{'info.feedback.error.email.required' | translate}}"></ds-error>
           <ds-error *ngIf="feedbackForm.controls.email.errors?.pattern" message="{{'info.feedback.error.email.required' | translate}}"></ds-error>
         </ng-container>
+
+        <div class="row">
+          <div class="control-group col-sm-12">
+            <label class="control-label" for="subject">{{ 'info.feedback.subject' | translate }}:&nbsp;</label>
+            <textarea id="subject" formControlName="subject" class="form-control" name="subject" cols="20" rows="1"> </textarea>
+          </div>
+        </div>
+        <ng-container *ngIf="feedbackForm.controls.subject.invalid && (feedbackForm.controls.subject.dirty || feedbackForm.controls.subject.touched)"
+          class="alert">
+          <ds-error *ngIf="feedbackForm.controls.subject.errors?.required" message="{{'info.feedback.error.subject.required' | translate}}"></ds-error>
+        </ng-container>
+
+
         <div class="row">
           <div class="control-group col-sm-12">
             <label class="control-label" for="comments">{{ 'info.feedback.comments' | translate }}:&nbsp;</label>

@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit, PLATFORM
 import { ActivatedRoute, Router } from '@angular/router';
 import { isPlatformServer } from '@angular/common';
 
-import { Observable } from 'rxjs';
+import { Observable, of as observableOf } from 'rxjs';
+
 import { map, take } from 'rxjs/operators';
 
 import { ItemDataService } from '../../core/data/item-data.service';
@@ -16,6 +17,9 @@ import { getItemPageRoute } from '../item-page-routing-paths';
 import { redirectOn4xx } from '../../core/shared/authorized.operators';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
+
+import { RoleService } from '../../core/roles/role.service';
+
 import { ServerResponseService } from '../../core/services/server-response.service';
 import { SignpostingDataService } from '../../core/data/signposting-data.service';
 import { SignpostingLink } from '../../core/data/signposting-links.model';
@@ -63,6 +67,10 @@ export class ItemPageComponent implements OnInit, OnDestroy {
 
   itemUrl: string;
 
+  showReason: boolean;
+
+  private roleService: RoleService
+
   /**
    * Contains a list of SignpostingLink related to the item
    */
@@ -90,13 +98,13 @@ export class ItemPageComponent implements OnInit, OnDestroy {
       map((data) => data.dso as RemoteData<Item>),
       redirectOn4xx(this.router, this.authService)
     );
+    // This is where the item data comes from    
     this.itemPageRoute$ = this.itemRD$.pipe(
       getAllSucceededRemoteDataPayload(),
       map((item) => getItemPageRoute(item))
     );
 
-    this.isAdmin$ = this.authorizationService.isAuthorized(FeatureID.AdministratorOf);
-
+    this.isAdmin$ = this.authorizationService.isAuthorized(FeatureID.CanSendFeedback);
   }
 
   /**

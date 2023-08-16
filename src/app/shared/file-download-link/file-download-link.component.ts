@@ -54,7 +54,18 @@ export class FileDownloadLinkComponent implements OnInit {
   ngOnInit() {
     if (this.enableRequestACopy) {
       this.canDownload$ = this.authorizationService.isAuthorized(FeatureID.CanDownload, isNotEmpty(this.bitstream) ? this.bitstream.self : undefined);
-      const canRequestACopy$ = this.authorizationService.isAuthorized(FeatureID.CanRequestACopy, isNotEmpty(this.bitstream) ? this.bitstream.self : undefined);
+      //const canRequestACopy$ = this.authorizationService.isAuthorized(FeatureID.CanRequestACopy, isNotEmpty(this.bitstream) ? this.bitstream.self : undefined);
+
+      let canRequestACopy$ = observableOf(false);
+      let email = this.item.metadata['dc.requestcopy.email']
+      let name  = this.item.metadata['dc.requestcopy.name']
+
+      if (email !== null && email !== undefined) {
+        canRequestACopy$ = observableOf(true);
+      } else {
+        canRequestACopy$ = observableOf(false);
+      }
+
       this.bitstreamPath$ = observableCombineLatest([this.canDownload$, canRequestACopy$]).pipe(
         map(([canDownload, canRequestACopy]) => this.getBitstreamPath(canDownload, canRequestACopy))
       );
@@ -68,6 +79,13 @@ export class FileDownloadLinkComponent implements OnInit {
     if (!canDownload && canRequestACopy && hasValue(this.item)) {
       return getBitstreamRequestACopyRoute(this.item, this.bitstream);
     }
+
+    // Some items can be dowonloaded so just based on whether to put the RC path on the 
+    // metadata
+    if (canRequestACopy && hasValue(this.item)) {
+      return getBitstreamRequestACopyRoute(this.item, this.bitstream);
+    }
+  
     return this.getBitstreamDownloadPath();
   }
 

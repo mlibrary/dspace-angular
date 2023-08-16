@@ -5,8 +5,13 @@
     <div *ngIf="item && item.isWithdrawn" class="withdrawn-warning">
         <ds-alert [type]="AlertTypeEnum.Warning">
             <div class="d-flex justify-content-between flex-wrap">
-                <span class="align-self-center">{{'item.alerts.withdrawn' | translate}}</span>
-                <a routerLink="/home" class="btn btn-primary btn-sm">{{"404.link.home-page" | translate}}</a>
+              <span *ngIf="!item.hasMetadata(['dc.description.withdrawalreason'])" class="align-self-center">{{'item.alerts.withdrawn' | translate}}</span>
+              <span
+                *ngFor="let reason of item.allMetadataValues(['dc.description.withdrawalreason']); let last=last;">
+                <span [innerHTML]="reason"><span [innerHTML]="reason"></span></span>
+                <span *ngIf="!last">; </span>
+              </span>
+              <a routerLink="/home" class="btn btn-primary btn-sm">{{"404.link.home-page" | translate}}</a>
             </div>
         </ds-alert>
     </div>

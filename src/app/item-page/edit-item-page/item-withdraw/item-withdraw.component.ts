@@ -19,6 +19,8 @@ import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
  */
 export class ItemWithdrawComponent extends AbstractSimpleItemActionComponent {
 
+  protected withdrawReason = "nothing"
+
   protected messageKey = 'withdraw';
   protected predicate = (rd: RemoteData<Item>) => rd.payload.isWithdrawn;
 
@@ -34,7 +36,9 @@ export class ItemWithdrawComponent extends AbstractSimpleItemActionComponent {
    * Perform the withdraw action to the item
    */
   performAction() {
-    this.itemDataService.setWithDrawn(this.item, true).pipe(getFirstCompletedRemoteData()).subscribe(
+    var reason:string = (document.getElementById("withdrawReason") as HTMLInputElement).value
+    console.log("The reason = " + reason)
+    this.itemDataService.setWithDrawn(this.item, true, reason).pipe(getFirstCompletedRemoteData()).subscribe(
       (response: RemoteData<Item>) => {
         this.processRestResponse(response);
       }

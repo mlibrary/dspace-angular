@@ -27,6 +27,7 @@ import { RootComponent } from './root/root.component';
 import { ThemedRootComponent } from './root/themed-root.component';
 import { ThemedPageNotFoundComponent } from './pagenotfound/themed-pagenotfound.component';
 import { ThemedForbiddenComponent } from './forbidden/themed-forbidden.component';
+
 import { ThemedHeaderComponent } from './header/themed-header.component';
 import { ThemedFooterComponent } from './footer/themed-footer.component';
 import { ThemedBreadcrumbsComponent } from './breadcrumbs/themed-breadcrumbs.component';

@@ -210,6 +210,16 @@ export class ThemeService {
       return;
     }
 
+    // Needed for Altmetrics and Dimensions.
+    const scriptAlt = this.document.createElement('script');
+    scriptAlt.setAttribute('src', 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js');
+    head.insertBefore(scriptAlt, head.firstChild);
+
+    const scriptDim = this.document.createElement('script');
+    scriptDim.setAttribute('src', 'https://badge.dimensions.ai/badge.js');
+    head.insertBefore(scriptDim, head.firstChild);
+    // End Altmetrics and Dimensions.
+
     // clear head tags
     const currentHeadTags = Array.from(head.getElementsByClassName('theme-head-tag'));
     if (hasValue(currentHeadTags)) {

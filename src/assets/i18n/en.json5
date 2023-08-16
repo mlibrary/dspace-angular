@@ -918,6 +918,8 @@
 
   "collection.edit.item-mapper.head": "Item Mapper - Map Items from Other Collections",
 
+  "collection.edit.item-mapper.checkall-desc": "By clicking on this, you will select/uselect all the items.",
+
   "collection.edit.item-mapper.no-search": "Please enter a query to search",
 
   "collection.edit.item-mapper.notifications.map.error.content": "Errors occurred for mapping of {{amount}} items.",
@@ -1630,6 +1632,8 @@
 
   "footer.link.feedback": "Send Feedback",
 
+  "info.feedback.subject": "Subject",
+
   "forgot-email.form.header": "Forgot Password",
 
   "forgot-email.form.info": "Enter the email address associated with the account.",
@@ -1885,6 +1889,8 @@
   "info.feedback.error.email.required": "A valid email address is required",
 
   "info.feedback.error.message.required": "A comment is required",
+
+  "info.feedback.error.subject.required" : "A subject is required", 
 
   "info.feedback.page-label": "Page",
 
@@ -2337,6 +2343,8 @@
   "item.listelement.badge": "Item",
 
   "item.page.description": "Description",
+
+  "item.page.filename": "Filename(s)",
 
   "item.page.journal-issn": "Journal ISSN",
 

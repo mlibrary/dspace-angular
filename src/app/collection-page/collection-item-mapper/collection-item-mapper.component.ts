@@ -283,4 +283,31 @@ export class CollectionItemMapperComponent implements OnInit {
     });
   }
 
+  /**
+   * This was a javascript function I brought over from 6.3
+   */
+  checkUncheckAll (form) {
+
+   var defaultedElements = document.getElementsByTagName("input");
+   var mapButton = document.getElementsByClassName("item-confirm");
+   var theElement;   
+   var event = new Event('change');
+
+   for (var i=0; i != defaultedElements.length; i++){
+    if ( defaultedElements[i].name == 'checkall'){
+        theElement = defaultedElements[i];
+    }
+   }
+
+   for (var i=0; i != defaultedElements.length; i++){
+    if (defaultedElements[i].type == 'checkbox'){
+        defaultedElements[i].checked=theElement.checked;
+        defaultedElements[i].setAttribute("ng-reflect-model", theElement.checked);
+        (mapButton[0] as HTMLButtonElement).disabled= !theElement.checked;
+      
+        defaultedElements[i].dispatchEvent(event);
+    }
+   }
+ }
+
 }

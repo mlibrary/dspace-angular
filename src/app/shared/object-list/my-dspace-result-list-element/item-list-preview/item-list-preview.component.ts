@@ -1,4 +1,6 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, InjectionToken, Input, OnInit } from '@angular/core';
+
+import { HttpClient} from '@angular/common/http';
 
 import { Item } from '../../../../core/shared/item.model';
 import { fadeInOut } from '../../../animations/fade';
@@ -49,9 +51,15 @@ export class ItemListPreviewComponent implements OnInit {
    */
   showThumbnails: boolean;
 
+  mothStatsCount: String;
+  mothDateStatsCount: String;
+  totalStatsCount: String;
+  context: Context;
+
   dsoTitle: string;
 
   constructor(
+    private http: HttpClient,    
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
     public dsoNameService: DSONameService,
   ) {
@@ -60,7 +68,36 @@ export class ItemListPreviewComponent implements OnInit {
   ngOnInit(): void {
     this.showThumbnails = this.appConfig.browseBy.showThumbnails;
     this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.item);
+    this.context = Context.EntitySearchModal;    
   }
 
+  public getMonthDateStats(): String {
+    this.http.get('http://localhost:8080/server/api/eperson/groups/getmonthdatestats/', {responseType: 'text'}).subscribe((data: any) => {
+      this.mothDateStatsCount = data;
+     });
+    return this.mothDateStatsCount;
+  }
+
+  public getMonthStats(): String {
+    let handle = this.item.handle;   
+    handle = handle.replace('/','_');
+
+    this.http.get('http://localhost:8080/server/api/eperson/groups/getmonthstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
+      this.mothStatsCount = data;
+     });
+
+    return this.mothStatsCount;
+  }
+
+  public getTotalStats(): String {
+    let handle = this.item.handle;
+    handle = handle.replace('/','_');
+
+    this.http.get('http://localhost:8080/server/api/eperson/groups/gettotalstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
+      this.totalStatsCount = data;
+    });
+
+    return this.totalStatsCount;
+   }
 
 }

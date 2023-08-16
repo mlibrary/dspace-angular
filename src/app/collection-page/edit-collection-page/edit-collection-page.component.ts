@@ -4,6 +4,8 @@ import { EditComColPageComponent } from '../../shared/comcol/comcol-forms/edit-c
 import { Collection } from '../../core/shared/collection.model';
 import { getCollectionPageRoute } from '../collection-page-routing-paths';
 
+import { HttpClient} from '@angular/common/http';
+
 /**
  * Component that represents the page where a user can edit an existing Collection
  */
@@ -15,10 +17,11 @@ export class EditCollectionPageComponent extends EditComColPageComponent<Collect
   type = 'collection';
 
   public constructor(
+    protected http: HttpClient,
     protected router: Router,
     protected route: ActivatedRoute
   ) {
-    super(router, route);
+    super(http, router, route);
   }
 
   /**

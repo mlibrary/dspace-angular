@@ -12,7 +12,11 @@
 <div class="d-flex flex-row">
   <ds-themed-item-page-title-field [item]="object" class="mr-auto">
   </ds-themed-item-page-title-field>
-  <ds-dso-edit-menu></ds-dso-edit-menu>
+
+  <div ng-if="(isAdmin$|async)">
+      <ds-dso-edit-menu></ds-dso-edit-menu>
+  </div>
+
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-4">
@@ -50,10 +54,44 @@
     </ds-generic-item-page-field>
   </div>
   <div class="col-xs-12 col-md-6">
-    <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
-    <ds-generic-item-page-field [item]="object"
+  <div *ngIf="object.hasMetadata('dc.description.abstract')" [id]="object.id">
+  <ds-truncatable [id]="object.id">
+        <h5>Abstract</h5>
+        <ds-truncatable-part [id]="object.id" [minLines]="3" class="item-list-abstract">
+        <span [ngClass]="{'text-muted': !object.firstMetadataValue('dc.description.abstract')}"
+              [innerHTML]="(object.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)"></span>
+        </ds-truncatable-part>
+  </ds-truncatable>
+ </div>
+ 
+
+<ng-container *ngFor="let entry of object.allMetadataValues('dc.description.hathi')">
+  <span *ngVar="(object.owningCollection | async)?.payload as collection">
+    <p>
+      <span><a class="image-link" href="{{entry}}" attr.onclick="_gaq.push(['_trackEvent', 'HATHI Download', 'Item View','{{collection?.name}} - {{ getHandle(object.allMetadataValues('dc.identifier.uri')) }} - {{ object.firstMetadataValue('dc.title') }}]);"></a><img title="HathiTrust Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/hathi_trust_icon18x18.png" alt="HathiTrust Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+    </p>
+  </span>
+</ng-container>
+
+
+<ng-container *ngFor="let entry of object.allMetadataValues('dc.description.fulcrum')">
+  <span *ngVar="(object.owningCollection | async)?.payload as collection">
+    <p>
+      <span><a class="image-link" href="{{entry}}" attr.onclick="_gaq.push(['_trackEvent', 'FULCRUM Download', 'Item View','{{collection?.name}} - {{ getHandle(object.allMetadataValues('dc.identifier.uri')) }} - {{ object.firstMetadataValue('dc.title') }}]);"></a><img title="Fulcrum Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/fulcrum_icon.png" alt="Fulcrum Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+    </p>
+  </span>
+</ng-container>
+
+
+
+     <ds-generic-item-page-field [item]="object"
       [fields]="['dc.description']"
       [label]="'item.page.description'">
+     </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.description.filename']"    
+      [label]="'item.page.filename'">
     </ds-generic-item-page-field>
 
     <ds-generic-item-page-field [item]="object"
@@ -69,11 +107,46 @@
       [fields]="['dc.identifier.uri']"
       [label]="'item.page.uri'">
     </ds-item-page-uri-field>
+
+
+
+
+
+
+
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
+
+<div *ngIf="object.hasMetadata('dc.rights.uri')" [id]="object.id">
+  <img style="padding: 20px 0px;" alt="cc-logo" src="{{ getSelectedCcLicense(object.firstMetadataValue('dc.rights.uri')) }}"/>
+</div>
+
+<div *ngIf="object.hasMetadata('dc.identifier.doi')" [id]="object.id">
+  <p>
+    <span align="center" data-badge-popover="right" data-badge-type="1"   data-hide-less-than="1" class="altmetric-embed" data-style="large_rectangle" attr.data-handle="{{ getHandle(object.allMetadataValues('dc.identifier.uri')) }}" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
+  </p>
+
+   <p>
+     <span style="margin-left: auto; margin-right: auto; width: 8.5em" class="__dimensions_badge_embed__"  data-hide-zero-citations="true" data-style="large_rectangle" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
+   </p>
+
+</div>
+
     <div>
       <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
         <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
       </a>
+    </div>
+
+    <div>
+      <p></p>
+      <h3 style="font-size: 18px;  font-weight: bold">Remediation of Harmful Language</h3>
+      The University of Michigan Library aims to describe library materials in a way that respects the people and communities who create, use, and are represented in our collections. Report harmful or offensive language in catalog records, finding aids, or elsewhere in our collections anonymously through our <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSJ7y-zqmbNQ6ssAhSmwB7vF-NyZR9nVwBICFI8dY5aP1-TA/viewform">metadata feedback form</a>. More information at <a href="https://www.lib.umich.edu/about-us/policies/remediation-harmful-language-library-metadata">Remediation of Harmful Language</a>ß.
+    </div>
+
+    <div>
+      <p></p>
+      <h3 style="font-size: 18px;  font-weight: bold">Accessibility</h3>
+      If you are unable to use this file in its current format, please select the <a href="/info/feedback">Contact Us</a> link and we can modify it to make it more accessible to you.
     </div>
   </div>
 </div>

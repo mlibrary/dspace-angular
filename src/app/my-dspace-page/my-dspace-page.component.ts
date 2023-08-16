@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, InjectionToken, OnInit } from '@angular/core';
 
+import { HttpClient} from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { SearchService } from '../core/shared/search/search.service';
@@ -32,6 +34,8 @@ export const SEARCH_CONFIG_SERVICE: InjectionToken<SearchConfigurationService> =
 })
 export class MyDSpacePageComponent implements OnInit {
 
+  subscribeStats: Boolean;
+
   /**
    * The list of available configuration options
    */
@@ -58,7 +62,8 @@ export class MyDSpacePageComponent implements OnInit {
   viewModeList = [ViewMode.ListElement, ViewMode.DetailedListElement];
 
   constructor(private service: SearchService,
-              @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: MyDSpaceConfigurationService) {
+    private http: HttpClient,
+    @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: MyDSpaceConfigurationService) {
     this.service.setServiceOptions(MyDSpaceResponseParsingService, MyDSpaceRequest);
   }
 
@@ -82,6 +87,26 @@ export class MyDSpacePageComponent implements OnInit {
       this.context = configurationList[0].context;
     });
 
+    this.http.get('http://localhost:8080/server/api/eperson/groups/issubscribed', {responseType: 'text'}).subscribe((data: any) => {
+      this.subscribeStats = false;
+      if ( data === "true")
+      {
+        this.subscribeStats = true;
+      }
+    });
+
+  }
+
+  public subscribeToDepositStats() {
+    this.http.get('http://localhost:8080/server/api/eperson/groups/subscribe', {responseType: 'text'}).subscribe((data: any) => {
+     });
+    this.subscribeStats = true;
+  }
+
+  public unsubscribeToDepositStats() {
+    this.http.get('http://localhost:8080/server/api/eperson/groups/unsubscribe', {responseType: 'text'}).subscribe((data: any) => {
+    });
+    this.subscribeStats = false;
   }
 
 }

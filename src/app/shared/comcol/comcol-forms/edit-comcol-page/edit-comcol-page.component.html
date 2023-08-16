@@ -3,6 +3,44 @@
     <div class="col-12">
       <div class="d-flex justify-content-between border-bottom">
         <h2>{{ type + '.edit.head' | translate }}</h2>
+
+<span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
+<div class="ds-form-item row">
+<div class="control-group col-sm-12">
+<button style="background-color: #1d7491;" (click)="goToCollectionAdminStats(coll_uuid)" id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
+<div style="color: white">Get Collection Stats</div>
+</button>
+</div>
+</div>
+</span>
+
+<div>
+<span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
+<div *ngIf="!this.subscribeStats && this.type === 'collection'">
+<div class="ds-form-item row">
+<div class="control-group col-sm-12">
+<button style="background-color: #1d7491;" (click)="subscribeToAdminStats(coll_uuid)" id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
+<div style="color: white">Subscribe to Collection Stats</div>
+</button>
+</div>
+</div>
+</div>
+</span>
+
+<span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
+
+<div *ngIf="this.subscribeStats && this.type === 'collection'">
+<div class="ds-form-item row">
+<div class="control-group col-sm-12">
+<button style="background-color: #1d7491;" (click)="unsubscribeToAdminStats(coll_uuid)"id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
+<div style="color: white">Unsubscribe to Collection Stats</div>
+</button>
+</div>
+</div>
+</div>
+</span>
+</div>
+
         <div>
           <a class="btn btn-danger"
              [routerLink]="((type === 'community') ? '/communities/' : '/collections/') + (dsoRD$ | async)?.payload.uuid + '/delete'">

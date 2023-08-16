@@ -62,9 +62,16 @@
                 <div class="col-12">
                     <label
                             for="message">{{'bitstream-request-a-copy.message.label' | translate}}</label>
-                    <textarea rows="5"
-                              [className]="'form-control'"
-                              id="message" formControlName="message"></textarea>
+
+                    <textarea rows="5" [className]="(message.invalid) && (message.dirty || message.touched) ? 'form-control is-invalid' :'form-control'"
+                           id="message" formControlName="message"></textarea>
+                    <div *ngIf="message.invalid && (message.dirty || message.touched)"
+                         class="invalid-feedback show-feedback">
+                      <span *ngIf="message.errors && message.errors.required">
+                          {{ 'bitstream-request-a-copy.name.error' | translate }}
+                      </span>
+                    </div>
+
                 </div>
             </div>
         </div>
