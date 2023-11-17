@@ -1,0 +1,82 @@
+ICONS TO USE FOR DEEP BLUE FORMATS
+
+
+
+pdf_icon-18x18.png
+pdf-icon32x32.png
+	.pdf
+
+text_icon-18x18.png
+text_icon-32x32.png
+	.txt
+	.rtf
+
+word_icon-18x18.png
+word-icon32x32.png
+	.doc
+	.docx
+
+excel_icon-18x18.png
+excel_icon-32x32.png
+	.xls
+	.xlsx
+
+powerpoint_icon-18x18.png
+powerpoint_icon-32x32.png
+	.ppt
+	.pptx
+
+jpeg_icon-18x18.png
+jpeg_icon-32x32.png
+	.jpg
+	.jpeg
+
+tiff_icon-18x18.png
+tiff_icon-32x32.png
+	.tiff
+	.tif
+
+generic_image_icon-18x18.png
+generic_image_icon-32x32.png
+	.png
+	.bmp
+	.gif
+	.pcd
+	.psd
+
+audio_icon18x18.png
+audio_icon32x32.png
+	.aif
+	.aiff
+	.wav
+	.au
+	.snd
+	.mp3
+	.m4a
+	.mp4
+	.ra
+	.rm
+	.ram
+	.wma
+
+video_icon18x18.png
+video_icon32x32.png
+	.avi
+	.mov
+	.mp1
+	.mp2
+	.mp4
+	.wmv
+
+zip_icon-18x18.png
+zip_icon-32x32.png
+	.zip
+	.gz
+	.tar.gz
+
+generic_bitstream18x18.png
+generic_bitstream32x32.png
+	[everything else]
+	
+u-m_campus_only_access_icon.png
+	[added when we know an item/bitstream has campus-only restrictions]

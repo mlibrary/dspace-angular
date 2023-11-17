@@ -54,7 +54,7 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
         canActivateChild: [ServerCheckGuard],
         resolve: [MenuResolver],
         children: [
-          { path: '', redirectTo: '/home', pathMatch: 'full' },
+          { path: '', redirectTo: '/documents', pathMatch: 'full' },
           {
             path: 'reload/:rnd',
             component: ThemedPageNotFoundComponent,
@@ -62,7 +62,7 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
             canActivate: [ReloadGuard]
           },
           {
-            path: 'home',
+            path: 'documents',
             loadChildren: () => import('./home-page/home-page.module')
               .then((m) => m.HomePageModule),
             data: { showBreadcrumbs: false },

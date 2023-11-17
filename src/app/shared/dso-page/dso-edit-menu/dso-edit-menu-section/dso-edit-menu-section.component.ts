@@ -6,6 +6,9 @@ import { isNotEmpty } from '../../../empty.util';
 import { MenuID } from '../../../menu/menu-id.model';
 import { MenuSection } from '../../../menu/menu-section.model';
 
+
+import { RoleService } from '../../../../core/roles/role.service';
+import { combineLatest, Observable } from 'rxjs';
 /**
  * Represents a non-expandable section in the dso edit menus
  */
@@ -23,18 +26,26 @@ export class DsoEditMenuSectionComponent extends MenuSectionComponent implements
   hasLink: boolean;
   canActivate: boolean;
 
+  isAdmin$: Observable<boolean>;
+  isSiteAdmin
   constructor(
     @Inject('sectionDataProvider') menuSection: MenuSection,
     protected menuService: MenuService,
+    protected roleService: RoleService,
     protected injector: Injector,
   ) {
     super(menuSection, menuService, injector);
     this.itemModel = menuSection.model;
+
+
   }
 
   ngOnInit(): void {
     this.hasLink = isNotEmpty(this.itemModel?.link);
     this.canActivate = isNotEmpty(this.itemModel?.function);
+    //this.canActivate = false;
+    this.isAdmin$ = this.roleService.isAdmin();
+
     super.ngOnInit();
   }
 

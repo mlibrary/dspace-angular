@@ -1,10 +1,15 @@
+<!-- Place this above site header -->
+<m-universal-header></m-universal-header>
+
+<!-- this part is for putting in the hamburger -->
 <header class="header">
   <nav role="navigation" [attr.aria-label]="'nav.user.description' | translate" class="container navbar navbar-expand-md px-0">
     <div class="d-flex flex-grow-1">
       <a class="navbar-brand m-2" routerLink="/home">
-        <img src="assets/images/dspace-logo.svg" [attr.alt]="'menu.header.image.logo' | translate"/>
+        <img src="assets/dspace/images/doc_icons/droplet.jpg" [attr.alt]="'menu.header.image.logo' | translate"/>
       </a>
     </div>
+
     <div class="d-flex flex-grow-1 ml-auto justify-content-end align-items-center">
       <ds-themed-search-navbar></ds-themed-search-navbar>
       <ds-lang-switch></ds-lang-switch>
@@ -20,6 +25,6 @@
       </div>
     </div>
   </nav>
-  <ds-themed-navbar></ds-themed-navbar>
 
+  <ds-themed-navbar></ds-themed-navbar>
 </header>

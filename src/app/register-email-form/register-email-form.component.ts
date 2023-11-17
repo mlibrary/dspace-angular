@@ -190,7 +190,7 @@ export class RegisterEmailFormComponent implements OnDestroy, OnInit {
       if (response.hasSucceeded) {
         this.notificationService.success(this.translateService.get(`${this.MESSAGE_PREFIX}.success.head`),
           this.translateService.get(`${this.MESSAGE_PREFIX}.success.content`, {email: this.email.value}));
-        this.router.navigate(['/home']);
+        this.router.navigate(['/documents']);
         } else if (response.statusCode === 422) {
         this.notificationService.error(this.translateService.get(`${this.MESSAGE_PREFIX}.error.head`), this.translateService.get(`${this.MESSAGE_PREFIX}.error.maildomain`, {domains: this.validMailDomains.join(', ')}));
       } else {

@@ -27,7 +27,7 @@ export class ReloadGuard implements CanActivate {
         : route.queryParams.redirect;
       return this.router.parseUrl(url);
     } else {
-      return this.router.createUrlTree(['home']);
+      return this.router.createUrlTree(['documents']);
     }
   }
 }

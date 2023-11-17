@@ -81,7 +81,7 @@ export class ForgotPasswordFormComponent {
             this.translateService.instant(this.NOTIFICATIONS_PREFIX + '.success.content')
           );
           this.store.dispatch(new AuthenticateAction(this.email, this.password));
-          this.router.navigate(['/home']);
+          this.router.navigate(['/documents']);
         } else {
           this.notificationsService.error(
             this.translateService.instant(this.NOTIFICATIONS_PREFIX + '.error.title'), response.errorMessage

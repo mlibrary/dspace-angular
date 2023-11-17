@@ -109,7 +109,7 @@ export class CreateComColPageComponent<TDomain extends Collection | Community> i
    * Navigate to home page
    */
   navigateToHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/documents']);
   }
 
   /**

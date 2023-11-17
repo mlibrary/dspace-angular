@@ -17,6 +17,8 @@ import { PaginationService } from '../../../../core/pagination/pagination.servic
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
 
+
+import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
 /**
  * This component renders the file section of the item
  * inside a 'ds-metadata-field-wrapper' component.
@@ -52,11 +54,12 @@ export class FullFileSectionComponent extends FileSectionComponent implements On
     bitstreamDataService: BitstreamDataService,
     protected notificationsService: NotificationsService,
     protected translateService: TranslateService,
+    protected configService: ConfigurationDataService,    
     protected paginationService: PaginationService,
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig
   ) {
-    super(bitstreamDataService, notificationsService, translateService, dsoNameService, appConfig);
+    super(bitstreamDataService, notificationsService, translateService, configService, dsoNameService, appConfig);
   }
 
   ngOnInit(): void {

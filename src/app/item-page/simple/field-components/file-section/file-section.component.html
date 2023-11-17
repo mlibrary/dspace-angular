@@ -1,10 +1,36 @@
+<!-- This will not display the list of files if the item is withdrawn -->
+
+
+<div *ngIf="!item.isWithdrawn">
 <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
   <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
+
     <div class="file-section">
       <ds-themed-file-download-link *ngFor="let file of bitstreams; let last=last;" [bitstream]="file" [item]="item">
+        <ng-container *ngIf="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email')) != ''">
+
+           <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 10px;"  [innerHtml]="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email'))"></span>
+        </ng-container>
+
+        <ng-container *ngIf="getIconForFileRestriction(file.firstMetadataValue('dc.description')) != ''">
+          <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 10px;"  [innerHtml]="getIconForFileRestriction(file.firstMetadataValue('dc.description'))"></span>
+        </ng-container>
+
+
+        <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 10px;"  [innerHtml]="dsoNameService.getIconForFile(file)"></span>
+
+
         <span>{{ dsoNameService.getName(file) }}</span>
         <span> ({{(file?.sizeBytes) | dsFileSize }})</span>
+
+
+<div *ngIf="file?.formatId == this.formatId"> 
+THIS IS A HIDDEN FILE
+</div>
+        {{file.firstMetadataValue('dc.description')}}
+
         <span *ngIf="!last" innerHTML="{{separator}}"></span>
+
       </ds-themed-file-download-link>
       <ds-themed-loading *ngIf="isLoading" message="{{'loading.default' | translate}}" [showMessage]="false"></ds-themed-loading>
       <div *ngIf="!isLastPage" class="mt-1" id="view-more">
@@ -16,3 +42,5 @@
     </div>
   </ds-metadata-field-wrapper>
 </ng-container>
+</div>
+

@@ -1,6 +1,6 @@
 import { APP_BASE_HREF, CommonModule, DOCUMENT } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -128,7 +128,8 @@ const EXPORTS = [
   exports: [
     ...EXPORTS,
     ...DECLARATIONS,
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {
 

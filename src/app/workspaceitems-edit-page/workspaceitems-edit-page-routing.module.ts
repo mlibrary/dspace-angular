@@ -13,7 +13,7 @@ import { ThemedWorkspaceItemsDeletePageComponent } from './workspaceitems-delete
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '', redirectTo: '/documents', pathMatch: 'full' },
       {
         path: ':id',
         resolve: { wsi: WorkspaceItemPageResolver },
