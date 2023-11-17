@@ -47,6 +47,8 @@ import {
 import { ObjectGridComponent } from './object-grid/object-grid.component';
 import { ObjectCollectionComponent } from './object-collection/object-collection.component';
 import { ErrorComponent } from './error/error.component';
+import { JoseComponent } from './jose/jose.component';
+import { ListfilesComponent } from './listfiles/listfiles.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ThumbnailComponent } from '../thumbnail/thumbnail.component';
@@ -334,6 +336,8 @@ const COMPONENTS = [
   UserMenuComponent,
   DsSelectComponent,
   ErrorComponent,
+  JoseComponent,
+  ListfilesComponent,
   LangSwitchComponent,
   LoadingComponent,
   ThemedLoadingComponent,

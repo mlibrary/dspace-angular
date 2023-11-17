@@ -9,7 +9,7 @@ import { DSpaceObject } from '../../../../../core/shared/dspace-object.model';
 @Component({
   selector: 'ds-themed-type-badge',
   styleUrls: [],
-  templateUrl: '../../../../theme-support/themed.component.html',
+  template: '',
 })
 export class ThemedTypeBadgeComponent extends ThemedComponent<TypeBadgeComponent> {
   @Input() object: DSpaceObject;

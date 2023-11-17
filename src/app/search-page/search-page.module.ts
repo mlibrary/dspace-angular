@@ -13,6 +13,8 @@ import { ResearchEntitiesModule } from '../entity-groups/research-entities/resea
 import { ThemedSearchPageComponent } from './themed-search-page.component';
 import { SearchModule } from '../shared/search/search.module';
 
+import { FileSectionComponent } from '../item-page/simple/field-components/file-section/file-section.component';
+
 const components = [
   SearchPageComponent,
   ThemedSearchPageComponent

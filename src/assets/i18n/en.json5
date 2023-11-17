@@ -2824,7 +2824,7 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "All of DSpace",
+  "menu.section.browse_global": "All of Deep Blue Documents",
 
   "menu.section.browse_global_by_author": "By Author",
 
@@ -3834,7 +3834,7 @@
 
   "search.form.search_dspace": "All repository",
 
-  "search.form.scope.all": "All of DSpace",
+  "search.form.scope.all": "All of Deep Blue Documents",
 
   "search.results.head": "Search Results",
 

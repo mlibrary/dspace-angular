@@ -1,7 +1,9 @@
 <div class="row">
+<!-- Don't show thumbnail on search result page.  UM Change.
   <div *ngIf="showThumbnails" class="col-3 col-md-2">
     <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
        [routerLink]="[itemPageRoute]" class="dont-break-out">
+      
     <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
     </ds-thumbnail>
     </a>
@@ -10,6 +12,8 @@
     </ds-thumbnail>
     </span>
   </div>
+-->
+
   <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
     <div class="d-flex">
       <ds-themed-badges *ngIf="showLabel" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-themed-badges>
@@ -36,6 +40,9 @@
           </span>
         </ds-truncatable-part>
       </span>
+
+      <ds-listfiles [item]="dso"></ds-listfiles>
+
       <div *ngIf="dso.firstMetadataValue('dc.description.abstract')" class="item-list-abstract">
         <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
           [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>

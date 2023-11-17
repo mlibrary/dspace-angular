@@ -11,6 +11,7 @@ import { MenuID } from '../shared/menu/menu-id.model';
   styleUrls: ['header.component.scss'],
   templateUrl: 'header.component.html',
 })
+
 export class HeaderComponent {
   /**
    * Whether user is authenticated.

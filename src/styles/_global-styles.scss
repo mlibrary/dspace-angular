@@ -1,3 +1,4 @@
+
 html {
     position: relative;
     min-height: 100%;
@@ -5,6 +6,56 @@ html {
 
 body {
     overflow-x: hidden;
+    font-family: "Muli", sans-serif;
+    color: #212b36;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: var(--line-height-heading);
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: var(--bold);
+  line-height: var(--line-height-heading);
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: var(--line-height-heading);
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: var(--line-height-heading);
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+  line-height: var(--line-height-heading);
+}
+
+a {
+    text-decoration: underline;
+     &:focus, &:hover{
+        text-decoration: underline;
+    }
+}
+
+a.nav-link:hover {
+ text-decoration: underline;
+}
+
+.list-group-item
+{
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
 }
 
 // Sticky Footer
@@ -207,6 +258,10 @@ ds-dynamic-form-control-container.d-none {
         font-size: 1.25rem;
         padding: 0.5rem;
     }
+}
+
+.btn {
+    text-decoration: none;
 }
 
 .btn.btn-link.btn-link-inline {

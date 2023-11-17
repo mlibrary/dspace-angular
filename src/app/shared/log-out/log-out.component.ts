@@ -43,7 +43,7 @@ export class LogOutComponent implements OnInit {
    * Go to the home page.
    */
   public home() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/documents']);
   }
 
   public logOut() {

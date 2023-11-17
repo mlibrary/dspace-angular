@@ -104,7 +104,7 @@ export class ItemPageComponent implements OnInit, OnDestroy {
       map((item) => getItemPageRoute(item))
     );
 
-    this.isAdmin$ = this.authorizationService.isAuthorized(FeatureID.CanSendFeedback);
+    this.isAdmin$ = this.authorizationService.isAuthorized(FeatureID.AdministratorOf);
   }
 
   /**

@@ -117,6 +117,19 @@ export class Item extends DSpaceObject implements ChildHALResource, HandleObject
   @link(BITSTREAM, false, 'thumbnail')
   thumbnail?: Observable<RemoteData<Bitstream>>;
 
+  get withdrawReason(): string {
+    let reason : string;
+    reason = this.firstMetadataValue('dc.description.withdrawalreason');
+    if ( reason )
+    {
+	return reason;
+    }
+    else
+   {
+	return '';
+   }	
+  }
+
   /**
    * The access status for this Item
    * Will be undefined unless the access status {@link HALLink} has been resolved.

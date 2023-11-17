@@ -247,7 +247,7 @@ export class SystemWideAlertFormComponent implements OnInit {
    * Navigate back to the homepage
    */
   back() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/documents']);
   }
 
 
