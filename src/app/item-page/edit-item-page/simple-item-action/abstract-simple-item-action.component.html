@@ -5,6 +5,19 @@
             <p>{{descriptionMessage | translate}}</p>
             <ds-modify-item-overview [item]="item"></ds-modify-item-overview>
           <div class="space-children-mr">
+
+            <div *ngIf="!item.isWithdrawn ">
+                <div>
+                  <label>Withdrawal Reason:&nbsp;</label>
+                  <select id="withdrawReason">
+                    <option value="Removed from view by legal order.">Removed from view by legal order.</option>
+                    <option value="Removed from view by the University.">Removed from view by the University.</option>
+                    <option value="Removed from view at request of the author.">Removed from view at request of the author.</option>
+                  </select>
+                </div>
+                <p></p>
+            </div>
+
             <button (click)="performAction()" class="btn btn-outline-secondary perform-action">{{confirmMessage | translate}}
             </button>
             <button [routerLink]="[itemPageRoute, 'edit']" class="btn btn-outline-secondary cancel">

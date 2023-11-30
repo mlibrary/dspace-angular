@@ -22,6 +22,14 @@ export class Bitstream extends DSpaceObject implements ChildHALResource {
   @autoserialize
   sizeBytes: number;
 
+  // UM Change - For hidden file
+  @autoserialize
+  formatId: number;
+
+  @autoserialize
+  sequenceId: number;
+  // End UM Change
+
   /**
    * The description of this Bitstream
    */

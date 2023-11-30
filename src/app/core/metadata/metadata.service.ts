@@ -167,6 +167,8 @@ export class MetadataService {
       this.setCitationDissertationNameTag();
     }
 
+    this.setRightsTag();
+
     // this.setCitationJournalTitleTag();
     // this.setCitationVolumeTag();
     // this.setCitationIssueTag();
@@ -208,6 +210,28 @@ export class MetadataService {
   private setCitationTitleTag(): void {
     const value = this.getMetaTagValue('dc.title');
     this.addMetaTag('citation_title', value);
+  }
+
+  private setRightsTag(): void {
+    const value = this.getMetaTagValue('dc.rights.robot');
+
+    let rights: string
+    if ( value === undefined )
+    {
+      rights = "index,nofollow";
+    }
+    else
+    {
+      if ( value === "IndexNoFollow" )
+      {
+        rights = "index,nofollow";
+      }
+      if ( value === "NoIndexNoFollow" )
+      {   
+        rights = "noindex,nofollow";
+      }   
+    }
+    this.addMetaTag('rights', rights);
   }
 
   /**

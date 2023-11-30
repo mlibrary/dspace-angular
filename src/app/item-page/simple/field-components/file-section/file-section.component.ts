@@ -9,9 +9,16 @@ import { hasValue } from '../../../../shared/empty.util';
 import { PaginatedList } from '../../../../core/data/paginated-list.model';
 import { NotificationsService } from '../../../../shared/notifications/notifications.service';
 import { TranslateService } from '@ngx-translate/core';
-import { getFirstCompletedRemoteData } from '../../../../core/shared/operators';
 import { AppConfig, APP_CONFIG } from 'src/config/app-config.interface';
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+
+
+import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
+import {      
+  getFirstCompletedRemoteData,
+  getFirstSucceededRemoteData,
+  getRemoteDataPayload
+} from '../../../../core/shared/operators';
 
 /**
  * This component renders the file section of the item
@@ -39,18 +46,75 @@ export class FileSectionComponent implements OnInit {
 
   pageSize: number;
 
+  //UM Change to support Hidden files.
+  formatId: string;
+
   constructor(
     protected bitstreamDataService: BitstreamDataService,
     protected notificationsService: NotificationsService,
     protected translateService: TranslateService,
+    protected configService: ConfigurationDataService,
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig
   ) {
     this.pageSize = this.appConfig.item.bitstream.pageSize;
   }
 
+  // This is called when component is 1st created. Very important.
   ngOnInit(): void {
+
+    this.configService.findByPropertyName('hidden.format').pipe(
+        getFirstCompletedRemoteData(),
+        getRemoteDataPayload()
+      ).subscribe((remoteData) => {
+          if (remoteData === undefined || remoteData.values.length === 0) {
+            this.formatId = '';
+                        console.log ("nothing handle ==>" + this.formatId);
+          } else {
+            this.formatId = remoteData.values[0];
+                        console.log ("something handle ==>" + this.formatId);
+          }
+      })
+
     this.getNextPage();
+  }
+
+ getIconForFileRestriction(desc: string): string {
+    console.log("desc is = " + desc);
+
+      if ( desc == null)
+      {
+         return ""; 
+      }
+      else if ( (desc.toLowerCase().includes('restricted to u') ) )
+      {
+         return "<img alt='Restricted to current U-M faculty, staff, and students' src='/assets/dspace/images/doc_icons/u-m_campus_only_access_icon.png' title='Restricted to current U-M faculty, staff, and students'/>";
+      }
+      else if ( (desc.toLowerCase().includes('restricted to on-site access at biological station') ) )
+      {
+         return "<img alt='Restricted to on-site access at Biological Station' src='/assets/dspace/images/doc_icons/u-m_campus_only_access_icon.png' title='Restricted to on-site access at Biological Station'/>";
+      }
+      else if ( (desc.toLowerCase().includes('restricted to on-site access at bentley historical library') ) )
+      {
+         return "<img alt='Restricted to on-site access at Bentley Historical Library' src='/assets/dspace/images/doc_icons/u-m_campus_only_access_icon.png' title='Restricted to on-site access at Bentley Historical Library'/>";
+      }
+      else 
+      {
+         return "";
+      }
+
+  }
+
+
+  getIconForRequestCopy(desc: string): string {
+      if ( desc == null)
+      {
+         return ""; 
+      }
+      else 
+      {
+        return "<img alt='Request Copy' src='/assets/dspace/images/doc_icons/lock.gif' title='Request Copy'/>";
+      }
   }
 
   /**

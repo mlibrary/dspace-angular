@@ -86,6 +86,7 @@ import { ItemType } from './shared/item-relationships/item-type.model';
 import { RelationshipType } from './shared/item-relationships/relationship-type.model';
 import { Relationship } from './shared/item-relationships/relationship.model';
 import { Item } from './shared/item.model';
+
 import { License } from './shared/license.model';
 import { ResourcePolicy } from './resource-policy/models/resource-policy.model';
 import { SearchConfigurationService } from './shared/search/search-configuration.service';
@@ -318,6 +319,7 @@ export const models =
     Bitstream,
     BitstreamFormat,
     Item,
+    ItemRequest,    
     Site,
     Collection,
     Community,

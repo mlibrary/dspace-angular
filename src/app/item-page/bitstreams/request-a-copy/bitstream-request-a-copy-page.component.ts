@@ -67,7 +67,9 @@ export class BitstreamRequestACopyPageComponent implements OnInit, OnDestroy {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]
       }),
       allfiles: new UntypedFormControl(''),
-      message: new UntypedFormControl(''),
+      message: new UntypedFormControl('', {
+        validators: [Validators.required],
+      }),
     });
 
 

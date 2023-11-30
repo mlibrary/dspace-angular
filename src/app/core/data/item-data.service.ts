@@ -149,10 +149,12 @@ export abstract class BaseItemDataService extends IdentifiableDataService<Item> 
    * @param item
    * @param withdrawn
    */
-  public setWithDrawn(item: Item, withdrawn: boolean): Observable<RemoteData<Item>> {
+
+//////  
+  public setWithDrawn(item: Item, withdrawn: boolean, reason: string): Observable<RemoteData<Item>> {
 
     const patchOperation = {
-      op: 'replace', path: '/withdrawn', value: withdrawn
+      op: 'replace', path: '/withdrawn', value: withdrawn, reason: reason      
     } as Operation;
     this.requestService.removeByHrefSubstring('/discover');
 

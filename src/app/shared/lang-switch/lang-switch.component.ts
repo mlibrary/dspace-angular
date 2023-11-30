@@ -32,7 +32,7 @@ export class LangSwitchComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeLangs = environment.languages.filter((MyLangConfig) => MyLangConfig.active === true);
-    this.moreThanOneLanguage = (this.activeLangs.length > 1);
+    this.moreThanOneLanguage = false;
   }
 
   /**

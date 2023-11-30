@@ -116,7 +116,7 @@ const DECLARATIONS = [
     SearchModule,
     FormsModule,
     ResourcePoliciesModule,
-    ComcolModule,
+    ComcolModule
   ],
   declarations: DECLARATIONS,
 })
