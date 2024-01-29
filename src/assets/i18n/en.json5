@@ -3662,6 +3662,20 @@
 
   "search.filters.filter.author.head": "Author",
 
+
+
+  "search.filters.filter.discipline.head": "Discipline",
+
+  "search.filters.filter.identifiersource.head": "Identifier Source",
+
+  "search.filters.filter.hlbtoplevel.head": "Subject Top",
+
+  "search.filters.filter.hlbsecondlevel.head": "Subject Second",
+
+  "search.filters.filter.peerreviewed.head": "Peer Reviewed",
+
+
+
   "search.filters.filter.author.placeholder": "Author name",
 
   "search.filters.filter.author.label": "Search author name",
