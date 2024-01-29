@@ -167,11 +167,6 @@
     </ds-generic-item-page-field>
 
     <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.description.abstract']"
-       [label]="'Abstract'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
        [fields]="['dc.publisher']"
        [label]="'Publisher'">
     </ds-generic-item-page-field>
@@ -270,10 +265,6 @@
        [label]="'Series/Report no.'">
     </ds-generic-item-page-field>
 
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.description.abstract']"
-       [label]="'Abstract'">
-    </ds-generic-item-page-field>
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.description']"
@@ -360,10 +351,6 @@
        [label]="'Series/Report no.'">
     </ds-generic-item-page-field>
 
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.description.abstract']"
-       [label]="'Abstract'">
-    </ds-generic-item-page-field>
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.description']"
@@ -420,10 +407,6 @@
 <div *ngVar="(object.owningCollection | async)?.payload as collection">
   <div *ngIf="!collection?.handle.endsWith('/2027.42/65133') && !collection?.handle.endsWith('/2027.42/35324') &&
   !collection?.handle.endsWith('/2027.42/13914')" >
-    {{collection?.handle}}
-
-here
-
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.title.alternative']"
@@ -435,10 +418,6 @@ here
        [label]="'Citation'">
     </ds-generic-item-page-field>
 
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.description.abstract']"
-       [label]="'Abstract'">
-    </ds-generic-item-page-field>
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.publisher']"
@@ -573,7 +552,7 @@ here
     <div>
       <p></p>
       <h2 style="font-size: 18px;  font-weight: bold">Remediation of Harmful Language</h2>
-      The University of Michigan Library aims to describe library materials in a way that respects the people and communities who create, use, and are represented in our collections. Report harmful or offensive language in catalog records, finding aids, or elsewhere in our collections anonymously through our <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSJ7y-zqmbNQ6ssAhSmwB7vF-NyZR9nVwBICFI8dY5aP1-TA/viewform">metadata feedback form</a>. More information at <a href="https://www.lib.umich.edu/about-us/policies/remediation-harmful-language-library-metadata">Remediation of Harmful Language</a>ß.
+      The University of Michigan Library aims to describe library materials in a way that respects the people and communities who create, use, and are represented in our collections. Report harmful or offensive language in catalog records, finding aids, or elsewhere in our collections anonymously through our <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSJ7y-zqmbNQ6ssAhSmwB7vF-NyZR9nVwBICFI8dY5aP1-TA/viewform">metadata feedback form</a>. More information at <a href="https://www.lib.umich.edu/about-us/policies/remediation-harmful-language-library-metadata">Remediation of Harmful Language</a>.
     </div>
 
     <div>
