@@ -41,6 +41,7 @@ export class DsoEditMenuSectionComponent extends MenuSectionComponent implements
   }
 
   ngOnInit(): void {
+    console.log("TESTTTTT: itemModel Link ==> " + this.itemModel?.link);
     this.hasLink = isNotEmpty(this.itemModel?.link);
     this.canActivate = isNotEmpty(this.itemModel?.function);
     //this.canActivate = false;

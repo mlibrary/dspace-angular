@@ -4,6 +4,9 @@
       <div class="d-flex justify-content-between border-bottom">
         <h2>{{ type + '.edit.head' | translate }}</h2>
 
+
+<!-- UM Change to get coll stats and to subscribe to collection stats -->
+
 <span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
 <div class="ds-form-item row">
 <div class="control-group col-sm-12">
@@ -14,58 +17,12 @@
 </div>
 </span>
 
-<div *ngIf="this.subscribeStats == null">
- the value is null
- <!-- <span> {{ this.setStat() }} </span> -->
-
-</div>
-
-{{this.subscribeStats}}
-
-
-
-<!--
-
-<div>
-
-<div *ngIf="(!this.subscribeStats$ | async)">
-<div class="ds-form-item row">
-<div class="control-group col-sm-12">
-
-<button style="background-color: #1d7491;" (click)="subscribeToAdminStats('f70b4285-f3fd-4b86-8990-532e2ddd32f8')" id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
-<div style="color: white">Subscribe to Collection Stats</div>
-</button>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-<div *ngIf="(this.subscribeStats$ | async)">
-<div class="ds-form-item row">
-<div class="control-group col-sm-12">
-
-<button style="background-color: #1d7491;" (click)="unsubscribeToAdminStats('f70b4285-f3fd-4b86-8990-532e2ddd32f8')"id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
-<div style="color: white">Unsubscribe to Collection Stats</div>
-</button>
-</div>
-</div>
-</div>
-
-</div>
-
--->
-
-
 <div>
 <span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
 <div *ngIf="!this.subscribeStats && this.type === 'collection'">
 <div class="ds-form-item row">
 <div class="control-group col-sm-12">
-  {{ coll_uuid}}
+
 <button style="background-color: #1d7491;" (click)="subscribeToAdminStats(coll_uuid)" id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
 <div style="color: white">Subscribe to Collection Stats</div>
 </button>
@@ -79,7 +36,7 @@
 <div *ngIf="this.subscribeStats && this.type === 'collection'">
 <div class="ds-form-item row">
 <div class="control-group col-sm-12">
-    {{ coll_uuid}}
+
 <button style="background-color: #1d7491;" (click)="unsubscribeToAdminStats(coll_uuid)"id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
 <div style="color: white">Unsubscribe to Collection Stats</div>
 </button>
@@ -89,8 +46,7 @@
 </span>
 </div>
 
-
-
+<!-- END UM Change to get coll stats and to subscribe to collection stats -->
 
         <div>
           <a class="btn btn-danger"
