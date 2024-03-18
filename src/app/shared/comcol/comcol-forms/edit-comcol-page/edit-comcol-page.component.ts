@@ -51,6 +51,7 @@ cd: ChangeDetectorRef;
    */
   public dsoRD$: Observable<RemoteData<TDomain>>;
 
+  public count: number;
 
 
   /**
@@ -64,65 +65,34 @@ cd: ChangeDetectorRef;
     protected route: ActivatedRoute
   ) {
     this.router.events.subscribe(() => this.initPageParamsByRoute());
+    this.count = 0;
   }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
 
 
 
 console.log("THE value of this.subscribeStats= " + this.subscribeStats)
 
+//document.getElementByHTMLElement("_ngcontent-dspace-angular-c382").reset();
+
     this.initPageParamsByRoute();
+
     this.pages = this.route.routeConfig.children
       .map((child: any) => child.path)
       .filter((path: string) => isNotEmpty(path)); // ignore reroutes
 
     this.dsoRD$ = this.route.data.pipe(map((data) => data.dso));
 
-   let id = "";
-   let status;
-
-
-   // this.getData().subscribe(
-   //    (response: any) => {
-
-   //       this.subscribeStats$ = Promise.resolve(response);
-   //      console.log( "resonse is =" + response);
-   //              console.log( "resonse is this.subscribeStats =" + this.subscribeStats$);
-
-   //    },
-   //       (error: any) => {
-   //   });
-
-   //  console.log( "outside is this.subscribeStats =" + this.subscribeStats$);
-    
-       // this.http.get('http://localhost:8080/server/api/eperson/groups/issubscribed_admin/f70b4285-f3fd-4b86-8990-532e2ddd32f8',
-       //  {responseType: 'text'}).subscribe((data: any) => {
-       //   //this.subscribeStats = false;
-       //   status = false;
-       //   if ( data === "true")
-       //   {
-       //     status = true;
-       //     this.subscribeStats = true;
-       //   }
-       //   else {
-       //      this.subscribeStats = false;
-       //   }
-       // });
-
-
-
 
    this.dsoRD$.subscribe((value: any) => {
-       id = value.payload.uuid;
+       let id = value.payload.uuid;
        this.type = value.payload.type;
     
        this.http.get('http://localhost:8080/server/api/eperson/groups/issubscribed_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
          //this.subscribeStats = false;
-         status = false;
          if ( data === "true")
          {
-           status = true;
            this.subscribeStats = true;
          }
          else {
@@ -131,10 +101,8 @@ console.log("THE value of this.subscribeStats= " + this.subscribeStats)
        });
     });
 
-
-   console.log("Here in oninit id=" + id);
-
   }
+
 
 
 public setStat() {
@@ -146,9 +114,10 @@ public setStat() {
 
 
   public getData() {
+
   return this.http.get('http://localhost:8080/server/api/eperson/groups/issubscribed_admin/f70b4285-f3fd-4b86-8990-532e2ddd32f8',
         {responseType: 'text'});
-}
+  }
 
   public goToCollectionAdminStats(id: string) {
      var link = document.createElement('a');
@@ -160,14 +129,14 @@ public setStat() {
   public subscribeToAdminStats(id: string) {
     this.http.get('http://localhost:8080/server/api/eperson/groups/subscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
     });
-    //this.subscribeStats = Promise.resolve(true);
+
     this.subscribeStats = true;
   }
 
   public unsubscribeToAdminStats(id: string) {
     this.http.get('http://localhost:8080/server/api/eperson/groups/unsubscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
     });
-    //this.subscribeStats = Promise.resolve(false);
+
     this.subscribeStats = false;
   }
 

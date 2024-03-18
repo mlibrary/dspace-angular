@@ -377,9 +377,11 @@ export class SubmissionSectionUploadFileEditComponent
 
       // Number of access conditions blocks in form
       accessConditionsArrayConfig.initialCount = isNotEmpty(this.fileData.accessConditions) ? this.fileData.accessConditions.length : 1;
-      formModel.push(
-        new DynamicFormArrayModel(accessConditionsArrayConfig, BITSTREAM_ACCESS_CONDITIONS_FORM_ARRAY_LAYOUT)
-      );
+
+      // UM Change Don't allow user to embargo files individually.
+      // formModel.push(
+      //   new DynamicFormArrayModel(accessConditionsArrayConfig, BITSTREAM_ACCESS_CONDITIONS_FORM_ARRAY_LAYOUT)
+      // );
 
     }
     this.initModelData(formModel);
@@ -416,55 +418,57 @@ export class SubmissionSectionUploadFileEditComponent
             this.operationsBuilder.remove(this.pathCombiner.getPath(path));
           });
         const accessConditionsToSave = [];
-        formData.accessConditions
-          .map((accessConditions) => accessConditions.accessConditionGroup)
-          .filter((accessCondition) => isNotEmpty(accessCondition))
-          .forEach((accessCondition) => {
-            let accessConditionOpt;
+        // UM Change
+        // Remove this so user is not able to embargo files independently.
+        // formData.accessConditions
+        //   .map((accessConditions) => accessConditions.accessConditionGroup)
+        //   .filter((accessCondition) => isNotEmpty(accessCondition))
+        //   .forEach((accessCondition) => {
+        //     let accessConditionOpt;
 
-            this.availableAccessConditionOptions
-              .filter((element) => isNotNull(accessCondition.name) && element.name === accessCondition.name[0].value)
-              .forEach((element) => accessConditionOpt = element);
+        //     this.availableAccessConditionOptions
+        //       .filter((element) => isNotNull(accessCondition.name) && element.name === accessCondition.name[0].value)
+        //       .forEach((element) => accessConditionOpt = element);
 
-            if (accessConditionOpt) {
-              const currentAccessCondition = Object.assign({}, accessCondition);
-              currentAccessCondition.name = this.retrieveValueFromField(accessCondition.name);
+        //     if (accessConditionOpt) {
+        //       const currentAccessCondition = Object.assign({}, accessCondition);
+        //       currentAccessCondition.name = this.retrieveValueFromField(accessCondition.name);
 
-              /* When start and end date fields are deactivated, their values may be still present in formData,
-              therefore it is necessary to delete them if they're not allowed by the current access condition option. */
-              if (!accessConditionOpt.hasStartDate) {
-                delete currentAccessCondition.startDate;
-              } else if (accessCondition.startDate) {
-                const startDate = this.retrieveValueFromField(accessCondition.startDate);
-                // Clamp the start date to the maximum, if any, since the
-                // datepicker sometimes exceeds it.
-                let startDateDate = new Date(startDate);
-                if (accessConditionOpt.maxStartDate) {
-                    const maxStartDateDate = new Date(accessConditionOpt.maxStartDate);
-                    if (startDateDate > maxStartDateDate) {
-                        startDateDate = maxStartDateDate;
-                    }
-                }
-                currentAccessCondition.startDate = dateToISOFormat(startDateDate);
-              }
-              if (!accessConditionOpt.hasEndDate) {
-                delete currentAccessCondition.endDate;
-              } else if (accessCondition.endDate) {
-                const endDate = this.retrieveValueFromField(accessCondition.endDate);
-                // Clamp the end date to the maximum, if any, since the
-                // datepicker sometimes exceeds it.
-                let endDateDate = new Date(endDate);
-                if (accessConditionOpt.maxEndDate) {
-                    const maxEndDateDate = new Date(accessConditionOpt.maxEndDate);
-                    if (endDateDate > maxEndDateDate) {
-                        endDateDate = maxEndDateDate;
-                    }
-                }
-                currentAccessCondition.endDate = dateToISOFormat(endDateDate);
-              }
-              accessConditionsToSave.push(currentAccessCondition);
-            }
-          });
+        //       /* When start and end date fields are deactivated, their values may be still present in formData,
+        //       therefore it is necessary to delete them if they're not allowed by the current access condition option. */
+        //       if (!accessConditionOpt.hasStartDate) {
+        //         delete currentAccessCondition.startDate;
+        //       } else if (accessCondition.startDate) {
+        //         const startDate = this.retrieveValueFromField(accessCondition.startDate);
+        //         // Clamp the start date to the maximum, if any, since the
+        //         // datepicker sometimes exceeds it.
+        //         let startDateDate = new Date(startDate);
+        //         if (accessConditionOpt.maxStartDate) {
+        //             const maxStartDateDate = new Date(accessConditionOpt.maxStartDate);
+        //             if (startDateDate > maxStartDateDate) {
+        //                 startDateDate = maxStartDateDate;
+        //             }
+        //         }
+        //         currentAccessCondition.startDate = dateToISOFormat(startDateDate);
+        //       }
+        //       if (!accessConditionOpt.hasEndDate) {
+        //         delete currentAccessCondition.endDate;
+        //       } else if (accessCondition.endDate) {
+        //         const endDate = this.retrieveValueFromField(accessCondition.endDate);
+        //         // Clamp the end date to the maximum, if any, since the
+        //         // datepicker sometimes exceeds it.
+        //         let endDateDate = new Date(endDate);
+        //         if (accessConditionOpt.maxEndDate) {
+        //             const maxEndDateDate = new Date(accessConditionOpt.maxEndDate);
+        //             if (endDateDate > maxEndDateDate) {
+        //                 endDateDate = maxEndDateDate;
+        //             }
+        //         }
+        //         currentAccessCondition.endDate = dateToISOFormat(endDateDate);
+        //       }
+        //       accessConditionsToSave.push(currentAccessCondition);
+        //     }
+        //   });
 
         if (isNotEmpty(accessConditionsToSave)) {
           this.operationsBuilder.add(this.pathCombiner.getPath('accessConditions'), accessConditionsToSave, true);
