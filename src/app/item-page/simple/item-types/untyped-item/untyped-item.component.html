@@ -76,7 +76,7 @@
 <ng-container *ngFor="let entry of object.allMetadataValues('dc.description.hathi')">
   <span *ngVar="(object.owningCollection | async)?.payload as collection">
     <p>
-      <span><a class="image-link" href="{{entry}}" attr.onclick="_gaq.push(['_trackEvent', 'HATHI Download', 'Item View','{{collection?.name}} - {{ getHandle(object.allMetadataValues('dc.identifier.uri')) }} - {{ object.firstMetadataValue('dc.title') }}]);"></a><img title="HathiTrust Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/hathi_trust_icon18x18.png" alt="HathiTrust Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+      <span><img title="HathiTrust Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/hathi_trust_icon18x18.png" alt="HathiTrust Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
     </p>
   </span>
 </ng-container>
@@ -85,7 +85,8 @@
 <ng-container *ngFor="let entry of object.allMetadataValues('dc.description.fulcrum')">
   <span *ngVar="(object.owningCollection | async)?.payload as collection">
     <p>
-      <span><a class="image-link" href="{{entry}}" attr.onclick="_gaq.push(['_trackEvent', 'FULCRUM Download', 'Item View','{{collection?.name}} - {{ getHandle(object.allMetadataValues('dc.identifier.uri')) }} - {{ object.firstMetadataValue('dc.title') }}]);"></a><img title="Fulcrum Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/fulcrum_icon.png" alt="Fulcrum Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+      <span>
+         <img title="Fulcrum Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/fulcrum_icon.png" alt="Fulcrum Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
     </p>
   </span>
 </ng-container>
@@ -482,24 +483,20 @@
   </div>
 </div>
 
-<!--  As en example of how one should look like:
-<h2 style="font-size: 18px;">Videos123</h2>
 <div>
-<script src="http://cdnapisec.kaltura.com/p/1038472/sp/103847200/embedIframeJs/uiconf_id/33084471/partner_id/1038472?autoembed=true&entry_id=1_irztzumh&playerId=kaltura_player_01&cache_st=1455309475&width=400&height=330&flashvars[streamerType]=auto">http://cdnapisec.kaltura.com/p/1038472/sp/103847200/embedIframeJs/uiconf_id/33084471/partner_id/1038472?autoembed=true&entry_id=1_irztzumh&playerId=kaltura_player_01&cache_st=1455309475&width=400&height=330&flashvars[streamerType]=auto</script>
-</div>
--->
-
     <span *ngIf="object.allMetadata(['dc.identifier.videostream']).length > 0" >
-        <span *ngFor="let video of object.allMetadataValues(['dc.identifier.videostream']); let last=last;">
         <h5 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Videos</h5>
-          <span><script src="{{video}}">{{video}}</script></span>              
+        <span *ngFor="let video of object.allMetadataValues(['dc.identifier.videostream']); let last=last;">
+
+<!-- Call this to create the trustedUrl -->
+{{getVideoUrl(video)}}
+<iframe id="kaltura_player_1712258806"  [src]="trustedUrl" width="400" height="500" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+      
         <span *ngIf="!last"></span>
           <p></p>
         </span>
     </span>
-
-
-
+</div>
 
 
 <!--
@@ -536,12 +533,13 @@
     <div *ngIf="object.hasMetadata('dc.identifier.doi')" [id]="object.id">
       <p>
         <span align="center" data-badge-popover="right" data-badge-type="1"   data-hide-less-than="1" class="altmetric-embed" data-style="large_rectangle" attr.data-handle="{{ getHandle(object.allMetadataValues('dc.identifier.uri')) }}" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
-      </p>
-
+     </p>
       <p>
-        <span style="margin-left: auto; margin-right: auto; width: 8.5em" class="__dimensions_badge_embed__"  data-hide-zero-citations="true" data-style="large_rectangle" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
+        <span class="__dimensions_badge_embed__"  data-hide-zero-citations="true" data-style="large_rectangle" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
       </p>
     </div>
+
+
 
     <div>
       <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
