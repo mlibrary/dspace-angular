@@ -1,9 +1,11 @@
 <div class="container">
     <h3 class="mb-4">{{'bitstream-request-a-copy.header' | translate}}</h3>
+    <!-- UM Change Don't give Admin ability to download
     <div *ngIf="canDownload$|async" class="alert alert-success">
         <span>{{'bitstream-request-a-copy.alert.canDownload1' | translate}}</span>
         <a [routerLink]="getBitstreamLink()">{{'bitstream-request-a-copy.alert.canDownload2'| translate}}</a>
     </div>
+    -->
     <div>
         <p>{{'bitstream-request-a-copy.intro' | translate}} <a [routerLink]="getItemPath()">{{itemName}}</a></p>
         <p *ngIf="bitstream != undefined && allfiles.value === 'false'">{{'bitstream-request-a-copy.intro.bitstream.one' | translate}} {{bitstreamName}}</p>

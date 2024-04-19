@@ -1,4 +1,4 @@
-<a [routerLink]="(bitstreamPath$| async)?.routerLink" class="dont-break-out" [queryParams]="(bitstreamPath$| async)?.queryParams" [target]="isBlank ? '_blank': '_self'" [ngClass]="cssClasses">
+<a [routerLink]="(bitstreamPath$| async)?.routerLink"  class="dont-break-out" [queryParams]="(bitstreamPath$| async)?.queryParams" [target]="isBlank ? '_blank': '_self'" [ngClass]="cssClasses">
   <!-- We don't want the icon for restricted files to show up automatically -->
   <!-- <span *ngIf="!(canDownload$ |async)" class="pr-1"><i class="fas fa-lock"></i></span> -->
   <ng-container *ngTemplateOutlet="content"></ng-container>
