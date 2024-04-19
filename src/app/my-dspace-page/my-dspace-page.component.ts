@@ -14,6 +14,9 @@ import { MyDSpaceRequest } from '../core/data/request.models';
 import { Context } from '../core/shared/context.model';
 import { RoleType } from '../core/roles/role-types';
 
+// UM Used for global config paramter - location of backend.
+import { environment } from '../../environments/environment';
+
 export const MYDSPACE_ROUTE = '/mydspace';
 export const SEARCH_CONFIG_SERVICE: InjectionToken<SearchConfigurationService> = new InjectionToken<SearchConfigurationService>('searchConfigurationService');
 
@@ -61,6 +64,8 @@ export class MyDSpacePageComponent implements OnInit {
    */
   viewModeList = [ViewMode.ListElement, ViewMode.DetailedListElement];
 
+  private serverLocation = environment.serverLocation;
+
   constructor(private service: SearchService,
     private http: HttpClient,
     @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: MyDSpaceConfigurationService) {
@@ -87,7 +92,7 @@ export class MyDSpacePageComponent implements OnInit {
       this.context = configurationList[0].context;
     });
 
-    this.http.get('http://localhost:8080/server/api/eperson/groups/issubscribed', {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/issubscribed', {responseType: 'text'}).subscribe((data: any) => {
       this.subscribeStats = false;
       if ( data === "true")
       {
@@ -98,13 +103,13 @@ export class MyDSpacePageComponent implements OnInit {
   }
 
   public subscribeToDepositStats() {
-    this.http.get('http://localhost:8080/server/api/eperson/groups/subscribe', {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/subscribe', {responseType: 'text'}).subscribe((data: any) => {
      });
     this.subscribeStats = true;
   }
 
   public unsubscribeToDepositStats() {
-    this.http.get('http://localhost:8080/server/api/eperson/groups/unsubscribe', {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/unsubscribe', {responseType: 'text'}).subscribe((data: any) => {
     });
     this.subscribeStats = false;
   }

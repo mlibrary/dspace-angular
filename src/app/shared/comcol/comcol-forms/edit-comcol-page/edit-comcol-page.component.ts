@@ -13,6 +13,9 @@ import { Collection } from '../../../../core/shared/collection.model';
 
 import { ChangeDetectorRef } from '@angular/core';
 
+// UM Used for global config paramter - location of backend.
+import { environment } from '../../../../../environments/environment';
+
 /**
  * Component representing the edit page for communities and collections
  */
@@ -53,6 +56,7 @@ cd: ChangeDetectorRef;
 
   public count: number;
 
+  private serverLocation = environment.serverLocation;
 
   /**
    * Hide the default return button?
@@ -68,13 +72,7 @@ cd: ChangeDetectorRef;
     this.count = 0;
   }
 
-    ngOnInit(): void {
-
-
-
-console.log("THE value of this.subscribeStats= " + this.subscribeStats)
-
-//document.getElementByHTMLElement("_ngcontent-dspace-angular-c382").reset();
+  ngOnInit(): void {
 
     this.initPageParamsByRoute();
 
@@ -84,39 +82,20 @@ console.log("THE value of this.subscribeStats= " + this.subscribeStats)
 
     this.dsoRD$ = this.route.data.pipe(map((data) => data.dso));
 
-
-   this.dsoRD$.subscribe((value: any) => {
-       let id = value.payload.uuid;
-       this.type = value.payload.type;
+    this.dsoRD$.subscribe((value: any) => {
+      let id = value.payload.uuid;
+      this.type = value.payload.type;
     
-       this.http.get('http://localhost:8080/server/api/eperson/groups/issubscribed_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
-         //this.subscribeStats = false;
-         if ( data === "true")
-         {
-           this.subscribeStats = true;
-         }
-         else {
-            this.subscribeStats = false;
-         }
-       });
+      this.http.get(this.serverLocation + '/api/eperson/groups/issubscribed_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
+        if ( data === "true")
+        {
+          this.subscribeStats = true;
+        }
+        else {
+          this.subscribeStats = false;
+        }
+      });
     });
-
-  }
-
-
-
-public setStat() {
-
-      window.location.reload();
-
-}
-
-
-
-  public getData() {
-
-  return this.http.get('http://localhost:8080/server/api/eperson/groups/issubscribed_admin/f70b4285-f3fd-4b86-8990-532e2ddd32f8',
-        {responseType: 'text'});
   }
 
   public goToCollectionAdminStats(id: string) {
@@ -127,14 +106,14 @@ public setStat() {
   }
 
   public subscribeToAdminStats(id: string) {
-    this.http.get('http://localhost:8080/server/api/eperson/groups/subscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/subscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
     });
 
     this.subscribeStats = true;
   }
 
   public unsubscribeToAdminStats(id: string) {
-    this.http.get('http://localhost:8080/server/api/eperson/groups/unsubscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/unsubscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
     });
 
     this.subscribeStats = false;

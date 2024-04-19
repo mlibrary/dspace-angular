@@ -19,9 +19,11 @@
             <tbody>
             <ng-container *ngFor="let mdEntry of (metadata$ | async) | keyvalue">
               <tr *ngFor="let mdValue of mdEntry.value">
-                <td>{{mdEntry.key}}</td>
-                <td>{{mdValue.value}}</td>
-                <td>{{mdValue.language}}</td>
+                <div *ngIf="!mdEntry.key.includes('requestcopy')" >
+                  <td>{{mdEntry.key}}</td>
+                  <td>{{mdValue.value}}</td>
+                  <td>{{mdValue.language}}</td>
+               </div>
               </tr>
             </ng-container>
             </tbody>

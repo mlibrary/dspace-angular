@@ -1756,7 +1756,7 @@
 
   "grant-deny-request-copy.email.back": "Back",
 
-  "grant-deny-request-copy.email.message": "Optional additional message",
+  "grant-deny-request-copy.email.message": "Additional message (required)",
 
   "grant-deny-request-copy.email.message.empty": "Please enter a message",
 

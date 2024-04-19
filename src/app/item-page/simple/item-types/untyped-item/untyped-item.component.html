@@ -526,10 +526,11 @@
 
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
 
-    <div *ngIf="object.hasMetadata('dc.rights.uri')" [id]="object.id">
-       <img style="padding: 20px 0px;" alt="cc-logo" src="{{ getSelectedCcLicense(object.firstMetadataValue('dc.rights.uri')) }}"/>
+     <div *ngIf="object.hasMetadata('dc.rights.uri')" [id]="object.id">
+       <img style="width:8em; height:5em; padding: 20px 0px;" alt="cc-logo" src="{{ getSelectedCcLicense(object.firstMetadataValue('dc.rights.uri')) }}"/>
     </div>
 
+<!--
     <div *ngIf="object.hasMetadata('dc.identifier.doi')" [id]="object.id">
       <p>
         <span align="center" data-badge-popover="right" data-badge-type="1"   data-hide-less-than="1" class="altmetric-embed" data-style="large_rectangle" attr.data-handle="{{ getHandle(object.allMetadataValues('dc.identifier.uri')) }}" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
@@ -537,9 +538,7 @@
       <p>
         <span class="__dimensions_badge_embed__"  data-hide-zero-citations="true" data-style="large_rectangle" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
       </p>
-    </div>
-
-
+    </div> -->
 
     <div>
       <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
