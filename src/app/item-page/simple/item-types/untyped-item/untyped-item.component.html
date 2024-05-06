@@ -33,17 +33,26 @@
     </ng-container>
     -->
 
+
+
     <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
       <ds-themed-media-viewer [item]="object"></ds-themed-media-viewer>
     </div>
-    <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
-    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+
     <ds-themed-metadata-representation-list class="ds-item-page-mixed-author-field"
       [parentItem]="object"
       [itemType]="'Person'"
       [metadataFields]="['dc.contributor.author', 'dc.creator']"
       [label]="'relationships.isAuthorOf' | translate">
     </ds-themed-metadata-representation-list>
+
+    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+
+    <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
+
+    <ds-item-page-metrics-field [item]="object"></ds-item-page-metrics-field>
+    <ds-item-page-metrics-dimensions-field [item]="object"></ds-item-page-metrics-dimensions-field>
+
     <ds-generic-item-page-field [item]="object"
       [fields]="['journal.title']"
       [label]="'item.page.journal-title'">
@@ -60,16 +69,20 @@
       [fields]="['dc.publisher']"
       [label]="'item.page.publisher'">
     </ds-generic-item-page-field>
+
   </div>
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-8">
   <div *ngIf="object.hasMetadata('dc.description.abstract')" [id]="object.id">
   <ds-truncatable [id]="object.id">
-        <h5>Abstract</h5>
+        <h2>Abstract</h2>
         <ds-truncatable-part [id]="object.id" [minLines]="3" class="item-list-abstract">
         <span [ngClass]="{'text-muted': !object.firstMetadataValue('dc.description.abstract')}"
               [innerHTML]="(object.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)"></span>
         </ds-truncatable-part>
   </ds-truncatable>
+
+
+
  </div>
  
 
@@ -101,7 +114,7 @@
     <span *ngIf="object.allMetadata(['dc.identifier.uri']).length > 0" >
         <span *ngFor="let uri of object.allMetadataValues(['dc.identifier.uri']); let last=last;">
         <span *ngIf="uri.includes(this.handlePrefix)" >
-          <h5 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Handle</h5>
+          <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Handle</h2>
           <span><a href="{{uri}}">{{uri}}</a></span>
         </span>                
         <span *ngIf="!last"></span>
@@ -113,7 +126,7 @@
     <span *ngIf="object.allMetadata(['dc.identifier.uri']).length > 0" >
         <span *ngFor="let uri of object.allMetadataValues(['dc.identifier.uri']); let last=last;">
         <span *ngIf="!uri.includes(this.handlePrefix)" >
-          <h5 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Other identifiers</h5>
+          <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Other identifiers</h2>
           <span><a href="{{uri}}">{{uri}}</a></span>
         </span>                
         <span *ngIf="!last"></span>
@@ -127,7 +140,7 @@
     <span *ngIf="object.allMetadata(['dc.identifier.doi']).length > 0" >
         <span *ngFor="let doi of object.allMetadataValues(['dc.identifier.doi']); let last=last;">
         <span *ngIf="doi.includes(this.doiPrefix)" >
-        <h5 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Deep Blue DOI</h5>
+        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Deep Blue DOI</h2>
 
           <span *ngIf="doi.includes('http')" ><a href="{{doi}}">{{doi}}</a></span>
           <span *ngIf="!doi.includes('http')" ><a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a></span>
@@ -140,7 +153,7 @@
     <span *ngIf="object.allMetadata(['dc.identifier.doi']).length > 0" >
     <span *ngFor="let doi of object.allMetadataValues(['dc.identifier.doi']); let last=last;">
     <span *ngIf="!doi.includes(this.doiPrefix)" >
-          <h5 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Other DOIs</h5>
+          <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Other DOIs</h2>
           <span *ngIf="doi.includes('http')" ><a href="{{doi}}">{{doi}}</a></span>
           <span *ngIf="!doi.includes('http')" ><a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a></span>
     </span>                
@@ -485,7 +498,7 @@
 
 <div>
     <span *ngIf="object.allMetadata(['dc.identifier.videostream']).length > 0" >
-        <h5 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Videos</h5>
+        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Videos</h2>
         <span *ngFor="let video of object.allMetadataValues(['dc.identifier.videostream']); let last=last;">
 
 <!-- Call this to create the trustedUrl -->

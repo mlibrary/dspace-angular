@@ -61,6 +61,17 @@ import {
   ThemedFullFileSectionComponent
 } from './full/field-components/file-section/themed-full-file-section.component';
 
+import { ItemPageAltmetricFieldComponent } from './simple/field-components/specific-field/metrics/altmetric/item-page-altmetric-field.component';
+import { AltmetricDirective } from './simple/field-components/specific-field/metrics/altmetric/item-page-altmetric-field.directive';
+import { ItemPageMetricsFieldComponent } from './simple/field-components/specific-field/metrics/item-page-metrics-field.component';
+
+import { ItemPageDimensionsFieldComponent } from './simple/field-components/specific-field/metrics-dimensions/dimensions/item-page-dimensions-field.component';
+import { DimensionsDirective } from './simple/field-components/specific-field/metrics-dimensions/dimensions/item-page-dimensions-field.directive';
+import { ItemPageMetricsDimensionsFieldComponent } from './simple/field-components/specific-field/metrics-dimensions/item-page-metrics-dimensions-field.component';
+
+
+
+
 const ENTRY_COMPONENTS = [
   // put only entry components that use custom decorator
   PublicationComponent,
@@ -103,6 +114,15 @@ const DECLARATIONS = [
   ItemAlertsComponent,
   ThemedItemAlertsComponent,
   BitstreamRequestACopyPageComponent,
+  ItemPageMetricsFieldComponent,
+  ItemPageAltmetricFieldComponent,
+  ItemPageMetricsDimensionsFieldComponent,
+  ItemPageDimensionsFieldComponent,  
+];
+
+const DIRECTIVES = [
+  AltmetricDirective,
+  DimensionsDirective,
 ];
 
 @NgModule({
@@ -124,10 +144,12 @@ const DECLARATIONS = [
   ],
   declarations: [
     ...DECLARATIONS,
+    ...DIRECTIVES,
 
   ],
   exports: [
     ...DECLARATIONS,
+    ...DIRECTIVES,
   ]
 })
 export class ItemPageModule {

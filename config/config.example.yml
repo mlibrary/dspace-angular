@@ -252,6 +252,9 @@ browseBy:
   # settings menu.
   pageSize: 20
 
+  # Show the Altmetric badge in the simple item page.
+  showAltmetricBadge: true
+
 communityList:
   # No. of communities to list per expansion (show more)
   pageSize: 20
