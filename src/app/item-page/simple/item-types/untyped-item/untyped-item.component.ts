@@ -24,57 +24,6 @@ export class UntypedItemComponent extends ItemComponent {
 
   private sanitizer = inject(DomSanitizer);
   trustedUrl: any = '';
-  theDoi: any = '10.1002/jbmr.493';
-
-  ngOnInit() {
-
-    //this.hasLink = isNotEmpty(this.item.href);
-    let node = document.createElement('script'); 
-    node.src = 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js';
-    node.type = 'text/javascript';
-    node.id = 'cloudflarescript';
-    document.getElementsByTagName('head')[0].appendChild(node);
-
-
-    let node2 = document.createElement('script'); 
-    node2.src = 'https://badge.dimensions.ai/badge.js';
-    node2.type = 'text/javascript';
-    node2.id = 'cloudflarescript2';
-    document.getElementsByTagName('head')[0].appendChild(node2);
-
-//  let check3 = document.querySelector("link[href='https://badge.dimensions.ai/badge.css']");
-//  if ( check3 )
-//  {
-//    console.log ('ngOnDestroy removing link to dimensions');
-//    check3.remove();
-//  } 
-
-}
-
-
-ngOnDestroy() {
-  let check2 = document.getElementById('cloudflarescript2');
-  if ( check2 )
-  {
-    //console.log ('ngOnDestroy removing');
-    check2.remove();
-  } 
-
-  let check = document.getElementById('cloudflarescript');
-  if ( check )
-  {
-    //console.log ('ngOnDestroy removing');
-    check.remove();
-  }
-
-// let check3 = document.querySelector("link[href='https://badge.dimensions.ai/badge.css']");
-// if ( check3 )
-// {
-//   console.log ('ngOnDestroy removing link to dimensions');
-//   check3.remove();
-// } 
-
-}
 
   public getSelectedCcLicense(ccLicense: String): String {
     if ( ccLicense.startsWith("http://creativecommons.org/licenses/by/") )

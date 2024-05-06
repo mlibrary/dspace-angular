@@ -6,11 +6,9 @@ nav.navbar {
 /** Mobile menu styling **/
 @media screen and (max-width: map-get($grid-breakpoints, md)-0.02) {
   .navbar {
-    width: 100%;
-    background-color: var(--bs-white);
-    position: absolute;
-    overflow: hidden;
-    height: 0;
+    width: 100%; 
+    overflow: hidden; 
+    height: auto !important;
     &.open {
       height: 100vh; //doesn't matter because wrapper is sticky
     }
@@ -33,7 +31,7 @@ nav.navbar {
         display: none;
       }
       .navbar-collapsed {
-        display: none;
+        /* display: none;   This is so that the Login shows up when the page is made smaller */
       }
     }
     padding: 0;

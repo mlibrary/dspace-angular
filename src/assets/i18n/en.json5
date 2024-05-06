@@ -780,7 +780,7 @@
 
   "browse.comcol.by.subject": "By Subject",
 
-  "browse.comcol.by.srsc": "By Subject Category",
+  "browse.comcol.by.srsc": "By Subject Category 123",
 
   "browse.comcol.by.title": "By Title",
 
@@ -856,7 +856,7 @@
 
   "browse.startsWith.type_date.label": "Or type in a date (year-month) and click on the Browse button",
 
-  "browse.startsWith.type_text": "Filter results by typing the first few letters",
+  "browse.startsWith.type_text": "Type the starting word(s) to filter results",
 
   "browse.startsWith.input": "Filter",
 
@@ -1470,7 +1470,7 @@
 
   "dso-selector.set-scope.community.head": "Select a search scope",
 
-  "dso-selector.set-scope.community.button": "Search all of DSpace",
+  "dso-selector.set-scope.community.button": "Search all of DB Docs",
 
   "dso-selector.set-scope.community.or-divider": "or",
 
@@ -2454,6 +2454,8 @@
 
   "item.page.claim.tooltip": "Claim this item as profile",
 
+  "item.page.metrics": "Metrics",
+
   "item.preview.dc.identifier.uri": "Identifier:",
 
   "item.preview.dc.contributor.author": "Authors:",
@@ -2824,17 +2826,17 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "All of Deep Blue Documents",
+  "menu.section.browse_global": "Browse",
 
-  "menu.section.browse_global_by_author": "By Author",
+  "menu.section.browse_global_by_author": "Author",
 
-  "menu.section.browse_global_by_dateissued": "By Issue Date",
+  "menu.section.browse_global_by_dateissued": "Issue Date",
 
-  "menu.section.browse_global_by_subject": "By Subject",
+  "menu.section.browse_global_by_subject": "Subject",
 
-  "menu.section.browse_global_by_srsc": "By Subject Category",
+  "menu.section.browse_global_by_srsc": "By Subject Category 456",
 
-  "menu.section.browse_global_by_title": "By Title",
+  "menu.section.browse_global_by_title": "Title",
 
   "menu.section.browse_global_communities_and_collections": "Communities & Collections",
 
@@ -3042,7 +3044,7 @@
 
   "mydspace.view-btn": "View",
 
-  "nav.browse.header": "All of DSpace",
+  "nav.browse.header": "All of DB Docs",
 
   "nav.community-browse.header": "By Community",
 
@@ -3679,6 +3681,22 @@
   "search.filters.filter.author.placeholder": "Author name",
 
   "search.filters.filter.author.label": "Search author name",
+
+  "search.filters.filter.peerreviewed.placeholder": "PeerReviewed",
+ 
+  "search.filters.filter.peerreviewed.label": "Search PeerReviewed",
+ 
+  "search.filters.filter.identifiersource.placeholder": "Source",
+
+  "search.filters.filter.identifiersource.label": "Search Source",
+ 
+  "search.filters.filter.hlbtoplevel.placeholder": "Top Level Subject",  
+ 
+  "search.filters.filter.hlbtoplevel.label": "Search Top Level Subject",
+ 
+  "search.filters.filter.hlbsecondlevel.placeholder": "Second Level Subject",  
+
+  "search.filters.filter.hlbsecondlevel.label": "Search Second Level Subject",
 
   "search.filters.filter.birthDate.head": "Birth Date",
 

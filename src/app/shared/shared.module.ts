@@ -286,6 +286,9 @@ import {
 } from '../item-page/simple/field-components/specific-field/title/themed-item-page-field.component';
 import { BitstreamListItemComponent } from './object-list/bitstream-list-item/bitstream-list-item.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ExternalScriptLoaderService } from './utils/scripts-loader/external-script-loader.service';
+import { ExternalScriptLoaderDimensionsService } from './utils/scripts-loader-dimensions/external-script-loader-dimensions.service';
+
 
 const MODULES = [
   CommonModule,
@@ -475,7 +478,9 @@ const ENTRY_COMPONENTS = [
 const PROVIDERS = [
   TruncatableService,
   MockAdminGuard,
-  AbstractTrackableComponent
+  AbstractTrackableComponent,
+  ExternalScriptLoaderService,
+  ExternalScriptLoaderDimensionsService,
 ];
 
 const DIRECTIVES = [
