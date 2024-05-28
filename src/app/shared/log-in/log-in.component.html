@@ -4,6 +4,7 @@
     <div *ngIf="i === 1" class="text-center mt-2">
       <span class="align-middle">{{"login.form.or-divider" | translate}}</span>
     </div>
+    {{authMethod.authMethodType}}
     <ds-log-in-container [authMethod]="authMethod" [isStandalonePage]="isStandalonePage"></ds-log-in-container>
   </ng-container>
 
