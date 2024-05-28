@@ -3,6 +3,12 @@ nav.navbar {
   align-items: baseline;
 }
 
+.navbar-section-sup-help {
+  display: flex;
+  align-items: center;
+  height: 100%;
+} 
+
 /** Mobile menu styling **/
 @media screen and (max-width: map-get($grid-breakpoints, md)-0.02) {
   .navbar {
