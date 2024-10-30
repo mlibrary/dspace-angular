@@ -8,9 +8,11 @@
         </button>
     </div>
     <div id="search-sidebar-content">
+<!-- Remove the list and thumbnail mode toggle        
         <ds-view-mode-switch *ngIf="showViewModes" class="d-none d-md-block"
                              [viewModeList]="viewModeList"
                              (changeViewMode)="changeViewMode.emit($event)"></ds-view-mode-switch>
+-->
         <div class="sidebar-content">
             <ds-search-switch-configuration *ngIf="configurationList"
                                             [configurationList]="configurationList"

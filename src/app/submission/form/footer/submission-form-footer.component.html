@@ -46,7 +46,7 @@
               type="button"
               id="deposit"
               [attr.data-test]="'deposit' | dsBrowserOnly"
-              class="btn btn-success"
+              class="btn btn-info"
               [disabled]="(processingSaveStatus | async) || (processingDepositStatus | async)"
               (click)="deposit($event)">
         <span><i class="fas fa-plus"></i> {{'submission.general.deposit' | translate}}</span>

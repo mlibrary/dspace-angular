@@ -54,9 +54,11 @@
 
     <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
 
+
     <ds-item-page-metrics-field [item]="object"></ds-item-page-metrics-field>
     <ds-item-page-metrics-dimensions-field [item]="object"></ds-item-page-metrics-dimensions-field>
 
+<!-- Don't display Publisher on left side of short item of item page
     <ds-generic-item-page-field [item]="object"
       [fields]="['journal.title']"
       [label]="'item.page.journal-title'">
@@ -73,7 +75,7 @@
       [fields]="['dc.publisher']"
       [label]="'item.page.publisher'">
     </ds-generic-item-page-field>
-
+-->
   </div>
   <div class="col-xs-12 col-md-8">
   <div *ngIf="object.hasMetadata('dc.description.abstract')" [id]="object.id">
@@ -146,7 +148,7 @@
     <span *ngIf="object.allMetadata(['dc.identifier.doi']).length > 0" >
         <span *ngFor="let doi of object.allMetadataValues(['dc.identifier.doi']); let last=last;">
         <span *ngIf="doi.includes(this.doiPrefix)" >
-        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Deep Blue DOI</h2>
+        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Deep Blue Documents DOI</h2>
 
           <span *ngIf="doi.includes('http')" ><a href="{{doi}}">{{doi}}</a></span>
           <span *ngIf="!doi.includes('http')" ><a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a></span>
@@ -574,7 +576,7 @@
     <div>
       <p></p>
       <h2 style="font-size: 18px;  font-weight: bold">Accessibility</h2>
-      If you are unable to use this file in its current format, please select the <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=7Az64AR5TqI_&RequestorType=Service">Contact Us</a> link and we can modify it to make it more accessible to you.
+      If you are unable to use this file in its current format, please select the <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=7Az64AR5TqI_&RequestorType=Service" target="_blank">Contact Us</a> link and we can modify it to make it more accessible to you.
     </div>
   </div>
 </div>

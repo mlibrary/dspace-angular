@@ -1,3 +1,4 @@
+<!-- To remove the communities from showing up on the home page
 <ng-container *ngVar="(communitiesRD$ | async) as communitiesRD">
   <div *ngIf="communitiesRD?.hasSucceeded ">
     <h2>
@@ -13,3 +14,4 @@
 </div>
 <ds-error *ngIf="communitiesRD?.hasFailed " message="{{'error.top-level-communites' | translate}}"></ds-error>
 <ds-themed-loading *ngIf="communitiesRD?.isLoading " message="{{'loading.top-level-communities' | translate}}"></ds-themed-loading></ng-container>
+-->

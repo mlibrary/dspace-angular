@@ -62,7 +62,7 @@
     </ds-process-detail-field>
 
     <ds-process-detail-field id="process-actions" [title]="'process.detail.actions'">
-        <button class="btn btn-success mr-2" routerLink="/processes/new" [queryParams]="{id: process?.processId}"><i
+        <button class="btn btn-info mr-2" routerLink="/processes/new" [queryParams]="{id: process?.processId}"><i
                 class="fas fa-plus pr-2"></i>{{'process.detail.create' | translate}}</button>
         <button *ngIf="isProcessFinished(process)" id="delete" class="btn btn-danger"
                 (click)="openDeleteModal(deleteModal)">

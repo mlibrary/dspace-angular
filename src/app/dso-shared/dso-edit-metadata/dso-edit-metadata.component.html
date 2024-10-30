@@ -1,6 +1,6 @@
 <div class="item-metadata" *ngIf="form">
   <div class="button-row top d-flex my-2 space-children-mr ml-gap">
-    <button class="mr-auto btn btn-success" id="dso-add-btn" [disabled]="form.newValue || (saving$ | async)"
+    <button class="mr-auto btn btn-info" id="dso-add-btn" [disabled]="form.newValue || (saving$ | async)"
             [title]="dsoType + '.edit.metadata.add-button' | translate"
             (click)="add()"><i class="fas fa-plus"></i>
       <span class="d-none d-sm-inline">&nbsp;{{ dsoType + '.edit.metadata.add-button' | translate }}</span>

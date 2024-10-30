@@ -18,8 +18,14 @@ export class FooterComponent {
    * A boolean representing if to show or not the top footer container
    */
   showTopFooter = false;
-  showPrivacyPolicy = environment.info.enablePrivacyStatement;
+  
+  /* showPrivacyPolicy = environment.info.enablePrivacyStatement;
   showEndUserAgreement = environment.info.enableEndUserAgreement;
+  */
+
+  showPrivacyPolicy = false;
+  showEndUserAgreement = false;
+
   showSendFeedback$: Observable<boolean>;
 
   constructor(
