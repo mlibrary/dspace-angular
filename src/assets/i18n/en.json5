@@ -1074,7 +1074,7 @@
 
   "collection.listelement.badge": "Collection",
 
-  "collection.page.browse.recent.head": "Recent Submissions",
+  "collection.page.browse.recent.head": "Recent Deposits",
 
   "collection.page.browse.recent.empty": "No items to show",
 
@@ -1442,9 +1442,9 @@
 
   "dso-selector.create.community.top-level": "Create a new top-level community",
 
-  "dso-selector.create.item.head": "New item",
+  "dso-selector.create.item.head": "New deposit",
 
-  "dso-selector.create.item.sub-level": "Create a new item in",
+  "dso-selector.create.item.sub-level": "Create a new deposit in",
 
   "dso-selector.create.submission.head": "New submission",
 
@@ -2800,7 +2800,7 @@
 
   "logout.title": "Logout",
 
-  "menu.header.admin": "Management",
+  "menu.header.admin": "Dashboard",
 
   "menu.header.image.logo": "Repository logo",
 
@@ -2960,7 +2960,7 @@
 
   "metadata-export-search.submit.error": "Starting the export has failed",
 
-  "mydspace.breadcrumbs": "MyDSpace",
+  "mydspace.breadcrumbs": "My Deposits",
 
   "mydspace.description": "",
 
@@ -3032,7 +3032,7 @@
 
   "mydspace.status.mydspaceWorkspace": "Workspace",
 
-  "mydspace.title": "MyDSpace",
+  "mydspace.title": "My Deposits",
 
   "mydspace.upload.upload-failed": "Error creating new workspace. Please verify the content uploaded before retry.",
 
@@ -3060,7 +3060,7 @@
 
   "nav.main.description": "Main navigation bar",
 
-  "nav.mydspace": "MyDSpace",
+  "nav.mydspace": "My Deposits",
 
   "nav.profile": "Profile",
 
@@ -3952,9 +3952,9 @@
 
   "statistics.table.no-name": "(object name could not be loaded)",
 
-  "submission.edit.breadcrumbs": "Edit Submission",
+  "submission.edit.breadcrumbs": "New Deposit",
 
-  "submission.edit.title": "Edit Submission",
+  "submission.edit.title": "New Deposit",
 
   "submission.general.cancel": "Cancel",
 
@@ -4002,7 +4002,7 @@
 
   "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to DSpace.",
 
-  "submission.import-external.back-to-my-dspace": "Back to MyDSpace",
+  "submission.import-external.back-to-my-dspace": "Back to My Deposits",
 
   "submission.import-external.search.placeholder": "Search the external source",
 
@@ -5156,7 +5156,7 @@
 
   "person.orcid.registry.auth": "ORCID Authorizations",
 
-  "home.recent-submissions.head": "Recent Submissions",
+  "home.recent-submissions.head": "Recent Deposits",
 
   "listable-notification-object.default-message": "This object couldn't be retrieved",
 

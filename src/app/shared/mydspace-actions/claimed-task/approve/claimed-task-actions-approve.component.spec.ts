@@ -70,7 +70,7 @@ describe('ClaimedTaskActionsApproveComponent', () => {
   });
 
   it('should display approve button', () => {
-    const btn = fixture.debugElement.query(By.css('.btn-success'));
+    const btn = fixture.debugElement.query(By.css('.btn-info'));
 
     expect(btn).not.toBeNull();
   });
@@ -79,7 +79,7 @@ describe('ClaimedTaskActionsApproveComponent', () => {
     component.processing$.next(true);
     fixture.detectChanges();
 
-    const span = fixture.debugElement.query(By.css('.btn-success .fa-spin'));
+    const span = fixture.debugElement.query(By.css('.btn-info .fa-spin'));
 
     expect(span).not.toBeNull();
   });
