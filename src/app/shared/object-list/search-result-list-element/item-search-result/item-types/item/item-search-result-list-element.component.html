@@ -14,35 +14,47 @@
   </div>
 -->
 
-  <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
-    <div class="d-flex">
-      <ds-themed-badges *ngIf="showLabel" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-themed-badges>
+<div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
+  <div class="d-flex">
+    <ds-themed-badges *ngIf="showLabel" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-themed-badges>
+  </div>
+
+  <ds-truncatable [id]="dso.id" *ngIf="object !== undefined && object !== null">
+    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+    [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
+    [innerHTML]="dsoTitle"></a>
+    <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
+    [innerHTML]="dsoTitle"></span>
+
+    <div>
+      <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date.issued')">
+        (<span *ngIf="dso.firstMetadataValue('dc.date.issued')" class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.issued')"></span>)
+      </ng-container>
     </div>
 
-    <ds-truncatable [id]="dso.id" *ngIf="object !== undefined && object !== null">
-      <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-         [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
-         [innerHTML]="dsoTitle"></a>
-      <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
-            [innerHTML]="dsoTitle"></span>
-      <span class="text-muted">
-        <ds-truncatable-part [id]="dso.id" [minLines]="1">
+    <span class="text-muted">
+      <ds-truncatable-part [id]="dso.id" [minLines]="1">
 
-          <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0" class="item-list-authors">
+        <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0" class="item-list-authors">
+          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length <= 3">
             <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']); let last=last;">
-                <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
-                <span *ngIf="!last">; </span>
+              <span [innerHTML]="author"></span>
+              <span *ngIf="!last">; </span>
             </span>
           </span>
+          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 3">
+            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).slice(0,3); let last=last;">
+              <span [innerHTML]="author"></span>
+              <span *ngIf="!last">; </span>
+            </span>
+            <span>; et. al.</span>
+          </span>
+        </span>
 
-          <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date.issued')">
-            (<span *ngIf="dso.firstMetadataValue('dc.date.issued')" class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.issued')"></span>)
-          </ng-container>
+      </ds-truncatable-part>
+    </span>
 
-        </ds-truncatable-part>
-      </span>
-
-      <ds-listfiles [item]="dso"></ds-listfiles>
+    <ds-listfiles [item]="dso"></ds-listfiles>
 
 <!-- No need for abstract in search result page
       <div *ngIf="dso.firstMetadataValue('dc.description.abstract')" class="item-list-abstract">
@@ -50,7 +62,7 @@
           [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>
         </ds-truncatable-part>
       </div>
--->
-    </ds-truncatable>
-  </div>
+    -->
+  </ds-truncatable>
+</div>
 </div>

@@ -2,59 +2,49 @@
 <div *ngIf="!item.isWithdrawn">
 
 
-<ng-container *ngVar="(bitstreams$ | async) as bitstreams">
+  <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
+    <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="">
+
+      <div class="row">
+        <div class="col-md-12 ml-4">
+
+          <span style="white-space: nowrap;" class="file-section pr-3" *ngFor="let file of bitstreams; let last=last;">
+
+            <ds-themed-file-download-link   [bitstream]="file" [item]="item">        
+              <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 3px;"  [innerHtml]="dsoNameService.getIconForFile(file)"></span>
 
 
-  <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="">
-<!-- To remove Files from display on the 
-  <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
--->
-    <div class="file-section" *ngFor="let file of bitstreams; let last=last;">
+              <ng-container *ngIf="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email')) != ''">
+                <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 3px;"  [innerHtml]="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email'))"></span>
+              </ng-container>
 
+              <ng-container *ngIf="getIconForFileRestriction(file.firstMetadataValue('dc.description')) != ''">
+                <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 3px;"  [innerHtml]="getIconForFileRestriction(file.firstMetadataValue('dc.description'))"></span>
+              </ng-container>
 
-<div class="row">
-<div class="col-md-6">
-        <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 10px;"  [innerHtml]="dsoNameService.getIconForFile(file)"></span>
+            </ds-themed-file-download-link>
 
+            <!-- For a hidden file -->
+            <div *ngIf="file?.formatId == this.formatId"> 
+             THIS IS A HIDDEN FILE
+           </div>
 
-        <ds-themed-file-download-link   [bitstream]="file" [item]="item">
-          <span>{{ dsoNameService.getName(file) }}</span>
-        </ds-themed-file-download-link>
+           <span style="font-size:12px; vertical-align:sub"> ({{(file?.sizeBytes) | dsFileSize }})</span>
 
-        <span> ({{(file?.sizeBytes) | dsFileSize }})</span>
+         </span>
 
-          <!-- <span *ngIf="!last" innerHTML="{{separator}}"></span> -->
+       </div>
 
+     </div>
+     <!-- </div> -->
 
-</div>
-<div class="col-md-6">
-
-        <ng-container *ngIf="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email')) != ''">
-            <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 10px;"  [innerHtml]="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email'))"></span>Click file name to request access from the owner
-        </ng-container>
-
-        <ng-container *ngIf="getIconForFileRestriction(file.firstMetadataValue('dc.description')) != ''">
-          <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 10px;"  [innerHtml]="getIconForFileRestriction(file.firstMetadataValue('dc.description'))"></span>
-        </ng-container>
-
-<!-- For a hidden file -->
-<div *ngIf="file?.formatId == this.formatId"> 
-THIS IS A HIDDEN FILE
-</div>
-        {{file.firstMetadataValue('dc.description')}}
-</div>
-</div>
-
-</div>
-<!-- </div> -->
-
-      <ds-themed-loading *ngIf="isLoading" message="{{'loading.default' | translate}}" [showMessage]="false"></ds-themed-loading>
-      <div *ngIf="!isLastPage" class="mt-1" id="view-more">
-        <button class="bitstream-view-more btn btn-outline-secondary btn-sm" (click)="getNextPageDisplay()">{{'item.page.bitstreams.view-more' | translate}}</button>
-      </div>
-      <div *ngIf="isLastPage && currentPage != 1" class="mt-1" id="collapse">
-        <button class="bitstream-collapse btn btn-outline-secondary btn-sm" (click)="currentPage = undefined; getNextPageDisplay();">{{'item.page.bitstreams.collapse' | translate}}</button>
-      </div>
+     <ds-themed-loading *ngIf="isLoading" message="{{'loading.default' | translate}}" [showMessage]="false"></ds-themed-loading>
+     <div *ngIf="!isLastPage" class="mt-1" id="view-more">
+      <button class="bitstream-view-more btn btn-outline-secondary btn-sm" (click)="getNextPageDisplay()">{{'item.page.bitstreams.view-more' | translate}}</button>
+    </div>
+    <div *ngIf="isLastPage && currentPage != 1" class="mt-1" id="collapse">
+      <button class="bitstream-collapse btn btn-outline-secondary btn-sm" (click)="currentPage = undefined; getNextPageDisplay();">{{'item.page.bitstreams.collapse' | translate}}</button>
+    </div>
 
 
   </ds-metadata-field-wrapper>

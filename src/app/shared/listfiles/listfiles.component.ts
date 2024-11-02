@@ -58,7 +58,10 @@ export class ListfilesComponent implements OnInit {
     public dsoNameService: DSONameService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig
   ) {
-    this.pageSize = this.appConfig.item.bitstream.pageSize;
+    //this.pageSize = this.appConfig.item.bitstream.pageSize;
+    // Just going to hardcode it to 1000
+    this.pageSize = 1000;
+
   }
 
   ngOnInit(): void {

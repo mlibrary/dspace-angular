@@ -49,7 +49,7 @@ export class AdminSidebarComponent extends MenuComponent implements OnInit {
    */
   sidebarExpanded: Observable<boolean>;
 
-  inFocus$: BehaviorSubject<boolean>;
+  inFocus$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     protected menuService: MenuService,
@@ -70,10 +70,16 @@ export class AdminSidebarComponent extends MenuComponent implements OnInit {
   ngOnInit(): void {
     super.ngOnInit();
     this.sidebarWidth = this.variableService.getVariable('--ds-sidebar-items-width');
+
+    // Ensure the menu is shown and expanded initially
+    this.menuService.showMenu(this.menuID);  // Assuming 'showMenu' makes the menu visible but does not expand it
+    this.menuService.expandMenu(this.menuID);  // Expanding the menu initially
+
     this.authService.isAuthenticated()
       .subscribe((loggedIn: boolean) => {
         if (loggedIn) {
           this.menuService.showMenu(this.menuID);
+          this.menuService.expandMenu(this.menuID);  // Ensuring it's expanded when authenticated          
         }
       });
     this.menuCollapsed.pipe(first())

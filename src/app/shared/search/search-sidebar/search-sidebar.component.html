@@ -14,6 +14,9 @@
                              (changeViewMode)="changeViewMode.emit($event)"></ds-view-mode-switch>
 -->
         <div class="sidebar-content">
+	    <!-- Move setting search box to the top -->
+            <ds-themed-search-settings [currentSortOption]="currentSortOption"
+                                       [sortOptionsList]="sortOptionsList"></ds-themed-search-settings>
             <ds-search-switch-configuration *ngIf="configurationList"
                                             [configurationList]="configurationList"
                                             [defaultConfiguration]="configuration"
@@ -24,8 +27,6 @@
                                [filters]="filters"
                                [refreshFilters]="refreshFilters"
                                [inPlaceSearch]="inPlaceSearch"></ds-themed-search-filters>
-            <ds-themed-search-settings [currentSortOption]="currentSortOption"
-                                       [sortOptionsList]="sortOptionsList"></ds-themed-search-settings>
         </div>
     </div>
 </div>
