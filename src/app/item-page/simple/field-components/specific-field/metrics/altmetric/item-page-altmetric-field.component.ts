@@ -10,6 +10,7 @@ import { APP_CONFIG, AppConfig } from 'src/config/app-config.interface';
 @Component({
   selector: 'ds-item-page-altmetric-field',
   templateUrl: './item-page-altmetric-field.component.html',
+  styleUrls: ['./item-page-altmetric-field.component.scss'],
 })
 export class ItemPageAltmetricFieldComponent implements AfterViewInit {
   @Input() item: Item;

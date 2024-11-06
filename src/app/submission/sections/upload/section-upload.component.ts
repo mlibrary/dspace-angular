@@ -1,15 +1,25 @@
-import { ChangeDetectorRef, Component, Inject } from '@angular/core';
-
+import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import {
   BehaviorSubject,
   combineLatest as observableCombineLatest,
   Observable,
-  Subscription
+  Subscription,
 } from 'rxjs';
-import { distinctUntilChanged, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
-
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 import { SectionModelComponent } from '../models/section.model';
-import { hasValue, isNotEmpty, isNotUndefined, isUndefined } from '../../../shared/empty.util';
+import {
+  hasValue,
+  isNotEmpty,
+  isNotUndefined,
+  isUndefined,
+} from '../../../shared/empty.util';
 import { SectionUploadService } from './section-upload.service';
 import { CollectionDataService } from '../../../core/data/collection-data.service';
 import { GroupDataService } from '../../../core/eperson/group-data.service';
@@ -23,7 +33,6 @@ import { SectionDataObject } from '../models/section-data.model';
 import { SubmissionObjectEntry } from '../../objects/submission-objects.reducer';
 import { AlertType } from '../../../shared/alert/aletr-type';
 import { RemoteData } from '../../../core/data/remote-data';
-import { Group } from '../../../core/eperson/models/group.model';
 import { SectionsService } from '../sections.service';
 import { SubmissionService } from '../../submission.service';
 import { Collection } from '../../../core/shared/collection.model';
@@ -31,170 +40,131 @@ import { AccessConditionOption } from '../../../core/config/models/config-access
 import { followLink } from '../../../shared/utils/follow-link-config.model';
 import { getFirstSucceededRemoteData } from '../../../core/shared/operators';
 import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { UploaderOptions } from '../../../shared/upload/uploader/uploader-options.model';
+import { AuthService } from '../../../core/auth/auth.service';
+import { HALEndpointService } from '../../../core/shared/hal-endpoint.service';
+import { Group } from '../../../core/eperson/models/group.model';
 
-export const POLICY_DEFAULT_NO_LIST = 1; // Banner1
-export const POLICY_DEFAULT_WITH_LIST = 2; // Banner2
+export const POLICY_DEFAULT_NO_LIST = 1;
+export const POLICY_DEFAULT_WITH_LIST = 2;
 
 export interface AccessConditionGroupsMapEntry {
   accessCondition: string;
   groups: Group[];
 }
 
-/**
- * This component represents a section that contains submission's bitstreams
- */
 @Component({
   selector: 'ds-submission-section-upload',
   styleUrls: ['./section-upload.component.scss'],
   templateUrl: './section-upload.component.html',
 })
 @renderSectionFor(SectionsType.Upload)
-export class SubmissionSectionUploadComponent extends SectionModelComponent {
-
-  /**
-   * The AlertType enumeration
-   * @type {AlertType}
-   */
+export class SubmissionSectionUploadComponent
+  extends SectionModelComponent
+  implements OnInit, OnDestroy
+{
   public AlertTypeEnum = AlertType;
-
-  /**
-   * The array containing the keys of file list array
-   * @type {Array}
-   */
   public fileIndexes: string[] = [];
-
-  /**
-   * The file list
-   * @type {Array}
-   */
   public fileList: any[] = [];
-
-  /**
-   * The array containing the name of the files
-   * @type {Array}
-   */
   public fileNames: string[] = [];
-
-  /**
-   * The collection name this submission belonging to
-   * @type {string}
-   */
   public collectionName: string;
-
-  /**
-   * Default access conditions of this collection
-   * @type {Array}
-   */
   public collectionDefaultAccessConditions: any[] = [];
-
-  /**
-   * Define if collection access conditions policy type :
-   * POLICY_DEFAULT_NO_LIST : is not possible to define additional access group/s for the single file
-   * POLICY_DEFAULT_WITH_LIST : is possible to define additional access group/s for the single file
-   * @type {number}
-   */
   public collectionPolicyType: number;
-
-  /**
-   * The configuration for the bitstream's metadata form
-   */
   public configMetadataForm$: Observable<SubmissionFormsModel>;
-
-  /**
-   * List of available access conditions that could be set to files
-   */
-  public availableAccessConditionOptions: AccessConditionOption[];  // List of accessConditions that an user can select
-
-  /**
-   * Is the upload required
-   * @type {boolean}
-   */
+  public availableAccessConditionOptions: AccessConditionOption[];
   public required$ = new BehaviorSubject<boolean>(true);
-
-  /**
-   * Array to track all subscriptions and unsubscribe them onDestroy
-   * @type {Array}
-   */
   protected subs: Subscription[] = [];
+  
+  public uploadEnabled$: Observable<boolean>;
+  public uploadFilesOptions: UploaderOptions = new UploaderOptions();
 
-  /**
-   * Initialize instance variables
-   *
-   * @param {SectionUploadService} bitstreamService
-   * @param {ChangeDetectorRef} changeDetectorRef
-   * @param {CollectionDataService} collectionDataService
-   * @param {GroupDataService} groupService
-   * @param {ResourcePolicyDataService} resourcePolicyService
-   * @param {SectionsService} sectionService
-   * @param {SubmissionService} submissionService
-   * @param {SubmissionUploadsConfigDataService} uploadsConfigService
-   * @param {SectionDataObject} injectedSectionData
-   * @param {string} injectedSubmissionId
-   */
-  constructor(private bitstreamService: SectionUploadService,
-              private changeDetectorRef: ChangeDetectorRef,
-              private collectionDataService: CollectionDataService,
-              private groupService: GroupDataService,
-              private resourcePolicyService: ResourcePolicyDataService,
-              protected sectionService: SectionsService,
-              private submissionService: SubmissionService,
-              private uploadsConfigService: SubmissionUploadsConfigDataService,
-              public dsoNameService: DSONameService,
-              @Inject('sectionDataProvider') public injectedSectionData: SectionDataObject,
-              @Inject('submissionIdProvider') public injectedSubmissionId: string) {
+  constructor(
+    private authService: AuthService,
+    private bitstreamService: SectionUploadService,
+    private changeDetectorRef: ChangeDetectorRef,
+    private collectionDataService: CollectionDataService,
+    private groupService: GroupDataService,
+    private resourcePolicyService: ResourcePolicyDataService,
+    protected sectionService: SectionsService,
+    private submissionService: SubmissionService,
+    private uploadsConfigService: SubmissionUploadsConfigDataService,
+    public dsoNameService: DSONameService,
+    private halService: HALEndpointService, // Add this line
+    @Inject('sectionDataProvider') public injectedSectionData: SectionDataObject,
+    @Inject('submissionIdProvider') public injectedSubmissionId: string
+  ) {
     super(undefined, injectedSectionData, injectedSubmissionId);
   }
 
-  /**
-   * Initialize all instance variables and retrieve collection default access conditions
-   */
+  ngOnInit() {
+    this.initUploadOptions();
+    this.onSectionInit();
+  }
+
+  private initUploadOptions() {
+    this.uploadEnabled$ = this.sectionService.isSectionTypeAvailable(this.submissionId, SectionsType.Upload);
+
+    this.halService.getEndpoint(this.submissionService.getSubmissionObjectLinkName())
+      .pipe(
+        filter((href: string) => isNotEmpty(href)),
+        distinctUntilChanged()
+      ).subscribe((endpointURL) => {
+        this.uploadFilesOptions.authToken = this.authService.buildAuthHeader();
+        this.uploadFilesOptions.url = endpointURL.concat(`/${this.submissionId}`);
+      });
+  }
+
   onSectionInit() {
     const config$ = this.uploadsConfigService.findByHref(this.sectionData.config, true, false, followLink('metadata')).pipe(
       getFirstSucceededRemoteData(),
-      map((config) => config.payload));
+      map((config) => config.payload)
+    );
 
-    // retrieve configuration for the bitstream's metadata form
     this.configMetadataForm$ = config$.pipe(
       switchMap((config: SubmissionUploadsModel) =>
         config.metadata.pipe(
           getFirstSucceededRemoteData(),
           map((remoteData: RemoteData<SubmissionFormsModel>) => remoteData.payload)
         )
-      ));
+      )
+    );
 
     this.subs.push(
       this.submissionService.getSubmissionObject(this.submissionId).pipe(
-        filter((submissionObject: SubmissionObjectEntry) => isNotUndefined(submissionObject) && !submissionObject.isLoading),
-        filter((submissionObject: SubmissionObjectEntry) => isUndefined(this.collectionId) || this.collectionId !== submissionObject.collection),
-        tap((submissionObject: SubmissionObjectEntry) => this.collectionId = submissionObject.collection),
-        mergeMap((submissionObject: SubmissionObjectEntry) => this.collectionDataService.findById(submissionObject.collection)),
-        filter((rd: RemoteData<Collection>) => isNotUndefined((rd.payload))),
-        tap((collectionRemoteData: RemoteData<Collection>) => this.collectionName = this.dsoNameService.getName(collectionRemoteData.payload)),
-        // TODO review this part when https://github.com/DSpace/dspace-angular/issues/575 is resolved
-/*        mergeMap((collectionRemoteData: RemoteData<Collection>) => {
-          return this.resourcePolicyService.findByHref(
-            (collectionRemoteData.payload as any)._links.defaultAccessConditions.href
+        filter((submissionObject: SubmissionObjectEntry) =>
+          isNotUndefined(submissionObject) && !submissionObject.isLoading
+        ),
+        filter((submissionObject: SubmissionObjectEntry) =>
+          isUndefined(this.collectionId) ||
+          this.collectionId !== submissionObject.collection
+        ),
+        tap(
+          (submissionObject: SubmissionObjectEntry) =>
+            (this.collectionId = submissionObject.collection)
+        ),
+        mergeMap((submissionObject: SubmissionObjectEntry) =>
+          this.collectionDataService.findById(submissionObject.collection)
+        ),
+        filter((rd: RemoteData<Collection>) =>
+          isNotUndefined(rd.payload)
+        ),
+        tap((collectionRemoteData: RemoteData<Collection>) => {
+          this.collectionName = this.dsoNameService.getName(
+            collectionRemoteData.payload
           );
         }),
-        filter((defaultAccessConditionsRemoteData: RemoteData<ResourcePolicy>) =>
-          defaultAccessConditionsRemoteData.hasSucceeded),
-        tap((defaultAccessConditionsRemoteData: RemoteData<ResourcePolicy>) => {
-          if (isNotEmpty(defaultAccessConditionsRemoteData.payload)) {
-            this.collectionDefaultAccessConditions = Array.isArray(defaultAccessConditionsRemoteData.payload)
-              ? defaultAccessConditionsRemoteData.payload : [defaultAccessConditionsRemoteData.payload];
-          }
-        }),*/
-        mergeMap(() => config$),
+        mergeMap(() => config$)
       ).subscribe((config: SubmissionUploadsModel) => {
         this.required$.next(config.required);
-        this.availableAccessConditionOptions = isNotEmpty(config.accessConditionOptions) ? config.accessConditionOptions : [];
+        this.availableAccessConditionOptions = isNotEmpty(config.accessConditionOptions)
+          ? config.accessConditionOptions
+          : [];
         this.collectionPolicyType = this.availableAccessConditionOptions.length > 0
           ? POLICY_DEFAULT_WITH_LIST
           : POLICY_DEFAULT_NO_LIST;
         this.changeDetectorRef.detectChanges();
       }),
 
-      // retrieve submission's bitstreams from state
       observableCombineLatest(this.configMetadataForm$,
         this.bitstreamService.getUploadedFileList(this.submissionId, this.sectionData.id)).pipe(
         filter(([configMetadataForm, fileList]: [SubmissionFormsModel, any[]]) => {
@@ -213,7 +183,6 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
                 this.fileNames.push(this.getFileName(configMetadataForm, file));
               });
             }
-
             this.changeDetectorRef.detectChanges();
           }
         )
@@ -236,9 +205,9 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
     } else {
       title = fileData.uuid;
     }
-
     return title;
   }
+
 
   /**
    * Get section status
@@ -251,7 +220,7 @@ export class SubmissionSectionUploadComponent extends SectionModelComponent {
     // if mandatory, at least one file is required
     return observableCombineLatest(this.required$,
       this.bitstreamService.getUploadedFileList(this.submissionId, this.sectionData.id),
-      (required,fileList: any[]) => {
+      (required, fileList: any[]) => {
         return (!required || (isNotUndefined(fileList) && fileList.length > 0));
       });
   }

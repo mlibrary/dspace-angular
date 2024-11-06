@@ -1,0 +1,10 @@
+.custom-dimensions-container {
+  width: 300px; /* Your desired width */
+  height: 50px; /* Your desired height */
+}
+
+.custom-dimensions-badge {
+  display: block; /* Ensure it behaves as a block element for scaling */
+  transform: scale(1.5); /* Adjust the scale as necessary */
+  transform-origin: 0 0; /* Scale from the top-left corner */
+}
