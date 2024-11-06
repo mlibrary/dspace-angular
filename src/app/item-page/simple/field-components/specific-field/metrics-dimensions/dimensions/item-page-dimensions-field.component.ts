@@ -10,6 +10,7 @@ import { APP_CONFIG, AppConfig } from 'src/config/app-config.interface';
 @Component({
   selector: 'ds-item-page-dimensions-field',
   templateUrl: './item-page-dimensions-field.component.html',
+  styleUrls: ['./item-page-dimensions-field.component.scss'],  
 })
 export class ItemPageDimensionsFieldComponent implements AfterViewInit {
   @Input() item: Item;

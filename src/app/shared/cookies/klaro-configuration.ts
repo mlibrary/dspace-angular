@@ -22,6 +22,8 @@ export const GOOGLE_ANALYTICS_KLARO_KEY = 'google-analytics';
 export const klaroConfiguration: any = {
   storageName: ANONYMOUS_STORAGE_NAME_KLARO,
 
+  noNotice: true, 	
+
   privacyPolicy: '/info/privacy',
 
   /*
