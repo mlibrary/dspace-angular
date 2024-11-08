@@ -1,5 +1,6 @@
 <div>
   <ng-container *ngIf="metadata">
+    <!-- Do not include title    
     <ng-container *ngFor="let entry of getAllMetadataValue(fileTitleKey)">
       <ng-container *ngIf="entry.value !== ''">
         <h5>
@@ -12,7 +13,8 @@
         </h5>
       </ng-container>
       <span class="clearfix"></span>
-    </ng-container>
+     </ng-container>
+     -->
     <ng-container *ngFor="let entry of getAllMetadataValue(fileDescrKey)">
       <ng-container *ngIf="entry.value !== ''">
           {{entry.value | dsTruncate:['150']}}

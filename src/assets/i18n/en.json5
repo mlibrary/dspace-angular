@@ -286,7 +286,7 @@
 
   "admin.access-control.epeople.form.firstName": "First name",
 
-  "admin.access-control.epeople.form.lastName": "Last name",
+  "admin.access-control.epeople.form.lastName": "Last name(s)",
 
   "admin.access-control.epeople.form.email": "E-mail",
 
@@ -1712,7 +1712,7 @@
 
   "form.group-expand-help": "Click here to expand and add more elements",
 
-  "form.last-name": "Last name",
+  "form.last-name": "Last name(s)",
 
   "form.loading": "Loading...",
 
@@ -1836,7 +1836,7 @@
 
   "home.breadcrumbs": "Home",
 
-  "home.search-form.placeholder": "Search the repository ...",
+  "home.search-form.placeholder": "Search all of Deep Blue Documents",
 
   "home.title": "Home",
 
