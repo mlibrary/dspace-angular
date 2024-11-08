@@ -8,7 +8,7 @@
                   {{dsoNameService.getName(selectedScope | async) || ('search.form.scope.all' | translate)}}
                 </button>
             </div>
-            <input type="text" [(ngModel)]="query" name="query" class="form-control"
+            <input type="text" [(ngModel)]="query" name="query" class="form-control form-control-lg"
                    attr.aria-label="{{ searchPlaceholder }}" [attr.data-test]="'search-box' | dsBrowserOnly"
                    [placeholder]="searchPlaceholder">
             <span class="input-group-append">
