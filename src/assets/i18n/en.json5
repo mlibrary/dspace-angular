@@ -856,7 +856,7 @@
 
   "browse.startsWith.type_date.label": "Or type in a date (year-month) and click on the Browse button",
 
-  "browse.startsWith.type_text": "Type the starting word(s) to filter results",
+  "browse.startsWith.type_text": "Enter first few letters:",
 
   "browse.startsWith.input": "Filter",
 
@@ -3668,7 +3668,7 @@
 
   "search.filters.filter.discipline.head": "Discipline",
 
-  "search.filters.filter.identifiersource.head": "Identifier Source",
+  "search.filters.filter.identifiersource.head": "Source Publication",
 
   "search.filters.filter.hlbtoplevel.head": "Subject Top",
 
@@ -3916,13 +3916,13 @@
 
   "sorting.score.DESC": "Most Relevant",
 
-  "sorting.dc.date.issued.ASC": "Date Issued Ascending",
+  "sorting.dc.date.issued.ASC": "Date Published Ascending",
 
-  "sorting.dc.date.issued.DESC": "Date Issued Descending",
+  "sorting.dc.date.issued.DESC": "Date Published Descending",
 
-  "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
+  "sorting.dc.date.accessioned.ASC": "Most Recently Deposited Ascending",
 
-  "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
+  "sorting.dc.date.accessioned.DESC": "Most Recently Deposited Descending",
 
   "sorting.lastModified.ASC": "Last modified Ascending",
 
