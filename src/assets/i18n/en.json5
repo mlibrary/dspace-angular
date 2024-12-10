@@ -732,7 +732,7 @@
 
   "bitstream.edit.notifications.saved.title": "Bitstream saved",
 
-  "bitstream.edit.title": "Edit bitstream",
+  "bitstream.edit.title": "Edit File Details",
 
   "bitstream-request-a-copy.alert.canDownload1": "You already have access to this file. If you want to download the file, click ",
 
@@ -4472,7 +4472,7 @@
 
   "submission.sections.upload.drop-message": "Drop files to attach them to the item",
 
-  "submission.sections.upload.edit.title": "Edit bitstream",
+  "submission.sections.upload.edit.title": "Edit File Details",
 
   "submission.sections.upload.form.access-condition-label": "Access condition type",
 
