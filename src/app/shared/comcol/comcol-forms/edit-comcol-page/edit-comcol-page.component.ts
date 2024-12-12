@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { RemoteData } from '../../../../core/data/remote-data';
 import { isNotEmpty } from '../../../empty.util';
 import { DSpaceObject } from '../../../../core/shared/dspace-object.model';
-
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Collection } from '../../../../core/shared/collection.model';
-
 import { ChangeDetectorRef } from '@angular/core';
 
 // UM Used for global config paramter - location of backend.
@@ -21,17 +17,12 @@ import { environment } from '../../../../../environments/environment';
  */
 @Component({
   selector: 'ds-edit-comcol',
-  template: ''
+  templateUrl: './edit-comcol-page.component.html'
 })
 export class EditComColPageComponent<TDomain extends DSpaceObject> implements OnInit {
 
-  // public subscribeStats$: Promise<Boolean>;
-
-  subscribeStats: Boolean;
-  showContent: boolean;
-
-
-cd: ChangeDetectorRef;
+  subscribeStats: boolean = false; // Ensure this reflects the current subscription state
+  showContent: boolean = false;
 
   /**
    * The type of DSpaceObject (used to create i18n messages)
@@ -64,7 +55,7 @@ cd: ChangeDetectorRef;
   public hideReturnButton: boolean;
 
   public constructor(
-    protected http: HttpClient,    
+    protected http: HttpClient,
     protected router: Router,
     protected route: ActivatedRoute
   ) {
@@ -73,7 +64,6 @@ cd: ChangeDetectorRef;
   }
 
   ngOnInit(): void {
-
     this.initPageParamsByRoute();
 
     this.pages = this.route.routeConfig.children
@@ -85,38 +75,38 @@ cd: ChangeDetectorRef;
     this.dsoRD$.subscribe((value: any) => {
       let id = value.payload.uuid;
       this.type = value.payload.type;
-    
-      this.http.get(this.serverLocation + '/api/eperson/groups/issubscribed_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
-        if ( data === "true")
-        {
-          this.subscribeStats = true;
-        }
-        else {
-          this.subscribeStats = false;
-        }
+
+      this.http.get(this.serverLocation + '/api/eperson/groups/issubscribed_admin/' + id, { responseType: 'text' }).subscribe((data: any) => {
+        this.subscribeStats = data === "true";
       });
     });
   }
 
   public goToCollectionAdminStats(id: string) {
-     var link = document.createElement('a');
-     var working_href = 'https://angular.io/guide/router?restrict=1' + 'collid=' + id;
-     link.href = working_href;
-     link.click();
+    var link = document.createElement('a');
+    var working_href = 'https://angular.io/guide/router?restrict=1' + 'collid=' + id;
+    link.href = working_href;
+    link.click();
   }
 
   public subscribeToAdminStats(id: string) {
-    this.http.get(this.serverLocation + '/api/eperson/groups/subscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/subscribe_admin/' + id, { responseType: 'text' }).subscribe(() => {
+      this.subscribeStats = true;
     });
-
-    this.subscribeStats = true;
   }
 
   public unsubscribeToAdminStats(id: string) {
-    this.http.get(this.serverLocation + '/api/eperson/groups/unsubscribe_admin/' + id, {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/unsubscribe_admin/' + id, { responseType: 'text' }).subscribe(() => {
+      this.subscribeStats = false;
     });
+  }
 
-    this.subscribeStats = false;
+  public toggleSubscription(isSubscribed: boolean, coll_uuid: string) {
+    if (isSubscribed) {
+      this.subscribeToAdminStats(coll_uuid);
+    } else {
+      this.unsubscribeToAdminStats(coll_uuid);
+    }
   }
 
   /**

@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, InjectionToken, OnInit } from '@angular/core';
-
-import { HttpClient} from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { SearchService } from '../core/shared/search/search.service';
@@ -37,7 +35,7 @@ export const SEARCH_CONFIG_SERVICE: InjectionToken<SearchConfigurationService> =
 })
 export class MyDSpacePageComponent implements OnInit {
 
-  subscribeStats: Boolean;
+  subscribeStats: boolean = false;
 
   /**
    * The list of available configuration options
@@ -67,8 +65,8 @@ export class MyDSpacePageComponent implements OnInit {
   private serverLocation = environment.serverLocation;
 
   constructor(private service: SearchService,
-    private http: HttpClient,
-    @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: MyDSpaceConfigurationService) {
+              private http: HttpClient,
+              @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: MyDSpaceConfigurationService) {
     this.service.setServiceOptions(MyDSpaceResponseParsingService, MyDSpaceRequest);
   }
 
@@ -93,25 +91,27 @@ export class MyDSpacePageComponent implements OnInit {
     });
 
     this.http.get(this.serverLocation + '/api/eperson/groups/issubscribed', {responseType: 'text'}).subscribe((data: any) => {
-      this.subscribeStats = false;
-      if ( data === "true")
-      {
-        this.subscribeStats = true;
-      }
+      this.subscribeStats = data === "true";
     });
+  }
 
+  public toggleSubscription() {
+    if (this.subscribeStats) {
+      this.unsubscribeToDepositStats();
+    } else {
+      this.subscribeToDepositStats();
+    }
   }
 
   public subscribeToDepositStats() {
-    this.http.get(this.serverLocation + '/api/eperson/groups/subscribe', {responseType: 'text'}).subscribe((data: any) => {
-     });
-    this.subscribeStats = true;
+    this.http.get(this.serverLocation + '/api/eperson/groups/subscribe', {responseType: 'text'}).subscribe(() => {
+      this.subscribeStats = true;
+    });
   }
 
   public unsubscribeToDepositStats() {
-    this.http.get(this.serverLocation + '/api/eperson/groups/unsubscribe', {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/unsubscribe', {responseType: 'text'}).subscribe(() => {
+      this.subscribeStats = false;
     });
-    this.subscribeStats = false;
   }
-
 }

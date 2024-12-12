@@ -1,61 +1,38 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="d-flex justify-content-between border-bottom pb-3">
-        <h2>{{ type + '.edit.head' | translate }}</h2>
+      <h2>{{ type + '.edit.head' | translate }}</h2>
 
-
-<!-- UM Change to get coll stats and to subscribe to collection stats -->
-
-<!--
-<span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
-<div class="ds-form-item row">
-<div class="control-group col-sm-12">
-<button style="background-color: #1d7491;" (click)="goToCollectionAdminStats(coll_uuid)" id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
-<div style="color: white">Get Collection Stats</div>
-</button>
-</div>
-</div>
-</span>
--->
-
-<div>
-<span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
-<div *ngIf="!this.subscribeStats && this.type === 'collection'">
-<div class="ds-form-item row">
-<div class="control-group col-sm-12">
-
-<button style="background-color: #1d7491;" (click)="subscribeToAdminStats(coll_uuid)" id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
-<div style="color: white">Subscribe to Collection Statistics</div>
-</button>
-</div>
-</div>
-</div>
-</span>
-
-<span *ngVar="(dsoRD$ | async)?.payload.uuid as coll_uuid">
-
-<div *ngIf="this.subscribeStats && this.type === 'collection'">
-<div class="ds-form-item row">
-<div class="control-group col-sm-12">
-
-<button style="background-color: #1d7491;" (click)="unsubscribeToAdminStats(coll_uuid)"id="aspect_administrative_collection_EditCollectionMetadataForm_field_submit_collection_stats" class="ds-button-field btn btn-default" name="submit_collection_stats" >
-<div style="color: white">Unsubscribe to Collection Stats</div>
-</button>
-</div>
-</div>
-</div>
-</span>
-</div>
-
-<!-- END UM Change to get coll stats and to subscribe to collection stats -->
-
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <!-- Checkbox for subscribing to collection statistics -->
         <div>
+          <span *ngIf="(dsoRD$ | async)?.payload.uuid as coll_uuid">
+            <div *ngIf="this.type === 'collection'">
+              <div class="ds-form-item row">
+                <div class="control-group col-sm-12">
+                  <label>
+                    <input
+                      type="checkbox"
+                      [checked]="subscribeStats"
+                      (change)="toggleSubscription($event.target.checked, coll_uuid)"
+                    />
+                    <span style="color: black"> Subscribe to Collection Statistics</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </span>
+        </div>
+        <!-- Delete button -->
+        <div class="mt-n10"> <!-- Adjust this margin as needed -->
           <a class="btn btn-danger"
              [routerLink]="((type === 'community') ? '/communities/' : '/collections/') + (dsoRD$ | async)?.payload.uuid + '/delete'">
             <i class="fas fa-trash"></i> {{type + '.edit.delete' | translate}}</a>
         </div>
       </div>
+
+      <div class="border-bottom pb-3 mt-2"></div>
+      
       <div class="pt-2">
         <ul class="nav nav-tabs justify-content-start mb-2">
           <li *ngFor="let page of pages" class="nav-item">
