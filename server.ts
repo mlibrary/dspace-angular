@@ -165,6 +165,14 @@ export function app() {
     });
   });
 
+  server.get('/clockss.txt', (req, res) => {
+    res.setHeader('content-type', 'text/plain');
+    res.render('assets/clockss.txt.ejs', {
+      'origin': req.protocol + '://' + req.headers.host
+    });
+  });
+
+
   /*
    * Set views folder path to directory where template files are stored
    */

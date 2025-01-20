@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, NoPreloading } from '@angular/router';
 import { AuthBlockingGuard } from './core/auth/auth-blocking.guard';
+import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
+
 
 import { AuthenticatedGuard } from './core/auth/authenticated.guard';
 import {
@@ -54,13 +56,13 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
         canActivateChild: [ServerCheckGuard],
         resolve: [MenuResolver],
         children: [
-          { path: '', redirectTo: '/documents', pathMatch: 'full' },
-          {
-            path: 'reload/:rnd',
-            component: ThemedPageNotFoundComponent,
-            pathMatch: 'full',
-            canActivate: [ReloadGuard]
-          },
+  { path: '', component: ExternalRedirectComponent, pathMatch: 'full' },
+  {
+    path: 'reload/:rnd',
+    component: ThemedPageNotFoundComponent,
+    pathMatch: 'full',
+    canActivate: [ReloadGuard],
+  },
           {
             path: 'documents',
             loadChildren: () => import('./home-page/home-page.module')
