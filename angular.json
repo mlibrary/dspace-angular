@@ -41,7 +41,9 @@
             "aot": true,
             "assets": [
               "src/assets",
-              "src/robots.txt"
+              "src/robots.txt",
+              "src/clockss.txt"
+
             ],
             "styles": [
               "src/styles/startup.scss",
