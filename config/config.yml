@@ -1,3 +1,5 @@
+ui:
+  host: 0.0.0.0
 rest:
   ssl: true
   host: api7.dspace.org
