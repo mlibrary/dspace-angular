@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, NoPreloading } from '@angular/router';
 import { AuthBlockingGuard } from './core/auth/auth-blocking.guard';
 import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
+import { RobotsComponent } from './robots-redirect/robots-redirect.component';
+import { ClockssComponent } from './clockss-redirect/clockss-redirect.component';
 
 
 import { AuthenticatedGuard } from './core/auth/authenticated.guard';
@@ -57,6 +59,8 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
         resolve: [MenuResolver],
         children: [
   { path: '', component: ExternalRedirectComponent, pathMatch: 'full' },
+  { path: 'robots123.txt',  component: RobotsComponent },
+  { path: 'clockss123.txt', component: ClockssComponent },
   {
     path: 'reload/:rnd',
     component: ThemedPageNotFoundComponent,
@@ -185,7 +189,7 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
             loadChildren: () => import('./import-external-page/import-external-page.module')
               .then((m) => m.ImportExternalPageModule),
             canActivate: [EndUserAgreementCurrentUserGuard]
-          },
+          },                  
           {
             path: 'workspaceitems',
             loadChildren: () => import('./workspaceitems-edit-page/workspaceitems-edit-page.module')
