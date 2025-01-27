@@ -78,6 +78,15 @@ let anonymousCache: LRU<string, any>;
 // extend environment with app config for server
 extendEnvironmentWithAppConfig(environment, appConfig);
 
+
+// Helper function to extract client IP
+function getClientIp(req) {
+  // Extracting IP from X-Forwarded-For if available
+  const xForwardedFor = req.headers['x-forwarded-for'];
+  return xForwardedFor ? xForwardedFor.split(',')[0] : req.connection.remoteAddress;
+}
+
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
 
@@ -159,6 +168,9 @@ export function app() {
    * Serve the robots.txt ejs template, filling in the origin variable
    */
   server.get('/robots.txt', (req, res) => {
+    const clientIp = getClientIp(req);
+    console.log(`Client IP: ${clientIp}`);    
+
     res.setHeader('content-type', 'text/plain');
     res.render('assets/robots.txt.ejs', {
       'origin': req.protocol + '://' + req.headers.host
@@ -166,6 +178,9 @@ export function app() {
   });
 
   server.get('/clockss.txt', (req, res) => {
+    const clientIp = getClientIp(req);
+    console.log(`Client IP: ${clientIp}`);    
+
     res.setHeader('content-type', 'text/plain');
     res.render('assets/clockss.txt.ejs', {
       'origin': req.protocol + '://' + req.headers.host
@@ -543,7 +558,7 @@ function createHttpsServer(keys) {
 
 function run() {
   const port = environment.ui.port || 4000;
-  const host = environment.ui.host || '/';
+  const host = environment.ui.host || '0.0.0.0';
 
   // Start up the Node server
   const server = app();

@@ -235,27 +235,11 @@ export const buildAppConfig = (destConfigPath?: string): AppConfig => {
   buildBaseUrl(appConfig.ui);
   buildBaseUrl(appConfig.rest);
 
-if (isNotEmpty(destConfigPath)) {
+  if (isNotEmpty(destConfigPath)) {
     writeFileSync(destConfigPath, JSON.stringify(appConfig, null, 2));
 
     console.log(`Angular ${bold('config.json')} file generated correctly at ${bold(destConfigPath)} \n`);
-
-    // Read and print the contents of the file
-    try {
-        const fileContents = readFileSync(destConfigPath, 'utf8');
-        console.log('Contents of the generated config file:');
-        console.log(fileContents);
-    } catch (err) {
-        console.error(`Error reading file from disk: ${err}`);
-    }
-}
-
-
-//  if (isNotEmpty(destConfigPath)) {
-//    writeFileSync(destConfigPath, JSON.stringify(appConfig, null, 2));
-
-//    console.log(`Angular ${bold('config.json')} file generated correctly at ${bold(destConfigPath)} \n`);
-//  }
+  }
 
   return appConfig;
 };
