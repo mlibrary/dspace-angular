@@ -535,8 +535,11 @@ export class EditBitstreamPageComponent implements OnInit, OnDestroy {
    * @param id
    */
   isUnknownFormat(id: string): boolean {
+    return false;
+    /*  Don't want to give users to add a new format type.
     const format = this.formats.find((f: BitstreamFormat) => f.id === id);
     return hasValue(format) && format.supportLevel === BitstreamFormatSupportLevel.AS_IS_UNKNOWN;
+    */
   }
 
   /**
