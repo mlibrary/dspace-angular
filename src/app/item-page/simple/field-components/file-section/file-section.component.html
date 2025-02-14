@@ -23,7 +23,7 @@
         <span>{{ dsoNameService.getName(file) }}</span>
         <span> ({{(file?.sizeBytes) | dsFileSize }})</span>
 
-
+{{this.formatId}} {{file?.formatId}}
 <div *ngIf="file?.formatId == this.formatId"> 
 THIS IS A HIDDEN FILE
 </div>
