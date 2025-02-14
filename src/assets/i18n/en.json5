@@ -132,11 +132,13 @@
 
   "admin.registries.bitstream-formats.table.return": "Back",
 
-  "admin.registries.bitstream-formats.table.supportLevel.KNOWN": "Known",
+  "admin.registries.bitstream-formats.table.supportLevel.AS_IS_UNKNOWN": "Level 3 (As-Is, Unknown)",
 
-  "admin.registries.bitstream-formats.table.supportLevel.SUPPORTED": "Supported",
+  "admin.registries.bitstream-formats.table.supportLevel.LIMITED": "Level 2 (Limited)",
 
-  "admin.registries.bitstream-formats.table.supportLevel.UNKNOWN": "Unknown",
+  "admin.registries.bitstream-formats.table.supportLevel.HIGHEST_LEVEL": "Level 1 (Highest Level)",
+
+  "admin.registries.bitstream-formats.table.supportLevel.AS_IS_KNOWN": "Level 3 (As-Is, Known)",
 
   "admin.registries.bitstream-formats.table.supportLevel.head": "Support Level",
 
