@@ -536,7 +536,7 @@ export class EditBitstreamPageComponent implements OnInit, OnDestroy {
    */
   isUnknownFormat(id: string): boolean {
     const format = this.formats.find((f: BitstreamFormat) => f.id === id);
-    return hasValue(format) && format.supportLevel === BitstreamFormatSupportLevel.Unknown;
+    return hasValue(format) && format.supportLevel === BitstreamFormatSupportLevel.AS_IS_UNKNOWN;
   }
 
   /**

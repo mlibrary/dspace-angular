@@ -76,7 +76,7 @@ export class GrantRequestCopyComponent implements OnInit {
     ).subscribe((rd) => {
       if (rd.hasSucceeded) {
         this.notificationsService.success(this.translateService.get('grant-request-copy.success'));
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/documents');
       } else {
         this.notificationsService.error(this.translateService.get('grant-request-copy.error'), rd.errorMessage);
       }
