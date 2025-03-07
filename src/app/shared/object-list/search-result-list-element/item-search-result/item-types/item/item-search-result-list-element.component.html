@@ -36,7 +36,7 @@
 
     <span class="text-muted">
       <ds-truncatable-part [id]="dso.id" [minLines]="1">
-
+ 
         <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0" class="item-list-authors">
           <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length <= 3">
             <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']); let last=last;">

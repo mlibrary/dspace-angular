@@ -62,6 +62,7 @@ export class ItemStatusComponent implements OnInit {
    * Configuration and state variables regarding DOIs
    */
 
+
   public subs: Subscription[] = [];
 
   /**
@@ -115,6 +116,9 @@ export class ItemStatusComponent implements OnInit {
         })
       );
 
+
+
+
       /*
       Construct a base list of operations.
         The key is used to build messages
@@ -122,6 +126,8 @@ export class ItemStatusComponent implements OnInit {
         The value is supposed to be a href for the button
       */
       const operations: ItemOperation[] = [];
+
+
       operations.push(new ItemOperation('authorizations', this.getCurrentUrl(item) + '/authorizations', FeatureID.CanManagePolicies, true));
       operations.push(new ItemOperation('mappedCollections', this.getCurrentUrl(item) + '/mapper', FeatureID.CanManageMappings, true));
       if (item.isWithdrawn) {
@@ -129,11 +135,13 @@ export class ItemStatusComponent implements OnInit {
       } else {
         operations.push(new ItemOperation('withdraw', this.getCurrentUrl(item) + '/withdraw', FeatureID.WithdrawItem, true));
       }
+      /*
       if (item.isDiscoverable) {
         operations.push(new ItemOperation('private', this.getCurrentUrl(item) + '/private', FeatureID.CanMakePrivate, true));
       } else {
         operations.push(new ItemOperation('public', this.getCurrentUrl(item) + '/public', FeatureID.CanMakePrivate, true));
       }
+      */
       operations.push(new ItemOperation('delete', this.getCurrentUrl(item) + '/delete', FeatureID.CanDelete, true));
       operations.push(new ItemOperation('move', this.getCurrentUrl(item) + '/move', FeatureID.CanMove, true));
       this.operations$.next(operations);

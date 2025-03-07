@@ -45,8 +45,10 @@
     top: 0;
     z-index: var(--bs-zindex-sticky);
     padding-top: var(--ds-content-spacing);
-    margin-top: calc(-1 * var(--ds-content-spacing));
+    margin-top: calc(-1 * 1rem);
     align-self: flex-start;
     display: block;
+    overflow-y: auto;
+    max-height: 100vh;
   }
 }
