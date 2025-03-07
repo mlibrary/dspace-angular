@@ -685,7 +685,7 @@ export class MenuResolver implements Resolve<boolean> {
         {
           id: 'access_control',
           active: false,
-          visible: canManageGroups || isSiteAdmin,
+          visible: isSiteAdmin,
           model: {
             type: MenuItemType.TEXT,
             text: 'menu.section.access_control'
