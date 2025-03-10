@@ -96,6 +96,7 @@ export class CommunityListService {
     private collectionDataService: CollectionDataService,
     private store: Store<any>
   ) {
+    // This is where the 20 communities listed on the community/collection page comes from.
     this.pageSize = appConfig.communityList.pageSize;
   }
 
