@@ -257,7 +257,7 @@ export class DefaultAppConfig implements AppConfig {
   };
 
   communityList: CommunityListConfig = {
-    pageSize: 200
+    pageSize: 500
   };
 
   homePage: HomeConfig = {
