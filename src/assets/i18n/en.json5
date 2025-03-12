@@ -3024,7 +3024,7 @@
 
   "mydspace.show.supervisedWorkspace": "Supervised items",
 
-  "mydspace.status.mydspaceArchived": "Archived",
+  "mydspace.status.mydspaceArchived": "Deposited",
 
   "mydspace.status.mydspaceValidation": "Validation",
 
@@ -4418,7 +4418,7 @@
 
   "submission.sections.submit.progressbar.describe.stepcustom": "Describe",
 
-  "submission.sections.submit.progressbar.describe.stepone": "Describe",
+  "submission.sections.submit.progressbar.describe.stepone": "Item Details",
 
   "submission.sections.submit.progressbar.describe.steptwo": "Describe",
 

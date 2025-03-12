@@ -39,8 +39,8 @@
               [innerHTML]="(item.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)"></span>
           </ds-truncatable-part>
 
-          <p>This month({{this.getMonthDateStats()}}): {{this.getMonthStats()}}</p>
-          <p>Total: {{this.getTotalStats()}}</p>
+          <p style="margin-bottom: 0;">This month({{this.getMonthDateStats()}}): {{this.getMonthStats()}}</p>
+          <p style="margin-top: 0;">Total: {{this.getTotalStats()}}</p>
 
         </div>
       </ds-truncatable>
