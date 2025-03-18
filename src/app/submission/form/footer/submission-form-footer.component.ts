@@ -115,4 +115,14 @@ export class SubmissionFormFooterComponent implements OnChanges {
       }
     );
   }
+
+  public confirmDeposit(content) {
+  this.modalService.open(content).result.then(
+    (result) => {
+      if (result === 'ok') {
+        this.submissionService.dispatchDeposit(this.submissionId);
+      }
+    }
+  );
+  }
 }

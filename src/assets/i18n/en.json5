@@ -3026,6 +3026,8 @@
 
   "mydspace.status.mydspaceArchived": "Deposited",
 
+  "mydspace.status.draft": "Draft",
+
   "mydspace.status.mydspaceValidation": "Validation",
 
   "mydspace.status.mydspaceWaitingController": "Waiting for controller",
@@ -3968,9 +3970,13 @@
 
   "submission.general.discard.confirm.info": "This operation can't be undone. Are you sure?",
 
+  "submission.general.deposit.confirm.info": "Depositing an item locks in the data and files as you’ve entered them, and future changes will require a support request. If you plan to enter additional item information, please cancel Deposit and select Save or Save for Later to store your item as a draft.",  
+
   "submission.general.discard.confirm.submit": "Yes, I'm sure",
 
   "submission.general.discard.confirm.title": "Discard submission",
+
+  "submission.general.deposit.confirm.title": "Confirm deposit",
 
   "submission.general.discard.submit": "Discard",
 

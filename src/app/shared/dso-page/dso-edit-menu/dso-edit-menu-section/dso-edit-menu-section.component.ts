@@ -6,7 +6,6 @@ import { isNotEmpty } from '../../../empty.util';
 import { MenuID } from '../../../menu/menu-id.model';
 import { MenuSection } from '../../../menu/menu-section.model';
 
-
 import { RoleService } from '../../../../core/roles/role.service';
 import { combineLatest, Observable } from 'rxjs';
 /**
@@ -46,7 +45,6 @@ export class DsoEditMenuSectionComponent extends MenuSectionComponent implements
     this.canActivate = isNotEmpty(this.itemModel?.function);
     //this.canActivate = false;
     this.isAdmin$ = this.roleService.isAdmin();
-
     super.ngOnInit();
   }
 
