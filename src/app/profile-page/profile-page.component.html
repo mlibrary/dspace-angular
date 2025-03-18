@@ -1,5 +1,6 @@
 <ng-container *ngVar="(user$ | async) as user">
   <div class="container" *ngIf="user">
+    <h1>{{'profile.head' | translate}}</h1>
     <ng-container *ngIf="isResearcherProfileEnabled() | async">
       <h3 class="mb-4">{{'profile.head' | translate}}</h3>
       <div class="card mb-4">
@@ -40,7 +41,7 @@
               <td class="align-middle">{{ dsoNameService.getName(group) }}</td>
               <td class="align-middle">{{group.metadata?.['dc.description']?.[0]?.value || ''}} </td>
               <!-- This is good for debugging -->
-              <!--<td class="align-middle">{{ group | json }}</td> -->
+              <td class="align-middle">{{ group | json }}</td>
             </tr>
           </ng-container>        
         </tbody>
