@@ -32,6 +32,9 @@ import { ThemeService } from './shared/theme-support/theme.service';
 import { IdleModalComponent } from './shared/idle-modal/idle-modal.component';
 import { distinctNext } from './core/shared/distinct-next';
 
+// Import the MetricsService
+import { MetricsService } from './metrics.service';
+
 @Component({
   selector: 'ds-app',
   templateUrl: './app.component.html',
@@ -74,6 +77,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     private cssService: CSSVariableService,
     private modalService: NgbModal,
     private modalConfig: NgbModalConfig,
+    // Inject the MetricsService
+    private metricsService: MetricsService
   ) {
     this.notificationOptions = environment.notifications;
 
@@ -106,6 +111,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
 
     this.dispatchWindowSize(this._window.nativeWindow.innerWidth, this._window.nativeWindow.innerHeight);
+
+    // Use the metrics service to collect and send metrics
+    this.metricsService.collectAndSendMetrics();
   }
 
   private storeCSSVariables() {
@@ -124,6 +132,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         distinctNext(this.isRouteLoading$, false);
       }
     });
+
+    // Optionally, collect metrics after view init
+    if (isPlatformBrowser(this.platformId)) {
+      this.metricsService.collectAndSendMetrics();
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -155,5 +168,4 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
       });
   }
-
 }
