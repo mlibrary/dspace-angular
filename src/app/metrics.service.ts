@@ -1,4 +1,5 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
 
 @Injectable({
@@ -7,9 +8,11 @@ import { interval, Subscription } from 'rxjs';
 export class MetricsService implements OnDestroy {
   private intervalSubscription?: Subscription;
 
-  constructor() {
-    // Optionally, start collecting metrics on construction
-    this.startPeriodicMetricsCollection();
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    // Start collecting metrics only if in a browser environment
+    if (isPlatformBrowser(this.platformId)) {
+      this.startPeriodicMetricsCollection();
+    }
   }
 
   ngOnDestroy(): void {
@@ -18,22 +21,26 @@ export class MetricsService implements OnDestroy {
     }
   }
 
-  // Make the method public
   public collectAndSendMetrics(): void {
     const metrics = this.collectPerformanceMetrics();
-    this.sendMetricsToBackend(metrics);
+    if (metrics) {
+      this.sendMetricsToBackend(metrics);
+    }
   }
 
   private collectPerformanceMetrics(): any {
-    return {
-      loadTime: window.performance.timing.loadEventEnd - window.performance.timing.navigationStart,
-      domContentLoaded: window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart,
-      // Add more metrics as needed
-    };
+    if (isPlatformBrowser(this.platformId)) {
+      return {
+        loadTime: window.performance.timing.loadEventEnd - window.performance.timing.navigationStart,
+        domContentLoaded: window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart,
+        // Add more metrics as needed
+      };
+    }
+    return null;
   }
 
   private sendMetricsToBackend(metrics: any): void {
-    fetch('https://localhost:3000/metrics', {
+    fetch('http://metrics-service:3000/metrics', {  // Use the appropriate service endpoint
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +50,7 @@ export class MetricsService implements OnDestroy {
   }
 
   private startPeriodicMetricsCollection(): void {
-    // For periodic collection (e.g., every minute)
+    // Use an interval to periodically collect metrics (e.g., every minute)
     this.intervalSubscription = interval(60000).subscribe(() => {
       this.collectAndSendMetrics();
     });
