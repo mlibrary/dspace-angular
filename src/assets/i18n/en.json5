@@ -3674,12 +3674,18 @@
 
   "search.filters.filter.identifiersource.head": "Source Publication",
 
-  "search.filters.filter.hlbtoplevel.head": "Subject Top",
+  "search.filters.filter.hlbtoplevel.head": "Primary Subject",
 
-  "search.filters.filter.hlbsecondlevel.head": "Subject Second",
+  "search.filters.filter.hlbsecondlevel.head": "Secondary Subject",
 
   "search.filters.filter.peerreviewed.head": "Peer Reviewed",
 
+
+  "search.filters.filter.type.head": "Type",
+
+  "search.filters.filter.type.placeholder": "Type",
+
+  "search.filters.filter.type.label": "Search Type",
 
 
   "search.filters.filter.author.placeholder": "Author name",
@@ -3694,13 +3700,13 @@
 
   "search.filters.filter.identifiersource.label": "Search Source",
  
-  "search.filters.filter.hlbtoplevel.placeholder": "Top Level Subject",  
+  "search.filters.filter.hlbtoplevel.placeholder": "Primary Subject",  
  
-  "search.filters.filter.hlbtoplevel.label": "Search Top Level Subject",
+  "search.filters.filter.hlbtoplevel.label": "Search Primary Subject",
  
-  "search.filters.filter.hlbsecondlevel.placeholder": "Second Level Subject",  
+  "search.filters.filter.hlbsecondlevel.placeholder": "Secondary Subject",  
 
-  "search.filters.filter.hlbsecondlevel.label": "Search Second Level Subject",
+  "search.filters.filter.hlbsecondlevel.label": "Search Secondary Subject",
 
   "search.filters.filter.birthDate.head": "Birth Date",
 
@@ -3734,7 +3740,7 @@
 
   "search.filters.filter.creativeWorkPublisher.label": "Search publisher",
 
-  "search.filters.filter.dateIssued.head": "Date",
+  "search.filters.filter.dateIssued.head": "Date Published",
 
   "search.filters.filter.dateIssued.max.placeholder": "Maximum Date",
 
@@ -4422,7 +4428,7 @@
 
   "submission.sections.submit.progressbar.describe.recycle": "Recycle",
 
-  "submission.sections.submit.progressbar.describe.stepcustom": "Describe",
+  "submission.sections.submit.progressbar.describe.stepcustom": "Description",
 
   "submission.sections.submit.progressbar.describe.stepone": "Item Details",
 

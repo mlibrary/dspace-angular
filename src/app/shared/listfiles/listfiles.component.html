@@ -11,15 +11,15 @@
           <span style="white-space: nowrap;" class="file-section pr-3" *ngFor="let file of bitstreams; let last=last;">
 
             <ds-themed-file-download-link   [bitstream]="file" [item]="item">        
-              <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 3px;"  [innerHtml]="dsoNameService.getIconForFile(file)"></span>
+              <span style="text-decoration:none; width:30px; display: inline-block; margin-right: 3px;"  [innerHtml]="dsoNameService.getIconForFile(file)"></span>
 
 
               <ng-container *ngIf="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email')) != ''">
-                <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 3px;"  [innerHtml]="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email'))"></span>
+                <span style="text-decoration:none; width:30px; display: inline-block; margin-right: 3px;"  [innerHtml]="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email'))"></span>
               </ng-container>
 
               <ng-container *ngIf="getIconForFileRestriction(file.firstMetadataValue('dc.description')) != ''">
-                <span style="text-decoration:none;width:20px; display: inline-block; margin-right: 3px;"  [innerHtml]="getIconForFileRestriction(file.firstMetadataValue('dc.description'))"></span>
+                <span style="text-decoration:none; width:30px; display: inline-block; margin-right: 3px;"  [innerHtml]="getIconForFileRestriction(file.firstMetadataValue('dc.description'))"></span>
               </ng-container>
 
             </ds-themed-file-download-link>
