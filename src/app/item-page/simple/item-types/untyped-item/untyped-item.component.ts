@@ -9,6 +9,13 @@ import { FeatureID } from '../../../../core/data/feature-authorization/feature-i
 import { Observable, of as observableOf } from 'rxjs';
 
 import { DomSanitizer } from '@angular/platform-browser';
+
+import { RouteService } from '../../../../core/services/route.service';  
+import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
+import { Router } from '@angular/router';
+
+import { BreadcrumbsService } from '../../../../breadcrumbs/breadcrumbs.service';
+import { Breadcrumb } from '../../../../breadcrumbs/breadcrumb/breadcrumb.model';
 /**
  * Component that represents a publication Item page
  */
@@ -22,8 +29,34 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class UntypedItemComponent extends ItemComponent {
 
+  breadcrumbs: Breadcrumb[] = [];
   private sanitizer = inject(DomSanitizer);
   trustedUrl: any = '';
+
+
+  constructor(
+    private breadcrumbsService: BreadcrumbsService,
+    protected routeService: RouteService,
+    protected configService: ConfigurationDataService,
+    protected router: Router  // Include all necessary services
+  ) {
+    super(routeService, configService, router);  // Pass the arguments to the base class constructor
+  }
+
+  ngOnInit(): void {
+    this.breadcrumbsService.breadcrumbs$.subscribe((breadcrumbs: Breadcrumb[]) => {
+      this.breadcrumbs = breadcrumbs;
+      console.log('Breadcrumbs:', this.breadcrumbs);
+    });
+  }
+
+
+  // Method to check if any breadcrumb URL matches the specified value
+  containsSpecificUrl(): boolean {
+    return this.breadcrumbs.some(
+      breadcrumb => breadcrumb.url === '/communities/de1689ee-a219-4b31-a8db-1517ad4608b1'
+    );
+  }
 
   public getSelectedCcLicense(ccLicense: String): String {
     if ( ccLicense.startsWith("http://creativecommons.org/licenses/by/") )
