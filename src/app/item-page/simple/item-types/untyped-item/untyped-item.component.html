@@ -173,8 +173,8 @@
 <!-- Bentley -->
 <div *ngVar="(object.owningCollection | async)?.payload as collection">
 
-  <div *ngIf="collection?.handle.endsWith('/2027.42/65133')" >
-    {{collection?.handle}}
+<div *ngIf="containsSpecificUrl()">
+  <!--  {{collection?.handle}} -->
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.title.alternative']"
@@ -257,8 +257,7 @@
 <!-- Ross -->
 <div *ngVar="(object.owningCollection | async)?.payload as collection">
   <div *ngIf="collection?.handle.endsWith('/2027.42/35324')" >
-    {{collection?.handle}}
-
+<!--    {{collection?.handle}} -->
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.title.alternative']"
@@ -343,8 +342,7 @@
 <!-- Umtri -->
 <div *ngVar="(object.owningCollection | async)?.payload as collection">
   <div *ngIf="collection?.handle.endsWith('/2027.42/13914')" >
-    {{collection?.handle}}
-
+<!--    {{collection?.handle}} -->
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.title.alternative']"
