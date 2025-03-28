@@ -26,7 +26,13 @@ import {
  */
 @Component({
   selector: 'ds-item-page-file-section',
-  templateUrl: './file-section.component.html'
+  templateUrl: './file-section.component.html',
+  styles: [`.no-text-decoration {
+  text-decoration: none !important;
+  width: 30px;
+  display: inline-block;
+  margin-right: 10px;
+}`]
 })
 export class FileSectionComponent implements OnInit {
 

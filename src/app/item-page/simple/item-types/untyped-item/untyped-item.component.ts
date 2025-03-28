@@ -44,6 +44,8 @@ export class UntypedItemComponent extends ItemComponent {
   }
 
   ngOnInit(): void {
+    super.ngOnInit(); // Call ngOnInit of the base class
+
     this.breadcrumbsService.breadcrumbs$.subscribe((breadcrumbs: Breadcrumb[]) => {
       this.breadcrumbs = breadcrumbs;
       console.log('Breadcrumbs:', this.breadcrumbs);
