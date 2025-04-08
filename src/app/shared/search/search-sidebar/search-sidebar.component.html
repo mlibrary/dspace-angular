@@ -17,11 +17,13 @@
 	    <!-- Move setting search box to the top -->
             <ds-themed-search-settings [currentSortOption]="currentSortOption"
                                        [sortOptionsList]="sortOptionsList"></ds-themed-search-settings>
+<!-- not showing this on my deposit page
             <ds-search-switch-configuration *ngIf="configurationList"
                                             [configurationList]="configurationList"
                                             [defaultConfiguration]="configuration"
                                             [inPlaceSearch]="inPlaceSearch"
                                             (changeConfiguration)="changeConfiguration.emit($event)"></ds-search-switch-configuration>
+-->
             <ds-themed-search-filters [currentScope]="currentScope"
                                [currentConfiguration]="configuration"
                                [filters]="filters"
