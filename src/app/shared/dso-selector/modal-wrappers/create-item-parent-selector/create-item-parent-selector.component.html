@@ -6,6 +6,7 @@
   </div>
   <div class="modal-body">
     <h5 *ngIf="header" class="px-2">{{header | translate}}</h5>
+    <h5 class="px-2">Not seeing the right collection? Please <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=7Az64AR5TqI_&RequestorType=Service" target="_blank" style="text-decoration: none;"><span style="text-decoration: underline;">Contact Us</span>&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i></a>.</h5>
     <ds-authorized-collection-selector [currentDSOId]="dsoRD?.payload.uuid"
                                        [entityType]="entityType"
                                        [types]="selectorTypes"
