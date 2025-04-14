@@ -1,5 +1,31 @@
 <!-- This will not display the list of files if the item is withdrawn -->
 
+<ng-container *ngIf="item.allMetadataValues('dc.description.hathi').length > 0 || 
+                     item.allMetadataValues('dc.description.fulcrum').length > 0 || 
+                     item.allMetadataValues('dc.description.filename').length > 0">
+  <h2>Files</h2>
+  <ng-container *ngFor="let entry of item.allMetadataValues('dc.description.hathi')">
+      <p>
+        <span><img title="HathiTrust Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/hathi_trust_icon18x18.png" alt="HathiTrust Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+      </p>
+  </ng-container>
+
+  <ng-container *ngFor="let entry of item.allMetadataValues('dc.description.fulcrum')">
+      <p>
+        <span>
+           <img title="Fulcrum Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/fulcrum_icon.png" alt="Fulcrum Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+      </p>
+  </ng-container>
+
+  <ng-container *ngFor="let entry of item.allMetadataValues('dc.description.filename')">
+      <p>
+        <span>{{entry}}</span>
+      </p>
+  </ng-container>
+
+</ng-container>
+
+
 <div *ngIf="!item.isWithdrawn">
   <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
     <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">

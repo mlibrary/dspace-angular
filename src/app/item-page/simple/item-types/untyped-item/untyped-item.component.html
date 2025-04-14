@@ -86,35 +86,7 @@
               [innerHTML]="(object.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)"></span>
         </ds-truncatable-part>
   </ds-truncatable>
-
-
-
  </div>
-
-<ng-container *ngFor="let entry of object.allMetadataValues('dc.description.hathi')">
-  <span *ngVar="(object.owningCollection | async)?.payload as collection">
-    <p>
-      <span><img title="HathiTrust Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/hathi_trust_icon18x18.png" alt="HathiTrust Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
-    </p>
-  </span>
-</ng-container>
-
-
-<ng-container *ngFor="let entry of object.allMetadataValues('dc.description.fulcrum')">
-  <span *ngVar="(object.owningCollection | async)?.payload as collection">
-    <p>
-      <span>
-         <img title="Fulcrum Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/fulcrum_icon.png" alt="Fulcrum Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
-    </p>
-  </span>
-</ng-container>
-
-
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.description.filename']"    
-      [label]="'item.page.filename'">
-    </ds-generic-item-page-field>
-
 
     <span *ngIf="object.allMetadata(['dc.identifier.uri']).length > 0" >
       <span itemprop="url">
