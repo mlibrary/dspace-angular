@@ -99,7 +99,9 @@ export function app() {
 
   // Tell Express to trust X-FORWARDED-* headers from proxies
   // See https://expressjs.com/en/guide/behind-proxies.html
-  server.set('trust proxy', environment.ui.useProxies);
+  // server.set('trust proxy', environment.ui.useProxies);
+server.set('trust proxy', true);
+
 
   /*
    * If production mode is enabled in the environment file:
@@ -252,6 +254,8 @@ export function app() {
 
   server.use(environment.ui.nameSpace, router);
 
+server.set('trust proxy', true);
+
   return server;
 }
 
@@ -278,6 +282,22 @@ function ngApp(req, res) {
  * If false, then only save this rendered content to the in-memory cache (to refresh cache).
  */
 function serverSideRender(req, res, sendToUser: boolean = true) {
+
+
+  // Check if 'X-Forwarded-For' is set; if not, set it to the request's IP address.
+const xForwardedForHeader = req.headers['x-forwarded-for'];
+
+console.log("xForwardedForHeader=" + xForwardedForHeader);
+
+if (!xForwardedForHeader) {
+  // Consider appending instead if chaining proxies
+  console.log("req.ip=" + req.ip);
+
+  // Example of appending to support proxy chains:
+  req.headers['x-forwarded-for'] = req.ip;
+}
+
+
   // Render the page via SSR (server side rendering)
   res.render(indexHtml, {
     req,
