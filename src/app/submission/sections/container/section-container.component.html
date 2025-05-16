@@ -1,3 +1,5 @@
+{{ sectionData.id }} is valid =>{{(sectionRef.isValid() | async)}}
+
 <div dsSection #sectionRef="sectionRef" [attr.id]="'section_' + sectionData.id"
   [ngClass]="{ 'section-focus' : sectionRef.isSectionActive() }" [mandatory]="sectionData.mandatory"
   [submissionId]="submissionId" [sectionType]="sectionData.sectionType" [sectionId]="sectionData.id">
@@ -9,21 +11,27 @@
           'submission.sections.'+sectionData.header | translate
           }}</span>
         <div class="d-inline-block float-right">
-          <i *ngIf="!(sectionRef.isValid() | async) && !(sectionRef.hasErrors()) && !(sectionRef.isInfo())"
-            class="fas fa-exclamation-circle text-warning mr-3"
-            title="{{'submission.sections.status.warnings.title' | translate}}" role="img"
-            [attr.aria-label]="'submission.sections.status.warnings.aria' | translate"></i>
-          <i *ngIf="(sectionRef.hasErrors()) && !(sectionRef.isInfo())"
-            class="fas fa-exclamation-circle text-danger mr-3"
-            title="{{'submission.sections.status.errors.title' | translate}}" role="img"
-            [attr.aria-label]="'submission.sections.status.errors.aria' | translate"></i>
-          <i *ngIf="(sectionRef.isValid() | async) && !(sectionRef.hasErrors()) && !(sectionRef.isInfo())"
-            class="fas fa-check-circle text-success mr-3"
-            title="{{'submission.sections.status.valid.title' | translate}}" role="img"
-            [attr.aria-label]="'submission.sections.status.valid.aria' | translate"></i>
-          <i *ngIf="sectionRef.isInfo()" class="fas fa-info-circle mr-3 text-white"
-            title="{{'submission.sections.status.info.title' | translate}}" role="img"
-            [attr.aria-label]="'submission.sections.status.info.aria' | translate"></i>
+<ng-container *ngIf="sectionData.id === 'identifiers' || sectionData.id === 'cclicense' || sectionData.id === 'license'">
+  <i *ngIf="(sectionRef.isValid() | async) !== true && !(sectionRef.hasErrors()) && !(sectionRef.isInfo())"
+     class="fas fa-exclamation-circle text-warning mr-3"
+     title="{{'submission.sections.status.warnings.title' | translate}}" role="img"
+     [attr.aria-label]="'submission.sections.status.warnings.aria' | translate"></i>
+
+  <i *ngIf="(sectionRef.hasErrors()) && !(sectionRef.isInfo())"
+     class="fas fa-exclamation-circle text-danger mr-3"
+     title="{{'submission.sections.status.errors.title' | translate}}" role="img"
+     [attr.aria-label]="'submission.sections.status.errors.aria' | translate"></i>
+
+  <i *ngIf="(sectionRef.isValid() | async) && !(sectionRef.hasErrors()) && !(sectionRef.isInfo())"
+     class="fas fa-check-circle text-success mr-3"
+     title="{{'submission.sections.status.valid.title' | translate}}" role="img"
+     [attr.aria-label]="'submission.sections.status.valid.aria' | translate"></i>
+
+  <i *ngIf="sectionRef.isInfo()"
+     class="fas fa-info-circle mr-3 text-white"
+     title="{{'submission.sections.status.info.title' | translate}}" role="img"
+     [attr.aria-label]="'submission.sections.status.info.aria' | translate"></i>
+</ng-container>
           <a class="close" tabindex="0" role="button"
             [attr.aria-label]="(sectionRef.isOpen() ? 'submission.sections.toggle.aria.close' : 'submission.sections.toggle.aria.open') | translate: {sectionHeader: ('submission.sections.'+sectionData.header | translate)}"
             [title]="(sectionRef.isOpen() ? 'submission.sections.toggle.close' : 'submission.sections.toggle.open') | translate">
