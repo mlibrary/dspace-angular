@@ -10,6 +10,9 @@ import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
 import { Context } from 'src/app/core/shared/context.model';
 import { WorkflowItem } from 'src/app/core/submission/models/workflowitem.model';
 
+// UM Used for global config paramter - location of backend.
+import { environment } from '../../../../../environments/environment';
+
 /**
  * This component show metadata for the given item object in the list view.
  */
@@ -58,6 +61,8 @@ export class ItemListPreviewComponent implements OnInit {
 
   dsoTitle: string;
 
+  private serverLocation = environment.serverLocation;
+
   constructor(
     private http: HttpClient,    
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
@@ -82,7 +87,7 @@ export class ItemListPreviewComponent implements OnInit {
     let handle = this.item.handle;   
     handle = handle.replace('/','_');
 
-    this.http.get('http://localhost:8080/server/api/eperson/groups/getmonthstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/getmonthstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
       this.mothStatsCount = data;
      });
 
@@ -93,7 +98,7 @@ export class ItemListPreviewComponent implements OnInit {
     let handle = this.item.handle;
     handle = handle.replace('/','_');
 
-    this.http.get('http://localhost:8080/server/api/eperson/groups/gettotalstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/eperson/groups/gettotalstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
       this.totalStatsCount = data;
     });
 
