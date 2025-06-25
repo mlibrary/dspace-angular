@@ -77,7 +77,7 @@ export class ItemListPreviewComponent implements OnInit {
   }
 
   public getMonthDateStats(): String {
-    this.http.get('http://localhost:8080/server/api/eperson/groups/getmonthdatestats/', {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/getmonthdatestats/', {responseType: 'text'}).subscribe((data: any) => {
       this.mothDateStatsCount = data;
      });
     return this.mothDateStatsCount;
@@ -98,7 +98,7 @@ export class ItemListPreviewComponent implements OnInit {
     let handle = this.item.handle;
     handle = handle.replace('/','_');
 
-    this.http.get(this.serverLocation + '/eperson/groups/gettotalstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
+    this.http.get(this.serverLocation + '/api/eperson/groups/gettotalstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
       this.totalStatsCount = data;
     });
 
