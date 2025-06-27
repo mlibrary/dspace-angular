@@ -1,4 +1,4 @@
-<m-website-header  name="Deep Blue Documents" to="/documents" variant="dark">
+
 <nav [ngClass]="{'open': !(menuCollapsed | async)}" [@slideMobileNav]="!(windowService.isXsOrSm() | async) ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
   class="navbar navbar-expand-md navbar-light p-0 navbar-container" role="navigation" [attr.aria-label]="'nav.main.description' | translate">
   <div class="navbar-inner-container w-100 h-100" [class.container]="!(isXsOrSm$ | async)">
@@ -52,5 +52,5 @@
     <ds-impersonate-navbar class="navbar-collapsed"></ds-impersonate-navbar>
   </div>
 </nav>
-</m-website-header>
+
             
