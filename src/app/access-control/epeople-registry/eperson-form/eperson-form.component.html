@@ -38,7 +38,6 @@
 </ds-form>
 
 <ds-themed-loading [showMessage]="false" *ngIf="!formGroup"></ds-themed-loading>
-<span> PLEASE REMOVE THIS BEFORE WE go LIVE</span>
 <div *ngIf="epersonService.getActiveEPerson() | async">
   <h5>{{messagePrefix + '.groupsEPersonIsMemberOf' | translate}}</h5>
 
