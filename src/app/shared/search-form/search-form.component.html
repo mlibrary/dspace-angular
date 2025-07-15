@@ -2,7 +2,7 @@
     <div>
         <div class="form-group input-group">
 <div *ngIf="showScopeSelector && currentUrl !== '/mydspace'" class="input-group-prepend">
-    <button class="scope-button btn btn-outline-secondary text-truncate"
+    <button class="scope-button btn btn-outline-secondary text-truncate" attr.aria-label="{{dsoNameService.getName(selectedScope | async) || ('search.form.scope.all' | translate)}}" 
             [ngbTooltip]="dsoNameService.getName(selectedScope | async)" type="button"
             (click)="openScopeModal()">
       {{ dsoNameService.getName(selectedScope | async) || ('search.form.scope.all' | translate) }}
@@ -18,7 +18,7 @@
   [placeholder]="currentUrl === '/mydspace' ? 'Search my deposited and draft Works' : searchPlaceholder"
 />
             <span class="input-group-append">
-            <button type="submit" class="search-button btn btn-{{brandColor}}" [attr.data-test]="'search-button' | dsBrowserOnly"><i class="fas fa-search"></i> {{ ('search.form.search' | translate) }}</button>
+            <button type="submit" aria-label="search" class="search-button btn btn-{{brandColor}}" [attr.data-test]="'search-button' | dsBrowserOnly"><i class="fas fa-search"></i> {{ ('search.form.search' | translate) }}</button>
         </span>
         </div>
     </div>
