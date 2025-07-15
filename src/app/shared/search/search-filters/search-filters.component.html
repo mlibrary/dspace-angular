@@ -1,5 +1,6 @@
 <h3>{{"search.filters.head" | translate}}</h3>
-<a class="btn btn-primary" 
+<a class="btn btn-primary"
+   attr.aria-label="{{'search.filters.reset' | translate}}"  
    [routerLink]="[searchLink]" 
    [queryParams]="clearParams | async" 
    queryParamsHandling="merge" 
