@@ -513,11 +513,20 @@
 
 
 
-    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+   <ds-item-page-collections [item]="object"></ds-item-page-collections>
 
-     <div *ngIf="object.hasMetadata('dc.rights.uri')" [id]="object.id">
-       <img style="width:8em; height:5em; padding: 20px 0px;" alt="cc-logo" src="{{ getSelectedCcLicense(object.firstMetadataValue('dc.rights.uri')) }}"/>
-    </div>
+   <div *ngIf="object.hasMetadata('dc.rights.uri')" [id]="object.id" style="display: flex; align-items: center;">
+     <a [href]="object.firstMetadataValue('dc.rights.uri')" target="_blank" rel="noopener" style="display:flex; align-items:center; text-decoration: none;">
+       <img 
+         style="width:8em; height:5em; padding: 20px 0px;" 
+         alt="cc-logo" 
+         [src]="getSelectedCcLicense(object.firstMetadataValue('dc.rights.uri'))"
+       />
+     </a>
+       <span style="margin-left: 1em; color: inherit;">
+         {{ object.firstMetadataValue('dc.rights') }}
+       </span>
+   </div>
 
 <!--
     <div *ngIf="object.hasMetadata('dc.identifier.doi')" [id]="object.id">
