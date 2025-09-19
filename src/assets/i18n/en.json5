@@ -760,9 +760,9 @@
 
   "bitstream-request-a-copy.allfiles.label": "Files",
 
-  "bitstream-request-a-copy.files-all-false.label": "Only the requested file",
+  "bitstream-request-a-copy.files-all-false.label": "Only the file I clicked on",
 
-  "bitstream-request-a-copy.files-all-true.label": "All files (of this work) in restricted access",
+  "bitstream-request-a-copy.files-all-true.label": "All files from this work",
 
   "bitstream-request-a-copy.message.label": "Message",
 
