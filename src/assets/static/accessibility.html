@@ -1,0 +1,584 @@
+<!-- Updated 09/17/2025-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility in Deep Blue Documents</title>
+    <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/dist/umich-lib/umich-lib.esm.js"></script>
+</head>
+
+<body>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to main content</a>
+
+    <!-- Header loaded by JS -->
+    <header></header>
+
+    <!-- Flex container for sidebar and content -->
+    <div class="flex-container">
+        <div class="sidebar-container">
+            <!-- Sidebar content loaded by JS -->
+        </div>
+        <main id="main-content" class="content">
+            <h1>Accessibility in Deep Blue Documents: Creating Accessible Works</h1>
+
+            <section>
+                <p>We strongly recommend following this guide to ensure your <a href="glossary.html#work">Work</a> is as accessible, reusable, and preservable as possible.</p>
+                <p><strong>Important Note:</strong> hile this page focuses on creating accessible Works to deposit into Deep Blue Documents, if you are unable to use a deposited Work’s file in its current format, please <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=7Az64AR5TqI_&RequestorType=Service"target="_blank">Contact Us</a> and we can modify it to make it more accessible to you. We are developing a process for remediating all of the Works in Deep Blue Documents so that they are compliant with the <a href="https://www.ada.gov/law-and-regs/regulations/title-ii-2010-regulations/"target="_blank">Americans with Disabilities Act Title II Regulations</a>. We will add more information on this process as it becomes available.</p>
+                <p>For more university resources, please see the <a href ="https://accessibility.umich.edu/" target="_blank">Information and Technology Services Digital Accessibility Statement</a> and the <a href="https://spg.umich.edu/policy/601.20" target="_blank>">Electronic and Information Technology (EIT) Accessibility Standard Practice Guide (SPG)</a>.
+                </p>
+            </section>
+
+            <section>
+                <h2 id="ADA Title II and WCAG 2.2">Understanding Accessibility Standards: ADA Title II and WCAG 2.2</h2>
+                <p>Accessibility is a key consideration when depositing Works in Deep Blue Documents. Two major frameworks guide digital accessibility:</p>
+                <ul>
+                    <li><strong>ADA Title II</strong> (<a href="https://www.arl.org/wp-content/uploads/2024/10/ADA-Title-II-regulations_-implications-for-libraries.pdf "target="_blank">Americans with Disabilities Act, Title II</a>) requires public entities to ensure equal access to services, including digital resources, for individuals with disabilities. All publicly available materials should accommodate diverse user needs.</li>
+                    <li><strong>WCAG 2.2</strong> (<a href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2"target="_blank">Web Content Accessibility Guidelines 2.2</a>) sets global standards for digital accessibility, ensuring content is perceivable, operable, understandable, and robust for users with various disabilities.</li>
+                </ul>
+                <p>By adhering to these guidelines, you can help ensure that your Work is accessible to all users, including those who rely on screen readers, keyboard navigation, and other assistive technologies.</p>
+            </section>
+
+            <section>
+                <h2 id="Digital Preservation">Digital Preservation and File Format Support</h2>
+                <p>Deep Blue Documents follows the <a href="https://lib.umich.edu/static/77a0ea6ff710eacd8647790c7f6b9df3/U-M%20Library%20Digital%20Repository%20Services%20Digital%20Preservation%20Policy_0.pdf"target="_blank">U-M Library Digital Preservation Policy</a> to ensure the long-term accessibility and usability of deposited materials. File formats are classified into three levels based on their preservation support, as outlined in the <a href="https://lib.umich.edu/static/5107471267e88dec32ae0f4c9d429f2b/U-M%20Library's%20Digital%20Repository%20Services%20Registered%20Formats%20and%20Support%20Levels.pdf"target="_blank">U-M Library Registered Formats and Support Levels Document</a>:</p>
+                <section>
+                    <h2>File Format Levels</h2>
+                    <ol>
+                      <li>
+                        <strong>Level 1 (Recommended Formats):</strong> Highest support, ensuring preservation of content, structure, and functionality. This applies to publicly documented, widely used formats like <strong>PDF/A</strong>, <strong>JPEG</strong>, and <strong>AIFF</strong>.
+                      </li>
+                      <li>
+                        <strong>Level 2 (Supported Formats, Not Preferred):</strong> Usable but may require format migration over time, such as certain proprietary document types or compressed file formats.
+                      </li>
+                      <li>
+                        <strong>Level 3 (Limited Support Formats, Not Recommended):</strong> Basic preservation with no active monitoring or migration, putting these formats at risk for obsolescence, including uncommon or <a href="glossary.html#open-format">proprietary formats</a> with limited accessibility features.
+                      </li>
+                    </ol>
+                    <p><strong>To maximize long-term accessibility, Level 1 formats are strongly recommended</strong>.</p>
+                  </section>
+                
+            <section>
+                <h2 id="Document Types">Document Types and Accessibility Guidelines</h2>
+
+                <h3>How to Use This Guide</h3>
+                <ol>
+                    <li>Identify your document type (e.g., PDF, Word, HTML, audio, video, etc.).                    </li>
+                    <li>Follow the general accessibility checklist for best practices.
+                    </li>
+                    <li>Check format-specific guidelines to ensure compliance with accessibility standards.
+                    </li>
+                    <li>Utilize resources and best practices links to improve the accessibility of your Work.
+                    </li>
+                </ol>
+
+                <section id="text-documents">
+                    <h2 id="Text Documents">Text Documents</h2>
+                    
+                    <h3>General Checklist</h3>
+                    <ul>
+                        <li><strong>Headings:</strong> Use clear, hierarchical headings (H1, H2, etc.) when applicable.</li>
+                        <li><strong>Font:</strong> Choose legible fonts and appropriate sizes. *Resources such as this <a href="https://www.boia.org/blog/accessibility-tips-let-users-control-font-size"target="_blank">font size standards article</a> can be found online.
+                        </li>
+                        <li><strong>Contrast:</strong> Ensure text meets WCAG contrast ratios (4.5:1 for normal text).  *Resources such as this <a href="https://webaim.org/resources/contrastchecker/"target="_blank">contrast color checker</a> can be found online. </li>
+                        <li><strong>Text-to-Speech:</strong> Ensure compatibility with screen readers and text-to-speech tools.</li>
+                        <li><strong>Alternative Text:</strong> Provide alternative text for images (where applicable). *Alternative (alt) text is a brief, descriptive phrase that conveys a media's purpose or content, focusing on essential details without unnecessary words.
+                        </li>
+                    </ul>
+                    <p>Potential uses: PDF/A for archiving official documents with preserved formatting, Plain Text UTF-8 for multilingual web content across diverse systems, and SGML for detailed markup in technical manuals and publications.</p>
+                
+                    <h3>Format Details</h3>
+                    <table>
+                        <caption>Text Document Formats</caption>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>File Extension</th>
+                                <th>Support Level</th>
+                                <th>Format-Specific Accessibility Checklist</th>
+                                <th>Resources</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PDF/A</td>
+                                <td>.pdf</td>
+                                <td>Level 1</td>
+                                <td>
+                                    <ul>
+                                        <li>Include accessible metadata (title, author).</li>
+                                        <li>Use proper tagging for structure.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/#pdf" target="_blank">PDF Techniques for WCAG Compliance</a></li>
+                                        <li><a href="https://www.section508.gov/create/pdfs/" target="_blank">Accessibility Guide (Creating Accessible PDFs)</a></li>
+                                        <li><a href="https://deepblue.lib.umich.edu/handle/2027.42/58005" target="_blank">U-M Library Best Practices for PDF Files</a></li>
+                                        <li><a href="https://accessibe.com/blog/knowledgebase/ada-compliant-pdfs#section_how-to-create-an-ada-compliant-pdf" target="_blank">How to Create ADA-Compliant PDF</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Plain Text UTF-8 (Unicode)</td>
+                                <td>.txt</td>
+                                <td>Level 1</td>
+                                <td>
+                                    <ul>
+                                        <li>Use descriptive file names (no metadata support so no metadata needed).</li>
+                                        <li>Structure with clear line breaks and headings.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <p>No Plain Text UTF-8 specific criteria– see these resources for guidance: </p>
+                                    <ul>
+                                       
+                                        <li><a href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2" target="_blank">WCAG 2.2</a></li>
+                                        <li><a href="https://www.w3.org/Protocols/rfc1341/7_1_Text.html" target="_blank">Plain Text WCAG Requirements</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Plain Text ANSI X3.4/ECMA-6/US-ASCII (7-bit)</td>
+                                <td>.txt</td>
+                                <td>Level 1</td>
+                                <td>
+                                    <ul>
+                                        <li>Use descriptive file names (no metadata support needed).</li>
+                                        <li>Structure with clear line breaks and headings.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <p>No Plain Text ANSI X3.4/ECMA-6 /US-ASCII specific criteria– see these resources for guidance: </p>
+                                    <ul>
+                                        
+                                        <li><a href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2" target="_blank">WCAG 2.2</a></li>
+                                        <li><a href="https://www.w3.org/Protocols/rfc1341/7_1_Text.html" target="_blank">Plain Text WCAG Requirements</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SGML</td>
+                                <td>.sgm, .sgml</td>
+                                <td>Level 1</td>
+                                <td>
+                                    <ul>
+                                        <li>Include accessible metadata (title, author).</li>
+                                        <li>Use semantic markup for structure (headings, lists, etc.).</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <p>No SGML specific criteria– see these resources for guidance: </p>
+                                    <ul>
+                                        
+                                        <li><a href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2" target="_blank">WCAG 2.2</a></li>
+                                        <li><a href="https://www.w3.org/Protocols/rfc1341/7_1_Text.html" target="_blank">Plain Text WCAG Requirements</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>XML</td>
+                                <td>.xml</td>
+                                <td>Level 1 / Level 2</td>
+                                <td>
+                                    <ul>
+                                        <li>Ensure proper metadata is included (title, author).</li>
+                                        <li>Use semantic markup for structure (headings, lists, etc.).</li>
+                                        <li>Make sure the XML file is well-formed and properly validated for accessibility.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <p>No XML specific criteria– see these resources for guidance:</p>
+                                    <ul>
+                                        
+                                        <li><a href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2" target="_blank">WCAG 2.2</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>HTML</td>
+                                <td>.html, .htm</td>
+                                <td>Level 2</td>
+                                <td>
+                                    <ul>
+                                        <li>Use clear, hierarchical headings (H1, H2, etc.).</li>
+                                        <li>Apply semantic HTML (e.g., &lt;header&gt;, &lt;footer&gt;, &lt;article&gt;).</li>
+                                        <li>Provide alternative text for images.</li>
+                                        <li>Ensure keyboard accessibility for interactive elements.</li>
+                                        <li>Validate HTML for syntax and accessibility.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/#html" target="_blank">HTML Techniques for WCAG Compliance</a></li>
+                                        <li><a href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2" target="_blank">WCAG 2.2</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Note:</strong> Level 2 and 3 formats are not recommended. We advise converting them to Level 1 formats for better long-term accessibility. Formats like HTML (.html, .htm), LaTeX (.latex), Postscript (.ps), Rich Text (.rtf), TeX (.tex), Plain Text ISO 8859-x (.txt), and Plain Text (all other encodings) (.txt) should be converted to a Level 1 format.You can convert to PDF using tools like Adobe Acrobat or online converters, and to plain text using text editors or free online tools.
+                    </p>
+                </section>
+
+                <section id="desktop-software-formats">
+                    <h2 id="ommon Desktop Software Formats">Common Desktop Software Formats</h2>
+                
+                    <h3>General Checklist</h3>
+                    <ul>
+                        <li><strong>Headings Structure:</strong> Ensure all documents (Word, Excel, PowerPoint) use proper heading structures.</li>
+                        <li><strong>Tables:</strong> Use accessible tables (e.g., with table headers marked correctly).</li>
+                        <li><strong>Images:</strong> Add alternative text to images and graphs in all formats. *Alternative (alt) text is a brief, descriptive phrase that conveys a media's purpose or content, focusing on essential details without unnecessary words.</li>
+                        <li><strong>Navigation:</strong> Ensure documents are navigable by screen readers (e.g., correctly marked links and form fields).</li>
+                        <li><strong>Contrast:</strong> Check and maintain adequate color contrast. Resources such as this <a href="https://webaim.org/resources/contrastchecker/"target="_blank">contrast color checker</a> can be found online. </li>
+                        <li><strong>Multimedia Alternative Text:</strong> Provide alt text for any audio or video content. *See more information about alternative text above.</li>
+                    </ul>
+                
+                    <h3>Format Details</h3>
+                    <table>
+                        <caption>Common Desktop Software Formats</caption>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>File Extension</th>
+                                <th>Support Level</th>
+                                <th>Format-Specific Accessibility Checklist</th>
+                                <th>Resources</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Microsoft Word</td>
+                                <td>.doc</td>
+                                <td>Level 2</td>
+                                <td>
+                                    <ul>
+                                        <li>Text Structure: Use proper paragraph styles and formatting to create clear and accessible text flow. Ensure it's assigned a Heading 1, Heading 2, or Heading 3, rather than just bolded text.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="https://www.section508.gov/create/documents/" target="_blank">Accessibility Guide (Word Docs)</a></li>
+                                        <li><a href="https://support.microsoft.com/en-us/office/make-your-word-documents-accessible-to-people-with-disabilities-d9bf3683-87ac-47ea-b91a-78dcacb3c66d" target="_blank">Making Word Docs Accessible from Microsoft</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft PowerPoint</td>
+                                <td>.ppt</td>
+                                <td>Level 2</td>
+                                <td>
+                                    <ul>
+                                        <li>Slide Titles: Ensure each slide has a clear and concise title for easy navigation.</li>
+                                        <li>Animations: Avoid using complex animations or transitions that may be confusing for screen readers or users with cognitive disabilities.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="https://www.section508.gov/create/presentations/" target="_blank">Accessibility Guide (PowerPoint)</a></li>
+                                        <li><a href="https://support.microsoft.com/en-us/office/make-your-powerpoint-presentations-accessible-to-people-with-disabilities-6f7772b2-2f33-4bd2-8ca7-dae3b2b3ef25" target="_blank">Making PowerPoint Accessible from Microsoft</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Microsoft Excel</td>
+                                <td>.xls</td>
+                                <td>Level 2</td>
+                                <td>
+                                    <ul>
+                                        <li>Cell Headers: Use clear and descriptive headers for columns and rows.</li>
+                                        <li>Formulas: Ensure formulas are accessible and explained with cell comments or data validation.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="https://www.section508.gov/create/spreadsheets/" target="_blank">Accessibility Guide (Excel)</a></li>
+                                        <li><a href="https://support.microsoft.com/en-us/office/accessibility-best-practices-with-excel-spreadsheets-6cc05fc5-1314-48b5-8eb3-683e49b3e593" target="_blank">Making Excel Accessible from Microsoft</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Note:</strong> Level 2 formats are not recommended. We advise converting them to Level 1 formats for better long-term accessibility. Formats like Microsoft Word (.doc), Microsoft PowerPoint (.ppt), and Microsoft Excel (.xls) should be converted to a Level 1 format such as a PDF. You can convert to PDF using tools like Adobe Acrobat or online converters, and to plain text using text editors or online tools.
+                    </p>
+                </section>
+
+                <section id="image-file-formats">
+                    <h2 id ="Image File Formats">Image File Formats</h2>
+                
+                    <h3>General Checklist</h3>
+                    <ul>
+                        <li><strong>Alternative Text:</strong> Always add descriptive alternative text for all images. *Alternative (alt) text is a brief, descriptive phrase that conveys a media's purpose or content, focusing on essential details without unnecessary words.</li>
+                        <li><strong>Contrast:</strong> Ensure images have good contrast against their backgrounds. Resources such as this <a href="https://webaim.org/resources/contrastchecker/"target="_blank">contrast color checker</a> can be found online. </li>
+                        <li><strong>Avoid Images of Text:</strong> Avoid embedding text within images; use accessible HTML text instead.
+                        </li>
+                        <li><strong>Proper Labeling:</strong>  Label images clearly for accessibility purposes. Avoid generic image names (such as Image1).</li>
+                        <li><strong>Screen Reader Compatibility:</strong> Ensure images are properly recognized by screen readers (through alternative text and proper tagging).</li>
+                    </ul>
+                    <p>Potential uses: JPEG for efficiently sharing photographs with complex color gradients, and TIFF for preserving high-quality images in professional and archival settings.</p>
+                
+                    <h3>General Sources for All</h3>
+                    <ul>
+                        <li><a href="https://deepblue.lib.umich.edu/bitstream/handle/2027.42/40247/Images-Best_Practice.pdf?sequence=1" target="_blank">U-M Library Best Practices for Digital Image Files (PDF)</a></li>
+                        <li><a href="https://adacompliance.tips/photos-ada-compliant/" target="_blank">ADA Compliance Checklist (user-friendly)</a></li>
+                        <li><a href="https://usability.yale.edu/web-accessibility/articles/images" target="_blank">Images: Usability and Accessibility</a></li>
+                        <li><a href="https://www.w3.org/WAI/tutorials/images/" target="_blank">WCAG Accessible Image Examples</a></li>
+                    </ul>
+                
+                    <h3>Format Details</h3>
+                    <table>
+                        <caption>Image File Formats</caption>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>File Extension</th>
+                                <th>Support Level</th>
+                                <th>Format-Specific Accessibility Checklist</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>JPEG</td>
+                                <td>.jpg</td>
+                                <td>Level 1</td>
+                                <td>
+                                    <ul>
+                                        <li>Optimize Compression: Ensure compression levels preserve necessary details for accessibility. Test for clarity, especially for critical image details.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>TIFF</td>
+                                <td>.tiff</td>
+                                <td>Level 1</td>
+                                <td>
+                                    <ul>
+                                        <li>Manage File Size: Consider the impact of large file sizes on page load times, especially for users with slower internet connections.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PNG</td>
+                                <td>.png</td>
+                                <td>Level 2</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>GIF</td>
+                                <td>.gif</td>
+                                <td>Level 3</td>
+                                <td>
+                                    <ul>
+                                        <li>Control Animations: Ensure that animations do not flash at frequencies between 2 Hz and 55 Hz. Provide user controls to pause or stop animations.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Photoshop</td>
+                                <td>.psd</td>
+                                <td>Level 3</td>
+                                <td>
+                                    <ul>
+                                        <li>Export for Web Use: Convert PSD files to web-friendly formats like JPEG if possible.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Note:</strong> Level 2 and 3 formats are not recommended. We advise converting them to Level 1 formats for better long-term accessibility. Formats like JPEG 2000 (.jp2), PNG (.png), BMP (.bmp), GIF (.gif), Photo CD (.pcd), and Photoshop (.psd) should be converted to JPEG or TIFF using image editing software or online converters. 
+                    </p>
+                </section>
+
+                <section id="audio-file-formats">
+                    <h2 id ="Audio File Formats">Audio File Formats</h2>
+                    
+                    <h3>General Checklist</h3>
+                    <ul>
+                        <li><strong>Captions/Transcripts:</strong> Provide captions or transcripts for audio files. 
+                        <ul><li>These typically exist as separate files (e.g., SRT files for captions) or as a transcript document, which must be provided alongside the audio content. Deposit these two files along with the audio file (as part of the Work).</li></ul></li>
+                        <li><strong>Audio Descriptions:</strong> For content that relies heavily on sound, ensure audio descriptions are provided.</li>
+                        <li><strong>Clarity and Loudness:</strong> Ensure audio is clear and loud enough for individuals with hearing impairments.</li>
+                        <li><strong>Accessibility Testing:</strong>  Test audio content with screen readers to ensure compatibility. *Free testing is available through online resources.</li>
+                    </ul>
+                    <p>Potential uses: AIFF for high-quality audio editing and archival purposes, and Wave for professional recordings requiring maximum fidelity.</p>
+                
+                    <h3>General Sources for All</h3>
+                    <ul>
+                        <li><a href="https://deepblue.lib.umich.edu/bitstream/handle/2027.42/40248/Audio-Best_practices-v2.pdf?sequence=7&isAllowed=y" target="_blank">U-M Library Best Practices for Audio Files (PDF)</a></li>
+                        <li><a href="https://www.section508.gov/create/audio-video/" target="_blank">Accessibility Guide for Audio</a></li>
+                    </ul>
+                
+                    <h3>Format Details</h3>
+                    <table>
+                        <caption>Audio File Formats</caption>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>File Extension</th>
+                                <th>Support Level</th>
+                                <th>Format-Specific Accessibility Checklist</th>
+                          
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AIFF</td>
+                                <td>.aif, .aiff</td>
+                                <td>Level 1</td>
+                                <td>None. Follow General Checklist.</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>Wave</td>
+                                <td>.wav</td>
+                                <td>Level 1</td>
+                                <td>None. Follow General Checklist.</td>
+                             
+                            </tr>
+                            <tr>
+                                <td>MPEG audio</td>
+                                <td>.mp3</td>
+                                <td>Level 2</td>
+                                <td>None. Follow General Checklist.</td>
+                             
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Note:</strong> Level 2 and 3 formats are not recommended. We advise converting them to Level 1 formats for better long-term accessibility. Formats like Audio/Basic (.au, .snd), MPEG audio (.mp3), AAC_M4A (.m4a, .mp4), Real Audio (.ra, .rm, .ram), and Windows Media Audio (.wma) should be converted to widely supported formats like WAV using audio conversion tools or online converters. </p>
+                </section>
+
+                <section id="video-file-formats">
+                    <h2 id="Video File Formats">Video File Formats</h2>
+                    
+                    <h3>General Checklist</h3>
+                    <ul>
+                        <li><strong>Captions/Transcripts:</strong> Ensure videos have captions or transcripts available.
+                            <ul><li>These typically exist as separate files (e.g., SRT files for captions) or as a transcript document, which must be provided alongside the audio content. Deposit these two files along with the audio file (as part of the Work)
+                            </li></ul></li>
+                        <li><strong>Audio Descriptions:</strong> Provide audio descriptions for critical visual elements in videos.</li>
+                        <li><strong>Ensure ADA Compliance:</strong> Check videos for compliance with <a href="https://www.ada.gov/law-and-regs/regulations/title-ii-2010-regulations/"target="_blank">ADA Title II</a> and <a href="https://www.w3.org/TR/WCAG22/#time-based-media"target="_blank">WCAG 2.2</a> standards for visual and auditory impairments.</li>
+                        <li><strong>Clear Video Quality:</strong> Ensure videos are clear and viewable by individuals with visual impairments.</li>
+                    </ul>
+                
+                    <h3>General Sources for All</h3>
+                    <ul>
+                        <li><a href="https://deepblue.lib.umich.edu/bitstream/handle/2027.42/83222/Video-Best_practices_1.1.pdf?sequence=7&isAllowed=y" target="_blank">U-M Library Best Practices for Video Files (PDF)</a></li>
+                    </ul>
+                
+                    <h3>Format Details</h3>
+                    <table>
+                        <caption>Video File Formats</caption>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>File Extension</th>
+                                <th>Support Level</th>
+                                <th>Format-Specific Accessibility Checklist</th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AVI</td>
+                                <td>.avi</td>
+                                <td>Level 2</td>
+                                <td>As an older format, AVI files can sometimes have compatibility issues with modern accessibility tools, though most can handle them if proper captions, descriptions, and metadata are provided externally.</td>
+                         
+                            </tr>
+                            <tr>
+                                <td>Quicktime</td>
+                                <td>.mov</td>
+                                <td>Level 2</td>
+                                <td>This format is widely used for high-quality video and can handle various accessibility features like captions and audio descriptions. It’s important to ensure these features are properly embedded or linked to the video.</td>
+                            
+                            </tr>
+                            <tr>
+                                <td>MPEG-1 / MPEG-2</td>
+                                <td>.mp1, .mp2</td>
+                                <td>Level 2</td>
+                                <td>None. Follow General Checklist.</td>
+                       
+                            </tr>
+                            <tr>
+                                <td>MPEG-4</td>
+                                <td>.mp4</td>
+                                <td>Level 2</td>
+                                <td>Ensure captions and subtitles are provided for audio content.</td>
+                          
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                    <p><strong>Note:</strong> Formats like AVI (.avi), Quicktime (.mov), MPEG-1/MPEG-2 (.mp1, .mp2), MPEG-4 (.mp4), and Windows Media Video (.wmv) are Level 2 and 3 formats. There are no Level 1 video formats due to the reliance on evolving technologies and codecs, which present challenges in ensuring long-term stability and universal support.</p>
+                </section>
+                <section id="miscellaneous-file-formats">
+                    <h2 id="Other/Miscellaneous File Formats">Other/Miscellaneous File Formats</h2>
+                    
+                    <h3>General Checklist</h3>
+                    <p>Only specific requirements based on file format.</p>
+                
+                    <h3>Format Details</h3>
+                    <table>
+                        <caption>Other/Miscellaneous File Formats</caption>
+                        <thead>
+                            <tr>
+                                <th>Format</th>
+                                <th>File Extension</th>
+                                <th>Support Level</th>
+                                <th>Format-Specific Accessibility Checklist</th>
+                                <th>Resources</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ZIP/tar</td>
+                                <td>.zip, .gz, .tar.gz</td>
+                                <td>Level 1/2/3</td>
+                                <td>
+                                    <ul>
+                                        <li>Preserve Accessibility: ZIP or tar files are only as good as their contents; all best practices above still apply. Ensure all files inside are accessible (e.g., text documents, images with alternative text (see more information about alternative text above, under the General Checklist).</li>
+                                        <li>Label Clearly: Use descriptive names for compressed files.</li>
+                                        <li>Ensure Easy Extraction: Files should be easy to extract and maintain accessibility when unzipped.</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="http://deepblue.lib.umich.edu/bitstream/2027.42/50495/1/ZIP_and_tar-Best_Practice.pdf" target="_blank">Best Practices for Producing ZIP and Tar Files (PDF)</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Note:</strong> ZIP/tar formats (.zip, .gz, .tar.gz) are classified across Level 1, Level 2, and Level 3 depending on the specific use case and preservation needs. For long-term accessibility, we recommend converting to more stable, widely supported formats when possible.
+                    </p>
+                </section>
+            </section>
+
+            <section>
+                <h2 id="Government resources">Government resources</h2>
+                <p>For more information on accessibility and best practices, please refer to the following resources:</p>
+                <ul>
+                    <li><a href="https://www.ada.gov/assets/pdfs/web-rule.pdf" target="_blank">Nondiscrimination on the Basis of Disability; Accessibility of Web Information and Services of State and Local Government Entities (PDF)</a></li>
+                    <li><a href="https://www.ada.gov/resources/title-ii-primer/" target="_blank">ADA Update: A Primer for State and Local Governments</a></li>
+                    <li><a href="https://www.federalregister.gov/documents/2024/04/24/2024-07758/nondiscrimination-on-the-basis-of-disability-accessibility-of-web-information-and-services-of-state" target="_blank">The final regulation as posted in the Federal Register</a></li>
+                    <li><a href="https://www.ada.gov/law-and-regs/regulations/title-ii-2010-regulations/#-35201-exceptions" target="_blank">Title II Regulations Supplementary Information</a></li>
+                    <li><a href="https://www.ada.gov/resources/2024-03-08-web-rule/" target="_blank">U.S. Department of Justice fact sheet on these regulations</a></li>
+                    <li><a href="https://www.ada.gov/resources/2024-03-08-web-rule/" target="_blank">Fact sheet: New Rule on the Accessibility of Web Content and Mobile Apps Provided by State and Local Governments</a></li>
+                    <li><a href="https://www.ada.gov/infoline/" target="_blank">Americans with Disabilities Act (ADA) Information Line</a></li>
+                    <li><a href="https://crsreports.congress.gov/product/pdf/R/R48104" target="_blank">The Americans with Disabilities Act (ADA) and Public Accommodations in Web Services</a></li>
+                </ul>
+            </section>
+            
+        </main>
+    </div>
+            <!-- Footer loaded by JS -->
+            <footer class="footer"></footer>
+
+            <script src="js/script.js"></script>
+        
+</body>
+</html>
