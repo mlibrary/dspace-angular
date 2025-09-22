@@ -29,7 +29,7 @@ morgan.log
 
 yarn-error.log
 
-*.css
+#*.css
 
 package-lock.json
 
