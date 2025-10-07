@@ -80,7 +80,7 @@
   <div class="col-xs-12 col-md-8">
   <div *ngIf="object.hasMetadata('dc.description.abstract')" [id]="object.id">
   <ds-truncatable [id]="object.id">
-        <h2>Abstract</h2>
+        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Abstract</h2>
         <ds-truncatable-part [id]="object.id" [minLines]="3" class="item-list-abstract">
         <span [ngClass]="{'text-muted': !object.firstMetadataValue('dc.description.abstract')}"
               [innerHTML]="(object.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)"></span>
