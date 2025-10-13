@@ -37,7 +37,6 @@ export class ItemWithdrawComponent extends AbstractSimpleItemActionComponent {
    */
   performAction() {
     var reason:string = (document.getElementById("withdrawReason") as HTMLInputElement).value
-    console.log("The reason = " + reason)
     this.itemDataService.setWithDrawn(this.item, true, reason).pipe(getFirstCompletedRemoteData()).subscribe(
       (response: RemoteData<Item>) => {
         this.processRestResponse(response);

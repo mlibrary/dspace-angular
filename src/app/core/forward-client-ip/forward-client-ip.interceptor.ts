@@ -25,13 +25,6 @@ export class ForwardClientIpInterceptor implements HttpInterceptor {
 // he pointed me to this.  This is not solve the issue, but seems like it would 
 // be good to have anyway
     const headers = { 'X-Forwarded-For': clientIp };
-
-console.log('Headers:', this.req.headers);
-console.log('X-Forwarded-For:', this.req.get('x-forwarded-for'));
-console.log('Remote Address:', this.req.connection.remoteAddress);
-
-console.log ("clientIP = " + clientIp);
-
     // if the request has a user-agent retain it
     const userAgent = this.req.get('user-agent');
     if (userAgent) {

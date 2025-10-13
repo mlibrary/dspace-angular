@@ -75,10 +75,8 @@ export class FileSectionComponent implements OnInit {
       ).subscribe((remoteData) => {
           if (remoteData === undefined || remoteData.values.length === 0) {
             this.formatId = '';
-                        console.log ("nothing handle ==>" + this.formatId);
           } else {
             this.formatId = remoteData.values[0];
-                        console.log ("something handle ==>" + this.formatId);
           }
       })
 
@@ -86,7 +84,6 @@ export class FileSectionComponent implements OnInit {
   }
 
  getIconForFileRestriction(desc: string): string {
-    console.log("desc is = " + desc);
 
       if ( desc == null)
       {

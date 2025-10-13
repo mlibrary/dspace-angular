@@ -48,7 +48,6 @@ export class UntypedItemComponent extends ItemComponent {
 
     this.breadcrumbsService.breadcrumbs$.subscribe((breadcrumbs: Breadcrumb[]) => {
       this.breadcrumbs = breadcrumbs;
-      console.log('Breadcrumbs:', this.breadcrumbs);
     });
   }
 
@@ -105,7 +104,6 @@ export class UntypedItemComponent extends ItemComponent {
     //value ="https://cdnapisec.kaltura.com/p/1038472/sp/103847200/embedIframeJs/uiconf_id/33084471/partner_id/1038472?autoembed=true&entry_id=1_irztzumh&playerId=kaltura_player_01&cache_st=1455309475&width=400&height=330&flashvars[streamerType]=auto=";
     const matches = value.match(/https:\/\/cdnapisec\.kaltura\.com\/p\/(\w+)\//);
     if (matches) {
-      // console.log(matches[1]); // ordem1    
     }
     return matches[1];
   }
@@ -115,7 +113,6 @@ export class UntypedItemComponent extends ItemComponent {
     //value ="https://cdnapisec.kaltura.com/p/1038472/sp/103847200/embedIframeJs/uiconf_id/33084471/partner_id/1038472?autoembed=true&entry_id=1_irztzumh&playerId=kaltura_player_01&cache_st=1455309475&width=400&height=330&flashvars[streamerType]=auto=";
     const matches = value.match(/https:\/\/cdnapisec\.kaltura\.com\/p\/.*?\/sp\/(\w+)\//);
     if (matches) {
-      // console.log(matches[1]); // ordem1    
     }
     return matches[1];
   }
@@ -125,7 +122,6 @@ export class UntypedItemComponent extends ItemComponent {
     //value ="https://cdnapisec.kaltura.com/p/1038472/sp/103847200/embedIframeJs/uiconf_id/33084471/partner_id/1038472?autoembed=true&entry_id=1_irztzumh&playerId=kaltura_player_01&cache_st=1455309475&width=400&height=330&flashvars[streamerType]=auto=";
     const matches = value.match(/.*?\/uiconf_id\/(\w+)\//);
     if (matches) {
-      //  console.log(matches[1]); // ordem1    
     }
     return matches[1];
   }
@@ -134,7 +130,6 @@ export class UntypedItemComponent extends ItemComponent {
     //value ="https://cdnapisec.kaltura.com/p/1038472/sp/103847200/embedIframeJs/uiconf_id/33084471/partner_id/1038472?autoembed=true&entry_id=1_irztzumh&playerId=kaltura_player_01&cache_st=1455309475&width=400&height=330&flashvars[streamerType]=auto=";
     const matches = value.match(/.*?entry_id=(\w+)\&/);
     if (matches) {
-      // console.log(matches[1]); // ordem1    
     }
     return matches[1];
   }
