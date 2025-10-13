@@ -72,10 +72,8 @@ export class ListfilesComponent implements OnInit {
       ).subscribe((remoteData) => {
           if (remoteData === undefined || remoteData.values.length === 0) {
             this.formatId = '12345';
-                        console.log ("hidden.format ==>" + this.formatId);
           } else {
             this.formatId = remoteData.values[0];
-                        console.log ("hidden.format ==>" + this.formatId);
           }
       })
 
@@ -83,7 +81,6 @@ export class ListfilesComponent implements OnInit {
   }
 
  getIconForFileRestriction(desc: string): string {
-    console.log("desc is = " + desc);
 
       if ( desc == null)
       {
@@ -120,7 +117,6 @@ export class ListfilesComponent implements OnInit {
   }
 
   getNextPageDisplay(): void { 
-    console.log("getting bitstreams....");
     this.isLoading = true;
     if (this.currentPage === undefined) {
       this.currentPage = 1;

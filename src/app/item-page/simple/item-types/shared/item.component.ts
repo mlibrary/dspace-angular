@@ -106,10 +106,8 @@ export class ItemComponent implements OnInit {
       ).subscribe((remoteData) => {
           if (remoteData === undefined || remoteData.values.length === 0) {
             this.handlePrefix = '';
-                        console.log ("nothing handle ==>" + this.handlePrefix);
           } else {
             this.handlePrefix = remoteData.values[0];
-                        console.log ("something handle ==>" + this.handlePrefix);
           }
       })
 
@@ -120,10 +118,8 @@ export class ItemComponent implements OnInit {
       ).subscribe((remoteData) => {
           if (remoteData === undefined || remoteData.values.length === 0) {
             this.doiPrefix = '';
-                        console.log ("nothing doi ==>" + this.doiPrefix);
           } else {
             this.doiPrefix = remoteData.values[0];
-                        console.log ("something doi ==>" + this.doiPrefix);
           }
       })
   }
