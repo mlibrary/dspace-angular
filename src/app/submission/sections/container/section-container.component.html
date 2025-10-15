@@ -1,5 +1,3 @@
-{{ sectionData.id }} is valid =>{{(sectionRef.isValid() | async)}}
-
 <div dsSection #sectionRef="sectionRef" [attr.id]="'section_' + sectionData.id"
   [ngClass]="{ 'section-focus' : sectionRef.isSectionActive() }" [mandatory]="sectionData.mandatory"
   [submissionId]="submissionId" [sectionType]="sectionData.sectionType" [sectionId]="sectionData.id">
