@@ -293,6 +293,13 @@ function shouldUseSSR(url) {
  * The callback function to serve server side angular
  */
 function ngApp(req, res) {
+
+  const assetsIndex = req.url.indexOf('/assets/');
+  if (assetsIndex !== -1) {
+    req.url = req.url.substring(assetsIndex);
+  }
+
+
   if (environment.universal.preboot && req.method === 'GET' && shouldUseSSR(req.url)) {
     // Only run SSR for matching paths
     console.log('SSR: Using SSR= ' + req.url);
