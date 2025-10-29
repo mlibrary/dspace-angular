@@ -69,6 +69,17 @@ const cookieParser = require('cookie-parser');
 
 const appConfig: AppConfig = buildAppConfig(join(DIST_FOLDER, 'assets/config.json'));
 
+// List of paths for SSR; you can use regex for more flexibility if needed
+const ssrPaths = [
+  '/documents',
+  '/items/',
+  '/collections/',
+  '/communities/',
+  '/bitstream/',
+  '/bitstreams/',
+  '/handle/'
+];
+
 // cache of SSR pages for known bots, only enabled in production mode
 let botCache: LRU<string, any>;
 
@@ -252,6 +263,7 @@ server.set('trust proxy', true);
    */
   router.get('*', cacheCheck, ngApp);
 
+
   server.use(environment.ui.nameSpace, router);
 
 server.set('trust proxy', true);
@@ -259,19 +271,39 @@ server.set('trust proxy', true);
   return server;
 }
 
+// Check if the request URL starts with any of the SSR paths
+function shouldUseSSR(url) {
+  // First, check for the browse exclusion patterns
+  const browseBlacklistRegexes = [
+    /^\/communities\/[a-f0-9-]{36}\/browse(\/.*)?$/i,
+    /^\/collections\/[a-f0-9-]{36}\/browse(\/.*)?$/i,
+  ];
+
+  // If the url matches any exclusion, do NOT use SSR
+  if (browseBlacklistRegexes.some(regex => regex.test(url))) {
+    return false;
+  }
+
+  // Otherwise
+  return ssrPaths.some(path => url.startsWith(path));
+}
+
+
 /*
  * The callback function to serve server side angular
  */
 function ngApp(req, res) {
-  if (environment.universal.preboot) {
-    // Render the page to user via SSR (server side rendering)
+  if (environment.universal.preboot && req.method === 'GET' && shouldUseSSR(req.url)) {
+    // Only run SSR for matching paths
+    console.log('SSR: Using SSR= ' + req.url);
     serverSideRender(req, res);
   } else {
-    // If preboot is disabled, just serve the client
-    console.log('Universal off, serving for direct client-side rendering (CSR)');
+    // For all other paths, serve CSR
+    console.log('SSR:Universal off or path excluded. Serving direct client-side rendering (CSR)' + req.url);
     clientSideRender(req, res);
   }
 }
+
 
 /**
  * Render page content on server side using Angular SSR. By default this page content is
