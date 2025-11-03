@@ -3648,6 +3648,16 @@
 
   "search.filters.applied.f.has_content_in_original_bundle": "Has files",
 
+  "search.filters.applied.f.type": "Type",
+
+  "search.filters.applied.f.peerreviewed": "Peer Reviewed",
+
+  "search.filters.applied.f.identifiersource": "Source Pubication",
+
+  "search.filters.applied.f.hlbtoplevel": "Primary Subject",
+
+  "search.filters.applied.f.hlbsecondlevel": "Secondary Subject",
+
   "search.filters.applied.f.itemtype": "Type",
 
   "search.filters.applied.f.namedresourcetype": "Status",

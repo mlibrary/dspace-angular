@@ -299,6 +299,14 @@ function ngApp(req, res) {
     req.url = req.url.substring(assetsIndex);
   }
 
+  if (
+    req.url.includes('/discover') ||
+    req.url.includes('/Mirage2') ||
+    req.url.includes('/feed/') ||
+    req.url.includes('/search-filter')
+  ) {
+    req.url = '/assets/static/about.html';
+  } 
 
   if (environment.universal.preboot && req.method === 'GET' && shouldUseSSR(req.url)) {
     // Only run SSR for matching paths
