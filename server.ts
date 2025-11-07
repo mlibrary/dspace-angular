@@ -294,9 +294,15 @@ function shouldUseSSR(url) {
  */
 function ngApp(req, res) {
 
-  const assetsIndex = req.url.indexOf('/assets/');
-  if (assetsIndex !== -1) {
-    req.url = req.url.substring(assetsIndex);
+  console.log('SSR: Original Request= ' + req.url);
+
+  // If URL contains '/assets/', redirect to Deep Blue Repositories
+  if (req.url.includes('/assets/')) {
+    res.writeHead(302, {
+      'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
+    });
+    res.end();
+    return; // Exit after redirecting
   }
 
   if (
@@ -305,7 +311,11 @@ function ngApp(req, res) {
     req.url.includes('/feed/') ||
     req.url.includes('/search-filter')
   ) {
-    req.url = '/assets/static/about.html';
+    res.writeHead(302, {
+      'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
+    });
+    res.end();
+    return; // Exit after redirecting
   } 
 
   if (environment.universal.preboot && req.method === 'GET' && shouldUseSSR(req.url)) {
