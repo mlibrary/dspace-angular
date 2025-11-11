@@ -294,29 +294,10 @@ function shouldUseSSR(url) {
  */
 function ngApp(req, res) {
 
-  console.log('SSR: Original Request= ' + req.url);
-
-  // If URL contains '/assets/', redirect to Deep Blue Repositories
-  if (req.url.includes('/assets/')) {
-    res.writeHead(302, {
-      'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
-    });
-    res.end();
-    return; // Exit after redirecting
+  const assetsIndex = req.url.indexOf('/assets/');
+  if (assetsIndex !== -1) {
+    req.url = req.url.substring(assetsIndex);
   }
-
-  if (
-    req.url.includes('/discover') ||
-    req.url.includes('/Mirage2') ||
-    req.url.includes('/feed/') ||
-    req.url.includes('/search-filter')
-  ) {
-    res.writeHead(302, {
-      'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
-    });
-    res.end();
-    return; // Exit after redirecting
-  } 
 
   if (environment.universal.preboot && req.method === 'GET' && shouldUseSSR(req.url)) {
     // Only run SSR for matching paths
