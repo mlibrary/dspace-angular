@@ -2,7 +2,7 @@ ui:
   host: 0.0.0.0
 rest:
   ssl: true
-  host: api7.dspace.org
+  host: backend.production.deepblue-documents.lib.umich.edu
   port: 443
   nameSpace: /server
 item:
