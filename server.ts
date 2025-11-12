@@ -76,8 +76,7 @@ const ssrPaths = [
   '/collections/',
   '/communities/',
   '/bitstream/',
-  '/bitstreams/',
-  '/handle/'
+  '/bitstreams/'
 ];
 
 // cache of SSR pages for known bots, only enabled in production mode
