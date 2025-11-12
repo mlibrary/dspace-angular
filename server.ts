@@ -278,6 +278,11 @@ function shouldUseSSR(url) {
     /^\/collections\/[a-f0-9-]{36}\/browse(\/.*)?$/i,
   ];
 
+  // If the URL contains 'handle' anywhere, return false
+  if (/\/handle(\/|$)/i.test(url)) {
+    return false;
+  }
+
   // If the url matches any exclusion, do NOT use SSR
   if (browseBlacklistRegexes.some(regex => regex.test(url))) {
     return false;
