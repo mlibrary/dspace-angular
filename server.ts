@@ -283,6 +283,11 @@ function shouldUseSSR(url) {
     return false;
   }
 
+  // If the URL contains '/2027.42' anywhere, return false
+  if (/\/2027\.42(\/|$)/i.test(url)) {
+    return false;
+  }
+
   // If the url matches any exclusion, do NOT use SSR
   if (browseBlacklistRegexes.some(regex => regex.test(url))) {
     return false;
