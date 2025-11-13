@@ -9,7 +9,7 @@
           'submission.sections.'+sectionData.header | translate
           }}</span>
         <div class="d-inline-block float-right">
-<ng-container *ngIf="sectionData.id === 'identifiers' || sectionData.id === 'cclicense' || sectionData.id === 'license'">
+<ng-container *ngIf="sectionData.id === 'identifiers' || sectionData.id === 'license'">
   <i *ngIf="(sectionRef.isValid() | async) !== true && !(sectionRef.hasErrors()) && !(sectionRef.isInfo())"
      class="fas fa-exclamation-circle text-warning mr-3"
      title="{{'submission.sections.status.warnings.title' | translate}}" role="img"
