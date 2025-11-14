@@ -151,6 +151,7 @@ server.set('trust proxy', true);
   server.engine('html', (_, options, callback) =>
     ngExpressEngine({
       bootstrap: ServerAppModule,
+      inlineCriticalCss: false,
       providers: [
         {
           provide: REQUEST,
