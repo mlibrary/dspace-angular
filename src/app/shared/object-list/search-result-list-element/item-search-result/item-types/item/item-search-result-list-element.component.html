@@ -37,15 +37,15 @@
     <span class="text-muted">
       <ds-truncatable-part [id]="dso.id" [minLines]="1">
  
-        <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0" class="item-list-authors">
-          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length <= 3">
-            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']); let last=last;">
+        <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator']).length > 0" class="item-list-authors">
+          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator']).length <= 3">
+            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator']); let last=last;">
               <span [innerHTML]="author"></span>
               <span *ngIf="!last">; </span>
             </span>
           </span>
-          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 3">
-            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).slice(0,3); let last=last;">
+          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator']).length > 3">
+            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator']).slice(0,3); let last=last;">
               <span [innerHTML]="author"></span>
               <span *ngIf="!last">; </span>
             </span>
