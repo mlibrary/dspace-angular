@@ -20,7 +20,7 @@
             <ng-container *ngFor="let mdEntry of (metadata$ | async) | keyvalue">
               <tr *ngFor="let mdValue of mdEntry.value">
 
-              <div *ngIf="!mdEntry.key.includes('requestcopy') && !mdEntry.key.includes('identifier.other')">
+              <div *ngIf="!mdEntry.key.includes('requestcopy')">
                 <td>{{mdEntry.key}}</td>
                 <td>{{mdValue.value}}</td>
                 <td>{{mdValue.language}}</td>

@@ -392,89 +392,11 @@
 </div>
 
 
-<!-- Dissertation -->
-<div *ngVar="(object.owningCollection | async)?.payload as collection">
-  <div *ngIf="collection?.handle.endsWith('/2027.42/39366')" >
-<!--    {{collection?.handle}} -->
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.title.alternative']"
-       [label]="'Other Titles'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.subject']"
-       [label]="'Subjects'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.publisher']"
-       [label]="'Publisher'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.identifier.citation']"
-       [label]="'Citation'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.relation.ispartofseries']"
-       [label]="'Series/Report no.'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.description']"
-       [label]="'Description'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.identifier.govdoc']"
-       [label]="'Government Doc no.'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.identifier.isbn']"
-       [label]="'ISBN'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.identifier.issn']"
-       [label]="'ISSN'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.identifier.ismn']"
-       [label]="'ISMN'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.identifier']"
-       [label]="'Other Identifiers'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.identifier.pmid']"
-       [label]="'PMID'">
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field [item]="object"
-       [fields]="['dc.type']"
-       [label]="'Types'">
-    </ds-generic-item-page-field>
-
-
-  </div>
-</div>
-
-
-
-
 <!-- Default -->
 
 <div *ngVar="(object.owningCollection | async)?.payload as collection">
   <div *ngIf="!collection?.handle.endsWith('/2027.42/65133') && !collection?.handle.endsWith('/2027.42/35324') &&
-  !collection?.handle.endsWith('/2027.42/13914') &&
-  !collection?.handle.endsWith('/2027.42/39366')" >
+  !collection?.handle.endsWith('/2027.42/13914')" >
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.title.alternative']"
@@ -485,7 +407,6 @@
        [fields]="['dc.identifier.citation']"
        [label]="'Citation'">
     </ds-generic-item-page-field>
-
 
     <ds-generic-item-page-field [item]="object"
        [fields]="['dc.publisher']"
