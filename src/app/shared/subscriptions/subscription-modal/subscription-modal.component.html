@@ -19,7 +19,7 @@
           <input type="hidden" formControlName="subscriptionId" [value]="subscriptionType?.value?.controls['subscriptionId'].value" >
           <div class="form-check" formGroupName="frequencies" *ngFor="let frequency of frequencyDefaultValues">
             <!-- Display only if frequency is 'M' -->
-            <ng-container *ngIf="frequency === 'M'">
+
               <input type="checkbox" 
                      [id]="'checkbox-' + frequency" 
                      class="form-check-input" 
@@ -28,7 +28,7 @@
                      [for]="'checkbox-' + frequency">
                 {{ 'subscriptions.modal.new-subscription-form.frequency.' + frequency | translate }}
               </label>
-            </ng-container>
+
           </div>
         </div>
 
