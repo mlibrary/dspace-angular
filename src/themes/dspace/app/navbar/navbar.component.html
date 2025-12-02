@@ -6,13 +6,6 @@
     <div id="collapsingNav" class="w-100 h-100">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 h-100">
 
-    <li>
-        <div class="nav-item navbar-section-sup-help text-md-center">
-            <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=7Az64AR5TqI_&RequestorType=Service" target="_blank" style="text-decoration: none; color: white;">
-                <span style="text-decoration: underline;">Contact Us</span>&nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-    </li>
 
         <li *ngIf="(isXsOrSm$ | async) && (isAuthenticated$ | async)">
             <ds-user-menu [inExpandableNavbar]="true"></ds-user-menu>
