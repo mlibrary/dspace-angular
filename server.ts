@@ -308,7 +308,7 @@ function ngApp(req, res) {
 
   // If URL contains '/assets/', redirect to Deep Blue Repositories
   if (req.url.includes('/assets/')) {
-    res.writeHead(302, {
+    res.writeHead(404, {
       'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
     });
     res.end();
@@ -322,7 +322,7 @@ function ngApp(req, res) {
     req.url.includes('/feed/') ||
     req.url.includes('/search-filter')
   ) {
-    res.writeHead(302, {
+    res.writeHead(404, {
       'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
     });
     res.end();
