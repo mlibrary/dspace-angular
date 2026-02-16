@@ -19,6 +19,8 @@ npm-debug.log
 *.css.shim.ts
 *.scss.shim.ts
 
+*.backup
+
 .DS_Store
 
 webpack.records.json
