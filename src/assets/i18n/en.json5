@@ -1892,7 +1892,7 @@
 
   "info.feedback.error.message.required": "A comment is required",
 
-  "info.feedback.error.subject.required" : "A subject is required", 
+  "info.feedback.error.subject.required" : "A subject is required",
 
   "info.feedback.page-label": "Page",
 
@@ -3703,18 +3703,18 @@
   "search.filters.filter.author.label": "Search author name",
 
   "search.filters.filter.peerreviewed.placeholder": "PeerReviewed",
- 
+
   "search.filters.filter.peerreviewed.label": "Search PeerReviewed",
- 
+
   "search.filters.filter.identifiersource.placeholder": "Source",
 
   "search.filters.filter.identifiersource.label": "Search Source",
- 
-  "search.filters.filter.hlbtoplevel.placeholder": "Primary Subject",  
- 
+
+  "search.filters.filter.hlbtoplevel.placeholder": "Primary Subject",
+
   "search.filters.filter.hlbtoplevel.label": "Search Primary Subject",
- 
-  "search.filters.filter.hlbsecondlevel.placeholder": "Secondary Subject",  
+
+  "search.filters.filter.hlbsecondlevel.placeholder": "Secondary Subject",
 
   "search.filters.filter.hlbsecondlevel.label": "Search Secondary Subject",
 
@@ -3986,7 +3986,7 @@
 
   "submission.general.discard.confirm.info": "This operation can't be undone. Are you sure?",
 
-  "submission.general.deposit.confirm.info": "Depositing an work locks in the data and files as you’ve entered them, and future changes will require a support request. If you plan to enter additional work information, please cancel Deposit and select Save or Save for Later to store your work as a draft.",  
+  "submission.general.deposit.confirm.info": "Depositing an work locks in the data and files as you’ve entered them, and future changes will require a support request. If you plan to enter additional work information, please cancel Deposit and select Save or Save for Later to store your work as a draft.",
 
   "submission.general.discard.confirm.submit": "Yes, I'm sure",
 
@@ -4422,7 +4422,7 @@
 
   "submission.sections.identifiers.info": "The following identifiers will be created for your work:",
 
-  "submission.sections.identifiers.para": "Note: Identifiers are assigned when drafting a Work, and will publicly resolve once the Work is published. Discarding a Work will cancel its assigned identifiers.",  
+  "submission.sections.identifiers.para": "Note: Identifiers are assigned when drafting a Work, and will publicly resolve once the Work is published. Discarding a Work will cancel its assigned identifiers.",
 
   "submission.sections.identifiers.no_handle": "No handles have been minted for this work.",
 
@@ -4530,7 +4530,7 @@
 
   "submission.sections.upload.header.policy.default.withlist": "Please note that uploaded files in the {{collectionName}} collection will be accessible, in addition to what is explicitly decided for the single file, with the following group(s):",
 
-  "submission.sections.upload.info": "Here you will find all the files currently in the work. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong>",
+  "submission.sections.upload.info": "Here you will find all the files currently in the work. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong><br/>Please note that Deep Blue Documents preserves the content of certain types of files better than others. <a href='https://www.lib.umich.edu/about-us/policies/digital-preservation-policy/registered-formats-and-support-levels'>Learn more about file types/formats and levels of support</a>",
 
   "submission.sections.upload.no-entry": "No",
 
