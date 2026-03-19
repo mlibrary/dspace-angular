@@ -18,7 +18,6 @@ npm-debug.log
 *.ngfactory.ts
 *.css.shim.ts
 *.scss.shim.ts
-
 *.backup
 
 .DS_Store
