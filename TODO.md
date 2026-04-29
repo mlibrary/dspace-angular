@@ -42,7 +42,7 @@ in parallel, and move plan documents into a dedicated `plans/` directory.
       agent can copy when starting a new feature, with sections for: Problem, Chosen
       Solution, Key Files, Truth Table / Example Config, Verification Steps.
 
-- [ ] **A6. Commit all changes** on `clean-up` and open a PR against `umich`.
+- [x] **A6. Commit all changes** on `clean-up` and open a PR against `umich`.
 
 ---
 
