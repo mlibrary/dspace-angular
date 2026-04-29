@@ -49,7 +49,7 @@ describe('BitstreamDataService', () => {
     id: '2',
     shortDescription: 'PNG',
     description: 'Portable Network Graphics',
-    supportLevel: BitstreamFormatSupportLevel.Known
+    supportLevel: BitstreamFormatSupportLevel.AS_IS_KNOWN
   });
   const url = 'fake-bitstream-url';
 

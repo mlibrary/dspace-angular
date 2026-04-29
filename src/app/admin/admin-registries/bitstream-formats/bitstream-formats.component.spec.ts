@@ -41,7 +41,7 @@ describe('BitstreamFormatsComponent', () => {
   bitstreamFormat1.shortDescription = 'Unknown';
   bitstreamFormat1.description = 'Unknown data format';
   bitstreamFormat1.mimetype = 'application/octet-stream';
-  bitstreamFormat1.supportLevel = BitstreamFormatSupportLevel.Unknown;
+  bitstreamFormat1.supportLevel = BitstreamFormatSupportLevel.AS_IS_UNKNOWN;
   bitstreamFormat1.internal = false;
   bitstreamFormat1.extensions = null;
 
@@ -51,7 +51,7 @@ describe('BitstreamFormatsComponent', () => {
   bitstreamFormat2.shortDescription = 'License';
   bitstreamFormat2.description = 'Item-specific license agreed upon to submission';
   bitstreamFormat2.mimetype = 'text/plain; charset=utf-8';
-  bitstreamFormat2.supportLevel = BitstreamFormatSupportLevel.Known;
+  bitstreamFormat2.supportLevel = BitstreamFormatSupportLevel.AS_IS_KNOWN;
   bitstreamFormat2.internal = true;
   bitstreamFormat2.extensions = null;
 
@@ -61,7 +61,7 @@ describe('BitstreamFormatsComponent', () => {
   bitstreamFormat3.shortDescription = 'CC License';
   bitstreamFormat3.description = 'Item-specific Creative Commons license agreed upon to submission';
   bitstreamFormat3.mimetype = 'text/html; charset=utf-8';
-  bitstreamFormat3.supportLevel = BitstreamFormatSupportLevel.Supported;
+  bitstreamFormat3.supportLevel = BitstreamFormatSupportLevel.HIGHEST_LEVEL;
   bitstreamFormat3.internal = true;
   bitstreamFormat3.extensions = null;
 
@@ -71,7 +71,7 @@ describe('BitstreamFormatsComponent', () => {
   bitstreamFormat4.shortDescription = 'Adobe PDF';
   bitstreamFormat4.description = 'Adobe Portable Document Format';
   bitstreamFormat4.mimetype = 'application/pdf';
-  bitstreamFormat4.supportLevel = BitstreamFormatSupportLevel.Unknown;
+  bitstreamFormat4.supportLevel = BitstreamFormatSupportLevel.AS_IS_UNKNOWN;
   bitstreamFormat4.internal = false;
   bitstreamFormat4.extensions = null;
 

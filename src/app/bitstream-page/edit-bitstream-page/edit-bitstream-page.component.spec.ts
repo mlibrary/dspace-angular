@@ -59,7 +59,7 @@ describe('EditBitstreamPageComponent', () => {
         id: '1',
         shortDescription: 'Unknown',
         description: 'Unknown format',
-        supportLevel: BitstreamFormatSupportLevel.Unknown,
+        supportLevel: BitstreamFormatSupportLevel.AS_IS_UNKNOWN,
         mimetype: 'application/octet-stream',
         _links: {
           self: { href: 'format-selflink-1' }
@@ -69,7 +69,7 @@ describe('EditBitstreamPageComponent', () => {
         id: '2',
         shortDescription: 'PNG',
         description: 'Portable Network Graphics',
-        supportLevel: BitstreamFormatSupportLevel.Known,
+        supportLevel: BitstreamFormatSupportLevel.AS_IS_KNOWN,
         mimetype: 'image/png',
         _links: {
           self: { href: 'format-selflink-2' }
@@ -79,7 +79,7 @@ describe('EditBitstreamPageComponent', () => {
         id: '3',
         shortDescription: 'GIF',
         description: 'Graphics Interchange Format',
-        supportLevel: BitstreamFormatSupportLevel.Known,
+        supportLevel: BitstreamFormatSupportLevel.AS_IS_KNOWN,
         mimetype: 'image/gif',
         _links: {
           self: { href: 'format-selflink-3' }

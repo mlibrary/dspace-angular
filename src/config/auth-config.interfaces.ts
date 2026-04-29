@@ -20,4 +20,10 @@ export interface AuthConfig extends Config {
     // This is independent from the idle warning.
     timeLeftBeforeTokenRefresh: number;
   };
+
+  // When true, the username/password login form is rendered and non-password authentication methods are hidden.
+  // Set to false (default) to show non-password authentication methods instead of the password form
+  // (for example OIDC in production/workshop environments).
+  // Set to true for environments where password auth is required and non-password methods should not be shown (demo).
+  showPasswordLogin?: boolean;
 }

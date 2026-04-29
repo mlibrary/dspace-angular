@@ -25,7 +25,7 @@ describe('AddBitstreamFormatComponent', () => {
   bitstreamFormat.shortDescription = 'Unknown';
   bitstreamFormat.description = 'Unknown data format';
   bitstreamFormat.mimetype = 'application/octet-stream';
-  bitstreamFormat.supportLevel = BitstreamFormatSupportLevel.Unknown;
+  bitstreamFormat.supportLevel = BitstreamFormatSupportLevel.AS_IS_UNKNOWN;
   bitstreamFormat.internal = false;
   bitstreamFormat.extensions = null;
 

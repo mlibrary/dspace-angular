@@ -11,6 +11,9 @@ import { AuthService } from '../../core/auth/auth.service';
 import { authMethodsMock, AuthServiceStub } from '../testing/auth-service.stub';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module';
+import { LogInContainerComponent } from './container/log-in-container.component';
+import { LogInPasswordComponent } from './methods/password/log-in-password.component';
+import { LogInExternalProviderComponent } from './methods/log-in-external-provider/log-in-external-provider.component';
 import { NativeWindowMockFactory } from '../mocks/mock-native-window-ref';
 import { ActivatedRouteStub } from '../testing/active-router.stub';
 import { ActivatedRoute } from '@angular/router';
@@ -21,6 +24,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HardRedirectService } from '../../core/services/hard-redirect.service';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { of } from 'rxjs';
+import { APP_CONFIG } from '../../../config/app-config.interface';
+import { environment } from '../../../environments/environment';
 
 describe('LogInComponent', () => {
 
@@ -74,6 +79,7 @@ describe('LogInComponent', () => {
         { provide: ActivatedRoute, useValue: new ActivatedRouteStub() },
         { provide: HardRedirectService, useValue: hardRedirectService },
         { provide: AuthorizationDataService, useValue: authorizationService },
+        { provide: APP_CONFIG, useValue: environment },
         provideMockStore({ initialState }),
         LogInComponent
       ],
@@ -121,11 +127,36 @@ describe('LogInComponent', () => {
       component = null;
     });
 
-    it('should render a log-in container component for each auth method available', () => {
-      const loginContainers = fixture.debugElement.queryAll(By.css('ds-log-in-container'));
-      expect(loginContainers.length).toBe(2);
-
+    it('should render only non-password auth methods when showPasswordLogin is false (default)', () => {
+      const loginContainers = fixture.debugElement.queryAll(By.directive(LogInContainerComponent));
+      // authMethodsMock = [password, shibboleth]. With showPasswordLogin: false (default),
+      // only the shibboleth container renders (exclusive toggle). The outer container count
+      // and the inner rendered method component both confirm which method is shown.
+      expect(loginContainers.length).toBe(1);
+      expect(loginContainers[0].componentInstance.authMethod.authMethodType).toBe('shibboleth');
+      // The external-provider inner component is loaded via ngComponentOutlet for shibboleth.
+      expect(fixture.debugElement.queryAll(By.directive(LogInExternalProviderComponent)).length).toBe(1);
+      expect(fixture.debugElement.queryAll(By.directive(LogInPasswordComponent)).length).toBe(0);
     });
+
+    it('should render only the password auth method when showPasswordLogin is enabled', () => {
+      // TestBed.overrideProvider() cannot be called after the module is instantiated, so we
+      // set the property directly on the component instance instead of going through APP_CONFIG.
+      component.showPasswordLogin = true;
+      fixture.detectChanges(); // re-render LogInComponent; creates the password LogInContainerComponent
+      fixture.detectChanges(); // second cycle allows ngComponentOutlet inside the new container to render LogInPasswordComponent
+
+      const loginContainers = fixture.debugElement.queryAll(By.directive(LogInContainerComponent));
+      // authMethodsMock = [password, shibboleth]. With showPasswordLogin: true,
+      // only the password container renders (exclusive toggle). The outer container count
+      // and the inner rendered method component both confirm which method is shown.
+      expect(loginContainers.length).toBe(1);
+      // The password inner component is loaded via ngComponentOutlet for password.
+      expect(fixture.debugElement.queryAll(By.directive(LogInPasswordComponent)).length).toBe(1);
+      expect(fixture.debugElement.queryAll(By.directive(LogInExternalProviderComponent)).length).toBe(0);
+    });
+
+
   });
 
 });
