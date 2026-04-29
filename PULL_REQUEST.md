@@ -102,7 +102,7 @@ deep-dive, on-host debugging commands, and post-deployment verification steps.
 2. After passing the gate, click **Log In**.
 3. A username/password form appears (no OIDC button). ✅
 4. Log in as `dbrrds@umich.edu`. Confirm login succeeds. ✅
-5. Log out; log in as `tildon@umich.edu` (`BlueDemo2026t`) — confirm persona switching works. ✅
+5. Log out; log in as the alternate demo persona (for example `tildon@umich.edu`) using credentials retrieved from the approved secret manager / restricted ops runbook referenced in `PLAN_DSPACE_ANGULAR_PASSWORD_LOGIN.md` — confirm persona switching works. ✅
 
 For **production/workshop**: login still shows only the OIDC button. No regression. ✅
 
