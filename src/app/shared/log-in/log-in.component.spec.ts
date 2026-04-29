@@ -127,7 +127,7 @@ describe('LogInComponent', () => {
       component = null;
     });
 
-    it('should render a log-in container component for each auth method available', () => {
+    it('should render only non-password auth methods when showPasswordLogin is false (default)', () => {
       const loginContainers = fixture.debugElement.queryAll(By.directive(LogInContainerComponent));
       // authMethodsMock = [password, shibboleth]. With showPasswordLogin: false (default),
       // only the shibboleth container renders (exclusive toggle). The outer container count
