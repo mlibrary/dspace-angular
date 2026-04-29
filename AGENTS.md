@@ -167,11 +167,20 @@ This task is tracked in `TODO.md` item 9. It is performed separately from this r
 4. **After editing each TypeScript file**, run `get_errors` on that file and fix any issues
    before moving on.
 5. **Run the spec** after updating the spec file:
-   `npx ng test --include='**/log-in/log-in.component.spec.ts' --watch=false`
+   `npx ng test --include='**/log-in/log-in.component.spec.ts' --watch=false --configuration test --browsers=ChromeHeadless`
 6. **Commit message convention:**
    `feat: config-driven showPasswordLogin exclusive toggle (DEEPBLUE-466)`
 7. The `config/config.yml` in this repo is **not** the demo config — do not modify it.
    The demo override happens via environment variable in the Kubernetes repo.
 8. Do not remove the `<!--` comment block in `log-in.component.html` (lines 11–15) —
    it is intentionally left commented out.
+9. **Always pass non-interactive flags to CLI tools** so commands never hang waiting for
+   user input. Key flags for this repo:
+   - `git`: use `git --no-pager <command>` (or pipe through `| cat`) for any command that
+     may open a pager (`log`, `diff`, `show`, `blame`, etc.).
+   - `ng test`: always include `--watch=false --browsers=ChromeHeadless` — without
+     `--watch=false` the process never exits; without `--browsers=ChromeHeadless` it
+     tries to launch a visible browser window.
+   - Any other interactive tool (`less`, `man`, `top`, etc.): pipe through `| cat` or
+     pass the equivalent "non-interactive / no-pager" flag before running.
 
