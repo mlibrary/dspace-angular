@@ -16,11 +16,11 @@ in parallel, and move plan documents into a dedicated `plans/` directory.
 
 ### Subtasks (in order)
 
-- [ ] **A1. Create `plans/` directory** — move `PLAN_DSPACE_ANGULAR_PASSWORD_LOGIN.md`
+- [x] **A1. Create `plans/` directory** — move `PLAN_DSPACE_ANGULAR_PASSWORD_LOGIN.md`
       into `plans/` so all per-feature design documents live in one place.
       Update any cross-references inside the file to reflect its new path.
 
-- [ ] **A2. Rewrite `AGENTS.md`** — strip out all `show-password-login`-specific content
+- [x] **A2. Rewrite `AGENTS.md`** — strip out all `show-password-login`-specific content
       and replace with repo-wide guidance:
       - Repository overview (framework, language, conventions).
       - How to find work: read `TODO.md`, read the relevant `plans/` document.
@@ -30,15 +30,15 @@ in parallel, and move plan documents into a dedicated `plans/` directory.
         testing patterns, `By.directive` vs `CUSTOM_ELEMENTS_SCHEMA`).
       - Remove all references to a specific branch, ticket, or feature.
 
-- [ ] **A3. Rewrite `TODO.md`** (this file) — convert to the general format illustrated
+- [x] **A3. Rewrite `TODO.md`** (this file) — convert to the general format illustrated
       here: tasks grouped by work item, each referencing its plan document, no hardcoded
       branch or feature names in the file header.
 
-- [ ] **A4. Rewrite `DONE.md`** — convert to a general archive grouped by work item /
+- [x] **A4. Rewrite `DONE.md`** — convert to a general archive grouped by work item /
       feature, each group headed by the feature name and merged-PR reference rather than
       a flat chronological list tied to `show-password-login`.
 
-- [ ] **A5. Add a `plans/PLAN_TEMPLATE.md`** — a blank plan template that a human or
+- [x] **A5. Add a `plans/PLAN_TEMPLATE.md`** — a blank plan template that a human or
       agent can copy when starting a new feature, with sections for: Problem, Chosen
       Solution, Key Files, Truth Table / Example Config, Verification Steps.
 

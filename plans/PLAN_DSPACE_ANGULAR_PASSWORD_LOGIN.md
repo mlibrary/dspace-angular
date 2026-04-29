@@ -1,7 +1,8 @@
 # Plan: Restore Password Login Form in DSpace Angular (Config-Driven Toggle)
 
 **Repository:** `mlibrary/dspace-angular`
-**Branch:** `show-password-login`
+**Plan file:** `plans/PLAN_DSPACE_ANGULAR_PASSWORD_LOGIN.md`
+**Branch:** `show-password-login` (merged → `umich`)
 **Status:** ✅ Code complete — unit tests passing — pending demo Kubernetes config (Task 9)
 **Approach:** Config-driven `showPasswordLogin` flag so production/workshop behaviour is unchanged
 

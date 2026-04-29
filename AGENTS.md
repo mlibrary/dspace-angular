@@ -1,91 +1,87 @@
-# AGENTS.md — Coding Agent Guidelines for `show-password-login`
+# AGENTS.md — Coding Agent Guidelines for `mlibrary/dspace-angular`
 
 ## Purpose
 
-This file gives a coding agent everything it needs to continue (or complete) the
-`show-password-login` feature branch in `mlibrary/dspace-angular` without needing
-to ask the human for context.
+This file gives a coding agent everything it needs to work in the
+`mlibrary/dspace-angular` repository without needing to ask the human for context.
+It covers repo orientation, how to find and track work, general coding guidelines,
+and reusable codebase patterns.
 
 ---
 
-## Repository & Branch
+## Repository Overview
 
 | Item | Value |
 |---|---|
 | Repo | `mlibrary/dspace-angular` |
-| Active branch | `show-password-login` |
-| Base branch | `umich` / `issue-working` |
+| Primary branch | `umich` |
 | Framework | Angular 14 / DSpace 7.6 |
 | Language | TypeScript + HTML templates |
+| Fork of | `DSpace/dspace-angular` (upstream) |
+
+This is the University of Michigan customisation of the DSpace Angular frontend.
+UM-specific changes live alongside standard DSpace code; prefer touching only the
+files necessary for each task so merging upstream updates stays manageable.
 
 ---
 
-## The Problem Being Solved
+## Finding and Tracking Work
 
-A UM-specific customisation in `src/app/shared/log-in/log-in.component.html` hard-codes
-the password auth method out of the login UI:
-
-```html
-*ngIf="authMethod.authMethodType !== 'password'"
-```
-
-On the **demo** environment, DSpace OIDC is disabled, making `password` the only advertised
-auth method — leaving a completely blank login form. No one can log in to demo.
-
-Full context: read `PLAN_DSPACE_ANGULAR_PASSWORD_LOGIN.md`.
+1. **Read `TODO.md` first.** It lists all active work items in priority order.
+2. **Read the relevant plan document** in `plans/` before touching any code.
+   Each plan has background, rationale, exact code snippets, and verification steps.
+3. **After completing and committing each task**, mark it done in `TODO.md` and add
+   a summary entry to `DONE.md`.
+4. Plan documents follow the naming convention `plans/PLAN_<FEATURE>.md`.
+   Copy `plans/PLAN_TEMPLATE.md` to start a new plan.
 
 ---
 
-## The Chosen Solution
+## Coding Guidelines
 
-A **config-driven exclusive toggle**: a new `showPasswordLogin` boolean in `AuthConfig`.
+1. **Do not change files outside the scope of the current task** unless fixing a
+   compile/lint error directly caused by your own changes.
 
-- `false` (default) → show OIDC/non-password methods only. Production & workshop unchanged.
-- `true` (demo only) → show password form only, hide OIDC.
+2. **After editing each TypeScript file**, run `get_errors` on that file and fix any
+   issues before moving on.
 
-Template condition (exclusive — never both, never none):
-```html
-*ngIf="showPasswordLogin === (authMethod.authMethodType === 'password')"
-```
+3. **Run affected specs** after updating spec files:
+   ```
+   npx ng test --include='**/path/to/component.spec.ts' \
+     --watch=false --configuration test --browsers=ChromeHeadless
+   ```
 
----
+4. **Commit message convention** — use the Angular commit format:
+   ```
+   <type>: <short summary> (<TICKET-ID>)
+   ```
+   Types: `feat`, `fix`, `test`, `docs`, `refactor`, `chore`.
 
-## Work Tracking Files
+5. **Always pass non-interactive flags to CLI tools** so commands never hang:
+   - `git`: use `git --no-pager <command>` (or pipe through `| cat`) for any command
+     that may open a pager (`log`, `diff`, `show`, `blame`, etc.).
+   - `ng test`: always include `--watch=false --browsers=ChromeHeadless`.
+     Without `--watch=false` the process never exits; without `--browsers=ChromeHeadless`
+     it tries to launch a visible browser window.
+   - Any other interactive tool (`less`, `man`, `top`, etc.): pipe through `| cat` or
+     pass the equivalent "non-interactive / no-pager" flag before running.
 
-| File | Purpose |
-|---|---|
-| `TODO.md` | Remaining tasks in priority order — work from top to bottom |
-| `DONE.md` | Completed tasks — move items here when a task is committed |
-| `PLAN_DSPACE_ANGULAR_PASSWORD_LOGIN.md` | Full design rationale and exact code snippets |
-
-**Always check `TODO.md` first** to see what still needs doing.
-**After completing and committing each task**, move it from `TODO.md` to `DONE.md`.
-
----
-
-## Key Files to Know
-
-| File | Role |
-|---|---|
-| `src/config/auth-config.interfaces.ts` | `AuthConfig` interface — add `showPasswordLogin?: boolean` |
-| `src/config/default-app-config.ts` | `DefaultAppConfig` class — set `showPasswordLogin: false` in `auth` block |
-| `src/app/shared/log-in/log-in.component.ts` | Inject `APP_CONFIG`, read flag, expose as `showPasswordLogin` property |
-| `src/app/shared/log-in/log-in.component.html` | Replace `*ngIf` with exclusive-toggle condition |
-| `src/app/shared/log-in/log-in.component.spec.ts` | Unit test — needs `APP_CONFIG` provided and assertion updated to `toBe(1)` |
-| `src/app/shared/testing/auth-service.stub.ts` | `authMethodsMock` = `[password, shibboleth]` — used by the spec |
-| `src/environments/environment.test.ts` | Full `auth:` block used by specs; does NOT have `showPasswordLogin` (omitting it is fine — `undefined ?? false` → `false`) |
-| `config/config.example.yml` | Operator reference — add commented-out `showPasswordLogin` entry in the `auth:` block |
+6. **Do not modify `config/config.yml`** — that file holds local dev overrides and is
+   not committed. Environment-specific runtime config is injected via environment
+   variables in Kubernetes (see plan documents for details).
 
 ---
 
-## How `APP_CONFIG` Is Used in This Codebase
+## Reusable Codebase Patterns
 
-`APP_CONFIG` is an Angular `InjectionToken<AppConfig>` defined in
-`src/config/app-config.interface.ts`. Inject it into a component constructor like this:
+### `APP_CONFIG` Injection Token
+
+`APP_CONFIG` is an `InjectionToken<AppConfig>` defined in
+`src/config/app-config.interface.ts`. Use it to read runtime config in components:
 
 ```typescript
 import { AppConfig, APP_CONFIG } from '../../../config/app-config.interface';
-// Path from src/app/shared/log-in/ → three levels up → src/config/
+// Adjust the relative path depth to match your component's location.
 
 constructor(
   // ...existing params...
@@ -93,11 +89,7 @@ constructor(
 ) {}
 ```
 
-Existing examples to reference:
-- `src/app/community-list-page/community-list-service.ts`
-- `src/app/item-page/edit-item-page/virtual-metadata/virtual-metadata.component.ts`
-
-In test files, provide it as:
+Provide it in tests with:
 ```typescript
 import { APP_CONFIG } from '../../../config/app-config.interface';
 import { environment } from '../../../environments/environment';
@@ -105,82 +97,53 @@ import { environment } from '../../../environments/environment';
 { provide: APP_CONFIG, useValue: environment }
 ```
 
-`environment` (resolves to `environment.test.ts` during tests) has a full `auth:` block
-but no `showPasswordLogin` key. That is fine — the component reads it as
-`appConfig.auth?.showPasswordLogin ?? false`, so `undefined ?? false` → `false`.
-No change to `environment.test.ts` is required.
+Existing injection examples to reference:
+- `src/app/community-list-page/community-list-service.ts`
+- `src/app/item-page/edit-item-page/virtual-metadata/virtual-metadata.component.ts`
+
+### Adding a New Config Flag
+
+1. Add `myFlag?: boolean` to the relevant interface in `src/config/`.
+2. Set the default value in `src/config/default-app-config.ts`.
+3. Document it as a commented-out entry in `config/config.example.yml`.
+4. Read it in the component via `this.appConfig.section?.myFlag ?? defaultValue`.
+
+The config system merges `DSPACE_*` environment variables at startup —
+`DSPACE_AUTH_MYFLAG=true` maps to `auth.myFlag`. The env-var override works even
+when the default is `false` because `isNotEmpty(false) === true`.
+
+### Angular Testing with `CUSTOM_ELEMENTS_SCHEMA`
+
+Many specs declare `CUSTOM_ELEMENTS_SCHEMA` to avoid registering every child component.
+Key consequences:
+
+- `By.css('ds-some-component')` returns elements, but `componentInstance` and
+  `properties['input']` are **not** available — Angular never instantiates the class.
+- `By.directive(SomeComponent)` **does** work when `SomeComponent` is declared (e.g.
+  via `SharedModule`) — it finds real instantiated component objects.
+- To inspect which auth method rendered in `LogInComponent`, query for the inner method
+  component that `ngComponentOutlet` created:
+  ```typescript
+  By.directive(LogInPasswordComponent)           // password path
+  By.directive(LogInExternalProviderComponent)   // OIDC/shibboleth path
+  ```
+
+### `TestBed.overrideProvider()` Limitation
+
+`TestBed.overrideProvider()` throws *"Cannot override provider when the test module has
+already been instantiated"* when called inside an `it()` or `beforeEach()` that runs
+after `TestBed.createComponent()`. Calling `fixture.destroy()` first does **not** reset
+module state.
+
+Alternatives:
+- Set the component property directly: `component.myFlag = true; fixture.detectChanges()`.
+- Put `overrideProvider()` inside `beforeEach()` **before** `compileComponents()`, in a
+  nested `describe` block that has its own `TestBed.configureTestingModule` call.
 
 ---
 
-## Spec File Notes
+## Plans Index
 
-`src/app/shared/log-in/log-in.component.spec.ts` currently has:
-
-```typescript
-it('should render a log-in container component for each auth method available', () => {
-  const loginContainers = fixture.debugElement.queryAll(By.css('ds-log-in-container'));
-  expect(loginContainers.length).toBe(2);  // ← must change to toBe(1)
-});
-```
-
-`authMethodsMock` contains `[password, shibboleth]`. With `showPasswordLogin: false` (default),
-only `shibboleth` renders → `toBe(1)`. The `APP_CONFIG` token must also be added to
-`providers` in `TestBed.configureTestingModule` or the component will fail to construct.
-
----
-
-## `config/config.example.yml` — Operator Documentation
-
-The `auth:` block in `config/config.example.yml` (around line 91–102) must have a
-commented-out `showPasswordLogin` entry added so operators know the option exists:
-
-```yaml
-# When true, show the username/password login form and hide OIDC (exclusive toggle).
-# Set to true only on environments where DSpace OIDC is disabled (e.g. demo).
-# Default: false (OIDC button shown, password form hidden — production/workshop behaviour).
-# Can also be set via environment variable: DSPACE_AUTH_SHOWPASSWORDLOGIN=true
-# showPasswordLogin: false
-```
-
----
-
-## Config Override for Demo (Out-of-Band)
-
-The demo Kubernetes frontend Deployment/ConfigMap (in `mlibrary/deepblue-documents-kube`,
-**not** this repo) must set:
-
-```
-DSPACE_AUTH_SHOWPASSWORDLOGIN=true
-```
-
-This task is tracked in `TODO.md` item 9. It is performed separately from this repo's code changes.
-
----
-
-## Coding Guidelines
-
-1. **Read `TODO.md` first.** Work tasks in the listed order (they have dependencies).
-2. **After completing and committing each task**, update `TODO.md` (mark done / remove) and
-   add the task to `DONE.md`.
-3. **Do not change any file not listed in `TODO.md`** unless fixing a compile/lint error
-   directly caused by your changes.
-4. **After editing each TypeScript file**, run `get_errors` on that file and fix any issues
-   before moving on.
-5. **Run the spec** after updating the spec file:
-   `npx ng test --include='**/log-in/log-in.component.spec.ts' --watch=false --configuration test --browsers=ChromeHeadless`
-6. **Commit message convention:**
-   `feat: config-driven showPasswordLogin exclusive toggle (DEEPBLUE-466)`
-7. The `config/config.yml` in this repo is **not** the demo config — do not modify it.
-   The demo override happens via environment variable in the Kubernetes repo.
-8. Do not remove the `<!--` comment block in `log-in.component.html` (lines 11–15) —
-   it is intentionally left commented out.
-9. **Always pass non-interactive flags to CLI tools** so commands never hang waiting for
-   user input. Key flags for this repo:
-   - `git`: use `git --no-pager <command>` (or pipe through `| cat`) for any command that
-     may open a pager (`log`, `diff`, `show`, `blame`, etc.).
-   - `ng test`: always include `--watch=false --browsers=ChromeHeadless` — without
-     `--watch=false` the process never exits; without `--browsers=ChromeHeadless` it
-     tries to launch a visible browser window.
-   - Any other interactive tool (`less`, `man`, `top`, etc.): pipe through `| cat` or
-     pass the equivalent "non-interactive / no-pager" flag before running.
-
+| Plan file | Feature | Status |
+|---|---|---|
+| `plans/PLAN_DSPACE_ANGULAR_PASSWORD_LOGIN.md` | Config-driven `showPasswordLogin` toggle | ✅ Merged (PR #94) |
