@@ -84,3 +84,42 @@ prevented `ng test` from starting. These were fixed to unblock test verification
 ✔ should create LogInComponent
 TOTAL: 2 SUCCESS
 ```
+
+---
+
+## ✅ Task 8: Spec strengthened — assertions prove which auth method renders
+
+Reviewing-agent feedback requested stronger assertions that prove the exclusive toggle
+switches **which** auth method is shown, not just that count === 1.
+
+### Approach
+`LogInContainerComponent` uses `ngComponentOutlet` to dynamically render the inner
+method component. The inner component type uniquely identifies which auth method rendered:
+- `shibboleth` → renders `LogInExternalProviderComponent`
+- `password`   → renders `LogInPasswordComponent`
+
+`By.directive(InnerComponent)` finds real Angular instances regardless of
+`CUSTOM_ELEMENTS_SCHEMA`, so it reliably identifies which method was rendered.
+
+### Changes made
+- **Test 1** (`showPasswordLogin: false` / default): added
+  `expect(loginContainers[0].componentInstance.authMethod.authMethodType).toBe('shibboleth')`,
+  `By.directive(LogInExternalProviderComponent).length === 1`, and
+  `By.directive(LogInPasswordComponent).length === 0`.
+- **Test 2** (new — `showPasswordLogin: true`): sets `component.showPasswordLogin = true`,
+  double `detectChanges()`, asserts container count === 1,
+  `By.directive(LogInPasswordComponent).length === 1`, and
+  `By.directive(LogInExternalProviderComponent).length === 0`.
+- **Removed** a duplicate/broken third `it` block that used
+  `By.css('ds-log-in-container')[0].properties['authMethod']` — Angular does not
+  serialize object bindings to DOM properties under `CUSTOM_ELEMENTS_SCHEMA`,
+  so `properties['authMethod']` was always `undefined`.
+
+**Test result:** ✅ 3 specs, 0 failures
+```
+✔ should create LogInComponent
+✔ should render a log-in container component for each auth method available
+✔ should render only the password auth method when showPasswordLogin is enabled
+TOTAL: 3 SUCCESS
+```
+

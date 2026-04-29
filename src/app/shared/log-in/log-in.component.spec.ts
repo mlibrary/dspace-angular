@@ -11,6 +11,9 @@ import { AuthService } from '../../core/auth/auth.service';
 import { authMethodsMock, AuthServiceStub } from '../testing/auth-service.stub';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared.module';
+import { LogInContainerComponent } from './container/log-in-container.component';
+import { LogInPasswordComponent } from './methods/password/log-in-password.component';
+import { LogInExternalProviderComponent } from './methods/log-in-external-provider/log-in-external-provider.component';
 import { NativeWindowMockFactory } from '../mocks/mock-native-window-ref';
 import { ActivatedRouteStub } from '../testing/active-router.stub';
 import { ActivatedRoute } from '@angular/router';
@@ -125,22 +128,33 @@ describe('LogInComponent', () => {
     });
 
     it('should render a log-in container component for each auth method available', () => {
-      const loginContainers = fixture.debugElement.queryAll(By.css('ds-log-in-container'));
+      const loginContainers = fixture.debugElement.queryAll(By.directive(LogInContainerComponent));
       // authMethodsMock = [password, shibboleth]. With showPasswordLogin: false (default),
-      // only shibboleth renders (exclusive toggle).
+      // only the shibboleth container renders (exclusive toggle). The outer container count
+      // and the inner rendered method component both confirm which method is shown.
       expect(loginContainers.length).toBe(1);
-
+      expect(loginContainers[0].componentInstance.authMethod.authMethodType).toBe('shibboleth');
+      // The external-provider inner component is loaded via ngComponentOutlet for shibboleth.
+      expect(fixture.debugElement.queryAll(By.directive(LogInExternalProviderComponent)).length).toBe(1);
+      expect(fixture.debugElement.queryAll(By.directive(LogInPasswordComponent)).length).toBe(0);
     });
 
     it('should render only the password auth method when showPasswordLogin is enabled', () => {
       component.showPasswordLogin = true;
-      fixture.detectChanges();
+      fixture.detectChanges(); // re-render LogInComponent; creates the password LogInContainerComponent
+      fixture.detectChanges(); // second cycle allows ngComponentOutlet inside the new container to render LogInPasswordComponent
 
-      const loginContainers = fixture.debugElement.queryAll(By.css('ds-log-in-container'));
+      const loginContainers = fixture.debugElement.queryAll(By.directive(LogInContainerComponent));
       // authMethodsMock = [password, shibboleth]. With showPasswordLogin: true,
-      // only password renders (exclusive toggle).
+      // only the password container renders (exclusive toggle). The outer container count
+      // and the inner rendered method component both confirm which method is shown.
       expect(loginContainers.length).toBe(1);
+      // The password inner component is loaded via ngComponentOutlet for password.
+      expect(fixture.debugElement.queryAll(By.directive(LogInPasswordComponent)).length).toBe(1);
+      expect(fixture.debugElement.queryAll(By.directive(LogInExternalProviderComponent)).length).toBe(0);
     });
+
+
   });
 
 });
