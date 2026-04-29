@@ -87,6 +87,7 @@ describe('ItemWithdrawComponent', () => {
   describe('performAction', () => {
     it('should call setWithdrawn function from the ItemDataService', () => {
       spyOn(comp, 'processRestResponse');
+      spyOn(document, 'getElementById').and.returnValue({ value: 'test-withdraw-reason' } as HTMLElement);
       comp.performAction();
 
       expect(mockItemDataService.setWithDrawn).toHaveBeenCalledWith(mockItem, true, jasmine.any(String));

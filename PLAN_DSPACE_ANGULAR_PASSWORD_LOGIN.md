@@ -264,29 +264,15 @@ Confirm production and workshop frontend ConfigMaps do **not** set this variable
 1. Navigate to `https://demo.deepblue-documents.lib.umich.edu` — U-M WebLogin gate challenges.
 2. After passing the gate, click **Log In** in the navbar dropdown.
 3. A username/password form should now appear (no OIDC button).
-4. Log in as `dbrrds@umich.edu` (demo DSpace admin — see `DSPACE_ADMIN.md` in kube repo for password).
+4. Log in using the designated demo DSpace credentials from the restricted-access operations runbook or secret manager reference.
 5. Confirm login succeeds and user appears as logged in within the DSpace UI.
-6. Log out, log in as `tildon@umich.edu` (password `BlueDemo2026t`) to confirm persona switching.
+6. Log out, then log in using a second designated demo test account from the same restricted-access source to confirm persona switching.
 
 For workshop/production: login dropdown still shows **only** the OIDC button. No password form. ✅
 
 ---
 
-## Demo Test Accounts (as of 2026-04-29)
+## Demo Test Accounts
 
-| Email | Name | Password |
-|---|---|---|
-| `dbrrds@umich.edu` | Admin, Admin | Reset during DEEPBLUE-466 — see `DSPACE_ADMIN.md` |
-| `tildon@umich.edu` | Smith, Duey | `BlueDemo2026t` (temp — should be changed) |
-| `pacerda@umich.edu` | Cerda, Peter | Needs reset via TTY (may be OIDC-only account) |
-| `blancoj@umich.edu` | blanco, jose | No password set |
-| `user1@umich.edu` | Usser one | No password set |
-| `user2@umich.edu` | User Two | No password set |
-| `user3@umich.edu` | user three | No password set |
-
-Accounts without passwords can be set via:
-```shell
-kubectl config use-context deepblue-documents-workshop
-kubectl -n demo exec deploy/backend -- \
-  /dspace/bin/dspace user --modify --email <email> --password <new-password>
-```
+Demo account identifiers, password values, and password-reset procedures must not be stored in this repository.
+Refer to the restricted-access operations runbook / secret manager for current demo credentials and account handling instructions.

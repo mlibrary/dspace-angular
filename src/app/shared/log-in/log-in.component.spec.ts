@@ -131,6 +131,31 @@ describe('LogInComponent', () => {
       expect(loginContainers.length).toBe(1);
 
     });
+
+    it('should render only the password auth method when showPasswordLogin is enabled', () => {
+      const passwordAuthMethod = authMethodsMock.find((method) => method.authMethodType === 'password');
+      const nonPasswordAuthMethod = authMethodsMock.find((method) => method.authMethodType !== 'password');
+
+      TestBed.overrideProvider(APP_CONFIG, {
+        useValue: {
+          ...environment,
+          auth: {
+            ...environment.auth,
+            showPasswordLogin: true
+          }
+        }
+      });
+
+      const passwordFixture = TestBed.createComponent(LogInComponent);
+      passwordFixture.detectChanges();
+
+      const loginContainers = passwordFixture.debugElement.queryAll(By.css('ds-log-in-container'));
+      expect(loginContainers.length).toBe(1);
+      expect(loginContainers[0].componentInstance.authMethod).toEqual(passwordAuthMethod);
+      expect(loginContainers[0].componentInstance.authMethod).not.toEqual(nonPasswordAuthMethod);
+
+      passwordFixture.destroy();
+    });
   });
 
 });
