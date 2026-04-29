@@ -100,9 +100,9 @@ auth:
     # If the rest token expires in less than this amount of time, it will be refreshed automatically.
     # This is independent from the idle warning.
     timeLeftBeforeTokenRefresh: 120000 # 2 minutes
-  # When true, show the username/password login form and hide OIDC (exclusive toggle).
-  # Set to true only on environments where DSpace OIDC is disabled (e.g. demo).
-  # Default: false (OIDC button shown, password form hidden — production/workshop behaviour).
+  # When true, show only the username/password login form and hide all non-password authentication methods.
+  # Set to true only in environments where password login should be the only login option (e.g. demo).
+  # Default: false (non-password authentication methods such as OIDC/LDAP/X509 remain available, password form hidden).
   # Can also be set via environment variable: DSPACE_AUTH_SHOWPASSWORDLOGIN=true
   # showPasswordLogin: false
 

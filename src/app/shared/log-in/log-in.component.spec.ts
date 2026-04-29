@@ -140,8 +140,20 @@ describe('LogInComponent', () => {
     });
 
     it('should render only the password auth method when showPasswordLogin is enabled', () => {
-      component.showPasswordLogin = true;
-      fixture.detectChanges(); // re-render LogInComponent; creates the password LogInContainerComponent
+      fixture.destroy();
+      TestBed.overrideProvider(APP_CONFIG, {
+        useValue: {
+          ...environment,
+          auth: {
+            ...environment.auth,
+            showPasswordLogin: true,
+          },
+        },
+      });
+
+      fixture = TestBed.createComponent(LogInComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges(); // initialize LogInComponent from APP_CONFIG and create the password LogInContainerComponent
       fixture.detectChanges(); // second cycle allows ngComponentOutlet inside the new container to render LogInPasswordComponent
 
       const loginContainers = fixture.debugElement.queryAll(By.directive(LogInContainerComponent));
