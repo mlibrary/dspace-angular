@@ -20,4 +20,9 @@ export interface AuthConfig extends Config {
     // This is independent from the idle warning.
     timeLeftBeforeTokenRefresh: number;
   };
+
+  // When true, the username/password login form is rendered and OIDC is hidden (exclusive toggle).
+  // Set to false (default) to show only OIDC/non-password methods (production/workshop behaviour).
+  // Set to true for environments where DSpace OIDC is disabled and password auth is required (demo).
+  showPasswordLogin?: boolean;
 }

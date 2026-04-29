@@ -21,6 +21,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HardRedirectService } from '../../core/services/hard-redirect.service';
 import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
 import { of } from 'rxjs';
+import { APP_CONFIG } from '../../../config/app-config.interface';
+import { environment } from '../../../environments/environment';
 
 describe('LogInComponent', () => {
 
@@ -74,6 +76,7 @@ describe('LogInComponent', () => {
         { provide: ActivatedRoute, useValue: new ActivatedRouteStub() },
         { provide: HardRedirectService, useValue: hardRedirectService },
         { provide: AuthorizationDataService, useValue: authorizationService },
+        { provide: APP_CONFIG, useValue: environment },
         provideMockStore({ initialState }),
         LogInComponent
       ],
@@ -123,7 +126,9 @@ describe('LogInComponent', () => {
 
     it('should render a log-in container component for each auth method available', () => {
       const loginContainers = fixture.debugElement.queryAll(By.css('ds-log-in-container'));
-      expect(loginContainers.length).toBe(2);
+      // authMethodsMock = [password, shibboleth]. With showPasswordLogin: false (default),
+      // only shibboleth renders (exclusive toggle).
+      expect(loginContainers.length).toBe(1);
 
     });
   });
