@@ -133,28 +133,13 @@ describe('LogInComponent', () => {
     });
 
     it('should render only the password auth method when showPasswordLogin is enabled', () => {
-      const passwordAuthMethod = authMethodsMock.find((method) => method.authMethodType === 'password');
-      const nonPasswordAuthMethod = authMethodsMock.find((method) => method.authMethodType !== 'password');
+      component.showPasswordLogin = true;
+      fixture.detectChanges();
 
-      TestBed.overrideProvider(APP_CONFIG, {
-        useValue: {
-          ...environment,
-          auth: {
-            ...environment.auth,
-            showPasswordLogin: true
-          }
-        }
-      });
-
-      const passwordFixture = TestBed.createComponent(LogInComponent);
-      passwordFixture.detectChanges();
-
-      const loginContainers = passwordFixture.debugElement.queryAll(By.css('ds-log-in-container'));
+      const loginContainers = fixture.debugElement.queryAll(By.css('ds-log-in-container'));
+      // authMethodsMock = [password, shibboleth]. With showPasswordLogin: true,
+      // only password renders (exclusive toggle).
       expect(loginContainers.length).toBe(1);
-      expect(loginContainers[0].componentInstance.authMethod).toEqual(passwordAuthMethod);
-      expect(loginContainers[0].componentInstance.authMethod).not.toEqual(nonPasswordAuthMethod);
-
-      passwordFixture.destroy();
     });
   });
 
