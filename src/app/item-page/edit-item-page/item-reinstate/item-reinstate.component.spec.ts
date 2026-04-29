@@ -91,7 +91,7 @@ describe('ItemReinstateComponent', () => {
       spyOn(comp, 'processRestResponse');
       comp.performAction();
 
-      expect(mockItemDataService.setWithDrawn).toHaveBeenCalledWith(comp.item, false);
+      expect(mockItemDataService.setWithDrawn).toHaveBeenCalledWith(comp.item, false, jasmine.any(String));
       expect(comp.processRestResponse).toHaveBeenCalled();
     });
   });

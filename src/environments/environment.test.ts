@@ -6,6 +6,8 @@ import { NotificationAnimationsType } from '../app/shared/notifications/models/n
 export const environment: BuildConfig = {
   production: false,
 
+  serverLocation: 'http://localhost:8080/server',
+
   // Angular Universal settings
   universal: {
     preboot: true,

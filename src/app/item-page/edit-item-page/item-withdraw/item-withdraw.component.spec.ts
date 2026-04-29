@@ -89,7 +89,7 @@ describe('ItemWithdrawComponent', () => {
       spyOn(comp, 'processRestResponse');
       comp.performAction();
 
-      expect(mockItemDataService.setWithDrawn).toHaveBeenCalledWith(mockItem, true);
+      expect(mockItemDataService.setWithDrawn).toHaveBeenCalledWith(mockItem, true, jasmine.any(String));
       expect(comp.processRestResponse).toHaveBeenCalled();
     });
   });
