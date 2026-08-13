@@ -19,16 +19,13 @@ This project uses [Mise](https://mise.jdx.dev/) to manage tool versions (Node.js
     ```
     This will install the versions of Node.js and Yarn specified in `.mise.toml` (Node 18 and Yarn 1). Note: `mise trust` isn't necessary in this project since there are no external entities to trust but is a good habit to form when using Mise.
 
-2.  **Configure WebStorm to use Mise**:
+
+2.  **Configure WebStorm to use Mise**: 
     To ensure WebStorm uses the Mise-managed versions of Node.js and Yarn:
-    -   **Node.js Interpreter**:
-        1.  Open `Settings` (macOS: `⌘,`, Windows/Linux: `Ctrl+Alt+S`).
-        2.  Navigate to `Languages & Frameworks > Node.js`.
-        3.  Click the `...` next to **Node interpreter** and select **Add...**.
-        4.  Provide the path to the Node binary managed by Mise. You can find this path by running `mise where node` in your terminal (e.g., `~/.local/share/mise/installs/node/18/bin/node`).
-    -   **Yarn Package Manager**:
-        1.  In the same `Node.js` settings page, under **Package manager**, select the path to the Yarn executable managed by Mise.
-        2.  Find the path by running `mise where yarn` (e.g., `~/.local/share/mise/installs/yarn/1/bin/yarn`).
+    1.  Open `Settings` (macOS: `⌘,`, Windows/Linux: `Ctrl+Alt+S`).
+    2.  Navigate to `Languages & Frameworks > JavaScript Runtime`. 
+    3.  **Package manager:** Provide the path to the Yarn binary managed by Mise. You can find this path by running `mise where yarn` in your terminal.
+    4.  **Node runtime:** Provide the path to the Node binary managed by Mise. You can find this path by running `mise where node` in your terminal.
 
 ## 2. Project Configuration
 
