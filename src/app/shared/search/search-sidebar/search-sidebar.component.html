@@ -8,22 +8,27 @@
         </button>
     </div>
     <div id="search-sidebar-content">
+<!-- Remove the list and thumbnail mode toggle        
         <ds-view-mode-switch *ngIf="showViewModes" class="d-none d-md-block"
                              [viewModeList]="viewModeList"
                              (changeViewMode)="changeViewMode.emit($event)"></ds-view-mode-switch>
+-->
         <div class="sidebar-content">
+	    <!-- Move setting search box to the top -->
+            <ds-themed-search-settings [currentSortOption]="currentSortOption"
+                                       [sortOptionsList]="sortOptionsList"></ds-themed-search-settings>
+<!-- not showing this on my deposit page
             <ds-search-switch-configuration *ngIf="configurationList"
                                             [configurationList]="configurationList"
                                             [defaultConfiguration]="configuration"
                                             [inPlaceSearch]="inPlaceSearch"
                                             (changeConfiguration)="changeConfiguration.emit($event)"></ds-search-switch-configuration>
+-->
             <ds-themed-search-filters [currentScope]="currentScope"
                                [currentConfiguration]="configuration"
                                [filters]="filters"
                                [refreshFilters]="refreshFilters"
                                [inPlaceSearch]="inPlaceSearch"></ds-themed-search-filters>
-            <ds-themed-search-settings [currentSortOption]="currentSortOption"
-                                       [sortOptionsList]="sortOptionsList"></ds-themed-search-settings>
         </div>
     </div>
 </div>

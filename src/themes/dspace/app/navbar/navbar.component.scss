@@ -1,17 +1,20 @@
 nav.navbar {
-  border-top: 1px var(--ds-header-navbar-border-top-color) solid;
-  border-bottom: 5px var(--ds-header-navbar-border-bottom-color) solid;
+
   align-items: baseline;
 }
+
+.navbar-section-sup-help {
+  display: flex;
+  align-items: center;
+  height: 100%;
+} 
 
 /** Mobile menu styling **/
 @media screen and (max-width: map-get($grid-breakpoints, md)-0.02) {
   .navbar {
-    width: 100%;
-    background-color: var(--bs-white);
-    position: absolute;
-    overflow: hidden;
-    height: 0;
+    width: 100%; 
+    overflow: hidden; 
+    height: auto !important;
     &.open {
       height: 100vh; //doesn't matter because wrapper is sticky
     }
@@ -34,7 +37,7 @@ nav.navbar {
         display: none;
       }
       .navbar-collapsed {
-        display: none;
+        /* display: none;   This is so that the Login shows up when the page is made smaller */
       }
     }
     padding: 0;
@@ -49,8 +52,8 @@ a.navbar-brand img {
 .navbar-nav {
   ::ng-deep a.nav-link {
     color: var(--ds-navbar-link-color);
-  }
-  ::ng-deep a.nav-link:hover {
-    color: var(--ds-navbar-link-color-hover);
+    &:hover, &:focus {
+      color: var(--ds-navbar-link-color-hover);
+    }
   }
 }

@@ -6,7 +6,7 @@
             [attr.data-test]="'discard' | dsBrowserOnly"
             class="btn btn-danger"
             [disabled]="(processingSaveStatus | async) || (processingDepositStatus | async)"
-            (click)="$event.preventDefault();confirmDiscard(content)">
+            (click)="$event.preventDefault();confirmDiscard(discardcontent)">
       <i class="fas fa-trash"></i> {{'submission.general.discard.submit' | translate}}
     </button>
   </div>
@@ -45,17 +45,16 @@
       <button *ngIf="(showDepositAndDiscard | async)"
               type="button"
               id="deposit"
-              [attr.data-test]="'deposit' | dsBrowserOnly"
-              class="btn btn-success"
+              class="btn btn-info"
               [disabled]="(processingSaveStatus | async) || (processingDepositStatus | async)"
-              (click)="deposit($event)">
-        <span><i class="fas fa-plus"></i> {{'submission.general.deposit' | translate}}</span>
+              (click)="$event.preventDefault();confirmDeposit(depositcontent)">
+        <span>{{'submission.general.deposit' | translate}}</span>
       </button>
     </div>
   </div>
 </div>
 
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #discardcontent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title text-danger">{{'submission.general.discard.confirm.title' | translate}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="d('cancel')">
@@ -70,3 +69,21 @@
     <button type="button" id="discard_submit" class="btn btn-danger" (click)="c('ok')">{{'submission.general.discard.confirm.submit' | translate}}</button>
   </div>
 </ng-template>
+
+<ng-template #depositcontent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title text-info">{{'submission.general.deposit.confirm.title' | translate}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('cancel')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{'submission.general.deposit.confirm.info' | translate}}</p>
+  </div>
+  <div class="modal-footer space-children-mr">
+    <button type="button" id="deposit_cancel" class="btn btn-danger" (click)="c('cancel')">{{'submission.general.discard.confirm.cancel' | translate}}</button>
+    <button type="button" id="deposit_submit" class="btn btn-info" (click)="c('ok')"
+        [attr.data-test]="'deposit' | dsBrowserOnly">        <span>{{'submission.general.deposit' | translate}}</span></button>
+  </div>
+</ng-template>
+

@@ -1,7 +1,9 @@
 <div class="row">
+<!-- Don't show thumbnail on search result page.  UM Change.
   <div *ngIf="showThumbnails" class="col-3 col-md-2">
     <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
        [routerLink]="[itemPageRoute]" class="dont-break-out">
+      
     <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
     </ds-thumbnail>
     </a>
@@ -10,37 +12,59 @@
     </ds-thumbnail>
     </span>
   </div>
-  <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
-    <div class="d-flex">
-      <ds-themed-badges *ngIf="showLabel" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-themed-badges>
+-->
+
+<div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
+  <!-- This just takes of space.  Not necessary.
+  <div class="d-flex">
+    <ds-themed-badges *ngIf="showLabel" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-themed-badges>
+  </div>
+  -->
+
+  <ds-truncatable [id]="dso.id" *ngIf="object !== undefined && object !== null">
+    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
+    [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
+    [innerHTML]="dsoTitle"></a>
+    <h3 *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
+    [innerHTML]="dsoTitle"></h3>
+
+    <div>
+      <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date.issued')">
+        (<span *ngIf="dso.firstMetadataValue('dc.date.issued')" class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.issued')"></span>)
+      </ng-container>
     </div>
 
-    <ds-truncatable [id]="dso.id" *ngIf="object !== undefined && object !== null">
-      <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType == linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-         [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
-         [innerHTML]="dsoTitle"></a>
-      <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
-            [innerHTML]="dsoTitle"></span>
-      <span class="text-muted">
-        <ds-truncatable-part [id]="dso.id" [minLines]="1">
-          <ng-container *ngIf="dso.firstMetadataValue('dc.publisher') || dso.firstMetadataValue('dc.date.issued')">
-            (<span *ngIf="dso.firstMetadataValue('dc.publisher')" class="item-list-publisher" [innerHTML]="firstMetadataValue('dc.publisher')"></span>
-            <span *ngIf="dso.firstMetadataValue('dc.publisher') && dso.firstMetadataValue('dc.date.issued')">, </span>
-          <span *ngIf="dso.firstMetadataValue('dc.date.issued')" class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.issued')"></span>)
-          </ng-container>
-          <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']).length > 0" class="item-list-authors">
-            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']); let last=last;">
-                <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
-                <span *ngIf="!last">; </span>
+    <span class="text-muted">
+      <ds-truncatable-part [id]="dso.id" [minLines]="1">
+ 
+        <span *ngIf="dso.allMetadata(['dc.contributor.author', 'dc.creator']).length > 0" class="item-list-authors">
+          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator']).length <= 3">
+            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator']); let last=last;">
+              <span [innerHTML]="author"></span>
+              <span *ngIf="!last">; </span>
             </span>
           </span>
-        </ds-truncatable-part>
-      </span>
+          <span *ngIf="allMetadataValues(['dc.contributor.author', 'dc.creator']).length > 3">
+            <span *ngFor="let author of allMetadataValues(['dc.contributor.author', 'dc.creator']).slice(0,3); let last=last;">
+              <span [innerHTML]="author"></span>
+              <span *ngIf="!last">; </span>
+            </span>
+            <span>; et. al.</span>
+          </span>
+        </span>
+
+      </ds-truncatable-part>
+    </span>
+
+    <ds-listfiles [item]="dso"></ds-listfiles>
+
+<!-- No need for abstract in search result page
       <div *ngIf="dso.firstMetadataValue('dc.description.abstract')" class="item-list-abstract">
         <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
           [innerHTML]="firstMetadataValue('dc.description.abstract')"></span>
         </ds-truncatable-part>
       </div>
-    </ds-truncatable>
-  </div>
+    -->
+  </ds-truncatable>
+</div>
 </div>

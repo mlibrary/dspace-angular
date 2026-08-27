@@ -2,6 +2,21 @@
   <ds-my-dspace-new-submission *dsShowOnlyForRole="[roleTypeEnum.Submitter]"></ds-my-dspace-new-submission>
 </div>
 
+<div id="aspect_submission_Submissions_div_subscribe-to-stats" class="container ng-tns-c141-24">
+  <p class="ds-paragraph">
+    <label for="subscribeCheckbox" style="color: white; white: flex; align-items: center;">
+      <input 
+        type="checkbox"
+        id="subscribeCheckbox"
+        (change)="toggleSubscription()"
+        [checked]="subscribeStats"
+        style="margin-right: 10px;"
+      />
+      <span style="color: black;">Send Monthly Statistics On My Deposits</span>
+    </label>
+  </p>
+</div>
+
 <ds-themed-search *ngIf="configuration && context"
            [configuration]="configuration"
            [configurationList]="(configurationList$ | async)"

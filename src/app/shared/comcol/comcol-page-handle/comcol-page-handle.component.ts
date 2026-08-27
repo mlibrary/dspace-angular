@@ -20,6 +20,19 @@ export class ComcolPageHandleComponent {
   @Input() content: string;
 
   public getHandle(): string {
+
+    // I had to put this in before I could find where the handle
+    // value was coming from.
+
+    const prefix = 'https://hdl.handle.net/';
+    const handleIndex = this.content.lastIndexOf('handle/');
+
+    if (!this.content.startsWith(prefix) && handleIndex !== -1) {
+       this.content = prefix + this.content.substring(handleIndex + 'handle/'.length);
+    }
+
+    // Now return the modified content
     return this.content;
+
   }
 }

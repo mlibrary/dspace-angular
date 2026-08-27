@@ -9,29 +9,56 @@
   </div>
 </div>
 
+
+<div itemscope="" itemtype="https://schema.org/CreativeWork">
 <div class="d-flex flex-row">
-  <ds-themed-item-page-title-field [item]="object" class="mr-auto">
-  </ds-themed-item-page-title-field>
+  <span itemprop="name">
+    <ds-themed-item-page-title-field [item]="object" class="mr-auto">
+    </ds-themed-item-page-title-field>
+  </span>
+
+  <!--
+  <div ng-if="(isAdmin$|async)">
+  -->
   <ds-dso-edit-menu></ds-dso-edit-menu>
+
 </div>
+
+
 <div class="row">
   <div class="col-xs-12 col-md-4">
+    <!-- So the thumbnail is not diplayed.
     <ng-container *ngIf="!(mediaViewer.image || mediaViewer.video)">
       <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
         <ds-themed-thumbnail [thumbnail]="object?.thumbnail | async"></ds-themed-thumbnail>
       </ds-metadata-field-wrapper>
     </ng-container>
+    -->
+
     <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
       <ds-themed-media-viewer [item]="object"></ds-themed-media-viewer>
     </div>
+
+    <span itemprop="author">
+      <ds-themed-metadata-representation-list class="ds-item-page-mixed-author-field"
+        [parentItem]="object"
+        [itemType]="'Person'"
+        [metadataFields]="['dc.contributor.author', 'dc.creator']"
+        [label]="'relationships.isAuthorOf' | translate">
+      </ds-themed-metadata-representation-list>
+    </span>
+
+    <span itemprop="datePublished">
+      <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+    </span>
+
     <ds-themed-item-page-file-section [item]="object"></ds-themed-item-page-file-section>
-    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
-    <ds-themed-metadata-representation-list class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.author', 'dc.creator']"
-      [label]="'relationships.isAuthorOf' | translate">
-    </ds-themed-metadata-representation-list>
+
+
+    <ds-item-page-metrics-field [item]="object"></ds-item-page-metrics-field>
+    <ds-item-page-metrics-dimensions-field [item]="object"></ds-item-page-metrics-dimensions-field>
+
+<!-- Don't display Publisher on left side of short item of item page
     <ds-generic-item-page-field [item]="object"
       [fields]="['journal.title']"
       [label]="'item.page.journal-title'">
@@ -48,13 +75,423 @@
       [fields]="['dc.publisher']"
       [label]="'item.page.publisher'">
     </ds-generic-item-page-field>
+-->
   </div>
-  <div class="col-xs-12 col-md-6">
-    <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
+  <div class="col-xs-12 col-md-8">
+  <div *ngIf="object.hasMetadata('dc.description.abstract')" [id]="object.id">
+  <ds-truncatable [id]="object.id">
+        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Abstract</h2>
+        <ds-truncatable-part [id]="object.id" [minLines]="3" class="item-list-abstract">
+        <span [ngClass]="{'text-muted': !object.firstMetadataValue('dc.description.abstract')}"
+              [innerHTML]="(object.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)"></span>
+        </ds-truncatable-part>
+  </ds-truncatable>
+ </div>
+
+    <span *ngIf="object.allMetadata(['dc.identifier.uri']).length > 0" >
+      <span itemprop="url">
+        <span *ngFor="let uri of object.allMetadataValues(['dc.identifier.uri']); let last=last;">
+        <span *ngIf="uri.includes(this.handlePrefix)" >
+          <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Handle</h2>
+          <span><a href="{{uri}}">{{uri}}</a></span>
+        </span>                
+        <span *ngIf="!last"></span>
+          <p></p>
+        </span>
+     </span>
+    </span>
+
+
+    <span *ngIf="object.allMetadata(['dc.identifier.uri']).length > 0" >
+        <span *ngFor="let uri of object.allMetadataValues(['dc.identifier.uri']); let last=last;">
+        <span *ngIf="!uri.includes(this.handlePrefix)" >
+          <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Other identifiers</h2>
+          <span><a href="{{uri}}">{{uri}}</a></span>
+        </span>                
+        <span *ngIf="!last"></span>
+          <p></p>
+        </span>
+    </span>
+
+    <!--Handle  {{this.handlePrefix}}
+    Doi  {{this.doiPrefix}} -->
+
+    <span *ngIf="object.allMetadata(['dc.identifier.doi']).length > 0" >
+        <span *ngFor="let doi of object.allMetadataValues(['dc.identifier.doi']); let last=last;">
+        <span *ngIf="doi.includes(this.doiPrefix)" >
+        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Deep Blue Documents DOI</h2>
+
+          <span *ngIf="doi.includes('http')" ><a href="{{doi}}">{{doi}}</a></span>
+          <span *ngIf="!doi.includes('http')" ><a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a></span>
+        </span>                
+        <span *ngIf="!last"></span>
+          <p></p>
+        </span>
+    </span>
+
+    <span *ngIf="object.allMetadata(['dc.identifier.doi']).length > 0" >
+    <span *ngFor="let doi of object.allMetadataValues(['dc.identifier.doi']); let last=last;">
+    <span *ngIf="!doi.includes(this.doiPrefix)" >
+          <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Other DOIs</h2>
+          <span *ngIf="doi.includes('http')" ><a href="{{doi}}">{{doi}}</a></span>
+          <span *ngIf="!doi.includes('http')" ><a href="http://dx.doi.org/{{doi}}">http://dx.doi.org/{{doi}}</a></span>
+    </span>                
+    <span *ngIf="!last"></span>
+      <p></p>
+    </span>
+    </span>
+
+
+<!-- Bentley -->
+<div *ngVar="(object.owningCollection | async)?.payload as collection">
+
+<div *ngIf="containsSpecificUrl()">
+  <!--  {{collection?.handle}} -->
+
     <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.description']"
-      [label]="'item.page.description'">
+       [fields]="['dc.title.alternative']"
+       [label]="'Other Titles'">
     </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.citation']"
+       [label]="'Citation'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.publisher']"
+       [label]="'Publisher'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.isbn']"
+       [label]="'ISBN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.issn']"
+       [label]="'ISSN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.ismn']"
+       [label]="'ISMN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.pmid']"
+       [label]="'PMID'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.govdoc']"
+       [label]="'Government Doc no.'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.other']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.relation.ispartofseries']"
+       [label]="'Series/Report no.'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.subject']"
+       [label]="'Subjects'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.description']"
+       [label]="'Description'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.rights']"
+       [label]="'Rights'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.type']"
+       [label]="'Types'">
+    </ds-generic-item-page-field>
+
+  </div>
+</div>
+
+<!-- Ross -->
+<div *ngVar="(object.owningCollection | async)?.payload as collection">
+  <div *ngIf="collection?.handle.endsWith('/2027.42/35324')" >
+<!--    {{collection?.handle}} -->
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.title.alternative']"
+       [label]="'Other Titles'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.subject']"
+       [label]="'Subjects'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.publisher']"
+       [label]="'Publisher'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.citation']"
+       [label]="'Citation'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.relation.ispartofseries']"
+       [label]="'Series/Report no.'">
+    </ds-generic-item-page-field>
+
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.description']"
+       [label]="'Description'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.govdoc']"
+       [label]="'Government Doc no.'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.isbn']"
+       [label]="'ISBN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.issn']"
+       [label]="'ISSN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.ismn']"
+       [label]="'ISMN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.pmid']"
+       [label]="'PMID'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.subject.classification']"
+       [label]="'Subject Classification'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.type']"
+       [label]="'Types'">
+    </ds-generic-item-page-field>
+
+
+  </div>
+</div>
+
+<!-- Umtri -->
+<div *ngVar="(object.owningCollection | async)?.payload as collection">
+  <div *ngIf="collection?.handle.endsWith('/2027.42/13914')" >
+<!--    {{collection?.handle}} -->
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.title.alternative']"
+       [label]="'Other Titles'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.subject']"
+       [label]="'Subjects'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.publisher']"
+       [label]="'Publisher'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.citation']"
+       [label]="'Citation'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.relation.ispartofseries']"
+       [label]="'Series/Report no.'">
+    </ds-generic-item-page-field>
+
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.description']"
+       [label]="'Description'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.govdoc']"
+       [label]="'Government Doc no.'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.isbn']"
+       [label]="'ISBN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.issn']"
+       [label]="'ISSN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.ismn']"
+       [label]="'ISMN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.pmid']"
+       [label]="'PMID'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.other']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.type']"
+       [label]="'Types'">
+    </ds-generic-item-page-field>
+
+
+  </div>
+</div>
+
+
+<!-- Default -->
+
+<div *ngVar="(object.owningCollection | async)?.payload as collection">
+  <div *ngIf="!collection?.handle.endsWith('/2027.42/65133') && !collection?.handle.endsWith('/2027.42/35324') &&
+  !collection?.handle.endsWith('/2027.42/13914')" >
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.title.alternative']"
+       [label]="'Other Titles'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.citation']"
+       [label]="'Citation'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.publisher']"
+       [label]="'Publisher'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.isbn']"
+       [label]="'ISBN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.issn']"
+       [label]="'ISSN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.ismn']"
+       [label]="'ISMN'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.other']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.pmid']"
+       [label]="'PMID'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier.govdoc']"
+       [label]="'Government Doc no.'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.identifier']"
+       [label]="'Other Identifiers'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.relation.ispartofseries']"
+       [label]="'Series/Report no.'">
+    </ds-generic-item-page-field>    
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.subject']"
+       [label]="'Subjects'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.description']"
+       [label]="'Description'">
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field [item]="object"
+       [fields]="['dc.type']"
+       [label]="'Types'">
+    </ds-generic-item-page-field>
+
+  </div>
+</div>
+
+<div>
+    <span *ngIf="object.allMetadata(['dc.identifier.videostream']).length > 0" >
+        <h2 _ngcontent-dspace-angular-c161="" class="simple-view-element-header ng-star-inserted">Videos</h2>
+        <span *ngFor="let video of object.allMetadataValues(['dc.identifier.videostream']); let last=last;">
+
+<!-- Call this to create the trustedUrl -->
+{{getVideoUrl(video)}}
+<iframe id="kaltura_player_1712258806"  [src]="trustedUrl" width="400" height="500" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+      
+        <span *ngIf="!last"></span>
+          <p></p>
+        </span>
+    </span>
+</div>
+
+
+<!--
+     <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.description']"
+      [label]="'You can put the label in here'">
+     </ds-generic-item-page-field>
 
     <ds-generic-item-page-field [item]="object"
       [fields]="['dc.subject']"
@@ -65,15 +502,76 @@
       [fields]="['dc.identifier.citation']"
       [label]="'item.page.citation'">
     </ds-generic-item-page-field>
+-->
+
+    <!--This displays all identifier.uri
     <ds-item-page-uri-field [item]="object"
       [fields]="['dc.identifier.uri']"
       [label]="'item.page.uri'">
-    </ds-item-page-uri-field>
-    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+    </ds-item-page-uri-field> -->
+
+
+
+   <ds-item-page-collections [item]="object"></ds-item-page-collections>
+
+   <div *ngIf="object.hasMetadata('dc.rights.uri')" [id]="object.id" style="display: flex; align-items: center;">
+     <a [href]="object.firstMetadataValue('dc.rights.uri')" target="_blank" rel="noopener" style="display:flex; align-items:center; text-decoration: none;">
+       <img 
+         style="width:8em; height:5em; padding: 20px 0px;" 
+         alt="cc-logo" 
+         [src]="getSelectedCcLicense(object.firstMetadataValue('dc.rights.uri'))"
+       />
+     </a>
+       <span style="margin-left: 1em; color: inherit;">
+         {{ object.firstMetadataValue('dc.rights') }}
+       </span>
+   </div>
+
+<!--
+    <div *ngIf="object.hasMetadata('dc.identifier.doi')" [id]="object.id">
+      <p>
+        <span align="center" data-badge-popover="right" data-badge-type="1"   data-hide-less-than="1" class="altmetric-embed" data-style="large_rectangle" attr.data-handle="{{ getHandle(object.allMetadataValues('dc.identifier.uri')) }}" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
+     </p>
+      <p>
+        <span class="__dimensions_badge_embed__"  data-hide-zero-citations="true" data-style="large_rectangle" attr.data-doi="{{ getDoi(object.firstMetadataValue('dc.identifier.doi')) }}"></span>
+      </p>
+    </div> -->
+
     <div>
       <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button">
-        <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+        <i class="fas"></i> {{"item.page.link.full" | translate}}
       </a>
     </div>
+
+    <hr/>
+
+
+    <div *ngIf="breadcrumbs?.length > 0">
+      <div *ngIf="containsSpecificUrl(); else notBentleyParagraph">
+      <div>
+        <p></p>
+        <h2 style="font-size: 18px;  font-weight: bold">Remediation for Accessibility</h2>
+      If you are unable to use this deposit in its current form, you can request accessibility remediation through our <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=7Az64AR5TqI_&RequestorType=Service" target="_blank">contact form</a>.
+      </div>
+    </div>
+  
+  <ng-template #notBentleyParagraph>
+
+    <div>
+      <p></p>
+      <h2 style="font-size: 18px;  font-weight: bold">Remediation of Harmful Language</h2>
+The University of Michigan Library aims to describe its collections in a way that respects the people and communities who create, use, and are represented in them. We encourage you to <a href="https://docs.google.com/forms/d/e/1FAIpQLSfSJ7y-zqmbNQ6ssAhSmwB7vF-NyZR9nVwBICFI8dY5aP1-TA/viewform" target="_blank">Contact Us</a> anonymously if you encounter harmful or problematic language in catalog records or finding aids. More information about our policies and practices is available at <a href="https://www.lib.umich.edu/about-us/policies/remediation-harmful-language-library-metadata" target="_blank">Remediation of Harmful Language</a>.
+    </div>
+
+    <div>
+      <p></p>
+      <h2 style="font-size: 18px;  font-weight: bold">Remediation for Accessibility</h2>
+      If you are unable to use this deposit in its current form, you can request accessibility remediation through our <a href="https://teamdynamix.umich.edu/TDClient/88/Portal/Requests/TicketRequests/NewForm?ID=7Az64AR5TqI_&RequestorType=Service" target="_blank">contact form</a>.
+    </div>
+  </ng-template>
+</div>
+
+
   </div>
+</div>
 </div>

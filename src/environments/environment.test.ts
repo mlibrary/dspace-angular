@@ -6,6 +6,8 @@ import { NotificationAnimationsType } from '../app/shared/notifications/models/n
 export const environment: BuildConfig = {
   production: false,
 
+  serverLocation: 'http://localhost:8080/server',
+
   // Angular Universal settings
   universal: {
     preboot: true,
@@ -255,7 +257,8 @@ export const environment: BuildConfig = {
       // Rounded to the nearest size in the list of selectable sizes on the
       // settings menu.  See pageSizeOptions in 'pagination-component-options.model.ts'.
       pageSize: 5
-    }
+    },
+    showAltmetricBadge: true,
   },
   collection: {
     edit: {
@@ -295,8 +298,8 @@ export const environment: BuildConfig = {
     video: true
   },
   info: {
-    enableEndUserAgreement: true,
-    enablePrivacyStatement: true,
+    enableEndUserAgreement: false,
+    enablePrivacyStatement: false,
   },
   markdown: {
     enabled: false,

@@ -29,6 +29,20 @@ export class WorkspaceitemSectionUploadFileObject {
     value: string;
   };
 
+  /** not sure this is needed UM */
+  /**
+   * The file format information
+   */
+  format: {
+    shortDescription: string,
+    description: string,
+    mimetype: string,
+    supportLevel: string,
+    internal: boolean,
+    type: string
+  };
+
+
   /**
    * The file url
    */

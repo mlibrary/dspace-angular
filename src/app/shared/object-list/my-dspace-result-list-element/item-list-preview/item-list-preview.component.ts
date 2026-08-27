@@ -1,4 +1,6 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, InjectionToken, Input, OnInit } from '@angular/core';
+
+import { HttpClient} from '@angular/common/http';
 
 import { Item } from '../../../../core/shared/item.model';
 import { fadeInOut } from '../../../animations/fade';
@@ -7,6 +9,9 @@ import { APP_CONFIG, AppConfig } from '../../../../../config/app-config.interfac
 import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
 import { Context } from 'src/app/core/shared/context.model';
 import { WorkflowItem } from 'src/app/core/submission/models/workflowitem.model';
+
+// UM Used for global config paramter - location of backend.
+import { environment } from '../../../../../environments/environment';
 
 /**
  * This component show metadata for the given item object in the list view.
@@ -49,9 +54,17 @@ export class ItemListPreviewComponent implements OnInit {
    */
   showThumbnails: boolean;
 
+  mothStatsCount: String;
+  mothDateStatsCount: String;
+  totalStatsCount: String;
+  context: Context;
+
   dsoTitle: string;
 
+  private serverLocation = environment.serverLocation;
+
   constructor(
+    private http: HttpClient,    
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
     public dsoNameService: DSONameService,
   ) {
@@ -60,7 +73,36 @@ export class ItemListPreviewComponent implements OnInit {
   ngOnInit(): void {
     this.showThumbnails = this.appConfig.browseBy.showThumbnails;
     this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.item);
+    this.context = Context.EntitySearchModal;    
   }
 
+  public getMonthDateStats(): String {
+    this.http.get(this.serverLocation + '/api/eperson/groups/getmonthdatestats/', {responseType: 'text'}).subscribe((data: any) => {
+      this.mothDateStatsCount = data;
+     });
+    return this.mothDateStatsCount;
+  }
+
+  public getMonthStats(): String {
+    let handle = this.item.handle;   
+    handle = handle.replace('/','_');
+
+    this.http.get(this.serverLocation + '/api/eperson/groups/getmonthstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
+      this.mothStatsCount = data;
+     });
+
+    return this.mothStatsCount;
+  }
+
+  public getTotalStats(): String {
+    let handle = this.item.handle;
+    handle = handle.replace('/','_');
+
+    this.http.get(this.serverLocation + '/api/eperson/groups/gettotalstats/' + handle, {responseType: 'text'}).subscribe((data: any) => {
+      this.totalStatsCount = data;
+    });
+
+    return this.totalStatsCount;
+   }
 
 }

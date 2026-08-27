@@ -115,7 +115,8 @@ export class DefaultAppConfig implements AppConfig {
       // If the rest token expires in less than this amount of time, it will be refreshed automatically.
       // This is independent from the idle warning.
       timeLeftBeforeTokenRefresh: 2 * 60 * 1000 // 2 minutes
-    }
+    },
+    showPasswordLogin: false,
   };
 
   // Form settings
@@ -249,7 +250,7 @@ export class DefaultAppConfig implements AppConfig {
     // The absolute lowest year to display in the dropdown (only used when no lowest date can be found for all items)
     defaultLowerLimit: 1900,
     // Whether to add item thumbnail images to BOTH browse and search result lists.
-    showThumbnails: true,
+    showThumbnails: false,
     // The number of entries in a paginated browse results list.
     // Rounded to the nearest size in the list of selectable sizes on the
     // settings menu.  See pageSizeOptions in 'pagination-component-options.model.ts'.
@@ -257,7 +258,7 @@ export class DefaultAppConfig implements AppConfig {
   };
 
   communityList: CommunityListConfig = {
-    pageSize: 20
+    pageSize: 500
   };
 
   homePage: HomeConfig = {
@@ -284,7 +285,8 @@ export class DefaultAppConfig implements AppConfig {
       // Rounded to the nearest size in the list of selectable sizes on the
       // settings menu.  See pageSizeOptions in 'pagination-component-options.model.ts'.
       pageSize: 5
-    }
+    },
+    showAltmetricBadge: true,
   };
 
   // Collection Page Config
@@ -361,7 +363,7 @@ export class DefaultAppConfig implements AppConfig {
           tagName: 'link',
           attributes: {
             'rel': 'icon',
-            'href': 'assets/dspace/images/favicons/favicon.svg',
+            'href': 'assets/dspace/images/favicons/favicon.ico',
             'type': 'image/svg+xml',
           }
         },
@@ -405,8 +407,8 @@ export class DefaultAppConfig implements AppConfig {
   // - A 404 page if you manually try to navigate to the privacy policy page at info/privacy
   // - All mentions of the privacy policy being removed from the UI (e.g. in the footer)
   info: InfoConfig = {
-    enableEndUserAgreement: true,
-    enablePrivacyStatement: true
+    enableEndUserAgreement: false,
+    enablePrivacyStatement: false
   };
 
   // Whether to enable Markdown (https://commonmark.org/) and MathJax (https://www.mathjax.org/)

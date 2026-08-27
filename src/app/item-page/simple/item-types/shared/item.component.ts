@@ -8,6 +8,14 @@ import { getDSpaceQuery, isIiifEnabled, isIiifSearchEnabled } from './item-iiif-
 import { filter, map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+// UM Change to get hadnle and doi Prefix
+import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
+import {      
+  getFirstCompletedRemoteData,
+  getFirstSucceededRemoteData,
+  getRemoteDataPayload
+} from '../../../../core/shared/operators';
+
 @Component({
   selector: 'ds-item',
   template: ''
@@ -51,7 +59,14 @@ export class ItemComponent implements OnInit {
 
   mediaViewer;
 
+  // UM change
+  handlePrefix: string;
+
+  doiPrefix: string;
+  // End UM Change
+
   constructor(protected routeService: RouteService,
+              protected configService: ConfigurationDataService,
               protected router: Router) {
     this.mediaViewer = environment.mediaViewer;
   }
@@ -84,5 +99,28 @@ export class ItemComponent implements OnInit {
     if (this.iiifSearchEnabled) {
       this.iiifQuery$ = getDSpaceQuery(this.object, this.routeService);
     }
+
+    this.configService.findByPropertyName('handle.prefix').pipe(
+        getFirstCompletedRemoteData(),
+        getRemoteDataPayload()
+      ).subscribe((remoteData) => {
+          if (remoteData === undefined || remoteData.values.length === 0) {
+            this.handlePrefix = '';
+          } else {
+            this.handlePrefix = remoteData.values[0];
+          }
+      })
+
+
+    this.configService.findByPropertyName('identifier.doi.prefix').pipe(
+        getFirstCompletedRemoteData(),
+        getRemoteDataPayload()
+      ).subscribe((remoteData) => {
+          if (remoteData === undefined || remoteData.values.length === 0) {
+            this.doiPrefix = '';
+          } else {
+            this.doiPrefix = remoteData.values[0];
+          }
+      })
   }
 }

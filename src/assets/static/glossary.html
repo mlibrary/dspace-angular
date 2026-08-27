@@ -1,0 +1,116 @@
+<!-- Updated 2026/02/02 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Glossary</title>
+    <link href="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/umich-lib.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@umich-lib/web@latest/dist/umich-lib/umich-lib.esm.js"></script>
+    <script src="../header.js"></script>
+</head>
+<body>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to main content</a>
+
+    <!-- Header loaded by JS -->
+    <header></header>
+
+    <!-- Flex container for sidebar and content -->
+    <div class="flex-container">
+        <div class="sidebar-container"><!-- Sidebar by JS --></div>
+
+        <main id="main-content" class="content">
+            <h1>Deep Blue Documents Glossary</h1>
+            <p>In this glossary, we define how we use the following terms in Deep Blue Documents.</p>
+            
+            <h2 id="work-and-components">A Work and its components</h2>
+            
+            <section id="metadata">
+                <h3>Metadata</h3>
+                <p>Descriptive information that defines key attributes about a Work. When researchers create metadata for their Work, others can more easily discover the Work and assess its relevance to their needs. As metadata are designed to be discoverable through online search engines, researchers preparing metadata should consider what details others will need in order to find and connect with the Work.</p>
+            </section>
+
+            <section id="work">
+                <h3>Work</h3>
+                <p>The main organizational unit within the Deep Blue Documents repository. A Work refers to a group of related documents or materials that can be in a variety of formats plus accompanying metadata. A Work can contain multiple files. In the example below, this Work is a video recording that includes three files: (1) a video file, (2) a caption file, and (3) a transcript file (along with metadata).</p>
+                <img src="images/glossary/work-description.png" alt="Components of a Deep Blue Documents 'Work' are all relevant files of any type plus the metadata.">
+            </section>
+
+            <h2 id="important-terms">Important terms</h2>
+
+            <section id="bit-level-preservation">
+                <h3>Bit-level preservation</h3>
+                <p>All digital files are, at their most basic level, a sequence of bits (1’s and 0’s) encoded in physical material like a hard drive. When Deep Blue Documents ingests a new file, our system automatically preserves the file’s sequence of bits (or "bitstream"), no matter the file type. "Bit-level preservation" means that we keep this bitstream for reference so that we can a) regularly check that files have not been corrupted over time, and b) restore files that have undergone changes if necessary.</p>
+            </section>
+
+            <section id="checksum">
+                <h3>Checksum</h3>
+                <p>A handy algorithm for detecting even the smallest differences between files. We can immediately see if a file has changed by comparing its current checksum to the checksum our system generated when the file was first uploaded; we can then restore the file to its original state if need be.</p>
+            </section>
+
+            <section id="collection">
+                <h3>Collection</h3>
+                <p>A Deep Blue Documents Collection corresponds to an academic or administrative unit at U-M that produces creative, intellectual, or artistic Works, has a defined leader, has long-term stability, and can assume responsibility for setting collection policies. Groups wishing to establish a Deep Blue Documents collection that do not fall into this definition will be considered on a case-by-case basis. The U-M Library will also assist individuals in locating or establishing collections to host their Work.</p>
+            </section>
+
+            <section id="collection-administrator">
+                <h3>Collection Administrator</h3>
+                <p>A faculty or staff member from a school, college, department, research institute, or a Library liaison who helps define and manage procedures for a collection. They ensure each collection meets the needs of the community and adapts to changing requirements, working with the U-M Library to establish procedures that best suit the collection's needs. Each collection can have one or more administrators to fulfill these roles.</p>
+            </section>
+
+            <section id="community">
+                <h3>Community</h3>
+                <p>In Deep Blue, there are two main communities: the research community and the archival community. The research community encompasses Deep Blue Documents and Deep Blue Data. The archival community is represented by the Bentley Historical Library, focused on preserving and providing access to historically significant materials. These communities organize, manage, and facilitate the discovery of scholarly and archival content.</p>
+            </section>
+
+            <section id="doi">
+                <h3>DOI</h3>
+                <p>A unique, permanent digital identifier assigned to an object. DOI stands for Digital Object Identifier. DOIs are commonly used in academia to identify scholarly Works and can be connected to metadata and URLs that point to an object’s online location or representation. As part of its mission to encourage sharing and preserving the research, teaching, learning and creativity, Deep Blue Documents works with DataCite, a DOI Registration Agency, to mint DOIs for Works deposited to Deep Blue Documents. For a more detailed discussion of DOIs, visit <a href="https://datacite.org/" target="_blank">DataCite’s website</a>. Each Work also receives a handle, another unique, persistent digital identifier. 
+                </p>
+            </section>
+
+            <section id="fixity">
+                <h3>Fixity</h3>
+                <p>The state of being unchanged over time. Deep Blue Documents ensures fixity for the files it hosts; in other words, we ensure that all files are continually fixed in the exact same state they were in upon upload, without a bit out of place.</p>
+            </section>
+
+            <section id="handle">
+                <h3>Handle</h3>
+                <p>A unique, persistent digital identifier assigned to every Work in Deep Blue Documents. Each Handle takes the form of a stable URL, providing a reliable way to cite and access Works in the repository. Each Work also receives a DOI, another unique, persistent digital identifier.</p>
+            </section>
+
+            <section id="open-access">
+                <h3>Open access</h3>
+                <p>A publishing model that seeks to make scholarly output, which is often indirectly paid for by tax dollars, freely and readily available to the public. As an Open Access repository, Deep Blue Documents allows anyone with access to the internet to view Works and download files. Allowed uses of those files are governed by Deep Blue Documents’s <a href="terms-of-deposit.html">Terms of Deposit</a> and can be governed by a  <a href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank">Creative Commons License </a> that was selected by the depositor.
+                </p>
+            </section>
+
+            <section id="open-format">
+                <h3>Open or non-proprietary format</h3>
+                <p>A file format with publicly available documentation or specifications. These files can be opened with a variety of software and hardware systems and are often associated with widely accepted professional standards. Quintessential examples are PDF/A (.pdf) and JPEG (.jpg) files. Deep Blue Documents can provide superior preservation services for open formats as compared with proprietary formats.</p>
+            </section>
+
+            <section id="proprietary-format">
+                <h3>Proprietary format</h3>
+                <p>A file format that is commercially developed, which often means that its specifications are not publicly available and/or that files in that format can only be used with specialized software or hardware. Although Deep Blue Documents accepts files in all formats, the repository’s ability to preserve proprietary formats is limited; therefore, files in open formats are preferred. For more details about Deep Blue Documents’s Preservation Policy, visit the <a href="preservation.html">Preservation page</a>.</p>
+            </section>
+
+            <section id="proxy">
+                <h3>Proxy</h3>
+                <p>A person to whom a depositor gives the authority to make a deposit on the depositor’s behalf. In cases where a proxy is appointed, the depositor of record still retains the authority to alter the deposit and answer questions about it; they remain responsible for its content.</p>
+            </section>
+
+            <section id="personally-identifiable-information">
+                <h3>Personally identifiable information</h3>
+                <p>Information that can be used to discover the identity of human research subjects is considered to be personally identifiable information. In the vast majority of cases, we do not accept this kind of information, for both legal and ethical reasons. For more information, review <a href="https://spg.umich.edu/policy/303.05" target="_blank">U-M’s standard practice guide for research with human participants</a>.</p>
+            </section>
+        </main>
+    </div>
+<!-- Footer loaded by JS -->
+<footer class="footer"></footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

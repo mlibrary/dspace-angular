@@ -69,6 +69,16 @@ const cookieParser = require('cookie-parser');
 
 const appConfig: AppConfig = buildAppConfig(join(DIST_FOLDER, 'assets/config.json'));
 
+// List of paths for SSR; you can use regex for more flexibility if needed
+const ssrPaths = [
+  '/documents',
+  '/items/',
+  '/collections/',
+  '/communities/',
+  '/bitstream/',
+  '/bitstreams/'
+];
+
 // cache of SSR pages for known bots, only enabled in production mode
 let botCache: LRU<string, any>;
 
@@ -77,6 +87,15 @@ let anonymousCache: LRU<string, any>;
 
 // extend environment with app config for server
 extendEnvironmentWithAppConfig(environment, appConfig);
+
+
+// Helper function to extract client IP
+function getClientIp(req) {
+  // Extracting IP from X-Forwarded-For if available
+  const xForwardedFor = req.headers['x-forwarded-for'];
+  return xForwardedFor ? xForwardedFor.split(',')[0] : req.connection.remoteAddress;
+}
+
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
@@ -90,7 +109,9 @@ export function app() {
 
   // Tell Express to trust X-FORWARDED-* headers from proxies
   // See https://expressjs.com/en/guide/behind-proxies.html
-  server.set('trust proxy', environment.ui.useProxies);
+  // server.set('trust proxy', environment.ui.useProxies);
+server.set('trust proxy', true);
+
 
   /*
    * If production mode is enabled in the environment file:
@@ -130,6 +151,7 @@ export function app() {
   server.engine('html', (_, options, callback) =>
     ngExpressEngine({
       bootstrap: ServerAppModule,
+      inlineCriticalCss: false,
       providers: [
         {
           provide: REQUEST,
@@ -159,11 +181,25 @@ export function app() {
    * Serve the robots.txt ejs template, filling in the origin variable
    */
   server.get('/robots.txt', (req, res) => {
+    const clientIp = getClientIp(req);
+    console.log(`Client IP: ${clientIp}`);    
+
     res.setHeader('content-type', 'text/plain');
     res.render('assets/robots.txt.ejs', {
       'origin': req.protocol + '://' + req.headers.host
     });
   });
+
+  server.get('/clockss.txt', (req, res) => {
+    const clientIp = getClientIp(req);
+    console.log(`Client IP: ${clientIp}`);    
+
+    res.setHeader('content-type', 'text/plain');
+    res.render('assets/clockss.txt.ejs', {
+      'origin': req.protocol + '://' + req.headers.host
+    });
+  });
+
 
   /*
    * Set views folder path to directory where template files are stored
@@ -227,24 +263,83 @@ export function app() {
    */
   router.get('*', cacheCheck, ngApp);
 
+
   server.use(environment.ui.nameSpace, router);
+
+server.set('trust proxy', true);
 
   return server;
 }
+
+// Check if the request URL starts with any of the SSR paths
+function shouldUseSSR(url) {
+  // First, check for the browse exclusion patterns
+  const browseBlacklistRegexes = [
+    /^\/communities\/[a-f0-9-]{36}\/browse(\/.*)?$/i,
+    /^\/collections\/[a-f0-9-]{36}\/browse(\/.*)?$/i,
+  ];
+
+  // If the URL contains 'handle' anywhere, return false
+  if (/\/handle(\/|$)/i.test(url)) {
+    return false;
+  }
+
+  // If the URL contains '/2027.42' anywhere, return false
+  if (/\/2027\.42(\/|$)/i.test(url)) {
+    return false;
+  }
+
+  // If the url matches any exclusion, do NOT use SSR
+  if (browseBlacklistRegexes.some(regex => regex.test(url))) {
+    return false;
+  }
+
+  // Otherwise
+  return ssrPaths.some(path => url.startsWith(path));
+}
+
 
 /*
  * The callback function to serve server side angular
  */
 function ngApp(req, res) {
-  if (environment.universal.preboot) {
-    // Render the page to user via SSR (server side rendering)
+
+  console.log('SSR: Original Request= ' + req.url);
+
+  // If URL contains '/assets/', redirect to Deep Blue Repositories
+  if (req.url.includes('/assets/')) {
+    res.writeHead(404, {
+      'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
+    });
+    res.end();
+    return; // Exit after redirecting
+
+  }
+
+  if (
+    req.url.includes('/discover') ||
+    req.url.includes('/Mirage2') ||
+    req.url.includes('/feed/') ||
+    req.url.includes('/search-filter')
+  ) {
+    res.writeHead(404, {
+      'Location': 'https://www.lib.umich.edu/collections/deep-blue-repositories'
+    });
+    res.end();
+    return; // Exit after redirecting
+  } 
+
+  if (environment.universal.preboot && req.method === 'GET' && shouldUseSSR(req.url)) {
+    // Only run SSR for matching paths
+    console.log('SSR: Using SSR= ' + req.url);
     serverSideRender(req, res);
   } else {
-    // If preboot is disabled, just serve the client
-    console.log('Universal off, serving for direct client-side rendering (CSR)');
+    // For all other paths, serve CSR
+    console.log('SSR:Universal off or path excluded. Serving direct client-side rendering (CSR)' + req.url);
     clientSideRender(req, res);
   }
 }
+
 
 /**
  * Render page content on server side using Angular SSR. By default this page content is
@@ -255,6 +350,22 @@ function ngApp(req, res) {
  * If false, then only save this rendered content to the in-memory cache (to refresh cache).
  */
 function serverSideRender(req, res, sendToUser: boolean = true) {
+
+
+  // Check if 'X-Forwarded-For' is set; if not, set it to the request's IP address.
+const xForwardedForHeader = req.headers['x-forwarded-for'];
+
+console.log("xForwardedForHeader=" + xForwardedForHeader);
+
+if (!xForwardedForHeader) {
+  // Consider appending instead if chaining proxies
+  console.log("req.ip=" + req.ip);
+
+  // Example of appending to support proxy chains:
+  req.headers['x-forwarded-for'] = req.ip;
+}
+
+
   // Render the page via SSR (server side rendering)
   res.render(indexHtml, {
     req,
@@ -535,7 +646,7 @@ function createHttpsServer(keys) {
 
 function run() {
   const port = environment.ui.port || 4000;
-  const host = environment.ui.host || '/';
+  const host = '0.0.0.0';
 
   // Start up the Node server
   const server = app();

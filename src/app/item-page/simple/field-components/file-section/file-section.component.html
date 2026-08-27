@@ -1,18 +1,107 @@
-<ng-container *ngVar="(bitstreams$ | async) as bitstreams">
-  <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
-    <div class="file-section">
-      <ds-themed-file-download-link *ngFor="let file of bitstreams; let last=last;" [bitstream]="file" [item]="item">
-        <span>{{ dsoNameService.getName(file) }}</span>
-        <span> ({{(file?.sizeBytes) | dsFileSize }})</span>
-        <span *ngIf="!last" innerHTML="{{separator}}"></span>
-      </ds-themed-file-download-link>
-      <ds-themed-loading *ngIf="isLoading" message="{{'loading.default' | translate}}" [showMessage]="false"></ds-themed-loading>
-      <div *ngIf="!isLastPage" class="mt-1" id="view-more">
-        <button class="bitstream-view-more btn btn-outline-secondary btn-sm" (click)="getNextPage()">{{'item.page.bitstreams.view-more' | translate}}</button>
-      </div>
-      <div *ngIf="isLastPage && currentPage != 1" class="mt-1" id="collapse">
-        <button class="bitstream-collapse btn btn-outline-secondary btn-sm" (click)="currentPage = undefined; getNextPage();">{{'item.page.bitstreams.collapse' | translate}}</button>
-      </div>
-    </div>
-  </ds-metadata-field-wrapper>
+<!-- This will not display the list of files if the item is withdrawn -->
+
+<ng-container *ngIf="item.allMetadataValues('dc.description.hathi').length > 0 || 
+                     item.allMetadataValues('dc.description.fulcrum').length > 0 || 
+                     item.allMetadataValues('dc.description.filename').length > 0">
+  <h2>Files</h2>
+  <ng-container *ngFor="let entry of item.allMetadataValues('dc.description.hathi')">
+      <p>
+        <span><img title="HathiTrust Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/hathi_trust_icon18x18.png" alt="HathiTrust Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+      </p>
+  </ng-container>
+
+  <ng-container *ngFor="let entry of item.allMetadataValues('dc.description.fulcrum')">
+      <p>
+        <span>
+           <img title="Fulcrum Viewer" style="height:20px;width:20px;text-decoration:none;" src="../../../../assets/images/file_icons/fulcrum_icon.png" alt="Fulcrum Viewer">&nbsp;&nbsp;&nbsp;<a href="{{entry}}">View/Open<span style="padding-left:.25em" aria-label="Opens in a new window" class="glyphicon glyphicon-new-window"></span></a></span>
+      </p>
+  </ng-container>
+
+  <ng-container *ngFor="let entry of item.allMetadataValues('dc.description.filename')">
+      <p>
+        <span>{{entry}}</span>
+      </p>
+  </ng-container>
+
 </ng-container>
+
+
+<div *ngIf="!item.isWithdrawn">
+  <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
+    <ds-metadata-field-wrapper *ngIf="bitstreams?.length > 0" [label]="label | translate">
+      <div class="file-section">
+
+<ng-container *ngFor="let file of bitstreams; let last = last;">
+  <!-- If request copy is present... -->
+  <ng-container *ngIf="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email')) != '' else noRequestCopy">
+    <!-- Request a Copy link (first row) -->
+    <ds-themed-file-download-link [bitstream]="file" [item]="item">
+      <span style="display: inline-flex; align-items: center; gap: 8px;  text-decoration: underline; cursor: pointer;">
+        <span style="min-width:30px; width:30px; display:inline-block;"
+              [innerHtml]="getIconForRequestCopy(item.firstMetadataValue('dc.requestcopy.email'))"></span>
+        <span>Request a Copy of this File</span>
+      </span>
+    </ds-themed-file-download-link>
+    <!-- File info line -->
+    <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+      <ng-container *ngIf="getIconForFileRestriction(file.firstMetadataValue('dc.description')) != ''">
+        <span style="min-width:30px; width:30px; display:inline-block;"
+              [innerHtml]="getIconForFileRestriction(file.firstMetadataValue('dc.description'))"></span>
+      </ng-container>
+      <span style="min-width:30px; width:30px; display:inline-block;"
+            [innerHtml]="dsoNameService.getIconForFile(file)"></span>
+      <!-- Filename as plain text -->
+      <span id="filename-{{file.id}}" style="font-weight: 500;">
+        {{ dsoNameService.getName(file) }}
+      </span>
+      <span>({{ (file?.sizeBytes) | dsFileSize }})</span>
+    </div>
+    <!-- Description directly under filename, flush with first icon -->
+    <div *ngIf="file.firstMetadataValue('dc.description') != null"
+         style="margin-left: 0; margin-top: 2px; margin-bottom: 4px; text-decoration: none;">
+      {{ file.firstMetadataValue('dc.description') }}
+    </div>
+    <div *ngIf="file?.formatId == this.formatId">THIS IS A HIDDEN FILE</div>
+    <span *ngIf="!last" [innerHTML]="separator"></span>
+  </ng-container>
+
+  <!-- Fallback: no Request Copy -->
+  <ng-template #noRequestCopy>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <ng-container *ngIf="getIconForFileRestriction(file.firstMetadataValue('dc.description')) != ''">
+        <span style="min-width:30px; width:30px; display:inline-block;"
+              [innerHtml]="getIconForFileRestriction(file.firstMetadataValue('dc.description'))"></span>
+      </ng-container>
+      <span style="min-width:30px; width:30px; display:inline-block;"
+            [innerHtml]="dsoNameService.getIconForFile(file)"></span>
+      <!-- Filename as a link -->
+      <ds-themed-file-download-link [bitstream]="file" [item]="item">
+        <span id="filename-{{file.id}}" style="text-decoration: underline; cursor: pointer; font-weight: 500;">
+          {{ dsoNameService.getName(file) }}
+        </span>
+      </ds-themed-file-download-link>
+      <span>({{ (file?.sizeBytes) | dsFileSize }})</span>
+    </div>
+    <!-- Description directly under filename, flush with first icon -->
+    <div *ngIf="file.firstMetadataValue('dc.description') != null"
+         style="margin-left: 0; margin-top: 2px; margin-bottom: 4px; text-decoration: none;">
+      {{ file.firstMetadataValue('dc.description') }}
+    </div>
+    <div *ngIf="file?.formatId == this.formatId">THIS IS A HIDDEN FILE</div>
+    <span *ngIf="!last" [innerHTML]="separator"></span>
+  </ng-template>
+</ng-container>
+
+    
+        <ds-themed-loading *ngIf="isLoading" message="{{'loading.default' | translate}}" [showMessage]="false"></ds-themed-loading>
+        <div *ngIf="!isLastPage" class="mt-1" id="view-more">
+          <button class="bitstream-view-more btn btn-outline-secondary btn-sm" (click)="getNextPage()">{{'item.page.bitstreams.view-more' | translate}}</button>
+        </div>
+        <div *ngIf="isLastPage && currentPage != 1" class="mt-1" id="collapse">
+          <button class="bitstream-collapse btn btn-outline-secondary btn-sm" (click)="currentPage = undefined; getNextPage();">{{'item.page.bitstreams.collapse' | translate}}</button>
+        </div>
+      </div>
+    </ds-metadata-field-wrapper>
+  </ng-container>
+</div>
+

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { AuthMethod } from '../../core/auth/models/auth.method';
@@ -15,6 +15,7 @@ import { AuthorizationDataService } from '../../core/data/feature-authorization/
 import { FeatureID } from '../../core/data/feature-authorization/feature-id';
 import { CoreState } from '../../core/core-state.model';
 import { AuthMethodType } from '../../core/auth/models/auth.method-type';
+import { AppConfig, APP_CONFIG } from '../../../config/app-config.interface';
 
 /**
  * /users/sign-in
@@ -56,12 +57,20 @@ export class LogInComponent implements OnInit {
    */
   canRegister$: Observable<boolean>;
 
+  /**
+   * Whether the username/password login form should be shown (exclusive toggle).
+   * Driven by config.auth.showPasswordLogin. Defaults to false.
+   */
+  public showPasswordLogin: boolean;
+
   constructor(private store: Store<CoreState>,
               private authService: AuthService,
-              private authorizationService: AuthorizationDataService) {
+              private authorizationService: AuthorizationDataService,
+              @Inject(APP_CONFIG) private appConfig: AppConfig) {
   }
 
   ngOnInit(): void {
+    this.showPasswordLogin = this.appConfig.auth?.showPasswordLogin ?? false;
 
     this.store.pipe(
       select(getAuthenticationMethods),

@@ -1,7 +1,9 @@
 <div class="row">
   <div *ngIf="showThumbnails" class="col-3 col-md-2">
+<!--
     <ds-thumbnail [thumbnail]="item?.thumbnail | async" [limitWidth]="true">
     </ds-thumbnail>
+-->
   </div>
   <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
     <div *ngIf="item" @fadeInOut>
@@ -13,10 +15,6 @@
         <div>
           <span class="text-muted">
             <ds-truncatable-part [id]="item.id" [minLines]="1">
-              (<span *ngIf="item.hasMetadata('dc.publisher')" class="item-list-publisher"
-                [innerHTML]="item.firstMetadataValue('dc.publisher') + ', '"></span>
-              <span class="item-list-date"
-                [innerHTML]="item.firstMetadataValue('dc.date.issued') || ('mydspace.results.no-date' | translate)"></span>)
               <span *ngIf="item.hasMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']);"
                 class="item-list-authors">
                 <span
@@ -27,6 +25,10 @@
                   <span [innerHTML]="author"><span [innerHTML]="author"></span></span>
                   <span *ngIf="!last">; </span>
                 </span>
+                (<span *ngIf="item.hasMetadata('dc.publisher')" class="item-list-publisher"
+                [innerHTML]="item.firstMetadataValue('dc.publisher') + ', '"></span>
+              <span class="item-list-date"
+                [innerHTML]="item.firstMetadataValue('dc.date.issued') || ('mydspace.results.no-date' | translate)"></span>)
               </span>
 
             </ds-truncatable-part>
@@ -36,6 +38,9 @@
             <span [ngClass]="{'text-muted': !item.firstMetadataValue('dc.description.abstract')}"
               [innerHTML]="(item.firstMetadataValue('dc.description.abstract')) || ('mydspace.results.no-abstract' | translate)"></span>
           </ds-truncatable-part>
+
+          <p class="mb-0">Download({{this.getMonthDateStats()}}): {{this.getMonthStats()}}</p>
+          <p class="mb-0">Total Downloads: {{this.getTotalStats()}}</p>
 
         </div>
       </ds-truncatable>

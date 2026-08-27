@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, NoPreloading } from '@angular/router';
 import { AuthBlockingGuard } from './core/auth/auth-blocking.guard';
+import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
 
 import { AuthenticatedGuard } from './core/auth/authenticated.guard';
 import {
@@ -31,6 +32,8 @@ import { EndUserAgreementCurrentUserGuard } from './core/end-user-agreement/end-
 import { SiteRegisterGuard } from './core/data/feature-authorization/feature-authorization-guard/site-register.guard';
 import { ThemedPageNotFoundComponent } from './pagenotfound/themed-pagenotfound.component';
 import { ThemedForbiddenComponent } from './forbidden/themed-forbidden.component';
+//import { StaticPageComponent } from './static-page/static-page.component';
+
 import {
   GroupAdministratorGuard
 } from './core/data/feature-authorization/feature-authorization-guard/group-administrator.guard';
@@ -52,15 +55,15 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
         canActivateChild: [ServerCheckGuard],
         resolve: [MenuResolver],
         children: [
-          { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', component: ExternalRedirectComponent, pathMatch: 'full' },
+  {
+    path: 'reload/:rnd',
+    component: ThemedPageNotFoundComponent,
+    pathMatch: 'full',
+    canActivate: [ReloadGuard],
+  },
           {
-            path: 'reload/:rnd',
-            component: ThemedPageNotFoundComponent,
-            pathMatch: 'full',
-            canActivate: [ReloadGuard]
-          },
-          {
-            path: 'home',
+            path: 'documents',
             loadChildren: () => import('./home-page/home-page.module')
               .then((m) => m.HomePageModule),
             data: { showBreadcrumbs: false },
@@ -72,6 +75,10 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
               .then((m) => m.CommunityListPageModule),
             canActivate: [EndUserAgreementCurrentUserGuard]
           },
+
+
+//{path:"static", component: StaticPageComponent},
+
           {
             path: 'id',
             loadChildren: () => import('./lookup-by-id/lookup-by-id.module')
@@ -177,7 +184,7 @@ import { ThemedPageErrorComponent } from './page-error/themed-page-error.compone
             loadChildren: () => import('./import-external-page/import-external-page.module')
               .then((m) => m.ImportExternalPageModule),
             canActivate: [EndUserAgreementCurrentUserGuard]
-          },
+          },                  
           {
             path: 'workspaceitems',
             loadChildren: () => import('./workspaceitems-edit-page/workspaceitems-edit-page.module')

@@ -49,6 +49,10 @@ export const copyWebpackOptions = {
     {
       from: path.join(__dirname, '..', 'src', 'robots.txt.ejs'),
       to: 'assets/robots.txt.ejs'
+    },
+    {
+      from: path.join(__dirname, '..', 'src', 'clockss.txt.ejs'),
+      to: 'assets/clockss.txt.ejs'
     }
   ]
 };

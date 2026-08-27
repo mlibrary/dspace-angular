@@ -27,7 +27,7 @@ $cyan:   #006666 !default;
 $yellow: #ec9433 !default;
 $red:    #CF4444 !default;
 $dark:   darken($blue, 17%) !default;
-
+$umanchors: #1d7491 !default;
 
 
 $theme-colors: (
@@ -35,7 +35,7 @@ $theme-colors: (
         secondary: $gray-700,
         success: $green,
         info: $cyan,
-        warning: $yellow,
+        warning: #ad6110,
         danger: $red,
         light: $gray-100,
         dark: $dark

@@ -10,6 +10,8 @@ import { TruncatableService } from '../../../../../shared/truncatable/truncatabl
 import { DSONameService } from '../../../../../core/breadcrumbs/dso-name.service';
 import { APP_CONFIG, AppConfig } from '../../../../../../config/app-config.interface';
 
+import { BitstreamDataService } from '../../../../../core/data/bitstream-data.service';
+
 @listableObjectComponent('PersonSearchResult', ViewMode.ListElement)
 @Component({
   selector: 'ds-person-search-result-list-element',
@@ -24,9 +26,10 @@ export class PersonSearchResultListElementComponent extends ItemSearchResultList
   public constructor(
     protected truncatableService: TruncatableService,
     public dsoNameService: DSONameService,
+    public bitstreamDataService: BitstreamDataService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig
   ) {
-    super(truncatableService, dsoNameService, appConfig);
+    super(truncatableService, dsoNameService, bitstreamDataService, appConfig);
   }
 
   /**

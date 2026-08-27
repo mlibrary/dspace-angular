@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, InjectionToken, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { SearchService } from '../core/shared/search/search.service';
@@ -11,6 +11,9 @@ import { ViewMode } from '../core/shared/view-mode.model';
 import { MyDSpaceRequest } from '../core/data/request.models';
 import { Context } from '../core/shared/context.model';
 import { RoleType } from '../core/roles/role-types';
+
+// UM Used for global config paramter - location of backend.
+import { environment } from '../../environments/environment';
 
 export const MYDSPACE_ROUTE = '/mydspace';
 export const SEARCH_CONFIG_SERVICE: InjectionToken<SearchConfigurationService> = new InjectionToken<SearchConfigurationService>('searchConfigurationService');
@@ -31,6 +34,8 @@ export const SEARCH_CONFIG_SERVICE: InjectionToken<SearchConfigurationService> =
   ]
 })
 export class MyDSpacePageComponent implements OnInit {
+
+  subscribeStats: boolean = false;
 
   /**
    * The list of available configuration options
@@ -57,7 +62,10 @@ export class MyDSpacePageComponent implements OnInit {
    */
   viewModeList = [ViewMode.ListElement, ViewMode.DetailedListElement];
 
+  private serverLocation = environment.serverLocation;
+
   constructor(private service: SearchService,
+              private http: HttpClient,
               @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: MyDSpaceConfigurationService) {
     this.service.setServiceOptions(MyDSpaceResponseParsingService, MyDSpaceRequest);
   }
@@ -82,6 +90,28 @@ export class MyDSpacePageComponent implements OnInit {
       this.context = configurationList[0].context;
     });
 
+    this.http.get(this.serverLocation + '/api/eperson/groups/issubscribed', {responseType: 'text'}).subscribe((data: any) => {
+      this.subscribeStats = data === "true";
+    });
   }
 
+  public toggleSubscription() {
+    if (this.subscribeStats) {
+      this.unsubscribeToDepositStats();
+    } else {
+      this.subscribeToDepositStats();
+    }
+  }
+
+  public subscribeToDepositStats() {
+    this.http.get(this.serverLocation + '/api/eperson/groups/subscribe', {responseType: 'text'}).subscribe(() => {
+      this.subscribeStats = true;
+    });
+  }
+
+  public unsubscribeToDepositStats() {
+    this.http.get(this.serverLocation + '/api/eperson/groups/unsubscribe', {responseType: 'text'}).subscribe(() => {
+      this.subscribeStats = false;
+    });
+  }
 }

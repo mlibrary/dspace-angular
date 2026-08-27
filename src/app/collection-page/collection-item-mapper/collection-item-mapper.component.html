@@ -40,6 +40,11 @@
             </div>
 
             <div *ngIf="performedSearch">
+              {{'collection.edit.item-mapper.checkall-desc' | translate}}
+              <div class="checkbox">
+                 <input name="checkall" type="checkbox" value="onclick=checkUncheckAll(this);" (click)="checkUncheckAll(this)">
+              </div>
+
               <ds-item-select class="mt-2"
                 [key]="'map'"
                 [dsoRD$]="mappedItemsRD$"

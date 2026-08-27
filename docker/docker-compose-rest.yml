@@ -70,6 +70,7 @@ services:
     environment:
       PGDATA: /pgdata
     image: dspace/dspace-postgres-pgcrypto
+    platform: linux/amd64    
     networks:
       dspacenet:
     ports:

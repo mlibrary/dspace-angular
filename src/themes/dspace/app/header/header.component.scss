@@ -1,6 +1,6 @@
 @media screen and (min-width: map-get($grid-breakpoints, md)) {
   nav.navbar {
-    display: none;
+
   }
   .header {
     background-color: var(--ds-header-bg);
@@ -24,3 +24,24 @@
     color: var(--ds-header-icon-color-hover);
   }
 }
+
+.skip-links {
+  background: var(--color-blue-400);
+  padding: var(--space-small);
+  margin: 0 auto;
+}
+
+.skip-links a {
+  color: #fff;
+  padding: var(--space-x-small);
+}
+
+.skip-links:not(:focus-within) {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+

@@ -33,7 +33,7 @@ export class ItemReinstateComponent extends AbstractSimpleItemActionComponent {
    * Perform the reinstate action to the item
    */
   performAction() {
-    this.itemDataService.setWithDrawn(this.item, false).pipe(getFirstCompletedRemoteData()).subscribe(
+    this.itemDataService.setWithDrawn(this.item, false, "").pipe(getFirstCompletedRemoteData()).subscribe(      
       (response: RemoteData<Item>) => {
         this.processRestResponse(response);
       }
