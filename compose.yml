@@ -1,6 +1,7 @@
 ---
 services:
   frontend:
+    platform: ${DOCKER_DEFAULT_PLATFORM:-linux/amd64}
     build:
       dockerfile: frontend.dockerfile
       context: .
