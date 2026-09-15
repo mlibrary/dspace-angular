@@ -1,4 +1,8 @@
 ---
+networks:
+  dspace-net:
+    external: true
+
 services:
   frontend:
     platform: ${DOCKER_DEFAULT_PLATFORM:-linux/amd64}
@@ -22,12 +26,15 @@ services:
       # server (running inside the frontend container) can reach the backend over Docker's
       # internal DNS.  The browser-side Angular re-uses the dspaceServer URL returned by
       # the HAL root, which points to localhost:8080 (the Docker host port).
-      DSPACE_REST_HOST: ${DSPACE_REST_HOST:-backend}
+      DSPACE_REST_HOST: ${DSPACE_REST_HOST:-localhost}
       DSPACE_REST_PORT: 8080
       DSPACE_REST_NAMESPACE: /server
       NODE_OPTIONS: "--max-old-space-size=4096"
+      DSPACE_AUTH_SHOWPASSWORDLOGIN: 'true'
     ports:
       - "4000:4000"
     stdin_open: true
     tty: true
     restart: unless-stopped
+    networks:
+      - dspace-net

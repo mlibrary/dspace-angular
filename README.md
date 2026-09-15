@@ -1,19 +1,27 @@
-# [Deep Blue Documents](https://deepblue.lib.umich.edu/)
-See also: [https://github.com/mlibrary/DSpace](https://github.com/mlibrary/DSpace) and [https://github.com/mlibrary/deepblue-documents-kube](https://github.com/mlibrary/deepblue-documents-kube) (private)
-## [DSpace](https://dspace.lyrasis.org/) - [Angular](https://angular.dev/) frontend.
-GitHub Actions [workflows](https://github.com/mlibrary/dspace-angular/actions) to produce Docker [images](https://github.com/orgs/mlibrary/packages?repo_name=dspace-angular) of Angular frontend.
+# Deep Blue Documents Frontend Service
 
-| Dockerfile          | Image           | Description                                 |
+[Deep Blue Documents](https://deepblue.lib.umich.edu/) is the University of Michigan's institutional repository for research data, publications, and other scholarly works.
+
+This repository contains the Angular frontend service. Backend services are in the [mlibrary/DSpace](https://github.com/mlibrary/DSpace) repository.
+
+
+
+The backend services are   
+
+
+## Workflow to build GitHub Package 
+| Workflow          | Package           | Description                                 |
 |---------------------|-----------------|---------------------------------------------|
-| frontend.dockerfile | dspace-frontend | Angular frontend for DSpace backend service |
+| Build dpsace-frontend image | dspace-frontend | Angular frontend for DSpace backend service |
 
-## Building and running locally
-The `compose.yml` file is configured for local development and testing.
+## Local Production Sandbox
+Using Docker Compose, you can build and run the frontend service locally to simulate a production environment.
+
 ```shell
 docker compose up -d
 ```
 
-### Frontend URLs
+### Endpoint
 | URL                                     | Container | Comments                                     |
 |-----------------------------------------|-----------|----------------------------------------------|
-| http://localhost:4000/                  | frontend  | Angular GUI (SSR app shell; Angular router handles `/home` etc. client-side) |
+| http://localhost:4000/documents                  | frontend  | Angular GUI (SSR app shell; Angular router client-side) |
