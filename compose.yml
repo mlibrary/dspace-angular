@@ -1,8 +1,4 @@
 ---
-networks:
-  dspace-net:
-    external: true
-
 services:
   frontend:
     platform: ${DOCKER_DEFAULT_PLATFORM:-linux/amd64}
@@ -22,19 +18,23 @@ services:
       DSPACE_UI_PORT: '4000'
       DSPACE_UI_NAMESPACE: /
       DSPACE_REST_SSL: 'false'
-      # DSPACE_REST_HOST must be the Docker service name 'backend' so that the Angular SSR
-      # server (running inside the frontend container) can reach the backend over Docker's
-      # internal DNS.  The browser-side Angular re-uses the dspaceServer URL returned by
+      # DSPACE_REST_HOST must be 'localhost' so that the Angular SSR
+      # server (running inside the frontend container) can reach the backend.
+      # The browser-side Angular re-uses the dspaceServer URL returned by
       # the HAL root, which points to localhost:8080 (the Docker host port).
       DSPACE_REST_HOST: ${DSPACE_REST_HOST:-localhost}
       DSPACE_REST_PORT: 8080
       DSPACE_REST_NAMESPACE: /server
       NODE_OPTIONS: "--max-old-space-size=4096"
+      # Disable OIDC authentication for local dev; use password auth only.
+      # Setting the frontend environment variable DSPACE_AUTH_SHOWPASSWORDLOGIN: 'true' is required to show the password login form in the Angular UI.
+      #      - plugin__P__sequence__P__org__P__dspace__P__authenticate__P__AuthenticationMethod=org.dspace.authenticate.PasswordAuthentication
+      # Enable OIDC authentication for local dev; use institutional SSO only.
+      # Not setting the frontend environment variable DSPACE_AUTH_SHOWPASSWORDLOGIN: 'true' is required to show the OIDC login form in the Angular UI.
+      #      - plugin__P__sequence__P__org__P__dspace__P__authenticate__P__AuthenticationMethod=org.dspace.authenticate.OidcAuthentication
       DSPACE_AUTH_SHOWPASSWORDLOGIN: 'true'
     ports:
       - "4000:4000"
     stdin_open: true
     tty: true
     restart: unless-stopped
-    networks:
-      - dspace-net
