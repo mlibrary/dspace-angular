@@ -78,6 +78,8 @@ rest:
   ssl: false
   host: localhost
   port: 8080
+auth:
+  showPasswordLogin: true
 ```
 #### Start the frontend service in production mode.
 ```shell
@@ -91,6 +93,8 @@ rest:
   ssl: false
   host: localhost
   port: 8080
+auth:
+  showPasswordLogin: true
 ```
 #### Start the frontend service in development mode.
 ```shell
