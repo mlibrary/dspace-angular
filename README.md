@@ -54,6 +54,9 @@ You'll get a 500 error if you don't have any communities, collections, and docum
 - - try refreshing the page or clearing the browser cache.
 - - check the backend services logs for any errors or issues.
 
+### Additional Information
+For more information see [DSpace README](DSPACE_README.md) (the original upstream README)
+
 ## Local Development
 
 Ensure the [Local Production Sandbox](local-production-sandbox) is not running to free up the port for local development.
@@ -70,7 +73,7 @@ Install the local dependencies.
 yarn install
 ```
 ### Production Mode
-Create `./config/config.prod.yml` 
+Create `./config/config.prod.yml` with the following content.
 ```yaml
 rest:
   ssl: false
@@ -87,7 +90,7 @@ yarn start
 ```
 #### [log in](#log-in)
 ### Development Mode
-Create `./config/config.dev.yml` 
+Create `./config/config.dev.yml` with the following content.
 ```yaml
 rest:
   ssl: false
@@ -104,7 +107,5 @@ yarn start:dev
 ```
 #### [log in](#log-in)
 
-### Additional Information
-For additional information see [DSpace README](DSPACE_README.md) (the original upstream README)
 
 ## WebStorm IDE Development
