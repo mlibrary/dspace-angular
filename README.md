@@ -81,6 +81,7 @@ rest:
 auth:
   showPasswordLogin: true
 ```
+Note: If you are using OIDC login, set `showPasswordLogin: false` in the config.prod.yml file.
 #### Start the frontend service in production mode.
 ```shell
 yarn start
@@ -96,6 +97,7 @@ rest:
 auth:
   showPasswordLogin: true
 ```
+Note: If you are using OIDC login, set `showPasswordLogin: false` in the config.dev.yml file.
 #### Start the frontend service in development mode.
 ```shell
 yarn start:dev
