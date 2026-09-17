@@ -107,5 +107,9 @@ yarn start:dev
 ```
 #### [log in](#log-in)
 
+## WebStorm Debugging
+To debug the `dspace-angular` application in WebStorm, you can debug **client-side Angular code in the browser**, **server-side Node/SSR scripts**, or **unit tests (Karma)** directly with WebStorm breakpoints. 
 
-## WebStorm IDE Development
+See the following agent-generated documentation files for more information:
+- [WEBSTORM.md](WEBSTORM.md)
+- [WEBSTORM_DEBUG.md](WEBSTORM_DEBUG.md)
