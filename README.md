@@ -54,9 +54,6 @@ You'll get a 500 error if you don't have any communities, collections, and docum
 - - try refreshing the page or clearing the browser cache.
 - - check the backend services logs for any errors or issues.
 
-### Additional Information
-For more information see [README2](README2.md) (the original upstream README) and agent responses to questions in the READMETOO directory (feel free to contribute additional agent responses).
-
 ## Local Development
 
 Ensure the [Local Production Sandbox](local-production-sandbox) is not running to free up the port for local development.
@@ -114,3 +111,6 @@ See the following agent-generated markdown files for more information:
 - [WEBSTORM.md](READMETOO/WEBSTORM.md)
 - [WEBSTORM_DEBUG.md](READMETOO/WEBSTORM_DEBUG.md)
 - [WEBSTORM_MISE.md](READMETOO/WEBSTORM_MISE.md)
+
+## Additional Information
+For more information see [README2](README2.md) (the original upstream README) and agent responses to questions in the READMETOO directory (feel free to contribute additional agent responses).
