@@ -55,7 +55,7 @@ You'll get a 500 error if you don't have any communities, collections, and docum
 - - check the backend services logs for any errors or issues.
 
 ### Additional Information
-For more information see [DSpace README](DSPACE_README.md) (the original upstream README)
+For more information see [README2](README2.md) (the original upstream README) and agent responses to questions in the READMETOO directory (feel free to contribute additional agent responses).
 
 ## Local Development
 
@@ -110,6 +110,7 @@ yarn start:dev
 ## WebStorm Debugging
 To debug the `dspace-angular` application in WebStorm, you can debug **client-side Angular code in the browser**, **server-side Node/SSR scripts**, or **unit tests (Karma)** directly with WebStorm breakpoints. 
 
-See the following agent-generated documentation files for more information:
-- [WEBSTORM.md](WEBSTORM.md)
-- [WEBSTORM_DEBUG.md](WEBSTORM_DEBUG.md)
+See the following agent-generated markdown files for more information:
+- [WEBSTORM.md](READMETOO/WEBSTORM.md)
+- [WEBSTORM_DEBUG.md](READMETOO/WEBSTORM_DEBUG.md)
+- [WEBSTORM_MISE.md](READMETOO/WEBSTORM_MISE.md)
