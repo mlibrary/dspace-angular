@@ -15,7 +15,7 @@ The backend services are in the [mlibrary/DSpace](https://github.com/mlibrary/DS
 ## Local Production Sandbox
 Using Docker Compose, you can build and run the frontend service locally to simulate a production environment.
 ```shell
-docker compose up -d
+docker compose up
 ```
 ### Service Endpoint
 | URL                                     | Container | Comments                                     |
@@ -23,7 +23,7 @@ docker compose up -d
 | http://localhost:4000/documents                  | frontend  | Angular GUI (SSR app shell; Angular router client-side) |
 
 ### Log In
-Once you have the local production backend services up and running (see [mlibrary/DSpace](https://github.com/mlibrary/DSpace)#[Local Production Sandbox](https://github.com/mlibrary/DSpace#local-production-sandbox)) and made yourself an admin user, you can log in http://localhost:4000/login.
+Once you have the local backend services up and running (see [mlibrary/DSpace](https://github.com/mlibrary/DSpace)#[Local Production Sandbox](https://github.com/mlibrary/DSpace#local-production-sandbox)) and made yourself an admin user, you can log in http://localhost:4000/login.
 
 
 You'll get a 500 error if you don't have any communities, collections, and documents, so navigate to the search page http://localhost:4000/search (you may need to log in again) and create a community, a collection, and add a document.
@@ -45,7 +45,7 @@ You'll get a 500 error if you don't have any communities, collections, and docum
   # NOTE: NOT setting the frontend environment variable DSPACE_AUTH_SHOWPASSWORDLOGIN: 'true' is required to show the OIDC login form in the Angular UI.
 #  - plugin__P__sequence__P__org__P__dspace__P__authenticate__P__AuthenticationMethod=org.dspace.authenticate.OidcAuthentication
 ```
-**Excerpted from the `backend` service in the backend services [docker-compose.yml](https://github.com/mlibrary/DSpace/blob/7587c55320c3c77b3eade82011bed391ab41fddc/compose.yml#L28) file.**
+**Excerpted from the `backend` service environment in the [docker-compose.yml](https://github.com/mlibrary/DSpace/blob/7587c55320c3c77b3eade82011bed391ab41fddc/compose.yml#L28) file.**
 ### Notes
 - The frontend service is configured to use the local backend services (see [mlibrary/DSpace](https://github.com/mlibrary/DSpace)#[Local Production Sandbox](https://github.com/mlibrary/DSpace#local-production-sandbox)).
 - If the behavior of the frontend service is not as expected and the backend services are running and healthy...
