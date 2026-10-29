@@ -4,15 +4,15 @@
 
   "401.link.home-page": "Take me to the home page",
 
-  "401.unauthorized": "unauthorized",
+  "401.unauthorized": "Unauthorized",
 
   "403.help": "You don't have permission to access this page. You can use the button below to get back to the home page.",
 
   "403.link.home-page": "Take me to the home page",
 
-  "403.forbidden": "forbidden",
+  "403.forbidden": "Forbidden",
 
-  "500.page-internal-server-error": "Service Unavailable",
+  "500.page-internal-server-error": "Service unavailable",
 
   "500.help": "The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later.",
 
@@ -22,15 +22,15 @@
 
   "404.link.home-page": "Take me to the home page",
 
-  "404.page-not-found": "page not found",
+  "404.page-not-found": "Page not found",
 
-  "error-page.description.401": "unauthorized",
+  "error-page.description.401": "Unauthorized",
 
-  "error-page.description.403": "forbidden",
+  "error-page.description.403": "Forbidden",
 
-  "error-page.description.500": "Service Unavailable",
+  "error-page.description.500": "Service unavailable",
 
-  "error-page.description.404": "page not found",
+  "error-page.description.404": "Page not found",
 
   "error-page.orcid.generic-error": "An error occurred during login via ORCID. Make sure you have shared your ORCID account email address with DSpace. If the error persists, contact the administrator",
 
@@ -58,7 +58,7 @@
 
   "admin.registries.bitstream-formats.create.failure.head": "Failure",
 
-  "admin.registries.bitstream-formats.create.head": "Create Bitstream format",
+  "admin.registries.bitstream-formats.create.head": "Create bitstream format",
 
   "admin.registries.bitstream-formats.create.new": "Add a new bitstream format",
 
@@ -128,21 +128,25 @@
 
   "admin.registries.bitstream-formats.table.name": "Name",
 
+  "admin.registries.bitstream-formats.table.selected": "Selected bitstream formats",
+
   "admin.registries.bitstream-formats.table.id": "ID",
 
   "admin.registries.bitstream-formats.table.return": "Back",
 
-  "admin.registries.bitstream-formats.table.supportLevel.AS_IS_UNKNOWN": "Level 3 (As-Is, Unknown)",
+  "admin.registries.bitstream-formats.table.supportLevel.KNOWN": "Known",
 
-  "admin.registries.bitstream-formats.table.supportLevel.LIMITED": "Level 2 (Limited)",
+  "admin.registries.bitstream-formats.table.supportLevel.SUPPORTED": "Supported",
 
-  "admin.registries.bitstream-formats.table.supportLevel.HIGHEST_LEVEL": "Level 1 (Highest Level)",
-
-  "admin.registries.bitstream-formats.table.supportLevel.AS_IS_KNOWN": "Level 3 (As-Is, Known)",
+  "admin.registries.bitstream-formats.table.supportLevel.UNKNOWN": "Unknown",
 
   "admin.registries.bitstream-formats.table.supportLevel.head": "Support Level",
 
   "admin.registries.bitstream-formats.title": "Bitstream Format Registry",
+
+  "admin.registries.bitstream-formats.select": "Select",
+
+  "admin.registries.bitstream-formats.deselect": "Deselect",
 
   "admin.registries.metadata.breadcrumbs": "Metadata registry",
 
@@ -160,7 +164,13 @@
 
   "admin.registries.metadata.schemas.no-items": "No metadata schemas to show.",
 
+  "admin.registries.metadata.schemas.select": "Select",
+
+  "admin.registries.metadata.schemas.deselect": "Deselect",
+
   "admin.registries.metadata.schemas.table.delete": "Delete selected",
+
+  "admin.registries.metadata.schemas.table.selected": "Selected schemas",
 
   "admin.registries.metadata.schemas.table.id": "ID",
 
@@ -174,6 +184,10 @@
 
   "admin.registries.schema.description": "This is the metadata schema for \"{{namespace}}\".",
 
+  "admin.registries.schema.fields.select": "Select",
+
+  "admin.registries.schema.fields.deselect": "Deselect",
+
   "admin.registries.schema.fields.head": "Schema metadata fields",
 
   "admin.registries.schema.fields.no-items": "No metadata fields to show.",
@@ -181,6 +195,8 @@
   "admin.registries.schema.fields.table.delete": "Delete selected",
 
   "admin.registries.schema.fields.table.field": "Field",
+
+  "admin.registries.schema.fields.table.selected": "Selected metadata fields",
 
   "admin.registries.schema.fields.table.id": "ID",
 
@@ -250,6 +266,14 @@
 
   "admin.access-control.epeople.title": "EPeople",
 
+  "admin.access-control.epeople.edit.breadcrumbs": "New EPerson",
+
+  "admin.access-control.epeople.edit.title": "New EPerson",
+
+  "admin.access-control.epeople.add.breadcrumbs": "Add EPerson",
+
+  "admin.access-control.epeople.add.title": "Add EPerson",
+
   "admin.access-control.epeople.head": "EPeople",
 
   "admin.access-control.epeople.search.head": "Search",
@@ -258,7 +282,7 @@
 
   "admin.access-control.epeople.search.scope.metadata": "Metadata",
 
-  "admin.access-control.epeople.search.scope.email": "E-mail (exact)",
+  "admin.access-control.epeople.search.scope.email": "Email (exact)",
 
   "admin.access-control.epeople.search.button": "Search",
 
@@ -270,7 +294,7 @@
 
   "admin.access-control.epeople.table.name": "Name",
 
-  "admin.access-control.epeople.table.email": "E-mail (exact)",
+  "admin.access-control.epeople.table.email": "Email (exact)",
 
   "admin.access-control.epeople.table.edit": "Edit",
 
@@ -288,11 +312,11 @@
 
   "admin.access-control.epeople.form.firstName": "First name",
 
-  "admin.access-control.epeople.form.lastName": "Last name(s)",
+  "admin.access-control.epeople.form.lastName": "Last name",
 
-  "admin.access-control.epeople.form.email": "E-mail",
+  "admin.access-control.epeople.form.email": "Email",
 
-  "admin.access-control.epeople.form.emailHint": "Must be valid e-mail address",
+  "admin.access-control.epeople.form.emailHint": "Must be a valid email address",
 
   "admin.access-control.epeople.form.canLogIn": "Can log in",
 
@@ -328,7 +352,7 @@
 
   "admin.access-control.epeople.form.goToGroups": "Add to groups",
 
-  "admin.access-control.epeople.notification.deleted.failure": "Failed to delete EPerson: \"{{name}}\"",
+  "admin.access-control.epeople.notification.deleted.failure": "Error occurred when trying to delete EPerson with id \"{{id}}\" with code: \"{{statusCode}}\" and message: \"{{restResponse.errorMessage}}\"",
 
   "admin.access-control.epeople.notification.deleted.success": "Successfully deleted EPerson: \"{{name}}\"",
 
@@ -428,10 +452,6 @@
 
   "admin.access-control.groups.form.members-list.headMembers": "Current Members",
 
-  "admin.access-control.groups.form.members-list.search.scope.metadata": "Metadata",
-
-  "admin.access-control.groups.form.members-list.search.scope.email": "E-mail (exact)",
-
   "admin.access-control.groups.form.members-list.search.button": "Search",
 
   "admin.access-control.groups.form.members-list.table.id": "ID",
@@ -488,8 +508,6 @@
 
   "admin.access-control.groups.form.subgroups-list.table.edit.buttons.add": "Add subgroup with name \"{{name}}\"",
 
-  "admin.access-control.groups.form.subgroups-list.table.edit.currentGroup": "Current group",
-
   "admin.access-control.groups.form.subgroups-list.notification.success.addSubgroup": "Successfully added subgroup: \"{{name}}\"",
 
   "admin.access-control.groups.form.subgroups-list.notification.failure.addSubgroup": "Failed to add subgroup: \"{{name}}\"",
@@ -508,11 +526,21 @@
 
   "admin.access-control.groups.form.return": "Back",
 
+  "admin.quality-assurance.breadcrumbs": "Quality Assurance",
+
+  "admin.notifications.event.breadcrumbs": "Quality Assurance Suggestions",
+
+  "admin.notifications.event.page.title": "Quality Assurance Suggestions",
+
+  "admin.quality-assurance.page.title": "Quality Assurance",
+
+  "admin.notifications.source.breadcrumbs": "Quality Assurance Source",
+
   "admin.access-control.groups.form.tooltip.editGroupPage": "On this page, you can modify the properties and members of a group. In the top section, you can edit the group name and description, unless this is an admin group for a collection or community, in which case the group name and description are auto-generated and cannot be edited. In the following sections, you can edit group membership. See [the wiki](https://wiki.lyrasis.org/display/DSDOC7x/Create+or+manage+a+user+group) for more details.",
 
-  "admin.access-control.groups.form.tooltip.editGroup.addEpeople": "To add or remove an EPerson to/from this group, either click the 'Browse All' button or use the search bar below to search for users (use the dropdown to the left of the search bar to choose whether to search by metadata or by email). Then click the plus icon for each user you wish to add in the list below, or the trash can icon for each user you wish to remove. The list below may have several pages: use the page controls below the list to navigate to the next pages. Once you are ready, save your changes by clicking the 'Save' button in the top section.",
+  "admin.access-control.groups.form.tooltip.editGroup.addEpeople": "To add or remove an EPerson to/from this group, either click the 'Browse All' button or use the search bar below to search for users (use the dropdown to the left of the search bar to choose whether to search by metadata or by email). Then click the plus icon for each user you wish to add in the list below, or the trash can icon for each user you wish to remove. The list below may have several pages: use the page controls below the list to navigate to the next pages.",
 
-  "admin.access-control.groups.form.tooltip.editGroup.addSubgroups": "To add or remove a Subgroup to/from this group, either click the 'Browse All' button or use the search bar below to search for users. Then click the plus icon for each user you wish to add in the list below, or the trash can icon for each user you wish to remove. The list below may have several pages: use the page controls below the list to navigate to the next pages. Once you are ready, save your changes by clicking the 'Save' button in the top section.",
+  "admin.access-control.groups.form.tooltip.editGroup.addSubgroups": "To add or remove a Subgroup to/from this group, either click the 'Browse All' button or use the search bar below to search for groups. Then click the plus icon for each group you wish to add in the list below, or the trash can icon for each group you wish to remove. The list below may have several pages: use the page controls below the list to navigate to the next pages.",
 
   "admin.search.breadcrumbs": "Administrative Search",
 
@@ -568,7 +596,7 @@
 
   "admin.metadata-import.page.help": "You can drop or browse CSV files that contain batch metadata operations on files here",
 
-  "admin.batch-import.page.help": "Select the Collection to import into. Then, drop or browse to a Simple Archive Format (SAF) zip file that includes the Works to import",
+  "admin.batch-import.page.help": "Select the Collection to import into. Then, drop or browse to a Simple Archive Format (SAF) zip file that includes the Items to import",
 
   "admin.batch-import.page.toggle.help": "It is possible to perform import either with file upload or via URL, use above toggle to set the input source",
 
@@ -588,9 +616,9 @@
 
   "admin.metadata-import.page.error.addFile": "Select file first!",
 
-  "admin.metadata-import.page.error.addFileUrl": "Insert file url first!",
+  "admin.metadata-import.page.error.addFileUrl": "Insert file URL first!",
 
-  "admin.batch-import.page.error.addFile": "Select Zip file first!",
+  "admin.batch-import.page.error.addFile": "Select ZIP file first!",
 
   "admin.metadata-import.page.toggle.upload": "Upload",
 
@@ -604,7 +632,7 @@
 
   "advanced-workflow-action.rating.form.rating.label": "Rating",
 
-  "advanced-workflow-action.rating.form.rating.error": "You must rate the work",
+  "advanced-workflow-action.rating.form.rating.error": "You must rate the item",
 
   "advanced-workflow-action.rating.form.review.label": "Review",
 
@@ -625,10 +653,6 @@
   "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.button.see-all": "Browse All",
 
   "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.headMembers": "Current Members",
-
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.search.scope.metadata": "Metadata",
-
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.search.scope.email": "E-mail (exact)",
 
   "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.search.button": "Search",
 
@@ -690,7 +714,7 @@
 
   "bitstream.edit.form.description.label": "Description",
 
-  "bitstream.edit.form.embargo.hint": "The first day from which access is allowed. <b>This date cannot be modified on this form.</b> To set an embargo date for a bitstream, go to the <i>Work Status</i> tab, click <i>Authorizations...</i>, create or edit the bitstream's <i>READ</i> policy, and set the <i>Start Date</i> as desired.",
+  "bitstream.edit.form.embargo.hint": "The first day from which access is allowed. <b>This date cannot be modified on this form.</b> To set an embargo date for a bitstream, go to the <i>Item Status</i> tab, click <i>Authorizations...</i>, create or edit the bitstream's <i>READ</i> policy, and set the <i>Start Date</i> as desired.",
 
   "bitstream.edit.form.embargo.label": "Embargo until specific date",
 
@@ -734,7 +758,7 @@
 
   "bitstream.edit.notifications.saved.title": "Bitstream saved",
 
-  "bitstream.edit.title": "Edit File Details",
+  "bitstream.edit.title": "Edit bitstream",
 
   "bitstream-request-a-copy.alert.canDownload1": "You already have access to this file. If you want to download the file, click ",
 
@@ -742,7 +766,7 @@
 
   "bitstream-request-a-copy.header": "Request a copy of the file",
 
-  "bitstream-request-a-copy.intro": "Enter the following information to request a copy for the following work: ",
+  "bitstream-request-a-copy.intro": "Enter the following information to request a copy for the following item: ",
 
   "bitstream-request-a-copy.intro.bitstream.one": "Requesting the following file: ",
 
@@ -752,7 +776,7 @@
 
   "bitstream-request-a-copy.name.error": "The name is required",
 
-  "bitstream-request-a-copy.email.label": "Your e-mail address *",
+  "bitstream-request-a-copy.email.label": "Your email address *",
 
   "bitstream-request-a-copy.email.hint": "This email address is used for sending the file.",
 
@@ -760,9 +784,9 @@
 
   "bitstream-request-a-copy.allfiles.label": "Files",
 
-  "bitstream-request-a-copy.files-all-false.label": "Only the file I clicked on",
+  "bitstream-request-a-copy.files-all-false.label": "Only the requested file",
 
-  "bitstream-request-a-copy.files-all-true.label": "All files from this work",
+  "bitstream-request-a-copy.files-all-true.label": "All files (of this item) in restricted access",
 
   "bitstream-request-a-copy.message.label": "Message",
 
@@ -770,9 +794,9 @@
 
   "bitstream-request-a-copy.submit": "Request copy",
 
-  "bitstream-request-a-copy.submit.success": "The work request was submitted successfully.",
+  "bitstream-request-a-copy.submit.success": "The item request was submitted successfully.",
 
-  "bitstream-request-a-copy.submit.error": "Something went wrong with submitting the work request.",
+  "bitstream-request-a-copy.submit.error": "Something went wrong with submitting the item request.",
 
   "browse.back.all-results": "All browse results",
 
@@ -782,13 +806,15 @@
 
   "browse.comcol.by.subject": "By Subject",
 
-  "browse.comcol.by.srsc": "By Subject Category 123",
+  "browse.comcol.by.srsc": "By Subject Category",
+
+  "browse.comcol.by.nsi": "By Norwegian Science Index",
 
   "browse.comcol.by.title": "By Title",
 
   "browse.comcol.head": "Browse",
 
-  "browse.empty": "No works to show.",
+  "browse.empty": "No items to show.",
 
   "browse.metadata.author": "Author",
 
@@ -798,6 +824,8 @@
 
   "browse.metadata.title": "Title",
 
+  "browse.metadata.srsc": "Subject Category",
+
   "browse.metadata.author.breadcrumbs": "Browse by Author",
 
   "browse.metadata.dateissued.breadcrumbs": "Browse by Date",
@@ -805,6 +833,8 @@
   "browse.metadata.subject.breadcrumbs": "Browse by Subject",
 
   "browse.metadata.srsc.breadcrumbs": "Browse by Subject Category",
+
+  "browse.metadata.nsi.breadcrumbs": "Browse by Norwegian Science Index",
 
   "browse.metadata.title.breadcrumbs": "Browse by Title",
 
@@ -858,15 +888,15 @@
 
   "browse.startsWith.type_date.label": "Or type in a date (year-month) and click on the Browse button",
 
-  "browse.startsWith.type_text": "Enter first few letters:",
+  "browse.startsWith.type_text": "Filter results by typing the first few letters",
 
   "browse.startsWith.input": "Filter",
 
   "browse.taxonomy.button": "Browse",
 
-  "browse.title": "Browsing {{ collection }} by {{ field }}{{ startsWith }} {{ value }}",
+  "browse.title": "Browsing by {{ field }}{{ startsWith }} {{ value }}",
 
-  "browse.title.page": "Browsing {{ collection }} by {{ field }} {{ value }}",
+  "browse.title.page": "Browsing by {{ field }} {{ value }}",
 
   "search.browse.item-back": "Back to Results",
 
@@ -877,6 +907,8 @@
   "claimed-declined-search-result-list-element.title": "Rejected, sent back to submitter",
 
   "claimed-declined-task-search-result-list-element.title": "Declined, sent back to Review Manager's workflow",
+
+  "collection.browse.logo": "Browse for a collection logo",
 
   "collection.create.head": "Create a Collection",
 
@@ -906,47 +938,45 @@
 
   "collection.edit.breadcrumbs": "Edit Collection",
 
-  "collection.edit.tabs.mapper.head": "Work Mapper",
+  "collection.edit.tabs.mapper.head": "Item Mapper",
 
-  "collection.edit.tabs.item-mapper.title": "Collection Edit - Work Mapper",
+  "collection.edit.tabs.item-mapper.title": "Collection Edit - Item Mapper",
 
   "collection.edit.item-mapper.cancel": "Cancel",
 
   "collection.edit.item-mapper.collection": "Collection: \"<b>{{name}}</b>\"",
 
-  "collection.edit.item-mapper.confirm": "Map selected works",
+  "collection.edit.item-mapper.confirm": "Map selected items",
 
-  "collection.edit.item-mapper.description": "This is the work mapper tool that allows collection administrators to map works from other collections into this collection. You can search for works from other collections and map them, or browse the list of currently mapped works.",
+  "collection.edit.item-mapper.description": "This is the item mapper tool that allows collection administrators to map items from other collections into this collection. You can search for items from other collections and map them, or browse the list of currently mapped items.",
 
-  "collection.edit.item-mapper.head": "Work Mapper - Map Works from Other Collections",
-
-  "collection.edit.item-mapper.checkall-desc": "By clicking on this, you will select/uselect all the works.",
+  "collection.edit.item-mapper.head": "Item Mapper - Map Items from Other Collections",
 
   "collection.edit.item-mapper.no-search": "Please enter a query to search",
 
-  "collection.edit.item-mapper.notifications.map.error.content": "Errors occurred for mapping of {{amount}} works.",
+  "collection.edit.item-mapper.notifications.map.error.content": "Errors occurred for mapping of {{amount}} items.",
 
   "collection.edit.item-mapper.notifications.map.error.head": "Mapping errors",
 
-  "collection.edit.item-mapper.notifications.map.success.content": "Successfully mapped {{amount}} works.",
+  "collection.edit.item-mapper.notifications.map.success.content": "Successfully mapped {{amount}} items.",
 
   "collection.edit.item-mapper.notifications.map.success.head": "Mapping completed",
 
-  "collection.edit.item-mapper.notifications.unmap.error.content": "Errors occurred for removing the mappings of {{amount}} works.",
+  "collection.edit.item-mapper.notifications.unmap.error.content": "Errors occurred for removing the mappings of {{amount}} items.",
 
   "collection.edit.item-mapper.notifications.unmap.error.head": "Remove mapping errors",
 
-  "collection.edit.item-mapper.notifications.unmap.success.content": "Successfully removed the mappings of {{amount}} works.",
+  "collection.edit.item-mapper.notifications.unmap.success.content": "Successfully removed the mappings of {{amount}} items.",
 
   "collection.edit.item-mapper.notifications.unmap.success.head": "Remove mapping completed",
 
-  "collection.edit.item-mapper.remove": "Remove selected work mappings",
+  "collection.edit.item-mapper.remove": "Remove selected item mappings",
 
-  "collection.edit.item-mapper.search-form.placeholder": "Search works...",
+  "collection.edit.item-mapper.search-form.placeholder": "Search items...",
 
-  "collection.edit.item-mapper.tabs.browse": "Browse mapped works",
+  "collection.edit.item-mapper.tabs.browse": "Browse mapped items",
 
-  "collection.edit.item-mapper.tabs.map": "Map new works",
+  "collection.edit.item-mapper.tabs.map": "Map new items",
 
   "collection.edit.logo.delete.title": "Delete logo",
 
@@ -1034,7 +1064,7 @@
 
   "collection.edit.template.add-button": "Add",
 
-  "collection.edit.template.breadcrumbs": "Work template",
+  "collection.edit.template.breadcrumbs": "Item template",
 
   "collection.edit.template.cancel": "Cancel",
 
@@ -1042,19 +1072,19 @@
 
   "collection.edit.template.edit-button": "Edit",
 
-  "collection.edit.template.error": "An error occurred retrieving the template work",
+  "collection.edit.template.error": "An error occurred retrieving the template item",
 
-  "collection.edit.template.head": "Edit Template Work for Collection \"{{ collection }}\"",
+  "collection.edit.template.head": "Edit Template Item for Collection \"{{ collection }}\"",
 
-  "collection.edit.template.label": "Template work",
+  "collection.edit.template.label": "Template item",
 
-  "collection.edit.template.loading": "Loading template work...",
+  "collection.edit.template.loading": "Loading template item...",
 
-  "collection.edit.template.notifications.delete.error": "Failed to delete the work template",
+  "collection.edit.template.notifications.delete.error": "Failed to delete the item template",
 
-  "collection.edit.template.notifications.delete.success": "Successfully deleted the work template",
+  "collection.edit.template.notifications.delete.success": "Successfully deleted the item template",
 
-  "collection.edit.template.title": "Edit Template Work",
+  "collection.edit.template.title": "Edit Template Item",
 
   "collection.form.abstract": "Short Description",
 
@@ -1076,9 +1106,11 @@
 
   "collection.listelement.badge": "Collection",
 
-  "collection.page.browse.recent.head": "Recent Deposits",
+  "collection.logo": "Collection logo",
 
-  "collection.page.browse.recent.empty": "No works to show",
+  "collection.page.browse.recent.head": "Recent Submissions",
+
+  "collection.page.browse.recent.empty": "No items to show",
 
   "collection.page.edit": "Edit this collection",
 
@@ -1091,6 +1123,12 @@
   "collection.select.confirm": "Confirm selected",
 
   "collection.select.empty": "No collections to show",
+
+  "collection.select.table.selected": "Selected collections",
+
+  "collection.select.table.select": "Select collection",
+
+  "collection.select.table.deselect": "Deselect collection",
 
   "collection.select.table.title": "Title",
 
@@ -1144,13 +1182,19 @@
 
   "collection.source.update.notifications.error.title": "Server Error",
 
-  "communityList.breadcrumbs": "Communities & Collections",
+  "communityList.breadcrumbs": "Community List",
 
-  "communityList.tabTitle": "Communities & Collections",
+  "communityList.tabTitle": "Community List",
 
-  "communityList.title": "Communities & Collections",
+  "communityList.title": "List of Communities",
 
   "communityList.showMore": "Show More",
+
+  "communityList.expand": "Expand {{ name }}",
+
+  "communityList.collapse": "Collapse {{ name }}",
+
+  "community.browse.logo": "Browse for a community logo",
 
   "community.create.head": "Create a Community",
 
@@ -1186,9 +1230,9 @@
 
   "community.edit.logo.label": "Community logo",
 
-  "community.edit.logo.notifications.add.error": "Uploading Community logo failed. Please verify the content before retrying.",
+  "community.edit.logo.notifications.add.error": "Uploading community logo failed. Please verify the content before retrying.",
 
-  "community.edit.logo.notifications.add.success": "Upload Community logo successful.",
+  "community.edit.logo.notifications.add.success": "Upload community logo successful.",
 
   "community.edit.logo.notifications.delete.success.title": "Logo deleted",
 
@@ -1196,13 +1240,13 @@
 
   "community.edit.logo.notifications.delete.error.title": "Error deleting logo",
 
-  "community.edit.logo.upload": "Drop a Community Logo to upload",
+  "community.edit.logo.upload": "Drop a community logo to upload",
 
   "community.edit.notifications.success": "Successfully edited the Community",
 
   "community.edit.notifications.unauthorized": "You do not have privileges to make this change",
 
-  "community.edit.notifications.error": "An error occured while editing the Community",
+  "community.edit.notifications.error": "An error occured while editing the community",
 
   "community.edit.return": "Back",
 
@@ -1228,6 +1272,8 @@
 
   "community.listelement.badge": "Community",
 
+  "community.logo": "Community logo",
+
   "comcol-role.edit.no-group": "None",
 
   "comcol-role.edit.create": "Create",
@@ -1244,23 +1290,23 @@
 
   "comcol-role.edit.collection-admin.name": "Administrators",
 
-  "comcol-role.edit.community-admin.description": "Community administrators can create sub-communities or collections, and manage or assign management for those sub-communities or collections. In addition, they decide who can submit works to any sub-collections, edit work metadata (after submission), and add (map) existing works from other collections (subject to authorization).",
+  "comcol-role.edit.community-admin.description": "Community administrators can create sub-communities or collections, and manage or assign management for those sub-communities or collections. In addition, they decide who can submit items to any sub-collections, edit item metadata (after submission), and add (map) existing items from other collections (subject to authorization).",
 
-  "comcol-role.edit.collection-admin.description": "Collection administrators decide who can submit works to the collection, edit work metadata (after submission), and add (map) existing works from other collections to this collection (subject to authorization for that collection).",
+  "comcol-role.edit.collection-admin.description": "Collection administrators decide who can submit items to the collection, edit item metadata (after submission), and add (map) existing items from other collections to this collection (subject to authorization for that collection).",
 
   "comcol-role.edit.submitters.name": "Submitters",
 
-  "comcol-role.edit.submitters.description": "The E-People and Groups that have permission to submit new works to this collection.",
+  "comcol-role.edit.submitters.description": "The E-People and Groups that have permission to submit new items to this collection.",
 
-  "comcol-role.edit.item_read.name": "Default work read access",
+  "comcol-role.edit.item_read.name": "Default item read access",
 
-  "comcol-role.edit.item_read.description": "E-People and Groups that can read new works submitted to this collection. Changes to this role are not retroactive. Existing works in the system will still be viewable by those who had read access at the time of their addition.",
+  "comcol-role.edit.item_read.description": "E-People and Groups that can read new items submitted to this collection. Changes to this role are not retroactive. Existing items in the system will still be viewable by those who had read access at the time of their addition.",
 
-  "comcol-role.edit.item_read.anonymous-group": "Default read for incoming works is currently set to Anonymous.",
+  "comcol-role.edit.item_read.anonymous-group": "Default read for incoming items is currently set to Anonymous.",
 
   "comcol-role.edit.bitstream_read.name": "Default bitstream read access",
 
-  "comcol-role.edit.bitstream_read.description": "Community administrators can create sub-communities or collections, and manage or assign management for those sub-communities or collections. In addition, they decide who can submit works to any sub-collections, edit work metadata (after submission), and add (map) existing works from other collections (subject to authorization).",
+  "comcol-role.edit.bitstream_read.description": "E-People and Groups that can read new bitstreams submitted to this collection. Changes to this role are not retroactive. Existing bitstreams in the system will still be viewable by those who had read access at the time of their addition.",
 
   "comcol-role.edit.bitstream_read.anonymous-group": "Default read for incoming bitstreams is currently set to Anonymous.",
 
@@ -1396,7 +1442,7 @@
 
   "curation-task.task.vscan.label": "Virus Scan",
 
-  "curation-task.task.register-doi.label": "Register DOI",
+  "curation-task.task.registerdoi.label": "Register DOI",
 
   "curation.form.task-select.label": "Task:",
 
@@ -1426,7 +1472,7 @@
 
   "deny-request-copy.intro": "This message will be sent to the applicant of the request",
 
-  "deny-request-copy.success": "Successfully denied work request",
+  "deny-request-copy.success": "Successfully denied item request",
 
   "dso.name.untitled": "Untitled",
 
@@ -1444,17 +1490,17 @@
 
   "dso-selector.create.community.top-level": "Create a new top-level community",
 
-  "dso-selector.create.item.head": "New Work",
+  "dso-selector.create.item.head": "New item",
 
-  "dso-selector.create.item.sub-level": "Create a new Work in one of the following collections",
+  "dso-selector.create.item.sub-level": "Create a new item in",
 
-  "dso-selector.create.submission.head": "New Deposit",
+  "dso-selector.create.submission.head": "New submission",
 
   "dso-selector.edit.collection.head": "Edit collection",
 
   "dso-selector.edit.community.head": "Edit community",
 
-  "dso-selector.edit.item.head": "Edit work",
+  "dso-selector.edit.item.head": "Edit item",
 
   "dso-selector.error.title": "An error occurred searching for a {{ type }}",
 
@@ -1472,7 +1518,7 @@
 
   "dso-selector.set-scope.community.head": "Select a search scope",
 
-  "dso-selector.set-scope.community.button": "Search all of DB Docs",
+  "dso-selector.set-scope.community.button": "Search all of DSpace",
 
   "dso-selector.set-scope.community.or-divider": "or",
 
@@ -1512,7 +1558,7 @@
 
   "supervision-group-selector.notification.create.failure.title": "Error",
 
-  "supervision-group-selector.notification.create.already-existing": "A supervision order already exists on this work for selected group",
+  "supervision-group-selector.notification.create.already-existing": "A supervision order already exists on this item for selected group",
 
   "confirmation-modal.export-metadata.header": "Export metadata for {{ dsoName }}",
 
@@ -1556,7 +1602,7 @@
 
   "error.bitstream": "Error fetching bitstream",
 
-  "error.browse-by": "Error fetching works",
+  "error.browse-by": "Error fetching items",
 
   "error.collection": "Error fetching collection",
 
@@ -1564,13 +1610,13 @@
 
   "error.community": "Error fetching community",
 
-  "error.identifier": "No work found for the identifier",
+  "error.identifier": "No item found for the identifier",
 
   "error.default": "Error",
 
-  "error.item": "Error fetching work",
+  "error.item": "Error fetching item",
 
-  "error.items": "Error fetching works",
+  "error.items": "Error fetching items",
 
   "error.objects": "Error fetching objects",
 
@@ -1596,9 +1642,9 @@
 
   "error.validation.required": "This field is required",
 
-  "error.validation.NotValidEmail": "This E-mail is not a valid email",
+  "error.validation.NotValidEmail": "This is not a valid email",
 
-  "error.validation.emailTaken": "This E-mail is already taken",
+  "error.validation.emailTaken": "This email is already taken",
 
   "error.validation.groupExists": "This group already exists",
 
@@ -1618,7 +1664,9 @@
 
   "feed.description": "Syndication feed",
 
-  "file-section.error.header": "Error obtaining files for this work",
+  "file-download-link.restricted": "Restricted bitstream",
+
+  "file-section.error.header": "Error obtaining files for this item",
 
   "footer.copyright": "copyright © 2002-{{ year }}",
 
@@ -1633,8 +1681,6 @@
   "footer.link.end-user-agreement": "End User Agreement",
 
   "footer.link.feedback": "Send Feedback",
-
-  "info.feedback.subject": "Subject",
 
   "forgot-email.form.header": "Forgot Password",
 
@@ -1674,7 +1720,7 @@
 
   "forgot-password.form.label.passwordrepeat": "Retype to confirm",
 
-  "forgot-password.form.error.empty-password": "Please enter a password in the box below.",
+  "forgot-password.form.error.empty-password": "Please enter a password in the boxes above.",
 
   "forgot-password.form.error.matching-passwords": "The passwords do not match.",
 
@@ -1714,7 +1760,7 @@
 
   "form.group-expand-help": "Click here to expand and add more elements",
 
-  "form.last-name": "Last name(s)",
+  "form.last-name": "Last name",
 
   "form.loading": "Loading...",
 
@@ -1752,13 +1798,17 @@
 
   "form.create": "Create",
 
-  "form.repeatable.sort.tip": "Drop the work in the new position",
+  "form.repeatable.sort.tip": "Drop the item in the new position",
+
+  "form.number-picker.decrement": "Decrement {{field}}",
+
+  "form.number-picker.increment": "Increment {{field}}",
 
   "grant-deny-request-copy.deny": "Don't send copy",
 
   "grant-deny-request-copy.email.back": "Back",
 
-  "grant-deny-request-copy.email.message": "Additional message (required)",
+  "grant-deny-request-copy.email.message": "Optional additional message",
 
   "grant-deny-request-copy.email.message.empty": "Please enter a message",
 
@@ -1792,7 +1842,7 @@
 
   "grant-request-copy.intro": "A message will be sent to the applicant of the request. The requested document(s) will be attached.",
 
-  "grant-request-copy.success": "Successfully granted work request",
+  "grant-request-copy.success": "Successfully granted item request",
 
   "health.breadcrumbs": "Health",
 
@@ -1838,11 +1888,11 @@
 
   "home.breadcrumbs": "Home",
 
-  "home.search-form.placeholder": "Search all of Deep Blue Documents",
+  "home.search-form.placeholder": "Search the repository ...",
 
   "home.title": "Home",
 
-  "home.top-level-communities.head": "Communities in Deep Blue Documents",
+  "home.top-level-communities.head": "Communities in DSpace",
 
   "home.top-level-communities.help": "Select a community to browse its collections.",
 
@@ -1876,7 +1926,7 @@
 
   "info.feedback.title": "Feedback",
 
-  "info.feedback.info": "Thanks for sharing your feedback about the Deep Blue Documents. Your comments are appreciated!",
+  "info.feedback.info": "Thanks for sharing your feedback about the DSpace system. Your comments are appreciated!",
 
   "info.feedback.email_help": "This address will be used to follow up on your feedback.",
 
@@ -1892,19 +1942,17 @@
 
   "info.feedback.error.message.required": "A comment is required",
 
-  "info.feedback.error.subject.required" : "A subject is required",
-
   "info.feedback.page-label": "Page",
 
-  "info.feedback.page_help": "Tha page related to your feedback",
+  "info.feedback.page_help": "The page related to your feedback",
 
-  "item.alerts.private": "This work is non-discoverable",
+  "item.alerts.private": "This item is non-discoverable",
 
-  "item.alerts.withdrawn": "This work has been withdrawn",
+  "item.alerts.withdrawn": "This item has been withdrawn",
 
-  "item.edit.authorizations.heading": "With this editor you can view and alter the policies of an work, plus alter policies of individual work components: bundles and bitstreams. Briefly, an work is a container of bundles, and bundles are containers of bitstreams. Containers usually have ADD/REMOVE/READ/WRITE policies, while bitstreams only have READ/WRITE policies.",
+  "item.edit.authorizations.heading": "With this editor you can view and alter the policies of an item, plus alter policies of individual item components: bundles and bitstreams. Briefly, an item is a container of bundles, and bundles are containers of bitstreams. Containers usually have ADD/REMOVE/READ/WRITE policies, while bitstreams only have READ/WRITE policies.",
 
-  "item.edit.authorizations.title": "Edit work's Policies",
+  "item.edit.authorizations.title": "Edit item's Policies",
 
   "item.badge.private": "Non-discoverable",
 
@@ -1916,13 +1964,13 @@
 
   "item.bitstreams.upload.bundle.new": "Create bundle",
 
-  "item.bitstreams.upload.bundles.empty": "This work doesn't contain any bundles to upload a bitstream to.",
+  "item.bitstreams.upload.bundles.empty": "This item doesn't contain any bundles to upload a bitstream to.",
 
   "item.bitstreams.upload.cancel": "Cancel",
 
   "item.bitstreams.upload.drop-message": "Drop a file to upload",
 
-  "item.bitstreams.upload.item": "Work: ",
+  "item.bitstreams.upload.item": "Item: ",
 
   "item.bitstreams.upload.notifications.bundle.created.content": "Successfully created new bundle.",
 
@@ -1954,7 +2002,7 @@
 
   "item.edit.bitstreams.edit.buttons.undo": "Undo changes",
 
-  "item.edit.bitstreams.empty": "This work doesn't contain any bitstreams. Click the upload button to create one.",
+  "item.edit.bitstreams.empty": "This item doesn't contain any bitstreams. Click the upload button to create one.",
 
   "item.edit.bitstreams.headers.actions": "Actions",
 
@@ -1972,17 +2020,17 @@
 
   "item.edit.bitstreams.notifications.move.failed.title": "Error moving bitstreams",
 
-  "item.edit.bitstreams.notifications.move.saved.content": "Your move changes to this work's bitstreams and bundles have been saved.",
+  "item.edit.bitstreams.notifications.move.saved.content": "Your move changes to this item's bitstreams and bundles have been saved.",
 
   "item.edit.bitstreams.notifications.move.saved.title": "Move changes saved",
 
-  "item.edit.bitstreams.notifications.outdated.content": "The work you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
+  "item.edit.bitstreams.notifications.outdated.content": "The item you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
 
   "item.edit.bitstreams.notifications.outdated.title": "Changes outdated",
 
   "item.edit.bitstreams.notifications.remove.failed.title": "Error deleting bitstream",
 
-  "item.edit.bitstreams.notifications.remove.saved.content": "Your removal changes to this work's bitstreams have been saved.",
+  "item.edit.bitstreams.notifications.remove.saved.content": "Your removal changes to this item's bitstreams have been saved.",
 
   "item.edit.bitstreams.notifications.remove.saved.title": "Removal changes saved",
 
@@ -1996,23 +2044,23 @@
 
   "item.edit.delete.confirm": "Delete",
 
-  "item.edit.delete.description": "Are you sure this work should be completely deleted? Caution: At present, no tombstone would be left.",
+  "item.edit.delete.description": "Are you sure this item should be completely deleted? Caution: At present, no tombstone would be left.",
 
-  "item.edit.delete.error": "An error occurred while deleting the work",
+  "item.edit.delete.error": "An error occurred while deleting the item",
 
-  "item.edit.delete.header": "Delete work: {{ id }}",
+  "item.edit.delete.header": "Delete item: {{ id }}",
 
-  "item.edit.delete.success": "The work has been deleted",
+  "item.edit.delete.success": "The item has been deleted",
 
-  "item.edit.head": "Edit Work",
+  "item.edit.head": "Edit Item",
 
-  "item.edit.breadcrumbs": "Edit Work",
+  "item.edit.breadcrumbs": "Edit Item",
 
   "item.edit.tabs.disabled.tooltip": "You're not authorized to access this tab",
 
   "item.edit.tabs.mapper.head": "Collection Mapper",
 
-  "item.edit.tabs.item-mapper.title": "Work Edit - Collection Mapper",
+  "item.edit.tabs.item-mapper.title": "Item Edit - Collection Mapper",
 
   "item.edit.identifiers.doi.status.UNKNOWN": "Unknown",
 
@@ -2044,7 +2092,7 @@
 
   "item.edit.register-doi.header": "Register a new or pending DOI",
 
-  "item.edit.register-doi.description": "Review any pending identifiers and work metadata below and click Confirm to proceed with DOI registration, or Cancel to back out",
+  "item.edit.register-doi.description": "Review any pending identifiers and item metadata below and click Confirm to proceed with DOI registration, or Cancel to back out",
 
   "item.edit.register-doi.confirm": "Confirm",
 
@@ -2056,25 +2104,25 @@
 
   "item.edit.register-doi.to-update": "The following DOI has already been minted and will be queued for registration online",
 
-  "item.edit.item-mapper.buttons.add": "Map work to selected collections",
+  "item.edit.item-mapper.buttons.add": "Map item to selected collections",
 
-  "item.edit.item-mapper.buttons.remove": "Remove work's mapping for selected collections",
+  "item.edit.item-mapper.buttons.remove": "Remove item's mapping for selected collections",
 
   "item.edit.item-mapper.cancel": "Cancel",
 
-  "item.edit.item-mapper.description": "This is the work mapper tool that allows administrators to map this work to other collections. You can search for collections and map them, or browse the list of collections the work is currently mapped to.",
+  "item.edit.item-mapper.description": "This is the item mapper tool that allows administrators to map this item to other collections. You can search for collections and map them, or browse the list of collections the item is currently mapped to.",
 
-  "item.edit.item-mapper.head": "Work Mapper - Map Work to Collections",
+  "item.edit.item-mapper.head": "Item Mapper - Map Item to Collections",
 
-  "item.edit.item-mapper.item": "Work: \"<b>{{name}}</b>\"",
+  "item.edit.item-mapper.item": "Item: \"<b>{{name}}</b>\"",
 
   "item.edit.item-mapper.no-search": "Please enter a query to search",
 
-  "item.edit.item-mapper.notifications.add.error.content": "Errors occurred for mapping of work to {{amount}} collections.",
+  "item.edit.item-mapper.notifications.add.error.content": "Errors occurred for mapping of item to {{amount}} collections.",
 
   "item.edit.item-mapper.notifications.add.error.head": "Mapping errors",
 
-  "item.edit.item-mapper.notifications.add.success.content": "Successfully mapped work to {{amount}} collections.",
+  "item.edit.item-mapper.notifications.add.success.content": "Successfully mapped item to {{amount}} collections.",
 
   "item.edit.item-mapper.notifications.add.success.head": "Mapping completed",
 
@@ -2082,7 +2130,7 @@
 
   "item.edit.item-mapper.notifications.remove.error.head": "Removal of mapping errors",
 
-  "item.edit.item-mapper.notifications.remove.success.content": "Successfully removed mapping of work to {{amount}} collections.",
+  "item.edit.item-mapper.notifications.remove.success.content": "Successfully removed mapping of item to {{amount}} collections.",
 
   "item.edit.item-mapper.notifications.remove.success.head": "Removal of mapping completed",
 
@@ -2095,6 +2143,10 @@
   "item.edit.metadata.add-button": "Add",
 
   "item.edit.metadata.discard-button": "Discard",
+
+  "item.edit.metadata.edit.language": "Edit language",
+
+  "item.edit.metadata.edit.value": "Edit value",
 
   "item.edit.metadata.edit.buttons.confirm": "Confirm",
 
@@ -2110,7 +2162,7 @@
 
   "item.edit.metadata.edit.buttons.virtual": "This is a virtual metadata value, i.e. a value inherited from a related entity. It can’t be modified directly. Add or remove the corresponding relationship in the \"Relationships\" tab",
 
-  "item.edit.metadata.empty": "The work currently doesn't contain any metadata. Click Add to start adding a metadata value.",
+  "item.edit.metadata.empty": "The item currently doesn't contain any metadata. Click Add to start adding a metadata value.",
 
   "item.edit.metadata.headers.edit": "Edit",
 
@@ -2119,6 +2171,8 @@
   "item.edit.metadata.headers.language": "Lang",
 
   "item.edit.metadata.headers.value": "Value",
+
+  "item.edit.metadata.metadatafield": "Edit field",
 
   "item.edit.metadata.metadatafield.error": "An error occurred validating the metadata field",
 
@@ -2134,11 +2188,11 @@
 
   "item.edit.metadata.notifications.invalid.title": "Metadata invalid",
 
-  "item.edit.metadata.notifications.outdated.content": "The work you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
+  "item.edit.metadata.notifications.outdated.content": "The item you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
 
   "item.edit.metadata.notifications.outdated.title": "Changes outdated",
 
-  "item.edit.metadata.notifications.saved.content": "Your changes to this work's metadata were saved.",
+  "item.edit.metadata.notifications.saved.content": "Your changes to this item's metadata were saved.",
 
   "item.edit.metadata.notifications.saved.title": "Metadata saved",
 
@@ -2160,15 +2214,17 @@
 
   "item.edit.move.discard-button": "Discard",
 
-  "item.edit.move.description": "Select the collection you wish to move this work to. To narrow down the list of displayed collections, you can enter a search query in the box.",
+  "item.edit.move.description": "Select the collection you wish to move this item to. To narrow down the list of displayed collections, you can enter a search query in the box.",
 
-  "item.edit.move.error": "An error occurred when attempting to move the work",
+  "item.edit.move.error": "An error occurred when attempting to move the item",
 
-  "item.edit.move.head": "Move work: {{id}}",
+  "item.edit.move.head": "Move item: {{id}}",
 
   "item.edit.move.inheritpolicies.checkbox": "Inherit policies",
 
   "item.edit.move.inheritpolicies.description": "Inherit the default policies of the destination collection",
+
+  "item.edit.move.inheritpolicies.tooltip": "Warning: When enabled, the read access policy for the item and any files associated with the item will be replaced by the default read access policy of the collection. This cannot be undone.",
 
   "item.edit.move.move": "Move",
 
@@ -2176,45 +2232,45 @@
 
   "item.edit.move.search.placeholder": "Enter a search query to look for collections",
 
-  "item.edit.move.success": "The work has been moved successfully",
+  "item.edit.move.success": "The item has been moved successfully",
 
-  "item.edit.move.title": "Move work",
+  "item.edit.move.title": "Move item",
 
   "item.edit.private.cancel": "Cancel",
 
   "item.edit.private.confirm": "Make it non-discoverable",
 
-  "item.edit.private.description": "Are you sure this work should be made non-discoverable in the archive?",
+  "item.edit.private.description": "Are you sure this item should be made non-discoverable in the archive?",
 
-  "item.edit.private.error": "An error occurred while making the work non-discoverable",
+  "item.edit.private.error": "An error occurred while making the item non-discoverable",
 
-  "item.edit.private.header": "Make work non-discoverable: {{ id }}",
+  "item.edit.private.header": "Make item non-discoverable: {{ id }}",
 
-  "item.edit.private.success": "The work is now non-discoverable",
+  "item.edit.private.success": "The item is now non-discoverable",
 
   "item.edit.public.cancel": "Cancel",
 
   "item.edit.public.confirm": "Make it discoverable",
 
-  "item.edit.public.description": "Are you sure this work should be made discoverable in the archive?",
+  "item.edit.public.description": "Are you sure this item should be made discoverable in the archive?",
 
-  "item.edit.public.error": "An error occurred while making the work discoverable",
+  "item.edit.public.error": "An error occurred while making the item discoverable",
 
-  "item.edit.public.header": "Make work discoverable: {{ id }}",
+  "item.edit.public.header": "Make item discoverable: {{ id }}",
 
-  "item.edit.public.success": "The work is now discoverable",
+  "item.edit.public.success": "The item is now discoverable",
 
   "item.edit.reinstate.cancel": "Cancel",
 
   "item.edit.reinstate.confirm": "Reinstate",
 
-  "item.edit.reinstate.description": "Are you sure this work should be reinstated to the archive?",
+  "item.edit.reinstate.description": "Are you sure this item should be reinstated to the archive?",
 
-  "item.edit.reinstate.error": "An error occurred while reinstating the work",
+  "item.edit.reinstate.error": "An error occurred while reinstating the item",
 
-  "item.edit.reinstate.header": "Reinstate work: {{ id }}",
+  "item.edit.reinstate.header": "Reinstate item: {{ id }}",
 
-  "item.edit.reinstate.success": "The work was reinstated successfully",
+  "item.edit.reinstate.success": "The item was reinstated successfully",
 
   "item.edit.relationships.discard-button": "Discard",
 
@@ -2232,11 +2288,11 @@
 
   "item.edit.relationships.notifications.failed.title": "Error editing relationships",
 
-  "item.edit.relationships.notifications.outdated.content": "The work you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
+  "item.edit.relationships.notifications.outdated.content": "The item you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
 
   "item.edit.relationships.notifications.outdated.title": "Changes outdated",
 
-  "item.edit.relationships.notifications.saved.content": "Your changes to this work's relationships were saved.",
+  "item.edit.relationships.notifications.saved.content": "Your changes to this item's relationships were saved.",
 
   "item.edit.relationships.notifications.saved.title": "Relationships saved",
 
@@ -2244,7 +2300,7 @@
 
   "item.edit.relationships.save-button": "Save",
 
-  "item.edit.relationships.no-entity-type": "Add 'dspace.entity.type' metadata to enable relationships for this work",
+  "item.edit.relationships.no-entity-type": "Add 'dspace.entity.type' metadata to enable relationships for this item",
 
   "item.edit.return": "Back",
 
@@ -2254,99 +2310,97 @@
 
   "item.edit.tabs.curate.head": "Curate",
 
-  "item.edit.tabs.curate.title": "Work Edit - Curate",
+  "item.edit.tabs.curate.title": "Item Edit - Curate",
 
-  "item.edit.curate.title": "Curate Work: {{item}}",
+  "item.edit.curate.title": "Curate Item: {{item}}",
 
   "item.edit.tabs.access-control.head": "Access Control",
 
-  "item.edit.tabs.access-control.title": "Work Edit - Access Control",
+  "item.edit.tabs.access-control.title": "Item Edit - Access Control",
 
   "item.edit.tabs.metadata.head": "Metadata",
 
-  "item.edit.tabs.metadata.title": "Work Edit -  Metadata",
+  "item.edit.tabs.metadata.title": "Item Edit -  Metadata",
 
   "item.edit.tabs.relationships.head": "Relationships",
 
-  "item.edit.tabs.relationships.title": "Work Edit - Relationships",
+  "item.edit.tabs.relationships.title": "Item Edit - Relationships",
 
   "item.edit.tabs.status.buttons.authorizations.button": "Authorizations...",
 
-  "item.edit.tabs.status.buttons.authorizations.label": "Edit work's authorization policies",
+  "item.edit.tabs.status.buttons.authorizations.label": "Edit item's authorization policies",
 
   "item.edit.tabs.status.buttons.delete.button": "Permanently delete",
 
-  "item.edit.tabs.status.buttons.delete.label": "Completely expunge work",
+  "item.edit.tabs.status.buttons.delete.label": "Completely expunge item",
 
   "item.edit.tabs.status.buttons.mappedCollections.button": "Mapped collections",
 
   "item.edit.tabs.status.buttons.mappedCollections.label": "Manage mapped collections",
 
-  "item.edit.tabs.status.buttons.move.button": "Move this Work to a different Collection",
+  "item.edit.tabs.status.buttons.move.button": "Move this Item to a different Collection",
 
-  "item.edit.tabs.status.buttons.move.label": "Move work to another collection",
+  "item.edit.tabs.status.buttons.move.label": "Move item to another collection",
 
   "item.edit.tabs.status.buttons.private.button": "Make it non-discoverable...",
 
-  "item.edit.tabs.status.buttons.private.label": "Make work non-discoverable",
+  "item.edit.tabs.status.buttons.private.label": "Make item non-discoverable",
 
   "item.edit.tabs.status.buttons.public.button": "Make it discoverable...",
 
-  "item.edit.tabs.status.buttons.public.label": "Make work discoverable",
+  "item.edit.tabs.status.buttons.public.label": "Make item discoverable",
 
   "item.edit.tabs.status.buttons.reinstate.button": "Reinstate...",
 
-  "item.edit.tabs.status.buttons.reinstate.label": "Reinstate work into the repository",
+  "item.edit.tabs.status.buttons.reinstate.label": "Reinstate item into the repository",
 
   "item.edit.tabs.status.buttons.unauthorized": "You're not authorized to perform this action",
 
-  "item.edit.tabs.status.buttons.withdraw.button": "Withdraw this work",
+  "item.edit.tabs.status.buttons.withdraw.button": "Withdraw this item",
 
-  "item.edit.tabs.status.buttons.withdraw.label": "Withdraw work from the repository",
+  "item.edit.tabs.status.buttons.withdraw.label": "Withdraw item from the repository",
 
-  "item.edit.tabs.status.description": "Welcome to the work management page. From here you can withdraw, reinstate, move or delete the work. You may also update or add new metadata / bitstreams on the other tabs.",
+  "item.edit.tabs.status.description": "Welcome to the item management page. From here you can withdraw, reinstate, move or delete the item. You may also update or add new metadata / bitstreams on the other tabs.",
 
   "item.edit.tabs.status.head": "Status",
 
   "item.edit.tabs.status.labels.handle": "Handle",
 
-  "item.edit.tabs.status.labels.id": "Work Internal ID",
+  "item.edit.tabs.status.labels.id": "Item Internal ID",
 
-  "item.edit.tabs.status.labels.itemPage": "Work Page",
+  "item.edit.tabs.status.labels.itemPage": "Item Page",
 
   "item.edit.tabs.status.labels.lastModified": "Last Modified",
 
-  "item.edit.tabs.status.title": "Work Edit -  Status",
+  "item.edit.tabs.status.title": "Item Edit -  Status",
 
   "item.edit.tabs.versionhistory.head": "Version History",
 
-  "item.edit.tabs.versionhistory.title": "Work Edit - Version History",
+  "item.edit.tabs.versionhistory.title": "Item Edit - Version History",
 
   "item.edit.tabs.versionhistory.under-construction": "Editing or adding new versions is not yet possible in this user interface.",
 
-  "item.edit.tabs.view.head": "View Work",
+  "item.edit.tabs.view.head": "View Item",
 
-  "item.edit.tabs.view.title": "Work Edit -  View",
+  "item.edit.tabs.view.title": "Item Edit -  View",
 
   "item.edit.withdraw.cancel": "Cancel",
 
   "item.edit.withdraw.confirm": "Withdraw",
 
-  "item.edit.withdraw.description": "Are you sure this work should be withdrawn from the archive?",
+  "item.edit.withdraw.description": "Are you sure this item should be withdrawn from the archive?",
 
-  "item.edit.withdraw.error": "An error occurred while withdrawing the work",
+  "item.edit.withdraw.error": "An error occurred while withdrawing the item",
 
-  "item.edit.withdraw.header": "Withdraw work: {{ id }}",
+  "item.edit.withdraw.header": "Withdraw item: {{ id }}",
 
-  "item.edit.withdraw.success": "The work was withdrawn successfully",
+  "item.edit.withdraw.success": "The item was withdrawn successfully",
 
   "item.orcid.return": "Back",
 
-  "item.listelement.badge": "Work",
+  "item.listelement.badge": "Item",
 
   "item.page.description": "Description",
-
-  "item.page.filename": "Filename(s)",
 
   "item.page.journal-issn": "Journal ISSN",
 
@@ -2354,13 +2408,13 @@
 
   "item.page.publisher": "Publisher",
 
-  "item.page.titleprefix": "Work: ",
+  "item.page.titleprefix": "Item: ",
 
   "item.page.volume-title": "Volume Title",
 
-  "item.search.results.head": "Work Search Results",
+  "item.search.results.head": "Item Search Results",
 
-  "item.search.title": "Work Search",
+  "item.search.title": "Item Search",
 
   "item.truncatable-part.show-more": "Show more",
 
@@ -2396,7 +2450,7 @@
 
   "item.page.date": "Date",
 
-  "item.page.edit": "Edit this work",
+  "item.page.edit": "Edit this item",
 
   "item.page.files": "Files",
 
@@ -2412,9 +2466,9 @@
 
   "item.page.journal.search.title": "Articles in this journal",
 
-  "item.page.link.full": "Full work page",
+  "item.page.link.full": "Full item page",
 
-  "item.page.link.simple": "Simple work page",
+  "item.page.link.simple": "Simple item page",
 
   "item.page.orcid.title": "ORCID",
 
@@ -2454,9 +2508,9 @@
 
   "item.page.claim.button": "Claim",
 
-  "item.page.claim.tooltip": "Claim this work as profile",
+  "item.page.claim.tooltip": "Claim this item as profile",
 
-  "item.page.metrics": "Metrics",
+  "item.page.image.alt.ROR": "ROR logo",
 
   "item.preview.dc.identifier.uri": "Identifier:",
 
@@ -2510,9 +2564,29 @@
 
   "item.preview.oaire.fundingStream": "Funding Stream:",
 
+  "item.preview.oairecerif.identifier.url": "URL",
+
+  "item.preview.organization.address.addressCountry": "Country",
+
+  "item.preview.organization.foundingDate": "Founding Date",
+
+  "item.preview.organization.identifier.crossrefid": "CrossRef ID",
+
+  "item.preview.organization.identifier.isni": "ISNI",
+
+  "item.preview.organization.identifier.ror": "ROR ID",
+
+  "item.preview.organization.legalName": "Legal Name",
+
   "item.select.confirm": "Confirm selected",
 
-  "item.select.empty": "No works to show",
+  "item.select.empty": "No items to show",
+
+  "item.select.table.selected": "Selected items",
+
+  "item.select.table.select": "Select item",
+
+  "item.select.table.deselect": "Deselect item",
 
   "item.select.table.author": "Author",
 
@@ -2520,7 +2594,7 @@
 
   "item.select.table.title": "Title",
 
-  "item.version.history.empty": "There are no other versions for this work yet.",
+  "item.version.history.empty": "There are no other versions for this item yet.",
 
   "item.version.history.head": "Version History",
 
@@ -2528,11 +2602,11 @@
 
   "item.version.history.selected": "Selected version",
 
-  "item.version.history.selected.alert": "You are currently viewing version {{version}} of the work.",
+  "item.version.history.selected.alert": "You are currently viewing version {{version}} of the item.",
 
   "item.version.history.table.version": "Version",
 
-  "item.version.history.table.item": "Work",
+  "item.version.history.table.item": "Item",
 
   "item.version.history.table.editor": "Editor",
 
@@ -2540,13 +2614,13 @@
 
   "item.version.history.table.summary": "Summary",
 
-  "item.version.history.table.workspaceItem": "Workspace work",
+  "item.version.history.table.workspaceItem": "Workspace item",
 
-  "item.version.history.table.workflowItem": "Workflow work",
+  "item.version.history.table.workflowItem": "Workflow item",
 
   "item.version.history.table.actions": "Action",
 
-  "item.version.history.table.action.editWorkspaceItem": "Edit workspace work",
+  "item.version.history.table.action.editWorkspaceItem": "Edit workspace item",
 
   "item.version.history.table.action.editSummary": "Edit summary",
 
@@ -2560,11 +2634,11 @@
 
   "item.version.history.table.action.hasDraft": "A new version cannot be created because there is an inprogress submission in the version history",
 
-  "item.version.notice": "This is not the latest version of this work. The latest version can be found <a href='{{destination}}'>here</a>.",
+  "item.version.notice": "This is not the latest version of this item. The latest version can be found <a href='{{destination}}'>here</a>.",
 
   "item.version.create.modal.header": "New version",
 
-  "item.version.create.modal.text": "Create a new version for this work",
+  "item.version.create.modal.text": "Create a new version for this item",
 
   "item.version.create.modal.text.startingFrom": "starting from version {{version}}",
 
@@ -2582,7 +2656,7 @@
 
   "item.version.create.modal.submitted.header": "Creating new version...",
 
-  "item.version.create.modal.submitted.text": "The new version is being created. This may take some time if the work has a lot of relationships.",
+  "item.version.create.modal.submitted.text": "The new version is being created. This may take some time if the item has a lot of relationships.",
 
   "item.version.create.notification.success": "New version has been created with version number {{version}}",
 
@@ -2614,6 +2688,10 @@
 
   "itemtemplate.edit.metadata.discard-button": "Discard",
 
+  "itemtemplate.edit.metadata.edit.language": "Edit language",
+
+  "itemtemplate.edit.metadata.edit.value": "Edit value",
+
   "itemtemplate.edit.metadata.edit.buttons.confirm": "Confirm",
 
   "itemtemplate.edit.metadata.edit.buttons.drag": "Drag to reorder",
@@ -2626,7 +2704,7 @@
 
   "itemtemplate.edit.metadata.edit.buttons.unedit": "Stop editing",
 
-  "itemtemplate.edit.metadata.empty": "The work template currently doesn't contain any metadata. Click Add to start adding a metadata value.",
+  "itemtemplate.edit.metadata.empty": "The item template currently doesn't contain any metadata. Click Add to start adding a metadata value.",
 
   "itemtemplate.edit.metadata.headers.edit": "Edit",
 
@@ -2635,6 +2713,8 @@
   "itemtemplate.edit.metadata.headers.language": "Lang",
 
   "itemtemplate.edit.metadata.headers.value": "Value",
+
+  "itemtemplate.edit.metadata.metadatafield": "Edit field",
 
   "itemtemplate.edit.metadata.metadatafield.error": "An error occurred validating the metadata field",
 
@@ -2650,11 +2730,11 @@
 
   "itemtemplate.edit.metadata.notifications.invalid.title": "Metadata invalid",
 
-  "itemtemplate.edit.metadata.notifications.outdated.content": "The work template you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
+  "itemtemplate.edit.metadata.notifications.outdated.content": "The item template you're currently working on has been changed by another user. Your current changes are discarded to prevent conflicts",
 
   "itemtemplate.edit.metadata.notifications.outdated.title": "Changes outdated",
 
-  "itemtemplate.edit.metadata.notifications.saved.content": "Your changes to this work template's metadata were saved.",
+  "itemtemplate.edit.metadata.notifications.saved.content": "Your changes to this item template's metadata were saved.",
 
   "itemtemplate.edit.metadata.notifications.saved.title": "Metadata saved",
 
@@ -2668,7 +2748,7 @@
 
   "journal.page.description": "Description",
 
-  "journal.page.edit": "Edit this work",
+  "journal.page.edit": "Edit this item",
 
   "journal.page.editor": "Editor-in-Chief",
 
@@ -2688,7 +2768,7 @@
 
   "journalissue.page.description": "Description",
 
-  "journalissue.page.edit": "Edit this work",
+  "journalissue.page.edit": "Edit this item",
 
   "journalissue.page.issuedate": "Issue Date",
 
@@ -2702,17 +2782,21 @@
 
   "journalissue.page.titleprefix": "Journal Issue: ",
 
+  "journalissue.search.results.head": "Journal Issue Search Results",
+
   "journalvolume.listelement.badge": "Journal Volume",
 
   "journalvolume.page.description": "Description",
 
-  "journalvolume.page.edit": "Edit this work",
+  "journalvolume.page.edit": "Edit this item",
 
   "journalvolume.page.issuedate": "Issue Date",
 
   "journalvolume.page.titleprefix": "Journal Volume: ",
 
   "journalvolume.page.volume": "Volume",
+
+  "journalvolume.search.results.head": "Journal Volume Search Results",
 
   "iiifsearchable.listelement.badge": "Document Media",
 
@@ -2754,11 +2838,11 @@
 
   "loading.default": "Loading...",
 
-  "loading.item": "Loading work...",
+  "loading.item": "Loading item...",
 
-  "loading.items": "Loading works...",
+  "loading.items": "Loading items...",
 
-  "loading.mydspace-results": "Loading works...",
+  "loading.mydspace-results": "Loading items...",
 
   "loading.objects": "Loading...",
 
@@ -2776,13 +2860,11 @@
 
   "login.form.forgot-password": "Have you forgotten your password?",
 
-  "login.form.header": "Please log in to Deep Blue Documents",
+  "login.form.header": "Please log in to DSpace",
 
   "login.form.new-user": "New user? Click here to register.",
 
-  "login.form.or-divider": "or",
-
-  "login.form.oidc": "Login",
+  "login.form.oidc": "Log in with OIDC",
 
   "login.form.orcid": "Log in with ORCID",
 
@@ -2796,13 +2878,13 @@
 
   "login.breadcrumbs": "Login",
 
-  "logout.form.header": "Log out from Deep Blue Documents",
+  "logout.form.header": "Log out from DSpace",
 
   "logout.form.submit": "Log out",
 
   "logout.title": "Logout",
 
-  "menu.header.admin": "Dashboard",
+  "menu.header.admin": "Management",
 
   "menu.header.image.logo": "Repository logo",
 
@@ -2828,17 +2910,19 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "Browse",
+  "menu.section.browse_global": "All of DSpace",
 
-  "menu.section.browse_global_by_author": "Author",
+  "menu.section.browse_global_by_author": "By Author",
 
-  "menu.section.browse_global_by_dateissued": "Issue Date",
+  "menu.section.browse_global_by_dateissued": "By Issue Date",
 
-  "menu.section.browse_global_by_subject": "Subject",
+  "menu.section.browse_global_by_subject": "By Subject",
 
-  "menu.section.browse_global_by_srsc": "By Subject Category 456",
+  "menu.section.browse_global_by_srsc": "By Subject Category",
 
-  "menu.section.browse_global_by_title": "Title",
+  "menu.section.browse_global_by_nsi": "By Norwegian Science Index",
+
+  "menu.section.browse_global_by_title": "By Title",
 
   "menu.section.browse_global_communities_and_collections": "Communities & Collections",
 
@@ -2852,7 +2936,7 @@
 
   "menu.section.edit_community": "Community",
 
-  "menu.section.edit_item": "Work",
+  "menu.section.edit_item": "Item",
 
   "menu.section.export": "Export",
 
@@ -2860,7 +2944,7 @@
 
   "menu.section.export_community": "Community",
 
-  "menu.section.export_item": "Work",
+  "menu.section.export_item": "Item",
 
   "menu.section.export_metadata": "Metadata",
 
@@ -2898,23 +2982,31 @@
 
   "menu.section.icon.unpin": "Unpin sidebar",
 
+  "menu.section.icon.notifications": "Notifications menu section",
+
   "menu.section.import": "Import",
 
   "menu.section.import_batch": "Batch Import (ZIP)",
 
   "menu.section.import_metadata": "Metadata",
 
-  "menu.section.new": "Create New",
+  "menu.section.new": "New",
 
   "menu.section.new_collection": "Collection",
 
   "menu.section.new_community": "Community",
 
-  "menu.section.new_item": "Work",
+  "menu.section.new_item": "Item",
 
-  "menu.section.new_item_version": "Work Version",
+  "menu.section.new_item_version": "Item Version",
 
   "menu.section.new_process": "Process",
+
+  "menu.section.notifications": "Notifications",
+
+  "menu.section.quality-assurance": "Quality Assurance",
+
+  "menu.section.notifications_reciter": "Publication Claim",
 
   "menu.section.pin": "Pin sidebar",
 
@@ -2962,11 +3054,11 @@
 
   "metadata-export-search.submit.error": "Starting the export has failed",
 
-  "mydspace.breadcrumbs": "My Works",
+  "mydspace.breadcrumbs": "MyDSpace",
 
   "mydspace.description": "",
 
-  "mydspace.messages.controller-help": "Select this option to send a message to work's submitter.",
+  "mydspace.messages.controller-help": "Select this option to send a message to item's submitter.",
 
   "mydspace.messages.description-placeholder": "Insert your message here...",
 
@@ -2992,13 +3084,13 @@
 
   "mydspace.messages.to": "To",
 
-  "mydspace.new-submission": "New Deposit",
+  "mydspace.new-submission": "New submission",
 
   "mydspace.new-submission-external": "Import metadata from external source",
 
   "mydspace.new-submission-external-short": "Import metadata",
 
-  "mydspace.results.head": "Your deposits",
+  "mydspace.results.head": "Your submissions",
 
   "mydspace.results.no-abstract": "No Abstract",
 
@@ -3010,33 +3102,31 @@
 
   "mydspace.results.no-files": "No Files",
 
-  "mydspace.results.no-results": "There were no works to show",
+  "mydspace.results.no-results": "There were no items to show",
 
   "mydspace.results.no-title": "No title",
 
-  "mydspace.results.no-uri": "No Uri",
+  "mydspace.results.no-uri": "No URI",
 
-  "mydspace.search-form.placeholder": "Search in my documents...",
+  "mydspace.search-form.placeholder": "Search in MyDSpace...",
 
   "mydspace.show.workflow": "Workflow tasks",
 
-  "mydspace.show.workspace": "Your Works",
+  "mydspace.show.workspace": "Your submissions",
 
-  "mydspace.show.supervisedWorkspace": "Supervised works",
+  "mydspace.show.supervisedWorkspace": "Supervised items",
 
-  "mydspace.status.mydspaceArchived": "Deposited",
-
-  "mydspace.status.draft": "Draft",
+  "mydspace.status.mydspaceArchived": "Archived",
 
   "mydspace.status.mydspaceValidation": "Validation",
 
-  "mydspace.status.mydspaceWaitingController": "Waiting for controller",
+  "mydspace.status.mydspaceWaitingController": "Waiting for reviewer",
 
   "mydspace.status.mydspaceWorkflow": "Workflow",
 
   "mydspace.status.mydspaceWorkspace": "Workspace",
 
-  "mydspace.title": "My Works",
+  "mydspace.title": "MyDSpace",
 
   "mydspace.upload.upload-failed": "Error creating new workspace. Please verify the content uploaded before retry.",
 
@@ -3044,11 +3134,11 @@
 
   "mydspace.upload.upload-failed-moreonefile": "Unprocessable request. Only one file is allowed.",
 
-  "mydspace.upload.upload-multiple-successful": "{{qty}} new workspace works created.",
+  "mydspace.upload.upload-multiple-successful": "{{qty}} new workspace items created.",
 
   "mydspace.view-btn": "View",
 
-  "nav.browse.header": "All of DB Docs",
+  "nav.browse.header": "All of DSpace",
 
   "nav.community-browse.header": "By Community",
 
@@ -3058,13 +3148,13 @@
 
   "nav.login": "Log In",
 
-  "nav.user-profile-menu-and-logout": "User profile menu and Log Out",
+  "nav.user-profile-menu-and-logout": "User profile menu and log out",
 
   "nav.logout": "Log Out",
 
   "nav.main.description": "Main navigation bar",
 
-  "nav.mydspace": "My Works",
+  "nav.mydspace": "MyDSpace",
 
   "nav.profile": "Profile",
 
@@ -3082,7 +3172,139 @@
 
   "nav.user.description": "User profile bar",
 
-  "none.listelement.badge": "Work",
+  "none.listelement.badge": "Item",
+
+  "quality-assurance.title": "Quality Assurance",
+
+  "quality-assurance.topics.description": "Below you can see all the topics received from the subscriptions to {{source}}.",
+
+  "quality-assurance.source.description": "Below you can see all the notification's sources.",
+
+  "quality-assurance.topics": "Current Topics",
+
+  "quality-assurance.source": "Current Sources",
+
+  "quality-assurance.table.topic": "Topic",
+
+  "quality-assurance.table.source": "Source",
+
+  "quality-assurance.table.last-event": "Last Event",
+
+  "quality-assurance.table.actions": "Actions",
+
+  "quality-assurance.button.detail": "Show details",
+
+  "quality-assurance.noTopics": "No topics found.",
+
+  "quality-assurance.noSource": "No sources found.",
+
+  "notifications.events.title": "Quality Assurance Suggestions",
+
+  "quality-assurance.topic.error.service.retrieve": "An error occurred while loading the Quality Assurance topics",
+
+  "quality-assurance.source.error.service.retrieve": "An error occurred while loading the Quality Assurance source",
+
+  "quality-assurance.events.description": "Below the list of all the suggestions for the selected topic.",
+
+  "quality-assurance.loading": "Loading ...",
+
+  "quality-assurance.events.topic": "Topic:",
+
+  "quality-assurance.noEvents": "No suggestions found.",
+
+  "quality-assurance.event.table.trust": "Trust",
+
+  "quality-assurance.event.table.publication": "Publication",
+
+  "quality-assurance.event.table.details": "Details",
+
+  "quality-assurance.event.table.project-details": "Project details",
+
+  "quality-assurance.event.table.actions": "Actions",
+
+  "quality-assurance.event.action.accept": "Accept suggestion",
+
+  "quality-assurance.event.action.ignore": "Ignore suggestion",
+
+  "quality-assurance.event.action.reject": "Reject suggestion",
+
+  "quality-assurance.event.action.import": "Import project and accept suggestion",
+
+  "quality-assurance.event.table.pidtype": "PID Type:",
+
+  "quality-assurance.event.table.pidvalue": "PID Value:",
+
+  "quality-assurance.event.table.subjectValue": "Subject Value:",
+
+  "quality-assurance.event.table.abstract": "Abstract:",
+
+  "quality-assurance.event.table.suggestedProject": "OpenAIRE Suggested Project data",
+
+  "quality-assurance.event.table.project": "Project title:",
+
+  "quality-assurance.event.table.acronym": "Acronym:",
+
+  "quality-assurance.event.table.code": "Code:",
+
+  "quality-assurance.event.table.funder": "Funder:",
+
+  "quality-assurance.event.table.fundingProgram": "Funding program:",
+
+  "quality-assurance.event.table.jurisdiction": "Jurisdiction:",
+
+  "quality-assurance.events.back": "Back to topics",
+
+  "quality-assurance.event.table.less": "Show less",
+
+  "quality-assurance.event.table.more": "Show more",
+
+  "quality-assurance.event.project.found": "Bound to the local record:",
+
+  "quality-assurance.event.project.notFound": "No local record found",
+
+  "quality-assurance.event.sure": "Are you sure?",
+
+  "quality-assurance.event.ignore.description": "This operation can't be undone. Ignore this suggestion?",
+
+  "quality-assurance.event.reject.description": "This operation can't be undone. Reject this suggestion?",
+
+  "quality-assurance.event.accept.description": "No DSpace project selected. A new project will be created based on the suggestion data.",
+
+  "quality-assurance.event.action.cancel": "Cancel",
+
+  "quality-assurance.event.action.saved": "Your decision has been saved successfully.",
+
+  "quality-assurance.event.action.error": "An error has occurred. Your decision has not been saved.",
+
+  "quality-assurance.event.modal.project.title": "Choose a project to bound",
+
+  "quality-assurance.event.modal.project.publication": "Publication:",
+
+  "quality-assurance.event.modal.project.bountToLocal": "Bound to the local record:",
+
+  "quality-assurance.event.modal.project.select": "Project search",
+
+  "quality-assurance.event.modal.project.search": "Search",
+
+  "quality-assurance.event.modal.project.clear": "Clear",
+
+  "quality-assurance.event.modal.project.cancel": "Cancel",
+
+  "quality-assurance.event.modal.project.bound": "Bound project",
+
+  "quality-assurance.event.modal.project.remove": "Remove",
+
+  "quality-assurance.event.modal.project.placeholder": "Enter a project name",
+
+  "quality-assurance.event.modal.project.notFound": "No project found.",
+
+  "quality-assurance.event.project.bounded": "The project has been linked successfully.",
+
+  "quality-assurance.event.project.removed": "The project has been successfully unlinked.",
+
+  "quality-assurance.event.project.error": "An error has occurred. No operation performed.",
+
+  "quality-assurance.event.reason": "Reason",
 
   "orgunit.listelement.badge": "Organizational Unit",
 
@@ -3096,11 +3318,13 @@
 
   "orgunit.page.description": "Description",
 
-  "orgunit.page.edit": "Edit this work",
+  "orgunit.page.edit": "Edit this item",
 
   "orgunit.page.id": "ID",
 
   "orgunit.page.titleprefix": "Organizational Unit: ",
+
+  "orgunit.page.ror": "ROR Identifier",
 
   "pagination.options.description": "Pagination options",
 
@@ -3118,7 +3342,7 @@
 
   "person.page.birthdate": "Birth Date",
 
-  "person.page.edit": "Edit this work",
+  "person.page.edit": "Edit this item",
 
   "person.page.email": "Email Address",
 
@@ -3145,6 +3369,14 @@
   "person.search.title": "Person Search",
 
   "process.new.select-parameters": "Parameters",
+
+  "process.new.select-parameter": "Select parameter",
+
+  "process.new.add-parameter": "Add a parameter...",
+
+  "process.new.delete-parameter": "Delete parameter",
+
+  "process.new.parameter.label": "Parameter value",
 
   "process.new.cancel": "Cancel",
 
@@ -3252,6 +3484,8 @@
 
   "process.overview.delete": "Delete {{count}} processes",
 
+  "process.overview.delete-process": "Delete process",
+
   "process.overview.delete.clear": "Clear delete selection",
 
   "process.overview.delete.processing": "{{count}} process(es) are being deleted. Please wait for the deletion to fully complete. Note that this can take a while.",
@@ -3277,8 +3511,6 @@
   "profile.groups.head": "Authorization groups you belong to",
 
   "profile.special.groups.head": "Authorization special groups you belong to",
-
-  "profile.head": "Update Profile",
 
   "profile.metadata.form.error.firstname.required": "First Name is required",
 
@@ -3334,7 +3566,7 @@
 
   "project.page.description": "Description",
 
-  "project.page.edit": "Edit this work",
+  "project.page.edit": "Edit this item",
 
   "project.page.expectedcompletion": "Expected Completion",
 
@@ -3356,7 +3588,7 @@
 
   "publication.page.description": "Description",
 
-  "publication.page.edit": "Edit this work",
+  "publication.page.edit": "Edit this item",
 
   "publication.page.journal-issn": "Journal ISSN",
 
@@ -3424,7 +3656,7 @@
 
   "register-page.registration.header": "New user registration",
 
-  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new works to Deep Blue Documents.",
+  "register-page.registration.info": "Register an account to subscribe to collections for email updates, and submit new items to DSpace.",
 
   "register-page.registration.email": "Email Address *",
 
@@ -3462,7 +3694,7 @@
 
   "register-page.registration.info.maildomain": "Accounts can be registered for mail addresses of the domains",
 
-  "relationships.add.error.relationship-type.content": "No suitable match could be found for relationship type {{ type }} between the two works",
+  "relationships.add.error.relationship-type.content": "No suitable match could be found for relationship type {{ type }} between the two items",
 
   "relationships.add.error.server.content": "The server returned an error",
 
@@ -3476,9 +3708,13 @@
 
   "relationships.isIssueOf": "Journal Issues",
 
+  "relationships.isIssueOf.JournalIssue": "Journal Issue",
+
   "relationships.isJournalIssueOf": "Journal Issue",
 
   "relationships.isJournalOf": "Journals",
+
+  "relationships.isJournalVolumeOf": "Journal Volume",
 
   "relationships.isOrgUnitOf": "Organizational Units",
 
@@ -3496,6 +3732,8 @@
 
   "relationships.isVolumeOf": "Journal Volumes",
 
+  "relationships.isVolumeOf.JournalVolume": "Journal Volume",
+
   "relationships.isContributorOf": "Contributors",
 
   "relationships.isContributorOf.OrgUnit": "Contributor (Organizational Unit)",
@@ -3506,9 +3744,9 @@
 
   "repository.image.logo": "Repository logo",
 
-  "repository.title": "Deep Blue Documents Repository",
+  "repository.title": "DSpace Repository",
 
-  "repository.title.prefix": "Deep Blue Documents Repository :: ",
+  "repository.title.prefix": "DSpace Repository :: ",
 
   "resource-policies.add.button": "Add",
 
@@ -3518,7 +3756,7 @@
 
   "resource-policies.add.for.bundle": "Add a new Bundle policy",
 
-  "resource-policies.add.for.item": "Add a new Work policy",
+  "resource-policies.add.for.item": "Add a new Item policy",
 
   "resource-policies.add.for.community": "Add a new Community policy",
 
@@ -3608,6 +3846,14 @@
 
   "resource-policies.table.headers.group": "Group",
 
+  "resource-policies.table.headers.select-all": "Select all",
+
+  "resource-policies.table.headers.deselect-all": "Deselect all",
+
+  "resource-policies.table.headers.select": "Select",
+
+  "resource-policies.table.headers.deselect": "Deselect",
+
   "resource-policies.table.headers.id": "ID",
 
   "resource-policies.table.headers.name": "Name",
@@ -3618,11 +3864,13 @@
 
   "resource-policies.table.headers.title.for.bundle": "Policies for Bundle",
 
-  "resource-policies.table.headers.title.for.item": "Policies for Work",
+  "resource-policies.table.headers.title.for.item": "Policies for Item",
 
   "resource-policies.table.headers.title.for.community": "Policies for Community",
 
   "resource-policies.table.headers.title.for.collection": "Policies for Collection",
+
+  "root.skip-to-content": "Skip to main content",
 
   "search.description": "",
 
@@ -3634,6 +3882,8 @@
 
   "search.search-form.placeholder": "Search the repository ...",
 
+  "search.filters.remove": "Remove filter of type {{ type }} with value {{ value }}",
+
   "search.filters.applied.f.author": "Author",
 
   "search.filters.applied.f.dateIssued.max": "End date",
@@ -3644,19 +3894,9 @@
 
   "search.filters.applied.f.discoverable": "Non-discoverable",
 
-  "search.filters.applied.f.entityType": "Work Type",
+  "search.filters.applied.f.entityType": "Item Type",
 
   "search.filters.applied.f.has_content_in_original_bundle": "Has files",
-
-  "search.filters.applied.f.type": "Type",
-
-  "search.filters.applied.f.peerreviewed": "Peer Reviewed",
-
-  "search.filters.applied.f.identifiersource": "Source Pubication",
-
-  "search.filters.applied.f.hlbtoplevel": "Primary Subject",
-
-  "search.filters.applied.f.hlbsecondlevel": "Secondary Subject",
 
   "search.filters.applied.f.itemtype": "Type",
 
@@ -3678,45 +3918,9 @@
 
   "search.filters.filter.author.head": "Author",
 
-
-
-  "search.filters.filter.discipline.head": "Discipline",
-
-  "search.filters.filter.identifiersource.head": "Source Publication",
-
-  "search.filters.filter.hlbtoplevel.head": "Primary Subject",
-
-  "search.filters.filter.hlbsecondlevel.head": "Secondary Subject",
-
-  "search.filters.filter.peerreviewed.head": "Peer Reviewed",
-
-
-  "search.filters.filter.type.head": "Type",
-
-  "search.filters.filter.type.placeholder": "Type",
-
-  "search.filters.filter.type.label": "Search Type",
-
-
   "search.filters.filter.author.placeholder": "Author name",
 
   "search.filters.filter.author.label": "Search author name",
-
-  "search.filters.filter.peerreviewed.placeholder": "PeerReviewed",
-
-  "search.filters.filter.peerreviewed.label": "Search PeerReviewed",
-
-  "search.filters.filter.identifiersource.placeholder": "Source",
-
-  "search.filters.filter.identifiersource.label": "Search Source",
-
-  "search.filters.filter.hlbtoplevel.placeholder": "Primary Subject",
-
-  "search.filters.filter.hlbtoplevel.label": "Search Primary Subject",
-
-  "search.filters.filter.hlbsecondlevel.placeholder": "Secondary Subject",
-
-  "search.filters.filter.hlbsecondlevel.label": "Search Secondary Subject",
 
   "search.filters.filter.birthDate.head": "Birth Date",
 
@@ -3750,7 +3954,7 @@
 
   "search.filters.filter.creativeWorkPublisher.label": "Search publisher",
 
-  "search.filters.filter.dateIssued.head": "Date Published",
+  "search.filters.filter.dateIssued.head": "Date",
 
   "search.filters.filter.dateIssued.max.placeholder": "Maximum Date",
 
@@ -3770,11 +3974,11 @@
 
   "search.filters.filter.withdrawn.head": "Withdrawn",
 
-  "search.filters.filter.entityType.head": "Work Type",
+  "search.filters.filter.entityType.head": "Item Type",
 
-  "search.filters.filter.entityType.placeholder": "Work Type",
+  "search.filters.filter.entityType.placeholder": "Item Type",
 
-  "search.filters.filter.entityType.label": "Search work type",
+  "search.filters.filter.entityType.label": "Search item type",
 
   "search.filters.filter.expand": "Expand filter",
 
@@ -3852,6 +4056,10 @@
 
   "search.filters.filter.show-tree": "Browse {{ name }} tree",
 
+  "search.filters.filter.funding.head": "Funding",
+
+  "search.filters.filter.funding.placeholder": "Funding",
+
   "search.filters.filter.supervisedBy.head": "Supervised By",
 
   "search.filters.filter.supervisedBy.placeholder": "Supervised By",
@@ -3872,6 +4080,16 @@
 
   "search.filters.discoverable.false": "Yes",
 
+  "search.filters.namedresourcetype.Archived": "Archived",
+
+  "search.filters.namedresourcetype.Validation": "Validation",
+
+  "search.filters.namedresourcetype.Waiting for Controller": "Waiting for reviewer",
+
+  "search.filters.namedresourcetype.Workflow": "Workflow",
+
+  "search.filters.namedresourcetype.Workspace": "Workspace",
+
   "search.filters.withdrawn.true": "Yes",
 
   "search.filters.withdrawn.false": "No",
@@ -3886,7 +4104,7 @@
 
   "search.form.search_dspace": "All repository",
 
-  "search.form.scope.all": "All of Deep Blue Documents",
+  "search.form.scope.all": "All of DSpace",
 
   "search.results.head": "Search Results",
 
@@ -3924,6 +4142,10 @@
 
   "search.view-switch.show-list": "Show as list",
 
+  "selectable-list-item-control.deselect": "Deselect item",
+
+  "selectable-list-item-control.select": "Select item",
+
   "sorting.ASC": "Ascending",
 
   "sorting.DESC": "Descending",
@@ -3936,13 +4158,13 @@
 
   "sorting.score.DESC": "Most Relevant",
 
-  "sorting.dc.date.issued.ASC": "Date Published Ascending",
+  "sorting.dc.date.issued.ASC": "Date Issued Ascending",
 
-  "sorting.dc.date.issued.DESC": "Date Published Descending",
+  "sorting.dc.date.issued.DESC": "Date Issued Descending",
 
-  "sorting.dc.date.accessioned.ASC": "Most Recently Deposited Ascending",
+  "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
 
-  "sorting.dc.date.accessioned.DESC": "Most Recently Deposited Descending",
+  "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
 
   "sorting.lastModified.ASC": "Last modified Ascending",
 
@@ -3972,13 +4194,13 @@
 
   "statistics.table.no-name": "(object name could not be loaded)",
 
-  "submission.edit.breadcrumbs": "New Deposit",
+  "submission.edit.breadcrumbs": "Edit Submission",
 
-  "submission.edit.title": "New Deposit",
+  "submission.edit.title": "Edit Submission",
 
   "submission.general.cancel": "Cancel",
 
-  "submission.general.cannot_submit": "You don't have permission to make a new deposit.",
+  "submission.general.cannot_submit": "You don't have permission to make a new submission.",
 
   "submission.general.deposit": "Deposit",
 
@@ -3986,13 +4208,9 @@
 
   "submission.general.discard.confirm.info": "This operation can't be undone. Are you sure?",
 
-  "submission.general.deposit.confirm.info": "Depositing an work locks in the data and files as you’ve entered them, and future changes will require a support request. If you plan to enter additional work information, please cancel Deposit and select Save or Save for Later to store your work as a draft.",
-
   "submission.general.discard.confirm.submit": "Yes, I'm sure",
 
   "submission.general.discard.confirm.title": "Discard submission",
-
-  "submission.general.deposit.confirm.title": "Confirm deposit",
 
   "submission.general.discard.submit": "Discard",
 
@@ -4024,9 +4242,9 @@
 
   "submission.import-external.title.none": "Import metadata from an external source",
 
-  "submission.import-external.page.hint": "Enter a query above to find works from the web to import in to Deep Blue Documents.",
+  "submission.import-external.page.hint": "Enter a query above to find items from the web to import in to DSpace.",
 
-  "submission.import-external.back-to-my-dspace": "Back to My Works",
+  "submission.import-external.back-to-my-dspace": "Back to MyDSpace",
 
   "submission.import-external.search.placeholder": "Search the external source",
 
@@ -4076,11 +4294,13 @@
 
   "submission.import-external.source.lcname": "Library of Congress Names",
 
-  "submission.import-external.preview.title": "Work Preview",
+  "submission.import-external.source.ror": "Research Organization Registry (ROR)",
+
+  "submission.import-external.preview.title": "Item Preview",
 
   "submission.import-external.preview.title.Publication": "Publication Preview",
 
-  "submission.import-external.preview.title.none": "Work Preview",
+  "submission.import-external.preview.title.none": "Item Preview",
 
   "submission.import-external.preview.title.Journal": "Journal Preview",
 
@@ -4112,7 +4332,7 @@
 
   "submission.sections.describe.relationship-lookup.external-source.import-button-title.isProjectOfPublication": "Project",
 
-  "submission.sections.describe.relationship-lookup.external-source.import-button-title.none": "Import remote work",
+  "submission.sections.describe.relationship-lookup.external-source.import-button-title.none": "Import remote item",
 
   "submission.sections.describe.relationship-lookup.external-source.import-button-title.Event": "Import remote event",
 
@@ -4168,6 +4388,8 @@
 
   "submission.sections.describe.relationship-lookup.external-source.import-modal.head.arxiv": "Importing from arXiv",
 
+  "submission.sections.describe.relationship-lookup.external-source.import-modal.head.ror": "Import from ROR",
+
   "submission.sections.describe.relationship-lookup.external-source.import-modal.import": "Import",
 
   "submission.sections.describe.relationship-lookup.external-source.import-modal.Journal.title": "Import Remote Journal",
@@ -4190,6 +4412,12 @@
 
   "submission.sections.describe.relationship-lookup.external-source.import-modal.select": "Select a local match:",
 
+  "submission.sections.describe.relationship-lookup.external-source.import-modal.isOrgUnitOfProject.title": "Import Remote Organization",
+
+  "submission.sections.describe.relationship-lookup.external-source.import-modal.isOrgUnitOfProject.added.local-entity": "Successfully added local organization to the selection",
+
+  "submission.sections.describe.relationship-lookup.external-source.import-modal.isOrgUnitOfProject.added.new-entity": "Successfully imported and added external organization to the selection",
+
   "submission.sections.describe.relationship-lookup.search-tab.deselect-all": "Deselect all",
 
   "submission.sections.describe.relationship-lookup.search-tab.deselect-page": "Deselect page",
@@ -4206,7 +4434,7 @@
 
   "submission.sections.describe.relationship-lookup.search-tab.select-page": "Select page",
 
-  "submission.sections.describe.relationship-lookup.selected": "Selected {{ size }} works",
+  "submission.sections.describe.relationship-lookup.selected": "Selected {{ size }} items",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isAuthorOfPublication": "Local Authors ({{ count }})",
 
@@ -4246,6 +4474,18 @@
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.arxiv": "arXiv ({{ count }})",
 
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.ror": "ROR ({{ count }})",
+
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.orcidWorks": "ORCID ({{ count }})",
+
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.crossref": "CrossRef ({{ count }})",
+
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.scopus": "Scopus ({{ count }})",
+
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.openaireFunding": "Funding OpenAIRE ({{ count }})",
+
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.sherpaJournalIssn": "Sherpa Journals by ISSN ({{ count }})",
+
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isFundingAgencyOfPublication": "Search for Funding Agencies",
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isFundingOfPublication": "Search for Funding",
@@ -4260,6 +4500,8 @@
 
   "submission.sections.describe.relationship-lookup.search-tab.tab-title.isPublicationOfAuthor": "Publication of the Author",
 
+  "submission.sections.describe.relationship-lookup.search-tab.tab-title.isOrgUnitOfProject": "OrgUnit of the Project",
+
   "submission.sections.describe.relationship-lookup.selection-tab.title.openAIREFunding": "Funding OpenAIRE API",
 
   "submission.sections.describe.relationship-lookup.selection-tab.title.isProjectOfPublication": "Project",
@@ -4271,6 +4513,8 @@
   "submission.sections.describe.relationship-lookup.selection-tab.search-form.placeholder": "Search...",
 
   "submission.sections.describe.relationship-lookup.selection-tab.tab-title": "Current Selection ({{ count }})",
+
+  "submission.sections.describe.relationship-lookup.title.Journal": "Journal",
 
   "submission.sections.describe.relationship-lookup.title.isJournalIssueOfPublication": "Journal Issues",
 
@@ -4305,6 +4549,8 @@
   "submission.sections.describe.relationship-lookup.title.isChildOrgUnitOf": "Parent Organizational Unit",
 
   "submission.sections.describe.relationship-lookup.title.isPublicationOfAuthor": "Publication",
+
+  "submission.sections.describe.relationship-lookup.title.isOrgUnitOfProject": "OrgUnit",
 
   "submission.sections.describe.relationship-lookup.search-tab.toggle-dropdown": "Toggle dropdown",
 
@@ -4368,6 +4614,8 @@
 
   "submission.sections.describe.relationship-lookup.selection-tab.title.wos": "Search Results",
 
+  "submission.sections.describe.relationship-lookup.selection-tab.title.ror": "Search Results",
+
   "submission.sections.describe.relationship-lookup.selection-tab.title": "Search Results",
 
   "submission.sections.describe.relationship-lookup.name-variant.notification.content": "Would you like to save \"{{ value }}\" as a name variant for this person so you and others can reuse it for future submissions? If you don't you can still use it for this submission.",
@@ -4396,11 +4644,11 @@
 
   "submission.sections.general.collection": "Collection",
 
-  "submission.sections.general.deposit_error_notice": "There was an issue when submitting the work, please try again later.",
+  "submission.sections.general.deposit_error_notice": "There was an issue when submitting the item, please try again later.",
 
   "submission.sections.general.deposit_success_notice": "Submission deposited successfully.",
 
-  "submission.sections.general.discard_error_notice": "There was an issue when discarding the work, please try again later.",
+  "submission.sections.general.discard_error_notice": "There was an issue when discarding the item, please try again later.",
 
   "submission.sections.general.discard_success_notice": "Submission discarded successfully.",
 
@@ -4410,9 +4658,11 @@
 
   "submission.sections.general.no-collection": "No collection found",
 
+  "submission.sections.general.no-entity": "No entity types found",
+
   "submission.sections.general.no-sections": "No options available",
 
-  "submission.sections.general.save_error_notice": "There was an issue when saving the work, please try again later.",
+  "submission.sections.general.save_error_notice": "There was an issue when saving the item, please try again later.",
 
   "submission.sections.general.save_success_notice": "Submission saved successfully.",
 
@@ -4420,13 +4670,11 @@
 
   "submission.sections.general.sections_not_valid": "There are incomplete sections.",
 
-  "submission.sections.identifiers.info": "The following identifiers will be created for your work:",
+  "submission.sections.identifiers.info": "The following identifiers will be created for your item:",
 
-  "submission.sections.identifiers.para": "Note: Identifiers are assigned when drafting a Work, and will publicly resolve once the Work is published. Discarding a Work will cancel its assigned identifiers.",
+  "submission.sections.identifiers.no_handle": "No handles have been minted for this item.",
 
-  "submission.sections.identifiers.no_handle": "No handles have been minted for this work.",
-
-  "submission.sections.identifiers.no_doi": "No DOIs have been minted for this work.",
+  "submission.sections.identifiers.no_doi": "No DOIs have been minted for this item.",
 
   "submission.sections.identifiers.handle_label": "Handle: ",
 
@@ -4436,13 +4684,13 @@
 
   "submission.sections.submit.progressbar.accessCondition": "Item access conditions",
 
-  "submission.sections.submit.progressbar.CClicense": "Creative commons license (Optional)",
+  "submission.sections.submit.progressbar.CClicense": "Creative commons license",
 
   "submission.sections.submit.progressbar.describe.recycle": "Recycle",
 
-  "submission.sections.submit.progressbar.describe.stepcustom": "Description",
+  "submission.sections.submit.progressbar.describe.stepcustom": "Describe",
 
-  "submission.sections.submit.progressbar.describe.stepone": "Work Details",
+  "submission.sections.submit.progressbar.describe.stepone": "Describe",
 
   "submission.sections.submit.progressbar.describe.steptwo": "Describe",
 
@@ -4450,7 +4698,7 @@
 
   "submission.sections.submit.progressbar.identifiers": "Identifiers",
 
-  "submission.sections.submit.progressbar.license": "Terms of Deposit",
+  "submission.sections.submit.progressbar.license": "Deposit license",
 
   "submission.sections.submit.progressbar.sherpapolicy": "Sherpa policies",
 
@@ -4462,9 +4710,9 @@
 
   "submission.sections.status.errors.title": "Errors",
 
-  "submission.sections.status.valid.title": "Complete",
+  "submission.sections.status.valid.title": "Valid",
 
-  "submission.sections.status.warnings.title": "Incomplete",
+  "submission.sections.status.warnings.title": "Warnings",
 
   "submission.sections.status.errors.aria": "has errors",
 
@@ -4496,13 +4744,13 @@
 
   "submission.sections.upload.download.title": "Download bitstream",
 
-  "submission.sections.upload.drop-message": "Drop files to attach them to the work",
+  "submission.sections.upload.drop-message": "Drop files to attach them to the item",
 
-  "submission.sections.upload.edit.title": "Edit File Details",
+  "submission.sections.upload.edit.title": "Edit bitstream",
 
   "submission.sections.upload.form.access-condition-label": "Access condition type",
 
-  "submission.sections.upload.form.access-condition-hint": "Select an access condition to apply on the bitstream once the work is deposited",
+  "submission.sections.upload.form.access-condition-hint": "Select an access condition to apply on the bitstream once the item is deposited",
 
   "submission.sections.upload.form.date-required": "Date is required.",
 
@@ -4530,7 +4778,7 @@
 
   "submission.sections.upload.header.policy.default.withlist": "Please note that uploaded files in the {{collectionName}} collection will be accessible, in addition to what is explicitly decided for the single file, with the following group(s):",
 
-  "submission.sections.upload.info": "Here you will find all the files currently in the work. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong><br/>Please note that Deep Blue Documents preserves the content of certain types of files better than others. <a href='https://www.lib.umich.edu/about-us/policies/digital-preservation-policy/registered-formats-and-support-levels'>Learn more about file types/formats and levels of support</a>",
+  "submission.sections.upload.info": "Here you will find all the files currently in the item. You can update the file metadata and access conditions or <strong>upload additional files by dragging & dropping them anywhere on the page.</strong>",
 
   "submission.sections.upload.no-entry": "No",
 
@@ -4544,13 +4792,13 @@
 
   "submission.sections.upload.upload-successful": "Upload successful",
 
-  "submission.sections.accesses.form.discoverable-description": "When checked, this work will be discoverable in search/browse. When unchecked, the work will only be available via a direct link and will never appear in search/browse.",
+  "submission.sections.accesses.form.discoverable-description": "When checked, this item will be discoverable in search/browse. When unchecked, the item will only be available via a direct link and will never appear in search/browse.",
 
   "submission.sections.accesses.form.discoverable-label": "Discoverable",
 
   "submission.sections.accesses.form.access-condition-label": "Access condition type",
 
-  "submission.sections.accesses.form.access-condition-hint": "Select an access condition to apply on the work once it is deposited",
+  "submission.sections.accesses.form.access-condition-hint": "Select an access condition to apply on the item once it is deposited",
 
   "submission.sections.accesses.form.date-required": "Date is required.",
 
@@ -4632,21 +4880,21 @@
 
   "submission.sections.sherpa.error.message": "There was an error retrieving sherpa informations",
 
-  "submission.submit.breadcrumbs": "New Deposit",
+  "submission.submit.breadcrumbs": "New submission",
 
-  "submission.submit.title": "New Deposit",
+  "submission.submit.title": "New submission",
 
   "submission.workflow.generic.delete": "Delete",
 
-  "submission.workflow.generic.delete-help": "Select this option to discard this work. You will then be asked to confirm it.",
+  "submission.workflow.generic.delete-help": "Select this option to discard this item. You will then be asked to confirm it.",
 
   "submission.workflow.generic.edit": "Edit",
 
-  "submission.workflow.generic.edit-help": "Select this option to change the work's metadata.",
+  "submission.workflow.generic.edit-help": "Select this option to change the item's metadata.",
 
   "submission.workflow.generic.view": "View",
 
-  "submission.workflow.generic.view-help": "Select this option to view the work's metadata.",
+  "submission.workflow.generic.view-help": "Select this option to view the item's metadata.",
 
   "submission.workflow.generic.submit_select_reviewer": "Select Reviewer",
 
@@ -4658,11 +4906,11 @@
 
   "submission.workflow.tasks.claimed.approve": "Approve",
 
-  "submission.workflow.tasks.claimed.approve_help": "If you have reviewed the work and it is suitable for inclusion in the collection, select \"Approve\".",
+  "submission.workflow.tasks.claimed.approve_help": "If you have reviewed the item and it is suitable for inclusion in the collection, select \"Approve\".",
 
   "submission.workflow.tasks.claimed.edit": "Edit",
 
-  "submission.workflow.tasks.claimed.edit_help": "Select this option to change the work's metadata.",
+  "submission.workflow.tasks.claimed.edit_help": "Select this option to change the item's metadata.",
 
   "submission.workflow.tasks.claimed.decline": "Decline",
 
@@ -4672,13 +4920,13 @@
 
   "submission.workflow.tasks.claimed.reject.reason.placeholder": "Describe the reason of reject",
 
-  "submission.workflow.tasks.claimed.reject.reason.submit": "Reject work",
+  "submission.workflow.tasks.claimed.reject.reason.submit": "Reject item",
 
   "submission.workflow.tasks.claimed.reject.reason.title": "Reason",
 
   "submission.workflow.tasks.claimed.reject.submit": "Reject",
 
-  "submission.workflow.tasks.claimed.reject_help": "If you have reviewed the work and found it is <strong>not</strong> suitable for inclusion in the collection, select \"Reject\".  You will then be asked to enter a message indicating why the work is unsuitable, and whether the submitter should change something and resubmit.",
+  "submission.workflow.tasks.claimed.reject_help": "If you have reviewed the item and found it is <strong>not</strong> suitable for inclusion in the collection, select \"Reject\".  You will then be asked to enter a message indicating why the item is unsuitable, and whether the submitter should change something and resubmit.",
 
   "submission.workflow.tasks.claimed.return": "Return to pool",
 
@@ -4702,13 +4950,13 @@
 
   "submission.workspace.generic.view": "View",
 
-  "submission.workspace.generic.view-help": "Select this option to view the work's metadata.",
+  "submission.workspace.generic.view-help": "Select this option to view the item's metadata.",
 
   "submitter.empty": "N/A",
 
   "subscriptions.title": "Subscriptions",
 
-  "subscriptions.item": "Subscriptions for works",
+  "subscriptions.item": "Subscriptions for items",
 
   "subscriptions.collection": "Subscriptions for collections",
 
@@ -4772,7 +5020,7 @@
 
   "subscriptions.table.not-available": "Not available",
 
-  "subscriptions.table.not-available-message": "The subscribed work has been deleted, or you don't currently have the permission to view it",
+  "subscriptions.table.not-available-message": "The subscribed item has been deleted, or you don't currently have the permission to view it",
 
   "subscriptions.table.empty.message": "You do not have any subscriptions at this time. To subscribe to email updates for a Community or Collection, use the subscription button on the object's page.",
 
@@ -4792,7 +5040,7 @@
 
   "thumbnail.person.placeholder": "No Profile Picture Available",
 
-  "title": "Deep Blue Documents",
+  "title": "DSpace",
 
   "vocabulary-treeview.header": "Hierarchical tree view",
 
@@ -4802,7 +5050,9 @@
 
   "vocabulary-treeview.search.form.search": "Search",
 
-  "vocabulary-treeview.search.no-result": "There were no works to show",
+  "vocabulary-treeview.search.form.search-placeholder": "Filter results by typing the first few letters",
+
+  "vocabulary-treeview.search.no-result": "There were no items to show",
 
   "vocabulary-treeview.tree.description.nsi": "The Norwegian Science Index",
 
@@ -4826,11 +5076,11 @@
 
   "virtual-metadata.delete-item.modal-head": "The virtual metadata of this relation",
 
-  "virtual-metadata.delete-relationship.modal-head": "Select the works for which you want to save the virtual metadata as real metadata",
+  "virtual-metadata.delete-relationship.modal-head": "Select the items for which you want to save the virtual metadata as real metadata",
 
-  "supervisedWorkspace.search.results.head": "Supervised Works",
+  "supervisedWorkspace.search.results.head": "Supervised Items",
 
-  "workspace.search.results.head": "Your deposits",
+  "workspace.search.results.head": "Your submissions",
 
   "workflowAdmin.search.results.head": "Administer Workflow",
 
@@ -4838,21 +5088,23 @@
 
   "supervision.search.results.head": "Workflow and Workspace tasks",
 
+  "orgunit.search.results.head": "Organizational Unit Search Results",
+
   "workflow-item.edit.breadcrumbs": "Edit workflowitem",
 
   "workflow-item.edit.title": "Edit workflowitem",
 
   "workflow-item.delete.notification.success.title": "Deleted",
 
-  "workflow-item.delete.notification.success.content": "This workflow work was successfully deleted",
+  "workflow-item.delete.notification.success.content": "This workflow item was successfully deleted",
 
   "workflow-item.delete.notification.error.title": "Something went wrong",
 
-  "workflow-item.delete.notification.error.content": "The workflow work could not be deleted",
+  "workflow-item.delete.notification.error.content": "The workflow item could not be deleted",
 
-  "workflow-item.delete.title": "Delete workflow work",
+  "workflow-item.delete.title": "Delete workflow item",
 
-  "workflow-item.delete.header": "Delete workflow work",
+  "workflow-item.delete.header": "Delete workflow item",
 
   "workflow-item.delete.button.cancel": "Cancel",
 
@@ -4860,15 +5112,15 @@
 
   "workflow-item.send-back.notification.success.title": "Sent back to submitter",
 
-  "workflow-item.send-back.notification.success.content": "This workflow work was successfully sent back to the submitter",
+  "workflow-item.send-back.notification.success.content": "This workflow item was successfully sent back to the submitter",
 
   "workflow-item.send-back.notification.error.title": "Something went wrong",
 
-  "workflow-item.send-back.notification.error.content": "The workflow work could not be sent back to the submitter",
+  "workflow-item.send-back.notification.error.content": "The workflow item could not be sent back to the submitter",
 
-  "workflow-item.send-back.title": "Send workflow work back to submitter",
+  "workflow-item.send-back.title": "Send workflow item back to submitter",
 
-  "workflow-item.send-back.header": "Send workflow work back to submitter",
+  "workflow-item.send-back.header": "Send workflow item back to submitter",
 
   "workflow-item.send-back.button.cancel": "Cancel",
 
@@ -4882,7 +5134,7 @@
 
   "workspace-item.delete.breadcrumbs": "Workspace Delete",
 
-  "workspace-item.delete.header": "Delete workspace work",
+  "workspace-item.delete.header": "Delete workspace item",
 
   "workspace-item.delete.button.confirm": "Delete",
 
@@ -4890,21 +5142,21 @@
 
   "workspace-item.delete.notification.success.title": "Deleted",
 
-  "workspace-item.delete.title": "This workspace work was successfully deleted",
+  "workspace-item.delete.title": "This workspace item was successfully deleted",
 
   "workspace-item.delete.notification.error.title": "Something went wrong",
 
-  "workspace-item.delete.notification.error.content": "The workspace work could not be deleted",
+  "workspace-item.delete.notification.error.content": "The workspace item could not be deleted",
 
   "workflow-item.advanced.title": "Advanced workflow",
 
   "workflow-item.selectrevieweraction.notification.success.title": "Selected reviewer",
 
-  "workflow-item.selectrevieweraction.notification.success.content": "The reviewer for this workflow work has been successfully selected",
+  "workflow-item.selectrevieweraction.notification.success.content": "The reviewer for this workflow item has been successfully selected",
 
   "workflow-item.selectrevieweraction.notification.error.title": "Something went wrong",
 
-  "workflow-item.selectrevieweraction.notification.error.content": "Couldn't select the reviewer for this workflow work",
+  "workflow-item.selectrevieweraction.notification.error.content": "Couldn't select the reviewer for this workflow item",
 
   "workflow-item.selectrevieweraction.title": "Select Reviewer",
 
@@ -4916,15 +5168,15 @@
 
   "workflow-item.scorereviewaction.notification.success.title": "Rating review",
 
-  "workflow-item.scorereviewaction.notification.success.content": "The rating for this work workflow work has been successfully submitted",
+  "workflow-item.scorereviewaction.notification.success.content": "The rating for this item workflow item has been successfully submitted",
 
   "workflow-item.scorereviewaction.notification.error.title": "Something went wrong",
 
-  "workflow-item.scorereviewaction.notification.error.content": "Couldn't rate this work",
+  "workflow-item.scorereviewaction.notification.error.content": "Couldn't rate this item",
 
-  "workflow-item.scorereviewaction.title": "Rate this work",
+  "workflow-item.scorereviewaction.title": "Rate this item",
 
-  "workflow-item.scorereviewaction.header": "Rate this work",
+  "workflow-item.scorereviewaction.header": "Rate this item",
 
   "workflow-item.scorereviewaction.button.cancel": "Cancel",
 
@@ -4966,7 +5218,7 @@
 
   "researcher.profile.status": "Status:",
 
-  "researcherprofile.claim.not-authorized": "You are not authorized to claim this work. For more details contact the administrator(s).",
+  "researcherprofile.claim.not-authorized": "You are not authorized to claim this item. For more details contact the administrator(s).",
 
   "researcherprofile.error.claim.body": "An error occurred while claiming the profile, please try again later",
 
@@ -5182,7 +5434,7 @@
 
   "person.orcid.registry.auth": "ORCID Authorizations",
 
-  "home.recent-submissions.head": "Recent Deposits",
+  "home.recent-submissions.head": "Recent Submissions",
 
   "listable-notification-object.default-message": "This object couldn't be retrieved",
 
@@ -5218,6 +5470,8 @@
 
   "system-wide-alert.form.label.countdownTo.hint": "Hint: Set a countdown timer. When enabled, a date can be set in the future and the system-wide alert banner will perform a countdown to the set date. When this timer ends, it will disappear from the alert. The server will NOT be automatically stopped.",
 
+  "system-wide-alert-form.select-date-by-calendar": "Select date using calendar",
+
   "system-wide-alert.form.label.preview": "System-wide alert preview",
 
   "system-wide-alert.form.update.success": "The system-wide alert was successfully updated",
@@ -5232,15 +5486,23 @@
 
   "admin.system-wide-alert.title": "System-wide Alerts",
 
-  "item-access-control-title": "This form allows you to perform changes to the access conditions of the work's metadata or its bitstreams.",
+  "item-access-control-title": "This form allows you to perform changes to the access conditions of the item's metadata or its bitstreams.",
 
-  "collection-access-control-title": "This form allows you to perform changes to the access conditions of all the works owned by this collection. Changes may be performed to either all Work metadata or all content (bitstreams).",
+  "collection-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by this collection. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
-  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the works owned by any collection under this community. Changes may be performed to either all Work metadata or all content (bitstreams).",
+  "community-access-control-title": "This form allows you to perform changes to the access conditions of all the items owned by any collection under this community. Changes may be performed to either all Item metadata or all content (bitstreams).",
 
-  "access-control-item-header-toggle": "Work's Metadata",
+  "access-control-item-header-toggle": "Item's Metadata",
+
+  "access-control-item-toggle.enable": "Enable option to perform changes on the item's metadata",
+
+  "access-control-item-toggle.disable": "Disable option to perform changes on the item's metadata",
 
   "access-control-bitstream-header-toggle": "Bitstreams",
+
+  "access-control-bitstream-toggle.enable": "Enable option to perform changes on the bitstreams",
+
+  "access-control-bitstream-toggle.disable": "Disable option to perform changes on the bitstreams",
 
   "access-control-mode": "Mode",
 
@@ -5254,9 +5516,11 @@
 
   "access-control-limit-to-specific": "Limit the changes to specific bitstreams",
 
-  "access-control-process-all-bitstreams": "Update all the bitstreams in the work",
+  "access-control-process-all-bitstreams": "Update all the bitstreams in the item",
 
   "access-control-bitstreams-selected": "bitstreams selected",
+
+  "access-control-bitstreams-select": "Select bitstreams",
 
   "access-control-cancel": "Cancel",
 
@@ -5264,9 +5528,11 @@
 
   "access-control-add-more": "Add more",
 
+  "access-control-remove": "Remove access condition",
+
   "access-control-select-bitstreams-modal.title": "Select bitstreams",
 
-  "access-control-select-bitstreams-modal.no-items": "No works to show.",
+  "access-control-select-bitstreams-modal.no-items": "No items to show.",
 
   "access-control-select-bitstreams-modal.close": "Close",
 
@@ -5282,4 +5548,55 @@
 
   "access-control-option-end-date-note": "Select the date until which the related access condition is applied",
 
+  "vocabulary-treeview.search.form.add": "Add",
+
+  "cc-license.commercial.label": "Allow commercial uses of your work?",
+
+  "cc-license.commercial.hint": "Choose whether others may use your work for commercial purposes.",
+
+  "cc-license.commercial.option.yes.label": "Yes",
+
+  "cc-license.commercial.option.yes.hint": "Visitors may copy, distribute, display and perform your Submission for any purpose, including commercial purposes.",
+
+  "cc-license.commercial.option.no.label": "No",
+
+  "cc-license.commercial.option.no.hint": "Visitors may copy, distribute, display and perform your Submission, but only for non-commercial purposes.",
+
+  "cc-license.derivatives.label": "Allow modifications of your work?",
+
+  "cc-license.derivatives.hint": "Choose whether others may create derivative works based on your Submission.",
+
+  "cc-license.derivatives.option.yes.label": "Yes",
+
+  "cc-license.derivatives.option.yes.hint": "Visitors may copy, distribute, display, perform and modify your Submission in any way.",
+
+  "cc-license.derivatives.option.sharealike.label": "ShareAlike",
+
+  "cc-license.derivatives.option.sharealike.hint": "Visitors are permitted to copy, display, perform and modify your Submission, as long as they distribute the modified version on similar use terms.",
+
+  "cc-license.derivatives.option.no.label": "No",
+
+  "cc-license.derivatives.option.no.hint": "Visitors are only permitted to copy and distribute unaltered versions of your Submission.",
+
+  "cc-license.jurisdiction.label": "Jurisdiction",
+
+  "cc-license.jurisdiction.hint": "Select the legal jurisdiction for your Creative Commons license, or leave as the default international license.",
+
+  "cc-license.jurisdiction.option.unported.label": "Generic (Unported)",
+
+  "cc-license.sampling.label": "Which Sampling license would you like to use?",
+
+  "cc-license.sampling.hint": "Choose which kind of sampling, remixing or mash-up of your work you allow.",
+
+  "cc-license.sampling.option.sampling.label": "Sampling",
+
+  "cc-license.sampling.option.sampling.hint": "Visitors may sample, remix or transform parts of your work for any purpose other than advertising, but may not copy or distribute the entire work.",
+
+  "cc-license.sampling.option.samplingplus.label": "Sampling Plus",
+
+  "cc-license.sampling.option.samplingplus.hint": "Visitors may sample, remix or transform parts of your work for any purpose other than advertising, and may also copy and distribute the entire work for non-commercial purposes.",
+
+  "cc-license.sampling.option.ncsamplingplus.label": "NonCommercial Sampling Plus",
+
+  "cc-license.sampling.option.ncsamplingplus.hint": "Visitors may sample, remix or transform parts of your work, and copy and distribute the entire work, but only for non-commercial purposes.",
 }
