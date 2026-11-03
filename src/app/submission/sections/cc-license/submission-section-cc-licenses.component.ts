@@ -1,25 +1,56 @@
-import { Component, Inject } from '@angular/core';
-import { Observable, of as observableOf, Subscription } from 'rxjs';
-import { Field, Option, SubmissionCcLicence } from '../../../core/submission/models/submission-cc-license.model';
+import {
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import {
+  NgbModal,
+  NgbModalRef,
+} from '@ng-bootstrap/ng-bootstrap';
+import {
+  BehaviorSubject,
+  Observable,
+  of,
+  Subscription,
+} from 'rxjs';
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  take,
+  tap,
+} from 'rxjs/operators';
+
+import { ConfigurationDataService } from '../../../core/data/configuration-data.service';
+import { FindListOptions } from '../../../core/data/find-list-options.model';
+import { JsonPatchOperationPathCombiner } from '../../../core/json-patch/builder/json-patch-operation-path-combiner';
+import { JsonPatchOperationsBuilder } from '../../../core/json-patch/builder/json-patch-operations-builder';
 import {
   getFirstCompletedRemoteData,
-  getFirstSucceededRemoteData,
-  getRemoteDataPayload
+  getFirstSucceededRemoteDataPayload,
+  getRemoteDataPayload,
 } from '../../../core/shared/operators';
-import { distinctUntilChanged, filter, map, take } from 'rxjs/operators';
+import {
+  Field,
+  Option,
+  SubmissionCcLicence,
+} from '../../../core/submission/models/submission-cc-license.model';
+import { WorkspaceitemSectionCcLicenseObject } from '../../../core/submission/models/workspaceitem-section-cc-license.model';
 import { SubmissionCcLicenseDataService } from '../../../core/submission/submission-cc-license-data.service';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { renderSectionFor } from '../sections-decorator';
-import { SectionsType } from '../sections-type';
+import { SubmissionCcLicenseUrlDataService } from '../../../core/submission/submission-cc-license-url-data.service';
+import {
+  hasNoValue,
+  hasValue,
+  isNotEmpty,
+} from '../../../shared/empty.util';
 import { SectionModelComponent } from '../models/section.model';
 import { SectionDataObject } from '../models/section-data.model';
 import { SectionsService } from '../sections.service';
-import { WorkspaceitemSectionCcLicenseObject } from '../../../core/submission/models/workspaceitem-section-cc-license.model';
-import { JsonPatchOperationPathCombiner } from '../../../core/json-patch/builder/json-patch-operation-path-combiner';
-import { isNotEmpty } from '../../../shared/empty.util';
-import { JsonPatchOperationsBuilder } from '../../../core/json-patch/builder/json-patch-operations-builder';
-import { SubmissionCcLicenseUrlDataService } from '../../../core/submission/submission-cc-license-url-data.service';
-import {ConfigurationDataService} from '../../../core/data/configuration-data.service';
+import { renderSectionFor } from '../sections-decorator';
+import { SectionsType } from '../sections-type';
 
 /**
  * This component represents the submission section to select the Creative Commons license.
@@ -27,10 +58,10 @@ import {ConfigurationDataService} from '../../../core/data/configuration-data.se
 @Component({
   selector: 'ds-submission-section-cc-licenses',
   templateUrl: './submission-section-cc-licenses.component.html',
-  styleUrls: ['./submission-section-cc-licenses.component.scss']
+  styleUrls: ['./submission-section-cc-licenses.component.scss'],
 })
 @renderSectionFor(SectionsType.CcLicense)
-export class SubmissionSectionCcLicensesComponent extends SectionModelComponent {
+export class SubmissionSectionCcLicensesComponent extends SectionModelComponent implements OnChanges, OnInit {
 
   /**
    * The form id
@@ -58,7 +89,7 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
   /**
    * Cache of the available Creative Commons licenses.
    */
-  submissionCcLicenses: SubmissionCcLicence[];
+  submissionCcLicenses: SubmissionCcLicence[] = [];
 
   /**
    * Reference to NgbModal
@@ -69,6 +100,26 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
    * Default jurisdiction configured
    */
   defaultJurisdiction: string;
+
+  /**
+   * The currently selected cc licence
+   */
+  selectedCcLicense: SubmissionCcLicence = new SubmissionCcLicence();
+
+  /**
+   * Options for paginated data loading
+   */
+  ccLicenceOptions: FindListOptions = {
+    elementsPerPage: 20,
+    currentPage: 1,
+  };
+
+  /**
+   * Check to stop paginated search
+   *
+   * @private
+   */
+  private _isLastPage: boolean;
 
   /**
    * The Creative Commons link saved in the workspace item.
@@ -87,6 +138,13 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
     return this.data.accepted;
   }
 
+  ccLicenseLink$: Observable<string>;
+
+  /**
+   * Is the section required
+   */
+  public required$ = new BehaviorSubject<boolean>(false);
+
   constructor(
     protected modalService: NgbModal,
     protected sectionService: SectionsService,
@@ -94,15 +152,30 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
     protected submissionCcLicenseUrlDataService: SubmissionCcLicenseUrlDataService,
     protected operationsBuilder: JsonPatchOperationsBuilder,
     protected configService: ConfigurationDataService,
+    protected ref: ChangeDetectorRef,
     @Inject('collectionIdProvider') public injectedCollectionId: string,
     @Inject('sectionDataProvider') public injectedSectionData: SectionDataObject,
-    @Inject('submissionIdProvider') public injectedSubmissionId: string
+    @Inject('submissionIdProvider') public injectedSubmissionId: string,
   ) {
     super(
       injectedCollectionId,
       injectedSectionData,
       injectedSubmissionId,
     );
+  }
+
+  ngOnInit(): void {
+    super.ngOnInit();
+    if (hasNoValue(this.ccLicenseLink$)) {
+      this.ccLicenseLink$ = this.getCcLicenseLink$();
+    }
+    this.required$.next(this.sectionData.mandatory);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (hasValue(changes.sectionData) || hasValue(changes.submissionCcLicenses)) {
+      this.ccLicenseLink$ = this.getCcLicenseLink$();
+    }
   }
 
   /**
@@ -117,17 +190,21 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
    * @param ccLicense the Creative Commons license to select.
    */
   selectCcLicense(ccLicense: SubmissionCcLicence) {
-    if (!!this.getSelectedCcLicense() && this.getSelectedCcLicense().id === ccLicense.id) {
+    if (this.selectedCcLicense.id === ccLicense.id) {
       return;
     }
-    this.setAccepted(false);
+    this.selectedCcLicense = ccLicense;
+    // A single update, as separate updates would each be compared against stale section data
     this.updateSectionData({
       ccLicense: {
         id: ccLicense.id,
         fields: {},
       },
       uri: undefined,
+      accepted: false,
     });
+    this.updateSectionStatus();
+    this.ccLicenseLink$ = this.getCcLicenseLink$();
   }
 
   /**
@@ -153,12 +230,13 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
     this.updateSectionData({
       ccLicense: {
         id: ccLicense.id,
-        fields: Object.assign({}, this.data.ccLicense.fields, {
-          [field.id]: option
+        fields: Object.assign({}, this.data.ccLicense?.fields, {
+          [field.id]: option,
         }),
       },
       accepted: false,
     });
+    this.ccLicenseLink$ = this.getCcLicenseLink$();
   }
 
   /**
@@ -170,7 +248,7 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
     if (field.id === 'jurisdiction' && this.defaultJurisdiction !== undefined && this.defaultJurisdiction !== 'none') {
       return field.enums.find(option => option.id === this.defaultJurisdiction);
     }
-    return this.data.ccLicense.fields[field.id];
+    return this.data.ccLicense?.fields?.[field.id];
   }
 
   /**
@@ -180,26 +258,24 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
    * @param option      the option for which to check whether it is selected.
    */
   isSelectedOption(ccLicense: SubmissionCcLicence, field: Field, option: Option): boolean {
-    return this.getSelectedOption(ccLicense, field) && this.getSelectedOption(ccLicense, field).id === option.id;
+    const selected = this.getSelectedOption(ccLicense, field);
+    return !!selected && selected.id === option.id;
   }
 
   /**
    * Get the link to the Creative Commons license corresponding with the selected options.
    */
   getCcLicenseLink$(): Observable<string> {
-
-    if (!!this.storedCcLicenseLink) {
-      return observableOf(this.storedCcLicenseLink);
-    }
     if (!this.getSelectedCcLicense() || this.getSelectedCcLicense().fields.some(
       (field) => !this.getSelectedOption(this.getSelectedCcLicense(), field))) {
-      return undefined;
+      // Fall back to the stored link when the selection could not be (fully) restored from it
+      return this.storedCcLicenseLink ? of(this.storedCcLicenseLink) : undefined;
     }
     const selectedCcLicense = this.getSelectedCcLicense();
     return this.submissionCcLicenseUrlDataService.getCcLicenseLink(
       selectedCcLicense,
       new Map(selectedCcLicense.fields.map(
-        (field) => [field, this.getSelectedOption(selectedCcLicense, field)]
+        (field) => [field, this.getSelectedOption(selectedCcLicense, field)],
       )),
     );
   }
@@ -216,7 +292,7 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
    * Close the info modal.
    */
   closeInfoModal() {
-    this.modalRef.close();
+    this.modalRef?.close();
   }
 
   /**
@@ -226,14 +302,18 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
    *     the section status
    */
   getSectionStatus(): Observable<boolean> {
-    return observableOf(this.accepted);
+    return this.required$.pipe(
+      map((required) => !required || this.accepted),
+      distinctUntilChanged(),
+    );
   }
 
   /**
-   * Unsubscribe from all subscriptions
+   * Unsubscribe from all subscriptions and close any open info modal
    */
   onSectionDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    this.modalRef?.close();
   }
 
   /**
@@ -249,39 +329,49 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
         distinctUntilChanged(),
         map((sectionState) => sectionState.data as WorkspaceitemSectionCcLicenseObject),
       ).subscribe((data) => {
-        if (this.data.accepted !== data.accepted) {
+        // The REST API never returns the accepted state, so only changes made in this section (which always
+        // set it) should queue a patch. Otherwise a save response would queue a remove of an already removed uri.
+        if (hasValue(data.accepted) && this.data.accepted !== data.accepted) {
           const path = this.pathCombiner.getPath('uri');
           if (data.accepted) {
-            this.getCcLicenseLink$().pipe(
-              take(1),
-            ).subscribe((link) => {
-              this.operationsBuilder.add(path, link.toString(), false, true);
-            });
-          } else if (!!this.data.uri) {
+            const link$ = this.getCcLicenseLink$();
+            // getCcLicenseLink$() returns undefined when there is no complete selection and no stored link
+            if (hasValue(link$)) {
+              link$.pipe(
+                take(1),
+              ).subscribe((link) => {
+                this.operationsBuilder.add(path, link.toString(), false, true);
+              });
+            }
+          } else if (this.data.uri) {
             this.operationsBuilder.remove(path);
           }
         }
-        this.sectionData.data = data;
+        const previousCcLicense = this.data?.ccLicense;
+        this.sectionData.data = {
+          ...data,
+          // The REST API only returns the stored uri, so keep the (restored) selection when it is missing
+          ccLicense: data.ccLicense ?? previousCcLicense,
+        };
+        // The selection is updated asynchronously, so recompute the link once it has landed in the store
+        if (JSON.stringify(previousCcLicense) !== JSON.stringify(this.data.ccLicense)) {
+          this.ccLicenseLink$ = this.getCcLicenseLink$();
+          this.ref.detectChanges();
+        }
       }),
-      this.submissionCcLicensesDataService.findAll({ elementsPerPage: 9999 }).pipe(
-        getFirstSucceededRemoteData(),
-        getRemoteDataPayload(),
-        map((list) => list.page),
-      ).subscribe(
-        (licenses) => this.submissionCcLicenses = licenses
-      ),
       this.configService.findByPropertyName('cc.license.jurisdiction').pipe(
         getFirstCompletedRemoteData(),
-        getRemoteDataPayload()
+        getRemoteDataPayload(),
       ).subscribe((remoteData) => {
-          if (remoteData === undefined || remoteData.values.length === 0) {
-            // No value configured, use blank value (International jurisdiction)
-            this.defaultJurisdiction = '';
-          } else {
-            this.defaultJurisdiction = remoteData.values[0];
-          }
-      })
+        if (remoteData === undefined || remoteData.values.length === 0) {
+          // No value configured, use blank value (International jurisdiction)
+          this.defaultJurisdiction = '';
+        } else {
+          this.defaultJurisdiction = remoteData.values[0];
+        }
+      }),
     );
+    this.loadCcLicences();
   }
 
   /**
@@ -290,7 +380,7 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
    */
   setAccepted(accepted: boolean) {
     this.updateSectionData({
-      accepted
+      accepted,
     });
     this.updateSectionStatus();
   }
@@ -300,5 +390,119 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
    */
   updateSectionData(data: WorkspaceitemSectionCcLicenseObject) {
     this.sectionService.updateSectionData(this.submissionId, this.sectionData.id, Object.assign({}, this.data, data));
+  }
+
+  onScroll(event) {
+    if (event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight) {
+      if (!this.isLoading && !this._isLastPage) {
+        this.ccLicenceOptions.currentPage++;
+        this.loadCcLicences();
+      }
+    }
+  }
+
+  loadCcLicences() {
+    this.isLoading = true;
+
+    this.subscriptions.push(
+      this.submissionCcLicensesDataService.findAll(this.ccLicenceOptions).pipe(
+        getFirstSucceededRemoteDataPayload(),
+        tap((response) => this._isLastPage = response.pageInfo.currentPage === response.pageInfo.totalPages),
+        map((list) => list.page),
+      ).subscribe(
+        (licenses) => {
+          this.submissionCcLicenses = [...this.submissionCcLicenses, ...licenses];
+          this.isLoading = false;
+          this.restoreSelectionFromStoredUri();
+          this.ref.detectChanges();
+        },
+      ),
+    );
+  }
+
+  /**
+   * Rebuild the license selection (license + field answers) from the stored license uri.
+   * The REST API only returns the uri of a saved license, so without this the previously chosen
+   * license and options can't be shown or changed after the submission has been saved and reopened.
+   * Does not touch the uri or accepted state, as the stored license remains valid.
+   */
+  private restoreSelectionFromStoredUri(): void {
+    if (hasValue(this.data?.ccLicense) || !this.storedCcLicenseLink) {
+      return;
+    }
+    const parsed = this.parseCcLicenseUri(this.storedCcLicenseLink);
+    if (!parsed) {
+      return;
+    }
+    const license = this.submissionCcLicenses.find((ccLicense) => parsed.matches(ccLicense.name ?? ''));
+    if (!license) {
+      // The license might be on a page that hasn't been loaded yet
+      return;
+    }
+
+    const fields: { [fieldId: string]: Option } = {};
+    (license.fields ?? []).forEach((field) => {
+      let optionId: string;
+      switch (field.id) {
+        case 'commercial':
+          optionId = parsed.unit.includes('nc') ? 'n' : 'y';
+          break;
+        case 'derivatives':
+          optionId = parsed.unit.includes('nd') ? 'n' : parsed.unit.includes('sa') ? 'sa' : 'y';
+          break;
+        case 'jurisdiction':
+          optionId = parsed.jurisdiction ?? '';
+          break;
+        case 'sampling':
+          // e.g. 'nc-sampling+' -> 'ncsamplingplus'
+          optionId = parsed.unit.replace(/-/g, '').replace(/\+/g, 'plus');
+          break;
+      }
+      const option = field.enums?.find((o) => o.id === optionId);
+      if (option) {
+        fields[field.id] = option;
+      }
+    });
+
+    this.selectedCcLicense = license;
+    this.updateSectionData({
+      ccLicense: {
+        id: license.id,
+        fields,
+      },
+    });
+  }
+
+  /**
+   * Parse a creativecommons.org license uri into its unit (e.g. 'by-nc-nd', 'sampling+', 'zero'), version and
+   * optional jurisdiction, together with a matcher for the name of the corresponding license.
+   * Returns null for uris that don't match a known Creative Commons pattern.
+   * @param uri the stored license uri
+   */
+  private parseCcLicenseUri(uri: string): { unit: string, jurisdiction?: string, matches: (name: string) => boolean } {
+    const standard = /creativecommons\.org\/licenses\/([a-z+-]+)\/(\d+\.\d+)(?:\/([a-z_-]+))?/i.exec(uri);
+    if (standard) {
+      const version = standard[2];
+      return {
+        unit: standard[1].toLowerCase(),
+        jurisdiction: standard[3]?.toLowerCase(),
+        matches: (name) => name.includes(`(${version})`),
+      };
+    }
+    const publicDomain = /creativecommons\.org\/publicdomain\/(zero|mark|certification)\//i.exec(uri);
+    if (publicDomain) {
+      const unit = publicDomain[1].toLowerCase();
+      const publicDomainNames: { [unit: string]: string } = {
+        zero: 'cc0',
+        mark: 'mark',
+        certification: 'certification',
+      };
+      const namePart = publicDomainNames[unit];
+      return {
+        unit,
+        matches: (name) => name.toLowerCase().includes(namePart),
+      };
+    }
+    return null;
   }
 }
