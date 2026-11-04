@@ -39,7 +39,7 @@
       </div>
       <button
         class="btn btn-outline-info btn-sm ml-2"
-        (click)="openInfoModal(infoModal)">
+        (click)="openInfoModal(infoModal, getInfoModalTitleId(field.id))">
         <i class="fas fa-question"></i>
       </button>
     </div>
@@ -48,7 +48,7 @@
       <div>
         <div class="modal-header mb-4">
           <div>
-            <h4>{{ field.label | translate }}</h4>
+            <h4 [id]="getInfoModalTitleId(field.id)">{{ field.label | translate }}</h4>
             <div [innerHTML]="field.description | translate"></div>
           </div>
           <button type="button" class="close" (click)="closeInfoModal()" aria-label="Close">

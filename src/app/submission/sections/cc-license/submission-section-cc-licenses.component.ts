@@ -281,11 +281,26 @@ export class SubmissionSectionCcLicensesComponent extends SectionModelComponent 
   }
 
   /**
+   * Get the accessible title ID for an info modal.
+   * @param fieldId the selected license field ID.
+   */
+  getInfoModalTitleId(fieldId: string): string {
+    if (fieldId === 'commercial') {
+      return 'commercial-use-title';
+    }
+    if (fieldId === 'derivatives') {
+      return 'derivative-use-allowed';
+    }
+    return `cc-license-info-${fieldId}-title`;
+  }
+
+  /**
    * Open a given info modal.
    * @param content   the modal content.
+   * @param titleId   the ID of the modal title.
    */
-  openInfoModal(content) {
-    this.modalRef = this.modalService.open(content);
+  openInfoModal(content, titleId: string) {
+    this.modalRef = this.modalService.open(content, { ariaLabelledBy: titleId });
   }
 
   /**
