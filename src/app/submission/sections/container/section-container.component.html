@@ -5,7 +5,7 @@
     (panelChange)="sectionRef.sectionChange($event)" activeIds="{{ sectionData.id }}" [destroyOnHide]="false">
     <ngb-panel id="{{ sectionData.id }}" [type]="sectionRef.isInfo() ? 'info' : ''">
       <ng-template ngbPanelTitle>
-        <span [ngClass]="{ 'text-white' : sectionRef.isInfo()}" class="float-left section-title" tabindex="0">{{
+        <span [ngClass]="{ 'text-white' : sectionRef.isInfo()}" class="float-left section-title">{{
           'submission.sections.'+sectionData.header | translate
           }}</span>
         <div class="d-inline-block float-right">
@@ -39,7 +39,7 @@
           </a>
           <a href="javascript:void(0);" class="close mr-3" *ngIf="!sectionRef.isMandatory()"
             (click)="removeSection($event)">
-            <i class="fas fa-trash-o" aria-hidden="true" tabindex="0"></i>
+            <i class="fas fa-trash-o" aria-hidden="true"></i>
           </a>
         </div>
       </ng-template>
