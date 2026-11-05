@@ -4626,6 +4626,12 @@
 
   "submission.sections.ccLicense.type": "License Type",
 
+  "submission.sections.ccLicense.info": "Show information about: {{ field }}",
+
+  "submission.sections.ccLicense.info.commercial": "Show information about commercial uses of your work",
+
+  "submission.sections.ccLicense.info.derivatives": "Show information about allowing modifications of your work",
+
   "submission.sections.ccLicense.select": "Select a license type…",
 
   "submission.sections.ccLicense.change": "Change your license type…",

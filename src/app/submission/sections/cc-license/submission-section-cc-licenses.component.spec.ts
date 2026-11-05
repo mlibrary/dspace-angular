@@ -7,7 +7,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { cold } from 'jasmine-marbles';
 import { Subject } from 'rxjs';
 
@@ -232,6 +232,37 @@ describe('SubmissionSectionCcLicensesComponent', () => {
 
     it('should display the selected cc license', () => {
       expect(component.selectedCcLicense.name).toContain('test license name 2');
+    });
+
+    it('should give each info button a descriptive, translated accessible name', () => {
+      const translate = TestBed.inject(TranslateService);
+      translate.setTranslation('en', {
+        'submission.sections.ccLicense.info': 'Show information about: {{ field }}',
+        'submission.sections.ccLicense.info.commercial': 'Show information about commercial uses of your work',
+        'submission.sections.ccLicense.info.derivatives': 'Show information about allowing modifications of your work',
+        'test field label 2a': 'Allow commercial uses of your work?',
+        'test field label 2b': 'Allow modifications of your work?',
+      });
+      translate.use('en');
+      component.submissionCcLicenses = [{
+        ...ccLicence,
+        fields: ccLicence.fields.map((field, index) => ({
+          ...field,
+          id: index === 0 ? 'commercial' : 'derivatives',
+        })),
+      }];
+      fixture.detectChanges();
+
+      const buttons = de.queryAll(By.css('button.btn-outline-info'));
+      expect(buttons.length).toBe(2);
+      expect(buttons[0].nativeElement.getAttribute('aria-label'))
+        .toBe('Show information about commercial uses of your work');
+      expect(buttons[1].nativeElement.getAttribute('aria-label'))
+        .toBe('Show information about allowing modifications of your work');
+      buttons.forEach((button) => {
+        expect(button.nativeElement.getAttribute('type')).toBe('button');
+        expect(button.query(By.css('i')).nativeElement.getAttribute('aria-hidden')).toBe('true');
+      });
     });
 
     it('should display all field labels of the selected cc license only', () => {

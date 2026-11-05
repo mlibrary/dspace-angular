@@ -34,13 +34,15 @@
 <ng-container *ngIf="getSelectedCcLicense()">
   <div *ngFor="let field of getSelectedCcLicense().fields" class="mb-4">
     <div class="d-flex flex-row">
-      <div class="font-weight-bold {{ field.id }}">
+      <div class="{{ field.id }}" [class.font-weight-bold]="field.id !== 'commercial' && field.id !== 'derivatives'">
         {{ field.label | translate }}
       </div>
       <button
+        type="button"
         class="btn btn-outline-info btn-sm ml-2"
-        (click)="openInfoModal(infoModal)">
-        <i class="fas fa-question"></i>
+        [attr.aria-label]="('submission.sections.ccLicense.info' + (field.id === 'commercial' || field.id === 'derivatives' ? '.' + field.id : '')) | translate: { field: (field.label | translate) }"
+        (click)="openInfoModal(infoModal, getInfoModalTitleId(field.id))">
+        <i class="fas fa-question" aria-hidden="true"></i>
       </button>
     </div>
 
@@ -48,7 +50,7 @@
       <div>
         <div class="modal-header mb-4">
           <div>
-            <h4>{{ field.label | translate }}</h4>
+            <h4 class="font-weight-bold" [id]="getInfoModalTitleId(field.id)">{{ field.label | translate }}</h4>
             <div [innerHTML]="field.description | translate"></div>
           </div>
           <button type="button" class="close" (click)="closeInfoModal()" aria-label="Close">
@@ -57,7 +59,7 @@
         </div>
         <div class="modal-body">
           <div *ngFor="let value of field.enums" class="mb-4">
-            <h5>{{ value.label | translate }}</h5>
+            <h5 class="font-weight-bold">{{ value.label | translate }}</h5>
             <div [innerHTML]="value.description | translate" class="font-weight-light"></div>
           </div>
         </div>
