@@ -3,6 +3,7 @@
   "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
 
   "401.link.home-page": "Take me to the home page",
+  "401.link.home-page": "Take me to the home page",
 
   "401.unauthorized": "Unauthorized",
 
@@ -2910,7 +2911,7 @@
 
   "menu.section.browse_community_by_title": "By Title",
 
-  "menu.section.browse_global": "All of DSpace",
+  "menu.section.browse_global": "Browse",
 
   "menu.section.browse_global_by_author": "By Author",
 
